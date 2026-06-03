@@ -1,18 +1,11 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 20,
-        "padding_bottom": 12
-      }
-    },
     "hero": {
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Operations Hub",
         "heading": "A central gateway for practical business operations support",
-        "text": "<p>Find services, resources, toolkits, partner offers and support pathways that help keep business work moving with clearer ownership and next steps.</p>",
+        "text": "<p>Find the right route for running operations, improving recurring work, accessing practical resources, and using available offers or support pathways.</p>",
         "align": "left"
       }
     },
@@ -20,16 +13,16 @@
       "type": "rbp-service-router",
       "settings": {
         "eyebrow": "Self-route",
-        "heading": "Start with the operational outcome",
-        "text": "<p>Use the hub to choose between service support, self-serve resources, marketplace offers and help pathways.</p>"
+        "heading": "Choose the operations pathway",
+        "text": "<p>Start with the kind of operational outcome you need, then move into services, resources, offers or support.</p>"
       },
       "blocks": {
         "operations_services": {
           "type": "service",
           "settings": {
             "icon": "01",
-            "title": "I need operations support",
-            "text": "Browse on-demand services for workflows, admin systems, controls and operating support.",
+            "title": "Run operations",
+            "text": "Browse services for recurring work, controls, admin systems and operating support.",
             "button_label": "View operations services",
             "url": "/collections/operations-on-demand-services"
           }
@@ -38,8 +31,8 @@
           "type": "service",
           "settings": {
             "icon": "02",
-            "title": "I need templates or tools",
-            "text": "Use practical resources, toolkits and documents when the work can start self-serve.",
+            "title": "Improve operations",
+            "text": "Use practical tools, templates and service pathways to clean up recurring work.",
             "button_label": "View essentials",
             "url": "/pages/essentials"
           }
@@ -48,8 +41,8 @@
           "type": "service",
           "settings": {
             "icon": "03",
-            "title": "I need support or direction",
-            "text": "Use support pathways when the right service, resource or next step is unclear.",
+            "title": "Access tools and offers",
+            "text": "Find marketplace pathways, business resources and support when the right next step is unclear.",
             "button_label": "Contact support",
             "url": "/pages/support"
           }
@@ -65,16 +58,16 @@
       "type": "rbp-feature-grid",
       "settings": {
         "eyebrow": "Operating categories",
-        "heading": "Support for recurring business work",
-        "text": "<p>Use these categories to move quickly into real store destinations without adding one-off page files.</p>"
+        "heading": "Run, improve and support business operations",
+        "text": "<p>Use the hub to move into a practical service, resource or support route without guessing where to start.</p>"
       },
       "blocks": {
         "business_operations": {
           "type": "feature",
           "settings": {
             "icon": "B",
-            "title": "Business operations",
-            "text": "Services for recurring work, controls, accountability and operating rhythm.",
+            "title": "Run operations",
+            "text": "Support for recurring work, accountability, controls and operating rhythm.",
             "button_label": "Browse operations services",
             "url": "/collections/operations-on-demand-services"
           }
@@ -83,8 +76,8 @@
           "type": "feature",
           "settings": {
             "icon": "A",
-            "title": "Admin systems",
-            "text": "Support for registers, calendars, documentation, knowledge bases and practical workflows.",
+            "title": "Improve operations",
+            "text": "Support for registers, calendars, documentation, workflows and knowledge bases.",
             "button_label": "View individual services",
             "url": "/collections/individual-on-demand-services"
           }
@@ -93,8 +86,8 @@
           "type": "feature",
           "settings": {
             "icon": "M",
-            "title": "Marketplace and partner offers",
-            "text": "Access business offers, marketplace support and partner pathways where configured.",
+            "title": "Access tools and offers",
+            "text": "Use marketplace pathways, practical resources and partner opportunities where available.",
             "button_label": "Open marketplace",
             "url": "/pages/marketplace"
           }
@@ -153,7 +146,7 @@
       "settings": {
         "eyebrow": "Marketplace",
         "heading": "Partner offers and operational opportunities",
-        "text": "<p>Use configured offers or route visitors to the marketplace while partner offer metaobjects are finalized.</p>",
+        "text": "<p>Explore available partner offers, marketplace pathways and practical business opportunities as they become available.</p>",
         "limit": 6
       },
       "blocks": {
@@ -199,15 +192,14 @@
       "type": "rbp-cta-band",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Find the operational pathway that fits the work",
-        "text": "<p>Start with services, essentials, marketplace offers or support, depending on what the business needs next.</p>",
-        "button_label": "Browse operations services",
+        "heading": "Find the right operations pathway",
+        "text": "<p>Start with the operational outcome, then choose the service, resource, offer or support route that fits.</p>",
+        "button_label": "Find the right operations pathway",
         "button_url": "/collections/operations-on-demand-services"
       }
     }
   },
   "order": [
-    "main",
     "hero",
     "router",
     "features",
