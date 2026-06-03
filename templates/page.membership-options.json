@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Membership options",
+        "heading": "Compare Remote Business Partner membership options before joining",
+        "text": "<p>Use this page for plan details, inclusions, application context and support routing before choosing a membership option.</p>",
+        "align": "left"
+      }
+    },
+    "options": {
+      "type": "rbp-membership-benefits",
+      "settings": {
+        "eyebrow": "Compare options",
+        "heading": "Pricing, inclusions and next steps should be clear before signup",
+        "text": "<p>Membership options should explain what is included, what requires eligibility or application review, and how to ask for help before joining.</p>"
+      },
+      "blocks": {
+        "premium": { "type": "benefit", "settings": { "badge": "Option", "title": "Premium Membership", "text": "Review the current membership offer, inclusions and application pathway before joining." } },
+        "inclusions": { "type": "benefit", "settings": { "badge": "Included", "title": "Resources and support pathways", "text": "Understand the practical resources, member pathways and support routes connected to membership." } },
+        "eligibility": { "type": "benefit", "settings": { "badge": "Check", "title": "Eligibility and conditions", "text": "Confirm any timing, application, offer or availability conditions before committing." } },
+        "support": { "type": "benefit", "settings": { "badge": "Help", "title": "Support before signup", "text": "Contact support if the plan, business fit, onboarding step or offer details are unclear." } }
+      },
+      "block_order": ["premium", "inclusions", "eligibility", "support"]
+    },
+    "steps": {
+      "type": "rbp-how-it-works",
+      "settings": {
+        "eyebrow": "How to choose",
+        "heading": "Review, compare, apply and use the member pathways",
+        "text": "<p>Keep the purchase path practical by confirming fit and support needs before joining.</p>"
+      },
+      "blocks": {
+        "review": { "type": "step", "settings": { "title": "Review the offer", "text": "Read the membership option, price, inclusions, conditions and timing." } },
+        "compare": { "type": "step", "settings": { "title": "Compare the fit", "text": "Check whether the plan matches your need for resources, support, offers or ongoing business access." } },
+        "apply": { "type": "step", "settings": { "title": "Apply or contact support", "text": "Complete the signup route when ready or contact support if the fit is unclear." } },
+        "use": { "type": "step", "settings": { "title": "Use the pathways", "text": "Once active, use RBP resources, services, marketplace context and support as business needs change." } }
+      },
+      "block_order": ["review", "compare", "apply", "use"]
+    },
+    "resources": {
+      "type": "rbp-resource-preview",
+      "settings": {
+        "eyebrow": "Related pages",
+        "heading": "Membership context and support",
+        "text": "<p>Use these destinations to compare the overview, ask for help or explore the resource pathways membership connects to.</p>"
+      },
+      "blocks": {
+        "membership": { "type": "resource", "settings": { "type": "Overview", "title": "Membership overview", "text": "Understand the role of membership across RBP pathways.", "url": "/pages/membership" } },
+        "essentials": { "type": "resource", "settings": { "type": "Resources", "title": "Essentials", "text": "Browse templates, toolkits and supported resource options.", "url": "/pages/essentials" } },
+        "support": { "type": "resource", "settings": { "type": "Support", "title": "Contact support", "text": "Ask for help before signup when the plan or next step is unclear.", "url": "/pages/contact" } }
+      },
+      "block_order": ["membership", "essentials", "support"]
+    },
+    "faq": {
+      "type": "rbp-faq",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Membership option questions",
+        "text": "<p>These questions help set expectations before signup or enquiry.</p>",
+        "open_first": true
+      },
+      "blocks": {
+        "pricing": { "type": "question", "settings": { "question": "Where should pricing and offer details live?", "answer": "<p>Pricing, current offers, application conditions and inclusions belong on this membership options page so the overview page can stay focused on value and fit.</p>" } },
+        "unclear": { "type": "question", "settings": { "question": "What if I am not sure membership is right for my business?", "answer": "<p>Contact support before joining and include your business context, what you need access to, and any deadline or onboarding question.</p>" } },
+        "resources": { "type": "question", "settings": { "question": "Does membership replace RBP services?", "answer": "<p>No. Membership can connect you to resources, support and relevant pathways, but advisory, consulting, implementation or managed services may still be separate where scoped support is required.</p>" } }
+      },
+      "block_order": ["pricing", "unclear", "resources"]
+    },
+    "cta": {
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Next step",
+        "heading": "Ready to compare or ask a question?",
+        "text": "<p>Review the current membership offer details, then contact support if the next step is not clear.</p>",
+        "button_label": "Contact support before joining",
+        "button_url": "/pages/contact"
+      }
+    }
+  },
+  "order": ["hero", "options", "steps", "resources", "faq", "cta"]
+}
