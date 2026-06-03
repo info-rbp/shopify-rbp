@@ -12,6 +12,23 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .contact__intake-note {
+    margin: 0 0 2rem;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .contact__field-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .contact__field-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
@@ -23,6 +40,9 @@
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
+    <p class="contact__intake-note">
+      Include the relevant order, product or service, the issue, any deadline and your preferred contact method. Avoid sending passwords, account credentials or sensitive personal information through this form.
+    </p>
     {%- liquid
       assign contact_form_class = 'isolate'
       if settings.animations_reveal_on_scroll
@@ -99,6 +119,55 @@
           {%- endif -%}
         </div>
       </div>
+      <div class="contact__field-grid">
+        <div class="field">
+          <select
+            id="ContactForm-request-type"
+            class="field__input"
+            name="contact[Request type]"
+            aria-label="Request type"
+          >
+            <option value="">Select request type</option>
+            <option value="Order or product support">Order or product support</option>
+            <option value="Service delivery or onboarding">Service delivery or onboarding</option>
+            <option value="Business NBN support">Business NBN support</option>
+            <option value="Membership support">Membership support</option>
+            <option value="Help choosing a pathway">Help choosing a pathway</option>
+            <option value="General enquiry">General enquiry</option>
+          </select>
+          <label class="field__label" for="ContactForm-request-type">Request type</label>
+        </div>
+        <div class="field">
+          <input
+            type="text"
+            id="ContactForm-order-product"
+            class="field__input"
+            name="contact[Order, product or service]"
+            placeholder="Order, product or service"
+          >
+          <label class="field__label" for="ContactForm-order-product">Order, product or service</label>
+        </div>
+        <div class="field">
+          <input
+            type="text"
+            id="ContactForm-deadline"
+            class="field__input"
+            name="contact[Deadline or timing pressure]"
+            placeholder="Deadline or timing pressure"
+          >
+          <label class="field__label" for="ContactForm-deadline">Deadline or timing pressure</label>
+        </div>
+        <div class="field">
+          <input
+            type="text"
+            id="ContactForm-preferred-contact"
+            class="field__input"
+            name="contact[Preferred contact method]"
+            placeholder="Preferred contact method"
+          >
+          <label class="field__label" for="ContactForm-preferred-contact">Preferred contact method</label>
+        </div>
+      </div>
       <div class="field">
         <input
           type="tel"
@@ -118,12 +187,12 @@
           id="ContactForm-body"
           class="text-area field__input"
           name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
+          placeholder="What happened and what outcome do you need?"
         >
           {{- form.body -}}
         </textarea>
         <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
+          Request details
         </label>
       </div>
       <div class="contact__button">
@@ -154,26 +223,11 @@
       "type": "select",
       "id": "heading_size",
       "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
+        { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "hxl", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "hxxl", "label": "t:sections.all.heading_size.options__5.label" }
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
@@ -210,9 +264,7 @@
     }
   ],
   "presets": [
-    {
-      "name": "t:sections.contact-form.presets.name"
-    }
+    { "name": "t:sections.contact-form.presets.name" }
   ]
 }
 {% endschema %}
