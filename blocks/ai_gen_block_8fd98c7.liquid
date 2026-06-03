@@ -1,0 +1,360 @@
+{% doc %}
+  @prompt
+    Create a two-level header layout where the first level displays the store logo centered horizontally, and the second level displays the navigation menu links centered horizontally below it. The two levels should be visually distinct rows stacked vertically. The design should be clean and premium, matching a professional business brand., The Logo is not formatted correctly - it's stacked the words on top of each other and the menu links are not formatted to the header menu that I am using
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-two-level-header-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    border-bottom: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-two-level-header__logo-row-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: {{ block.settings.logo_row_padding }}px 20px;
+    border-bottom: {{ block.settings.divider_thickness }}px solid {{ block.settings.divider_color }};
+  }
+
+  .ai-two-level-header__logo-link-{{ ai_gen_id }} {
+    display: inline-block;
+    line-height: 1;
+  }
+
+  .ai-two-level-header__logo-{{ ai_gen_id }} {
+    max-width: {{ block.settings.logo_width }}px;
+    height: auto;
+    display: block;
+  }
+
+  .ai-two-level-header__logo-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.logo_width | divided_by: 4 }}px;
+    font-weight: 600;
+    color: {{ block.settings.nav_link_color }};
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .ai-two-level-header__nav-row-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: {{ block.settings.nav_row_padding }}px 20px;
+  }
+
+  .ai-two-level-header__nav-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.nav_link_spacing }}px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .ai-two-level-header__nav-item-{{ ai_gen_id }} {
+    margin: 0;
+  }
+
+  .ai-two-level-header__nav-link-{{ ai_gen_id }} {
+    color: {{ block.settings.nav_link_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.nav_font_size }}px;
+    font-weight: {{ block.settings.nav_font_weight }};
+    letter-spacing: {{ block.settings.nav_letter_spacing }}px;
+    text-transform: {{ block.settings.nav_text_transform }};
+    transition: color 0.2s ease;
+    display: block;
+    padding: 8px 0;
+    white-space: nowrap;
+  }
+
+  .ai-two-level-header__nav-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.nav_link_hover_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-two-level-header__logo-{{ ai_gen_id }} {
+      max-width: {{ block.settings.logo_width | times: 0.7 }}px;
+    }
+
+    .ai-two-level-header__logo-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.logo_width | divided_by: 4 | times: 0.7 }}px;
+    }
+
+    .ai-two-level-header__nav-{{ ai_gen_id }} {
+      gap: {{ block.settings.nav_link_spacing | times: 0.7 }}px;
+    }
+
+    .ai-two-level-header__nav-link-{{ ai_gen_id }} {
+      font-size: {{ block.settings.nav_font_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<two-level-header-{{ ai_gen_id }} class="ai-two-level-header-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-two-level-header__logo-row-{{ ai_gen_id }}">
+    <a href="{{ routes.root_url }}" class="ai-two-level-header__logo-link-{{ ai_gen_id }}">
+      {% if block.settings.logo %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 600 }}"
+          alt="{{ shop.name }}"
+          class="ai-two-level-header__logo-{{ ai_gen_id }}"
+          width="{{ block.settings.logo.width }}"
+          height="{{ block.settings.logo.height }}"
+          loading="eager"
+        >
+      {% else %}
+        <span class="ai-two-level-header__logo-text-{{ ai_gen_id }}">
+          {{ shop.name }}
+        </span>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="ai-two-level-header__nav-row-{{ ai_gen_id }}">
+    <nav>
+      <ul class="ai-two-level-header__nav-{{ ai_gen_id }}">
+        {% if block.settings.menu != blank %}
+          {% for link in block.settings.menu.links %}
+            <li class="ai-two-level-header__nav-item-{{ ai_gen_id }}">
+              <a href="{{ link.url }}" class="ai-two-level-header__nav-link-{{ ai_gen_id }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li class="ai-two-level-header__nav-item-{{ ai_gen_id }}">
+            <a href="#" class="ai-two-level-header__nav-link-{{ ai_gen_id }}">Home</a>
+          </li>
+          <li class="ai-two-level-header__nav-item-{{ ai_gen_id }}">
+            <a href="#" class="ai-two-level-header__nav-link-{{ ai_gen_id }}">Shop</a>
+          </li>
+          <li class="ai-two-level-header__nav-item-{{ ai_gen_id }}">
+            <a href="#" class="ai-two-level-header__nav-link-{{ ai_gen_id }}">About</a>
+          </li>
+          <li class="ai-two-level-header__nav-item-{{ ai_gen_id }}">
+            <a href="#" class="ai-two-level-header__nav-link-{{ ai_gen_id }}">Contact</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</two-level-header-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TwoLevelHeader{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.highlightActiveLink();
+      }
+
+      highlightActiveLink() {
+        const currentPath = window.location.pathname;
+        const links = this.querySelectorAll('.ai-two-level-header__nav-link-{{ ai_gen_id }}');
+        
+        links.forEach(link => {
+          if (link.getAttribute('href') === currentPath) {
+            link.style.fontWeight = '600';
+          }
+        });
+      }
+    }
+
+    customElements.define('two-level-header-{{ ai_gen_id }}', TwoLevelHeader{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Two-level header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo row"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "logo_row_padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Navigation row"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "nav_row_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "nav_link_spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Link spacing",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "nav_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "nav_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 0.5
+    },
+    {
+      "type": "select",
+      "id": "nav_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_link_color",
+      "label": "Link color",
+      "default": "#262626"
+    },
+    {
+      "type": "color",
+      "id": "nav_link_hover_color",
+      "label": "Link hover color",
+      "default": "#797068"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "range",
+      "id": "divider_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Divider thickness",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Bottom border color",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom border thickness",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two-level header"
+    }
+  ]
+}
+{% endschema %}
