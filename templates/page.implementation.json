@@ -1,18 +1,11 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 20,
-        "padding_bottom": 12
-      }
-    },
     "hero": {
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Implementation",
         "heading": "Implementation support that turns the plan into working business infrastructure",
-        "text": "<p>Use implementation when the business needs setup, rollout, documentation, configuration, onboarding or delivery support after the direction is clear.</p>",
+        "text": "<p>Implementation is for setup, documentation, configuration, workflow creation and handover once the direction is clear and the work needs to be done properly.</p>",
         "align": "left"
       }
     },
@@ -20,8 +13,8 @@
       "type": "rbp-problem-cards",
       "settings": {
         "eyebrow": "Implementation blockers",
-        "heading": "Where plans often stall",
-        "text": "<p>Implementation support is for the practical work that needs ownership, handover and operating readiness.</p>"
+        "heading": "Where delivery work needs ownership",
+        "text": "<p>Use implementation support when a plan needs intake, setup, documentation, configuration or handover before the business can rely on it.</p>"
       },
       "blocks": {
         "handover_gap": {
@@ -62,8 +55,8 @@
       "type": "rbp-feature-grid",
       "settings": {
         "eyebrow": "Implementation support areas",
-        "heading": "Build, configure and hand over the operating pieces",
-        "text": "<p>Use this page to route visitors into services that help get work done rather than only describe what should happen.</p>"
+        "heading": "Set up the pieces the business will use",
+        "text": "<p>Move from recommendation to practical operating assets, workflows and support pathways.</p>"
       },
       "blocks": {
         "setup": {
@@ -151,8 +144,8 @@
       "type": "rbp-contact-panel",
       "settings": {
         "eyebrow": "Implementation request",
-        "heading": "Not sure what needs to be built first?",
-        "text": "<p>Send the business context, timeline, current tools and the outcome you need. Some implementation work needs intake or review before delivery can start.</p>",
+        "heading": "Request implementation support with enough context to scope the work",
+        "text": "<p>Share what needs to be set up, who will use it, what already exists, what deadline matters and whether intake or review is required first.</p>",
         "button_label": "Contact support",
         "button_url": "/pages/support",
         "aside_heading": "Helpful context",
@@ -163,15 +156,14 @@
       "type": "rbp-cta-band",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Start an implementation pathway",
-        "text": "<p>Move from plan to practical delivery with support that keeps expectations clear.</p>",
-        "button_label": "Browse implementation services",
-        "button_url": "/collections/individual-on-demand-services"
+        "heading": "Request implementation support",
+        "text": "<p>Use support when the work needs setup, configuration, documentation or handover before it can be used.</p>",
+        "button_label": "Request implementation support",
+        "button_url": "/pages/support"
       }
     }
   },
   "order": [
-    "main",
     "hero",
     "problems",
     "features",
