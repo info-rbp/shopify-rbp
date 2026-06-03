@@ -79,9 +79,20 @@
 }
 
 .mega-menu .mega-menu__list--condensed {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem 2.4rem;
+}
+
+.mega-menu .mega-menu__list--condensed > li,
+.header--top-center .mega-menu__list--condensed > li {
+  width: auto;
+  padding-right: 0;
 }
 
 .mega-menu__list--condensed .mega-menu__link {
-  font-weight: normal;
+  font-weight: 600;
+  white-space: nowrap;
 }
