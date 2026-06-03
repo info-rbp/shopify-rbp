@@ -1,0 +1,182 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 12
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Implementation",
+        "heading": "Implementation support that turns the plan into working business infrastructure",
+        "text": "<p>Use implementation when the business needs setup, rollout, documentation, configuration, onboarding or delivery support after the direction is clear.</p>",
+        "align": "left"
+      }
+    },
+    "problems": {
+      "type": "rbp-problem-cards",
+      "settings": {
+        "eyebrow": "Implementation blockers",
+        "heading": "Where plans often stall",
+        "text": "<p>Implementation support is for the practical work that needs ownership, handover and operating readiness.</p>"
+      },
+      "blocks": {
+        "handover_gap": {
+          "type": "card",
+          "settings": {
+            "icon": "H",
+            "title": "The plan is clear but no one owns delivery",
+            "text": "Work needs to move from recommendation into setup, documents, systems or operating steps.",
+            "variant": "default"
+          }
+        },
+        "systems_setup": {
+          "type": "card",
+          "settings": {
+            "icon": "S",
+            "title": "Systems or workflows need setup",
+            "text": "Tools, processes, registers, knowledge bases or handover assets need to be configured.",
+            "variant": "blue"
+          }
+        },
+        "manual_delivery": {
+          "type": "card",
+          "settings": {
+            "icon": "D",
+            "title": "The work requires manual delivery",
+            "text": "Some services need intake, review, booking or prepared delivery before they are complete.",
+            "variant": "flat"
+          }
+        }
+      },
+      "block_order": [
+        "handover_gap",
+        "systems_setup",
+        "manual_delivery"
+      ]
+    },
+    "features": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Implementation support areas",
+        "heading": "Build, configure and hand over the operating pieces",
+        "text": "<p>Use this page to route visitors into services that help get work done rather than only describe what should happen.</p>"
+      },
+      "blocks": {
+        "setup": {
+          "type": "feature",
+          "settings": {
+            "icon": "01",
+            "title": "Systems setup",
+            "text": "Configure tools, workflows, registers or operating structures so the business can use them.",
+            "button_label": "View implementation services",
+            "url": "/collections/individual-on-demand-services"
+          }
+        },
+        "documentation": {
+          "type": "feature",
+          "settings": {
+            "icon": "02",
+            "title": "Documentation implementation",
+            "text": "Prepare documents, templates, procedures or handover packs with practical next steps.",
+            "button_label": "Browse toolkits",
+            "url": "/collections/individual-on-demand-services"
+          }
+        },
+        "business_nbn": {
+          "type": "feature",
+          "settings": {
+            "icon": "03",
+            "title": "Business NBN readiness",
+            "text": "Check availability and prepare the next steps for business connectivity where relevant.",
+            "button_label": "View Business NBN",
+            "url": "/pages/business-nbn"
+          }
+        }
+      },
+      "block_order": [
+        "setup",
+        "documentation",
+        "business_nbn"
+      ]
+    },
+    "steps": {
+      "type": "rbp-how-it-works",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "A practical path from request to delivery",
+        "text": "<p>Implementation work is handled with clear expectations around intake, scope, delivery and handover.</p>"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose the implementation pathway",
+            "text": "Select the service, setup support, toolkit or delivery route that matches the job."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Complete intake or review",
+            "text": "Share requirements, access needs, current state and any constraints before work begins."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Build and configure the output",
+            "text": "The agreed work is prepared, configured, documented or assembled for practical use."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Handover and next steps",
+            "text": "Receive the output, guidance and follow-up pathway needed to put it into operation."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "contact": {
+      "type": "rbp-contact-panel",
+      "settings": {
+        "eyebrow": "Implementation request",
+        "heading": "Not sure what needs to be built first?",
+        "text": "<p>Send the business context, timeline, current tools and the outcome you need. Some implementation work needs intake or review before delivery can start.</p>",
+        "button_label": "Contact support",
+        "button_url": "/pages/support",
+        "aside_heading": "Helpful context",
+        "aside_text": "<p>Include the process, system, document or handover problem; who will use the output; and any deadlines or dependencies.</p>"
+      }
+    },
+    "cta": {
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Next step",
+        "heading": "Start an implementation pathway",
+        "text": "<p>Move from plan to practical delivery with support that keeps expectations clear.</p>",
+        "button_label": "Browse implementation services",
+        "button_url": "/collections/individual-on-demand-services"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "problems",
+    "features",
+    "steps",
+    "contact",
+    "cta"
+  ]
+}
