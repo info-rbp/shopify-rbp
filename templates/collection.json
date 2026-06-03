@@ -8,29 +8,40 @@
         "color_scheme": "scheme-1"
       }
     },
+    "guidance": {
+      "type": "rbp-collection-guidance",
+      "settings": {
+        "eyebrow": "Compare options",
+        "heading": "Use filters and product pages to choose the right fit",
+        "text": "<p>Collections may include templates, toolkits, documentation suites, on-demand services, managed services and support options. Compare the type, delivery model and support level before checkout or enquiry.</p>",
+        "type_heading": "Resource or service type",
+        "type_text": "Check whether the product is a template, toolkit, documentation suite, on-demand service, managed service or support option.",
+        "delivery_heading": "Delivery model",
+        "delivery_text": "Digital resources may be self-serve. Service, deployed or supported options may require intake, review, booking or manual fulfilment.",
+        "support_heading": "Support level",
+        "support_text": "Use Support or Advisory before purchase if the right product, package, variant or delivery pathway is unclear."
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 20,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "color_scheme": "",
         "image_ratio": "adapt",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "bulk",
+        "quick_add": "standard",
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 36,
+        "padding_top": 28,
         "padding_bottom": 36
       }
     }
   },
-  "order": [
-    "banner",
-    "product-grid"
-  ]
+  "order": ["banner", "guidance", "product-grid"]
 }
