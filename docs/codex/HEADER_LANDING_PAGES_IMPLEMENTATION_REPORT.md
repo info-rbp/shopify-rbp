@@ -6,7 +6,7 @@ Date: 2026-06-03
 
 Prepared a page-specific landing template system for the `new-header-menu` destinations using existing RBP and Trade sections. The work avoids monolithic page Liquid files and keeps `page.rbp-landing.json` as a transition fallback.
 
-No live Shopify theme, page, or menu changes were made during this workspace pass because Shopify reported the requested target theme ID `188709962042` as the `MAIN` theme, not an unpublished theme. The brief described this same theme ID as unpublished, so pushing theme files or assigning page templates would risk modifying the live storefront before the target is confirmed.
+The template files were committed to GitHub `main`. The store's automation is expected to push theme-file changes from `main` to Shopify. Shopify Admin page template assignments and the `new-header-menu` structure were also updated directly and verified by readback.
 
 ## Templates created or updated
 
@@ -60,7 +60,7 @@ No pages needed to be created. Operations Hub already existed but was using the 
 
 Use `/pages/membership` as the top-level menu destination. The page is published, already assigned to the membership template, and acts as the cleaner canonical membership overview. `/pages/membership-options` remains a child destination for plan/options detail.
 
-## Template assignments prepared for Shopify
+## Template assignments applied in Shopify
 
 - Advisory -> `page.advisory`
 - Consulting -> `page.consulting`
@@ -96,11 +96,11 @@ Real store destinations used in template sections:
 
 No links point to knowingly missing pages, products or collections. Where the brief suggested a destination that could not be confirmed, the template links to a real parent page, collection, or support route instead.
 
-## Header menu update target
+## Header menu update
 
 Menu handle: `new-header-menu`
 
-Target top-level destinations:
+Applied top-level destinations:
 
 - Advisory -> `/pages/advisory`
 - Consulting -> `/pages/consulting`
@@ -110,7 +110,7 @@ Target top-level destinations:
 - Membership -> `/pages/membership`
 - Support -> `/pages/support`
 
-Each dropdown should begin with `Overview` linking to the parent page. Child links should use real page, collection, and product routes only.
+Each dropdown now begins with `Overview` linking to the parent page. Child links use confirmed Shopify page routes.
 
 ## Theme push status
 
@@ -126,7 +126,7 @@ Candidate unpublished theme seen in Shopify:
 - Theme ID: `188709110074`
 - Shopify-reported role: `UNPUBLISHED`
 
-Do not publish any theme as part of this work. Confirm the correct unpublished target before pushing these template files or assigning page templates.
+No theme was manually published. Template files were committed to GitHub `main`; the store's main-branch automation is expected to handle the Shopify theme-file sync.
 
 ## GitHub status
 
@@ -165,6 +165,7 @@ grep -R "rbp-home-button-fix\|rbp-css-loader\|rbp-nav-fixes\|rbp-header-spacing\
 ## Known issues and follow-up QA
 
 - Shopify CLI was not available in this workspace, and direct git clone was blocked by the container network. Full `shopify theme check` must be run in a Shopify CLI-capable environment or CI.
-- Theme Editor visual QA is still required after pushing the templates to the confirmed unpublished theme.
-- Page template assignments and the `new-header-menu` dropdown update remain pending until the correct unpublished target theme is confirmed.
+- GitHub status checks/workflow runs were not visible through the connector for the latest report commit, so automated Shopify theme sync should be confirmed in the deployment system or by storefront visual QA.
+- Theme Editor visual QA is still required after the main-branch theme sync completes.
+- Page template assignments and the `new-header-menu` dropdown update were applied and verified through Shopify Admin readback.
 - Confirm product forms, cart, collection filtering/sorting, search, customer templates and live theme remain unchanged.
