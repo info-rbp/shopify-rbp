@@ -103,7 +103,7 @@
         "collection": "individual-on-demand-services",
         "products_to_show": 4,
         "title": "Popular supported service options",
-        "description": "Browse practical services when a template or toolkit is not enough and the work needs review, setup or delivery support.",
+        "description": "<p>Browse practical services when a template or toolkit is not enough and the work needs review, setup or delivery support.</p>",
         "show_description": false,
         "show_view_all": true,
         "columns_desktop": 4,
