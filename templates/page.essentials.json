@@ -9,6 +9,21 @@
         "align": "left"
       }
     },
+    "resource_types": {
+      "type": "rbp-service-pathways",
+      "settings": {
+        "eyebrow": "Choose the right resource type",
+        "heading": "Self-serve, prepared or supported",
+        "text": "<p>Essentials separates resource types so you can choose the right level of guidance before checkout or enquiry.</p>"
+      },
+      "blocks": {
+        "templates": { "type": "pathway", "settings": { "badge": "Templates", "title": "Reusable starting documents", "text": "Use a template when you need a practical document structure and can adapt it to your business.", "button_label": "View template", "url": "/products/online-membership-terms-and-conditions-template" } },
+        "toolkits": { "type": "pathway", "settings": { "badge": "Toolkits", "title": "Guided resource packs", "text": "Use a toolkit when the work needs multiple prompts, examples or operating checks around one business issue.", "button_label": "View toolkit", "url": "/products/marketplace-seller-compliance-toolkit" } },
+        "checklists": { "type": "pathway", "settings": { "badge": "Checklists", "title": "Practical readiness steps", "text": "Use checklists when the goal is to prepare, review, gather information or confirm a process before action." } },
+        "supported": { "type": "pathway", "settings": { "badge": "Supported services", "title": "Review, setup or delivery help", "text": "Use supported options when the resource needs business context, onboarding, deployment or handover.", "button_label": "Browse services", "url": "/collections/individual-on-demand-services" } }
+      },
+      "block_order": ["templates", "toolkits", "checklists", "supported"]
+    },
     "resources": {
       "type": "rbp-resource-preview",
       "settings": {
@@ -17,78 +32,25 @@
         "text": "<p>Start with real RBP templates, toolkits and service pathways. Some items are self-serve, while others may require intake, preparation or delivery support.</p>"
       },
       "blocks": {
-        "membership_terms": {
-          "type": "resource",
-          "settings": {
-            "type": "Template",
-            "title": "Online Membership Terms and Conditions Template",
-            "text": "A practical template for membership terms, access rules and customer-facing conditions.",
-            "url": "/products/online-membership-terms-and-conditions-template"
-          }
-        },
-        "seller_toolkit": {
-          "type": "resource",
-          "settings": {
-            "type": "Toolkit",
-            "title": "Marketplace Seller Compliance Toolkit",
-            "text": "A toolkit for sellers managing marketplace terms, listings, refunds and customer communications.",
-            "url": "/products/marketplace-seller-compliance-toolkit"
-          }
-        },
-        "on_demand_services": {
-          "type": "resource",
-          "settings": {
-            "type": "Services",
-            "title": "Individual On-Demand Services",
-            "text": "Browse support options when the resource needs review, setup or business-specific delivery.",
-            "url": "/collections/individual-on-demand-services"
-          }
-        }
+        "membership_terms": { "type": "resource", "settings": { "type": "Template", "title": "Online Membership Terms and Conditions Template", "text": "A practical template for membership terms, access rules and customer-facing conditions.", "url": "/products/online-membership-terms-and-conditions-template" } },
+        "seller_toolkit": { "type": "resource", "settings": { "type": "Toolkit", "title": "Marketplace Seller Compliance Toolkit", "text": "A toolkit for sellers managing marketplace terms, listings, refunds and customer communications.", "url": "/products/marketplace-seller-compliance-toolkit" } },
+        "on_demand_services": { "type": "resource", "settings": { "type": "Services", "title": "Individual On-Demand Services", "text": "Browse support options when the resource needs review, setup or business-specific delivery.", "url": "/collections/individual-on-demand-services" } }
       },
-      "block_order": [
-        "membership_terms",
-        "seller_toolkit",
-        "on_demand_services"
-      ]
+      "block_order": ["membership_terms", "seller_toolkit", "on_demand_services"]
     },
     "features": {
       "type": "rbp-feature-grid",
       "settings": {
         "eyebrow": "Before you choose",
         "heading": "Know what kind of support you are choosing",
-        "text": "<p>Essentials separates self-serve resources from prepared or supported options so expectations are clear before purchase or enquiry.</p>"
+        "text": "<p>Essentials separates instant/self-serve resources from prepared or supported options so expectations are clear before purchase or enquiry.</p>"
       },
       "blocks": {
-        "self_serve": {
-          "type": "feature",
-          "settings": {
-            "icon": "S",
-            "title": "Self-serve support",
-            "text": "Use templates and toolkits when you need a practical starting point and can adapt the output yourself."
-          }
-        },
-        "prepared": {
-          "type": "feature",
-          "settings": {
-            "icon": "P",
-            "title": "Prepared delivery",
-            "text": "Some resources are made to order or require onboarding before the final document or pack is delivered."
-          }
-        },
-        "deployed": {
-          "type": "feature",
-          "settings": {
-            "icon": "D",
-            "title": "Deployed options",
-            "text": "Toolkit variants may include deployment support, setup help or a higher-touch implementation pathway."
-          }
-        }
+        "self_serve": { "type": "feature", "settings": { "icon": "S", "title": "Self-serve support", "text": "Use templates and toolkits when you need a practical starting point and can adapt the output yourself." } },
+        "prepared": { "type": "feature", "settings": { "icon": "P", "title": "Prepared delivery", "text": "Some resources are made to order or require onboarding before the final document or pack is delivered." } },
+        "deployed": { "type": "feature", "settings": { "icon": "D", "title": "Deployed options", "text": "Toolkit variants may include deployment support, setup help or a higher-touch implementation pathway." } }
       },
-      "block_order": [
-        "self_serve",
-        "prepared",
-        "deployed"
-      ]
+      "block_order": ["self_serve", "prepared", "deployed"]
     },
     "faq": {
       "type": "rbp-faq",
@@ -99,33 +61,11 @@
         "open_first": true
       },
       "blocks": {
-        "instant": {
-          "type": "question",
-          "settings": {
-            "question": "Are all resources instant downloads?",
-            "answer": "<p>No. Some products are instant or digital, while others are made to order, prepared after onboarding, or available in deployed service variants. Check the product page before purchase.</p>"
-          }
-        },
-        "tailored": {
-          "type": "question",
-          "settings": {
-            "question": "Can resources be tailored?",
-            "answer": "<p>Some products include deployed, plus or premium options where additional support may be available. If the product does not clearly fit, contact support before purchase.</p>"
-          }
-        },
-        "which_option": {
-          "type": "question",
-          "settings": {
-            "question": "What if I am not sure which resource is right?",
-            "answer": "<p>Start with Support or Advisory if the business issue needs a decision before you buy a resource.</p>"
-          }
-        }
+        "instant": { "type": "question", "settings": { "question": "Are all resources instant downloads?", "answer": "<p>No. Some products are instant or digital, while others are made to order, prepared after onboarding, or available in deployed service variants. Check the product page before purchase.</p>" } },
+        "tailored": { "type": "question", "settings": { "question": "Can resources be tailored?", "answer": "<p>Some products include deployed, plus or premium options where additional support may be available. If the product does not clearly fit, contact support before purchase.</p>" } },
+        "which_option": { "type": "question", "settings": { "question": "What if I am not sure which resource is right?", "answer": "<p>Start with Support or Advisory if the business issue needs a decision before you buy a resource.</p>" } }
       },
-      "block_order": [
-        "instant",
-        "tailored",
-        "which_option"
-      ]
+      "block_order": ["instant", "tailored", "which_option"]
     },
     "cta": {
       "type": "rbp-cta-band",
@@ -138,11 +78,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "resources",
-    "features",
-    "faq",
-    "cta"
-  ]
+  "order": ["hero", "resource_types", "resources", "features", "faq", "cta"]
 }
