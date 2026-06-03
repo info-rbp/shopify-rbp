@@ -48,11 +48,50 @@
           }
         }
       },
-      "block_order": [
-        "decision_support",
-        "business_review",
-        "choose_service"
-      ]
+      "block_order": ["decision_support", "business_review", "choose_service"]
+    },
+    "deliverables": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "What you get from Advisory",
+        "heading": "A practical second view before the business commits",
+        "text": "<p>Advisory is designed to make a decision clearer, not to turn every issue into a large project.</p>"
+      },
+      "blocks": {
+        "decision_brief": {
+          "type": "feature",
+          "settings": {
+            "icon": "01",
+            "title": "Decision brief",
+            "text": "A concise view of the issue, options, constraints and recommended next move."
+          }
+        },
+        "risk_review": {
+          "type": "feature",
+          "settings": {
+            "icon": "02",
+            "title": "Risk and trade-off review",
+            "text": "A practical look at what could go wrong, what matters most and what should be checked before action."
+          }
+        },
+        "next_step": {
+          "type": "feature",
+          "settings": {
+            "icon": "03",
+            "title": "Recommended next step",
+            "text": "A proceed, pause, compare, delegate or escalate recommendation that matches the business context."
+          }
+        },
+        "escalation": {
+          "type": "feature",
+          "settings": {
+            "icon": "04",
+            "title": "Escalation pathway",
+            "text": "A clear route into consulting, implementation, operations support or a self-serve resource if advice is not enough."
+          }
+        }
+      },
+      "block_order": ["decision_brief", "risk_review", "next_step", "escalation"]
     },
     "problems": {
       "type": "rbp-problem-cards",
@@ -62,39 +101,11 @@
         "text": "<p>Advisory is best when the business needs clarity before execution, not a large project team.</p>"
       },
       "blocks": {
-        "unclear_priority": {
-          "type": "card",
-          "settings": {
-            "icon": "!",
-            "title": "Too many possible next steps",
-            "text": "You know action is needed, but sequence, priority and ownership are not settled.",
-            "variant": "default"
-          }
-        },
-        "commercial_risk": {
-          "type": "card",
-          "settings": {
-            "icon": "$",
-            "title": "Budget or supplier risk",
-            "text": "A decision will cost money or time, so you need a practical check before committing.",
-            "variant": "blue"
-          }
-        },
-        "founder_bottleneck": {
-          "type": "card",
-          "settings": {
-            "icon": "R",
-            "title": "Owner workload is blocking progress",
-            "text": "The business needs a cleaner role, rhythm or decision process so work can keep moving.",
-            "variant": "flat"
-          }
-        }
+        "unclear_priority": { "type": "card", "settings": { "icon": "!", "title": "Too many possible next steps", "text": "You know action is needed, but sequence, priority and ownership are not settled.", "variant": "default" } },
+        "commercial_risk": { "type": "card", "settings": { "icon": "$", "title": "Budget or supplier risk", "text": "A decision will cost money or time, so you need a practical check before committing.", "variant": "blue" } },
+        "founder_bottleneck": { "type": "card", "settings": { "icon": "R", "title": "Owner workload is blocking progress", "text": "The business needs a cleaner role, rhythm or decision process so work can keep moving.", "variant": "flat" } }
       },
-      "block_order": [
-        "unclear_priority",
-        "commercial_risk",
-        "founder_bottleneck"
-      ]
+      "block_order": ["unclear_priority", "commercial_risk", "founder_bottleneck"]
     },
     "pathways": {
       "type": "rbp-service-pathways",
@@ -104,42 +115,11 @@
         "text": "<p>Advisory turns an open question into practical trade-offs, a priority view and a recommended proceed, pause, compare or escalate decision.</p>"
       },
       "blocks": {
-        "planning": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Planning",
-            "title": "Decision brief or next-step plan",
-            "text": "Turn a loose issue into options, priorities and a recommended next move.",
-            "button_label": "View owner decision support",
-            "url": "/products/owner-decision-support"
-          }
-        },
-        "review": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Review",
-            "title": "Business or operating review",
-            "text": "Check workload, management rhythm, dependencies or risk before building a larger plan.",
-            "button_label": "Browse management support",
-            "url": "/collections/management-on-demand-services"
-          }
-        },
-        "handover": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Escalate",
-            "title": "Move into consulting or implementation",
-            "text": "When the issue is bigger than advice, use advisory to define the scope before deeper support.",
-            "button_label": "Compare consulting",
-            "url": "/pages/consulting"
-          }
-        }
+        "planning": { "type": "pathway", "settings": { "badge": "Planning", "title": "Decision brief or next-step plan", "text": "Turn a loose issue into options, priorities and a recommended next move.", "button_label": "View owner decision support", "url": "/products/owner-decision-support" } },
+        "review": { "type": "pathway", "settings": { "badge": "Review", "title": "Business or operating review", "text": "Check workload, management rhythm, dependencies or risk before building a larger plan.", "button_label": "Browse management support", "url": "/collections/management-on-demand-services" } },
+        "handover": { "type": "pathway", "settings": { "badge": "Escalate", "title": "Move into consulting or implementation", "text": "When the issue is bigger than advice, use advisory to define the scope before deeper support.", "button_label": "Compare consulting", "url": "/pages/consulting" } }
       },
-      "block_order": [
-        "planning",
-        "review",
-        "handover"
-      ]
+      "block_order": ["planning", "review", "handover"]
     },
     "steps": {
       "type": "rbp-how-it-works",
@@ -149,41 +129,12 @@
         "text": "<p>Advisory keeps the process contained so you can act without turning every question into a large project.</p>"
       },
       "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Choose the pathway",
-            "text": "Start with the decision, review or support type that best matches the business issue."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Share the relevant context",
-            "text": "Provide the business background, current constraints, timeline and any known options."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Receive practical guidance",
-            "text": "Get a clearer view of risks, trade-offs, priorities and sensible next steps."
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "Move with confidence",
-            "text": "Use the advice to proceed, pause, compare options or request deeper support."
-          }
-        }
+        "step_1": { "type": "step", "settings": { "title": "Choose the pathway", "text": "Start with the decision, review or support type that best matches the business issue." } },
+        "step_2": { "type": "step", "settings": { "title": "Share the relevant context", "text": "Provide the business background, current constraints, timeline and any known options." } },
+        "step_3": { "type": "step", "settings": { "title": "Receive practical guidance", "text": "Get a clearer view of risks, trade-offs, priorities and sensible next steps." } },
+        "step_4": { "type": "step", "settings": { "title": "Move with confidence", "text": "Use the advice to proceed, pause, compare options or request deeper support." } }
       },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ]
+      "block_order": ["step_1", "step_2", "step_3", "step_4"]
     },
     "resources": {
       "type": "rbp-resource-preview",
@@ -193,39 +144,11 @@
         "text": "<p>Use confirmed RBP services when you need practical advice, a structured review or a next-step decision before implementation.</p>"
       },
       "blocks": {
-        "owner_decision": {
-          "type": "resource",
-          "settings": {
-            "type": "Service",
-            "title": "Owner Decision Support",
-            "text": "A structured advisory service for options, risks and next-step planning.",
-            "url": "/products/owner-decision-support"
-          }
-        },
-        "monthly_review": {
-          "type": "resource",
-          "settings": {
-            "type": "Service",
-            "title": "Monthly Business Review Setup",
-            "text": "Set up a management review rhythm for decisions, actions and owner visibility.",
-            "url": "/products/monthly-business-review-setup"
-          }
-        },
-        "management_services": {
-          "type": "resource",
-          "settings": {
-            "type": "Collection",
-            "title": "Management On-Demand Services",
-            "text": "Browse practical management services that connect advisory to follow-through.",
-            "url": "/collections/management-on-demand-services"
-          }
-        }
+        "owner_decision": { "type": "resource", "settings": { "type": "Service", "title": "Owner Decision Support", "text": "A structured advisory service for options, risks and next-step planning.", "url": "/products/owner-decision-support" } },
+        "monthly_review": { "type": "resource", "settings": { "type": "Service", "title": "Monthly Business Review Setup", "text": "Set up a management review rhythm for decisions, actions and owner visibility.", "url": "/products/monthly-business-review-setup" } },
+        "management_services": { "type": "resource", "settings": { "type": "Collection", "title": "Management On-Demand Services", "text": "Browse practical management services that connect advisory to follow-through.", "url": "/collections/management-on-demand-services" } }
       },
-      "block_order": [
-        "owner_decision",
-        "monthly_review",
-        "management_services"
-      ]
+      "block_order": ["owner_decision", "monthly_review", "management_services"]
     },
     "cta": {
       "type": "rbp-cta-band",
@@ -238,13 +161,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "router",
-    "problems",
-    "pathways",
-    "steps",
-    "resources",
-    "cta"
-  ]
+  "order": ["hero", "router", "deliverables", "problems", "pathways", "steps", "resources", "cta"]
 }
