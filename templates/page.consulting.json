@@ -9,6 +9,47 @@
         "align": "left"
       }
     },
+    "comparison": {
+      "type": "rbp-service-pathways",
+      "settings": {
+        "eyebrow": "Compare pathways",
+        "heading": "Advisory is the decision. Consulting is the plan. Implementation is the delivery.",
+        "text": "<p>Choose consulting when the issue is too broad for a single recommendation and needs a structured roadmap before work can be implemented.</p>"
+      },
+      "blocks": {
+        "advisory": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Advisory",
+            "title": "Decision",
+            "text": "Use Advisory when you need a practical second view, risks, trade-offs and the next decision before committing.",
+            "button_label": "View Advisory",
+            "url": "/pages/advisory"
+          }
+        },
+        "consulting": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Consulting",
+            "title": "Plan",
+            "text": "Use Consulting when the business needs diagnosis, recommendations, scope and a roadmap before delivery starts.",
+            "button_label": "Browse consulting services",
+            "url": "/collections/management-on-demand-services"
+          }
+        },
+        "implementation": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Implementation",
+            "title": "Delivery",
+            "text": "Use Implementation when the plan is clear and the business needs setup, documentation, configuration or handover.",
+            "button_label": "View Implementation",
+            "url": "/pages/implementation"
+          }
+        }
+      },
+      "block_order": ["advisory", "consulting", "implementation"]
+    },
     "features": {
       "type": "rbp-feature-grid",
       "settings": {
@@ -17,42 +58,11 @@
         "text": "<p>Use consulting when the business needs structured problem-solving before anyone starts building, configuring or outsourcing the work.</p>"
       },
       "blocks": {
-        "systems": {
-          "type": "feature",
-          "settings": {
-            "icon": "S",
-            "title": "Business systems review",
-            "text": "Map where tools, workflows, reporting or handovers are creating friction.",
-            "button_label": "View systems alignment",
-            "url": "/products/operating-model-and-systems-alignment-review"
-          }
-        },
-        "process": {
-          "type": "feature",
-          "settings": {
-            "icon": "P",
-            "title": "Process and operating model improvement",
-            "text": "Clarify ownership, decision rhythm and recurring work before changing how the team operates.",
-            "button_label": "Browse management services",
-            "url": "/collections/management-on-demand-services"
-          }
-        },
-        "roadmap": {
-          "type": "feature",
-          "settings": {
-            "icon": "R",
-            "title": "Roadmap and scope definition",
-            "text": "Turn a broad business problem into staged recommendations, priorities and implementation choices.",
-            "button_label": "View bundled support",
-            "url": "/collections/bundled-on-demand-services"
-          }
-        }
+        "systems": { "type": "feature", "settings": { "icon": "S", "title": "Business systems review", "text": "Map where tools, workflows, reporting or handovers are creating friction.", "button_label": "View systems alignment", "url": "/products/operating-model-and-systems-alignment-review" } },
+        "process": { "type": "feature", "settings": { "icon": "P", "title": "Process and operating model improvement", "text": "Clarify ownership, decision rhythm and recurring work before changing how the team operates.", "button_label": "Browse management services", "url": "/collections/management-on-demand-services" } },
+        "roadmap": { "type": "feature", "settings": { "icon": "R", "title": "Roadmap and scope definition", "text": "Turn a broad business problem into staged recommendations, priorities and implementation choices.", "button_label": "View bundled support", "url": "/collections/bundled-on-demand-services" } }
       },
-      "block_order": [
-        "systems",
-        "process",
-        "roadmap"
-      ]
+      "block_order": ["systems", "process", "roadmap"]
     },
     "pathways": {
       "type": "rbp-service-pathways",
@@ -62,54 +72,11 @@
         "text": "<p>Each pathway is designed to clarify the current state, define practical options and show what implementation should look like.</p>"
       },
       "blocks": {
-        "project_support": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Project support",
-            "title": "You need a practical improvement plan",
-            "text": "Use consulting to turn a complex issue into a realistic scope, sequence and operating roadmap.",
-            "button_label": "Browse bundled services",
-            "url": "/collections/bundled-on-demand-services"
-          }
-        },
-        "operations": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Operations",
-            "title": "Your operating model needs attention",
-            "text": "Review systems, roles, workflows, reporting and management rhythm before implementation.",
-            "button_label": "View management services",
-            "url": "/collections/management-on-demand-services"
-          }
-        },
-        "outsourced": {
-          "type": "pathway",
-          "settings": {
-            "badge": "Ongoing",
-            "title": "You may need managed or outsourced support",
-            "text": "When internal capacity is limited, consulting can define what should be handled externally.",
-            "button_label": "View managed services",
-            "url": "/collections/managed-services-outsourced-solutions"
-          }
-        }
+        "project_support": { "type": "pathway", "settings": { "badge": "Project support", "title": "You need a practical improvement plan", "text": "Use consulting to turn a complex issue into a realistic scope, sequence and operating roadmap.", "button_label": "Browse bundled services", "url": "/collections/bundled-on-demand-services" } },
+        "operations": { "type": "pathway", "settings": { "badge": "Operations", "title": "Your operating model needs attention", "text": "Review systems, roles, workflows, reporting and management rhythm before implementation.", "button_label": "View management services", "url": "/collections/management-on-demand-services" } },
+        "outsourced": { "type": "pathway", "settings": { "badge": "Ongoing", "title": "You may need managed or outsourced support", "text": "When internal capacity is limited, consulting can define what should be handled externally.", "button_label": "View managed services", "url": "/collections/managed-services-outsourced-solutions" } }
       },
-      "block_order": [
-        "project_support",
-        "operations",
-        "outsourced"
-      ]
-    },
-    "split": {
-      "type": "rbp-split-content",
-      "settings": {
-        "muted": true,
-        "eyebrow": "Consulting vs advisory",
-        "heading": "Use consulting when the answer needs a roadmap, not just a recommendation",
-        "text": "<p>Advisory is useful for a decision point. Consulting is a better fit when the business needs a structured review, multi-step recommendation or project plan before work can be implemented responsibly.</p>",
-        "button_label": "Compare advisory",
-        "button_url": "/pages/advisory",
-        "button_variant": "secondary"
-      }
+      "block_order": ["project_support", "operations", "outsourced"]
     },
     "steps": {
       "type": "rbp-how-it-works",
@@ -119,41 +86,12 @@
         "text": "<p>The process keeps scope, context and next steps visible before larger work begins.</p>"
       },
       "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Define the issue",
-            "text": "Start with the business problem, desired outcome and constraints."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Review current state",
-            "text": "Assess workflows, systems, people, reporting or commercial context as needed."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Create recommendations",
-            "text": "Receive practical options, priorities and a realistic path forward."
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "Move into implementation",
-            "text": "Use the roadmap to brief internal work, request delivery support or choose a service pathway."
-          }
-        }
+        "step_1": { "type": "step", "settings": { "title": "Define the issue", "text": "Start with the business problem, desired outcome and constraints." } },
+        "step_2": { "type": "step", "settings": { "title": "Review current state", "text": "Assess workflows, systems, people, reporting or commercial context as needed." } },
+        "step_3": { "type": "step", "settings": { "title": "Create recommendations", "text": "Receive practical options, priorities and a realistic path forward." } },
+        "step_4": { "type": "step", "settings": { "title": "Move into implementation", "text": "Use the roadmap to brief internal work, request delivery support or choose a service pathway." } }
       },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ]
+      "block_order": ["step_1", "step_2", "step_3", "step_4"]
     },
     "faq": {
       "type": "rbp-faq",
@@ -164,33 +102,11 @@
         "open_first": true
       },
       "blocks": {
-        "right_fit": {
-          "type": "question",
-          "settings": {
-            "question": "How do I know consulting is the right fit?",
-            "answer": "<p>Choose consulting when the issue needs diagnosis, recommendations, scope definition or a roadmap before work can be delivered safely.</p>"
-          }
-        },
-        "after_purchase": {
-          "type": "question",
-          "settings": {
-            "question": "What happens after purchase or enquiry?",
-            "answer": "<p>The next step depends on the service. Some products require intake, review, booking or manual delivery before the final output is prepared.</p>"
-          }
-        },
-        "small_business": {
-          "type": "question",
-          "settings": {
-            "question": "Is this suitable for small businesses?",
-            "answer": "<p>Yes. The consulting pathways are written for SMEs that need practical decisions, workable systems and realistic implementation plans.</p>"
-          }
-        }
+        "right_fit": { "type": "question", "settings": { "question": "How do I know consulting is the right fit?", "answer": "<p>Choose consulting when the issue needs diagnosis, recommendations, scope definition or a roadmap before work can be delivered safely.</p>" } },
+        "after_purchase": { "type": "question", "settings": { "question": "What happens after purchase or enquiry?", "answer": "<p>The next step depends on the service. Some products require intake, review, booking or manual delivery before the final output is prepared.</p>" } },
+        "small_business": { "type": "question", "settings": { "question": "Is this suitable for small businesses?", "answer": "<p>Yes. The consulting pathways are written for SMEs that need practical decisions, workable systems and realistic implementation plans.</p>" } }
       },
-      "block_order": [
-        "right_fit",
-        "after_purchase",
-        "small_business"
-      ]
+      "block_order": ["right_fit", "after_purchase", "small_business"]
     },
     "cta": {
       "type": "rbp-cta-band",
@@ -203,13 +119,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "features",
-    "pathways",
-    "split",
-    "steps",
-    "faq",
-    "cta"
-  ]
+  "order": ["hero", "comparison", "features", "pathways", "steps", "faq", "cta"]
 }
