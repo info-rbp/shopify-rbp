@@ -4,7 +4,7 @@
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Support",
-        "heading": "Find the right help without turning support into a sales page",
+        "heading": "Support for orders, onboarding, service delivery and next-step routing",
         "text": "<p>Use Support for existing customer help, onboarding questions, service delivery issues, Business NBN support, membership queries and help choosing the right next step.</p>",
         "align": "left"
       }
@@ -17,42 +17,25 @@
         "text": "<p>Choose the support path that best matches the issue so the request includes the right context from the start.</p>"
       },
       "blocks": {
-        "contact": {
-          "type": "service",
-          "settings": {
-            "icon": "01",
-            "title": "I need to contact support",
-            "text": "Use this for general support, existing customer help or help choosing the right pathway.",
-            "button_label": "Contact support",
-            "url": "/pages/contact"
-          }
-        },
-        "onboarding": {
-          "type": "service",
-          "settings": {
-            "icon": "02",
-            "title": "I need onboarding or next-step help",
-            "text": "Use support when a purchased product, service or membership pathway needs intake or setup guidance.",
-            "button_label": "View onboarding support",
-            "url": "/pages/support"
-          }
-        },
-        "business_nbn": {
-          "type": "service",
-          "settings": {
-            "icon": "03",
-            "title": "I need Business NBN support",
-            "text": "Check availability and support content for business connectivity pathways.",
-            "button_label": "View Business NBN",
-            "url": "/pages/business-nbn"
-          }
-        }
+        "contact": { "type": "service", "settings": { "icon": "01", "title": "I need to contact support", "text": "Use this for general support, existing customer help or help choosing the right pathway.", "button_label": "Contact support", "url": "/pages/contact" } },
+        "onboarding": { "type": "service", "settings": { "icon": "02", "title": "I need onboarding or next-step help", "text": "Use support when a purchased product, service or membership pathway needs intake or setup guidance.", "button_label": "Request onboarding help", "url": "/pages/contact" } },
+        "business_nbn": { "type": "service", "settings": { "icon": "03", "title": "I need Business NBN support", "text": "Check availability and support content for business connectivity pathways.", "button_label": "View Business NBN support", "url": "/pages/nbn-support-education" } }
       },
-      "block_order": [
-        "contact",
-        "onboarding",
-        "business_nbn"
-      ]
+      "block_order": ["contact", "onboarding", "business_nbn"]
+    },
+    "expectations": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Support expectations",
+        "heading": "What support can help route",
+        "text": "<p>Support works best when the request includes the business context, order or product details, timing pressure and preferred contact method.</p>"
+      },
+      "blocks": {
+        "can_help": { "type": "feature", "settings": { "icon": "01", "title": "Support can help with", "text": "Orders, product questions, onboarding, membership, Business NBN, service delivery and pathway routing." } },
+        "include": { "type": "feature", "settings": { "icon": "02", "title": "What to include", "text": "Include the order or product, issue, deadline, contact method and whether the request relates to onboarding, membership, Business NBN or service delivery." } },
+        "next": { "type": "feature", "settings": { "icon": "03", "title": "What happens next", "text": "RBP can route the request to support, advisory, consulting, implementation, operations or a relevant resource pathway." } }
+      },
+      "block_order": ["can_help", "include", "next"]
     },
     "contact": {
       "type": "rbp-contact-panel",
@@ -62,88 +45,33 @@
         "text": "<p>Include the order, product or service context, the business issue, any deadline, your preferred contact method, and whether the request relates to onboarding, Business NBN, membership or service delivery.</p>",
         "button_label": "Open contact page",
         "button_url": "/pages/contact",
-        "aside_heading": "What to include in your request",
+        "aside_heading": "Before you submit",
         "aside_text": "<p>Send the relevant order or product, what is stuck, who is affected, the timing pressure and the outcome you need. Avoid sending sensitive account information through public forms.</p>"
       }
     },
     "faq": {
       "type": "rbp-faq",
-      "settings": {
-        "eyebrow": "FAQ",
-        "heading": "Support and fulfilment questions",
-        "text": "<p>Answers for common support, fulfilment and routing questions.</p>",
-        "open_first": true
-      },
+      "settings": { "eyebrow": "FAQ", "heading": "Support and fulfilment questions", "text": "<p>Answers for common support, fulfilment and routing questions.</p>", "open_first": true },
       "blocks": {
-        "after_purchase": {
-          "type": "question",
-          "settings": {
-            "question": "What happens after purchase?",
-            "answer": "<p>The next step depends on the product. Some items are digital, while others require intake, review, booking, onboarding or manual delivery before completion.</p>"
-          }
-        },
-        "existing_customer": {
-          "type": "question",
-          "settings": {
-            "question": "How should existing customers ask for help?",
-            "answer": "<p>Use the contact pathway and include the relevant order, service, product or membership context so support can route the request.</p>"
-          }
-        },
-        "right_path": {
-          "type": "question",
-          "settings": {
-            "question": "What if I do not know which service I need?",
-            "answer": "<p>Start with Support or Advisory. If the issue needs a scoped project or delivery work, RBP can route you into Consulting or Implementation.</p>"
-          }
-        }
+        "after_purchase": { "type": "question", "settings": { "question": "What happens after purchase?", "answer": "<p>The next step depends on the product. Some items are digital, while others require intake, review, booking, onboarding or manual delivery before completion.</p>" } },
+        "existing_customer": { "type": "question", "settings": { "question": "How should existing customers ask for help?", "answer": "<p>Use the contact pathway and include the relevant order, service, product or membership context so support can route the request.</p>" } },
+        "right_path": { "type": "question", "settings": { "question": "What if I do not know which service I need?", "answer": "<p>Start with Support or Advisory. If the issue needs a scoped project or delivery work, RBP can route you into Consulting or Implementation.</p>" } }
       },
-      "block_order": [
-        "after_purchase",
-        "existing_customer",
-        "right_path"
-      ]
+      "block_order": ["after_purchase", "existing_customer", "right_path"]
     },
     "resources": {
       "type": "rbp-resource-preview",
       "settings": {
         "eyebrow": "Useful support links",
         "heading": "Common next places to go",
-        "text": "<p>These are real store destinations for support, connectivity, resources and membership context.</p>"
+        "text": "<p>These are confirmed destinations for support, connectivity, resources and membership context.</p>"
       },
       "blocks": {
-        "business_nbn": {
-          "type": "resource",
-          "settings": {
-            "type": "Page",
-            "title": "Business NBN",
-            "text": "Connectivity availability and next steps.",
-            "url": "/pages/business-nbn"
-          }
-        },
-        "membership": {
-          "type": "resource",
-          "settings": {
-            "type": "Page",
-            "title": "Membership",
-            "text": "Member value, benefits and plan options.",
-            "url": "/pages/membership"
-          }
-        },
-        "essentials": {
-          "type": "resource",
-          "settings": {
-            "type": "Page",
-            "title": "Essentials",
-            "text": "Templates, toolkits and practical resources.",
-            "url": "/pages/essentials"
-          }
-        }
+        "business_nbn": { "type": "resource", "settings": { "type": "Page", "title": "Business NBN support", "text": "Connectivity education and next steps.", "url": "/pages/nbn-support-education" } },
+        "membership": { "type": "resource", "settings": { "type": "Page", "title": "Membership", "text": "Member value, benefits and plan options.", "url": "/pages/membership" } },
+        "essentials": { "type": "resource", "settings": { "type": "Page", "title": "Essentials", "text": "Templates, toolkits and practical resources.", "url": "/pages/essentials" } }
       },
-      "block_order": [
-        "business_nbn",
-        "membership",
-        "essentials"
-      ]
+      "block_order": ["business_nbn", "membership", "essentials"]
     },
     "cta": {
       "type": "rbp-cta-band",
@@ -156,12 +84,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "router",
-    "contact",
-    "faq",
-    "resources",
-    "cta"
-  ]
+  "order": ["hero", "router", "expectations", "contact", "faq", "resources", "cta"]
 }
