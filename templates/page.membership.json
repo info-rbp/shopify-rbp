@@ -1,18 +1,11 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 20,
-        "padding_bottom": 12
-      }
-    },
     "hero": {
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Membership",
         "heading": "Remote Business Partner membership for practical business access and support",
-        "text": "<p>Membership brings together business platform access, partner pathways, resources, support and plan options for business owners who want ongoing help rather than a one-off transaction.</p>",
+        "text": "<p>Membership is for business owners and operators who want ongoing access to practical resources, service pathways, member offers and support instead of a single isolated purchase.</p>",
         "align": "left"
       }
     },
@@ -20,8 +13,8 @@
       "type": "rbp-membership-benefits",
       "settings": {
         "eyebrow": "Member value",
-        "heading": "What membership helps with",
-        "text": "<p>Use this page to explain the member value proposition clearly before users compare plans or ask for support.</p>"
+        "heading": "What members can use RBP for",
+        "text": "<p>Use this overview to understand the value of membership, then compare pricing, eligibility and application details on the membership options page.</p>"
       },
       "blocks": {
         "access": {
@@ -68,7 +61,7 @@
       "type": "rbp-how-it-works",
       "settings": {
         "eyebrow": "How it works",
-        "heading": "From membership interest to the right plan",
+        "heading": "From interest to the right membership option",
         "text": "<p>Membership should make it clear whether a user can join now, compare options or contact support before choosing.</p>"
       },
       "blocks": {
@@ -113,7 +106,7 @@
       "settings": {
         "eyebrow": "FAQ",
         "heading": "Membership questions",
-        "text": "<p>Clarify value, options and next steps before users choose a plan.</p>",
+        "text": "<p>Use these answers to understand who membership is for, how it connects to RBP support, and where to compare plan details.</p>",
         "open_first": true
       },
       "blocks": {
@@ -150,14 +143,13 @@
       "settings": {
         "eyebrow": "Next step",
         "heading": "Compare membership options",
-        "text": "<p>Use the membership options page to review the available plan pathway and next step.</p>",
-        "button_label": "View membership options",
+        "text": "<p>Review pricing, eligibility, application details and conditions on the membership options page.</p>",
+        "button_label": "Compare membership options",
         "button_url": "/pages/membership-options"
       }
     }
   },
   "order": [
-    "main",
     "hero",
     "benefits",
     "steps",
