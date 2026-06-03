@@ -1,0 +1,157 @@
+<section class="rbp-section rbp-product-guidance">
+  <div class="rbp-container">
+    {%- liquid
+      assign label_source = product.title | append: ' ' | append: product.type | downcase
+      assign product_label = section.settings.default_badge
+
+      if label_source contains 'managed'
+        assign product_label = 'Managed Service'
+      elsif label_source contains 'on-demand' or label_source contains 'on demand'
+        assign product_label = 'On-Demand Service'
+      elsif label_source contains 'support'
+        assign product_label = 'Support Option'
+      elsif label_source contains 'documentation suite'
+        assign product_label = 'Documentation Suite'
+      elsif label_source contains 'toolkit'
+        assign product_label = 'Toolkit'
+      elsif label_source contains 'template'
+        assign product_label = 'Template'
+      endif
+
+      for tag in product.tags
+        assign tag_source = tag | downcase
+        if tag_source contains 'managed service'
+          assign product_label = 'Managed Service'
+        elsif tag_source contains 'on-demand' or tag_source contains 'on demand'
+          assign product_label = 'On-Demand Service'
+        elsif tag_source contains 'support option'
+          assign product_label = 'Support Option'
+        elsif tag_source contains 'documentation suite'
+          assign product_label = 'Documentation Suite'
+        elsif tag_source contains 'toolkit'
+          assign product_label = 'Toolkit'
+        elsif tag_source contains 'template'
+          assign product_label = 'Template'
+        endif
+      endfor
+    -%}
+
+    <div class="rbp-product-guidance__header">
+      <span class="rbp-badge">{{ product_label | escape }}</span>
+      <h2 class="rbp-heading rbp-heading--md">{{ section.settings.heading | escape }}</h2>
+      <div class="rbp-copy">{{ section.settings.text }}</div>
+    </div>
+
+    {%- if product.variants.size > 1 -%}
+      <div class="rbp-product-guidance__options" aria-label="Available package options">
+        {%- for variant in product.variants -%}
+          <article class="rbp-product-option{% unless variant.available %} rbp-product-option--unavailable{% endunless %}">
+            <div>
+              <h3 class="rbp-card__title">{{ variant.title | escape }}</h3>
+              <p class="rbp-card__text">
+                {%- if variant.available -%}
+                  Available package option
+                {%- else -%}
+                  Currently unavailable
+                {%- endif -%}
+              </p>
+            </div>
+            <strong>{{ variant.price | money }}</strong>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="rbp-card-grid rbp-product-guidance__cards">
+      <article class="rbp-card">
+        <span class="rbp-badge">Included</span>
+        <h3 class="rbp-card__title">{{ section.settings.included_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.included_text | escape }}</p>
+      </article>
+      <article class="rbp-card">
+        <span class="rbp-badge">Delivery</span>
+        <h3 class="rbp-card__title">{{ section.settings.delivery_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.delivery_text | escape }}</p>
+      </article>
+      <article class="rbp-card">
+        <span class="rbp-badge">Best for</span>
+        <h3 class="rbp-card__title">{{ section.settings.best_for_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.best_for_text | escape }}</p>
+      </article>
+      <article class="rbp-card">
+        <span class="rbp-badge">Notes</span>
+        <h3 class="rbp-card__title">{{ section.settings.notes_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.notes_text | escape }}</p>
+      </article>
+    </div>
+
+    <div class="rbp-product-guidance__notice rte">
+      {{ section.settings.boundary_text }}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .rbp-product-guidance__header {
+    max-width: 78rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .rbp-product-guidance__options {
+    display: grid;
+    gap: 1.2rem;
+    margin-bottom: 2.8rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .rbp-product-guidance__options {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .rbp-product-option {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.6rem;
+    min-height: 8rem;
+    padding: 1.6rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.18);
+    background: rgb(var(--color-background));
+  }
+
+  .rbp-product-option--unavailable {
+    opacity: 0.58;
+  }
+
+  .rbp-product-guidance__notice {
+    margin-top: 2.8rem;
+    padding: 1.6rem;
+    border-left: 0.3rem solid rgba(var(--color-foreground), 0.32);
+    background: rgba(var(--color-foreground), 0.04);
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "RBP product guidance",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "default_badge", "label": "Default badge", "default": "Business Resource" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What to know before choosing this option" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use the product description and package options to confirm what is included, how delivery works and whether support or review is needed.</p>" },
+    { "type": "text", "id": "included_heading", "label": "Included heading", "default": "What is included" },
+    { "type": "textarea", "id": "included_text", "label": "Included text", "default": "The product description outlines the exact inclusions for this service, template, toolkit or support option." },
+    { "type": "text", "id": "delivery_heading", "label": "Delivery heading", "default": "Delivery and fulfilment" },
+    { "type": "textarea", "id": "delivery_text", "label": "Delivery text", "default": "Digital resources are delivered through the store or order email. Service and supported options may require intake, review or booking before completion." },
+    { "type": "text", "id": "best_for_heading", "label": "Best for heading", "default": "Best for" },
+    { "type": "textarea", "id": "best_for_text", "label": "Best for text", "default": "Businesses that need practical documentation, decision support, implementation help or ongoing operating support without starting a larger engagement first." },
+    { "type": "text", "id": "notes_heading", "label": "Notes heading", "default": "Important notes" },
+    { "type": "textarea", "id": "notes_text", "label": "Notes text", "default": "Check the selected package, availability and any intake requirements before checkout or enquiry." },
+    { "type": "richtext", "id": "boundary_text", "label": "Boundary text", "default": "<p>Templates, toolkits and documentation are general business resources and are not legal, financial or compliance advice. Supported and deployed options help structure execution but do not guarantee regulatory, commercial or technical outcomes.</p>" }
+  ],
+  "presets": [
+    { "name": "RBP product guidance" }
+  ]
+}
+{% endschema %}
