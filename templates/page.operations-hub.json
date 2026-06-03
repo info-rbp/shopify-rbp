@@ -1,0 +1,219 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 12
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Operations Hub",
+        "heading": "A central gateway for practical business operations support",
+        "text": "<p>Find services, resources, toolkits, partner offers and support pathways that help keep business work moving with clearer ownership and next steps.</p>",
+        "align": "left"
+      }
+    },
+    "router": {
+      "type": "rbp-service-router",
+      "settings": {
+        "eyebrow": "Self-route",
+        "heading": "Start with the operational outcome",
+        "text": "<p>Use the hub to choose between service support, self-serve resources, marketplace offers and help pathways.</p>"
+      },
+      "blocks": {
+        "operations_services": {
+          "type": "service",
+          "settings": {
+            "icon": "01",
+            "title": "I need operations support",
+            "text": "Browse on-demand services for workflows, admin systems, controls and operating support.",
+            "button_label": "View operations services",
+            "url": "/collections/operations-on-demand-services"
+          }
+        },
+        "resources": {
+          "type": "service",
+          "settings": {
+            "icon": "02",
+            "title": "I need templates or tools",
+            "text": "Use practical resources, toolkits and documents when the work can start self-serve.",
+            "button_label": "View essentials",
+            "url": "/pages/essentials"
+          }
+        },
+        "support": {
+          "type": "service",
+          "settings": {
+            "icon": "03",
+            "title": "I need support or direction",
+            "text": "Use support pathways when the right service, resource or next step is unclear.",
+            "button_label": "Contact support",
+            "url": "/pages/support"
+          }
+        }
+      },
+      "block_order": [
+        "operations_services",
+        "resources",
+        "support"
+      ]
+    },
+    "features": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Operating categories",
+        "heading": "Support for recurring business work",
+        "text": "<p>Use these categories to move quickly into real store destinations without adding one-off page files.</p>"
+      },
+      "blocks": {
+        "business_operations": {
+          "type": "feature",
+          "settings": {
+            "icon": "B",
+            "title": "Business operations",
+            "text": "Services for recurring work, controls, accountability and operating rhythm.",
+            "button_label": "Browse operations services",
+            "url": "/collections/operations-on-demand-services"
+          }
+        },
+        "admin_systems": {
+          "type": "feature",
+          "settings": {
+            "icon": "A",
+            "title": "Admin systems",
+            "text": "Support for registers, calendars, documentation, knowledge bases and practical workflows.",
+            "button_label": "View individual services",
+            "url": "/collections/individual-on-demand-services"
+          }
+        },
+        "partner_offers": {
+          "type": "feature",
+          "settings": {
+            "icon": "M",
+            "title": "Marketplace and partner offers",
+            "text": "Access business offers, marketplace support and partner pathways where configured.",
+            "button_label": "Open marketplace",
+            "url": "/pages/marketplace"
+          }
+        }
+      },
+      "block_order": [
+        "business_operations",
+        "admin_systems",
+        "partner_offers"
+      ]
+    },
+    "resources": {
+      "type": "rbp-resource-preview",
+      "settings": {
+        "eyebrow": "Operational resources",
+        "heading": "Useful starting points for business operators",
+        "text": "<p>These links keep users moving without sending them to destinations that do not exist yet.</p>"
+      },
+      "blocks": {
+        "operations_collection": {
+          "type": "resource",
+          "settings": {
+            "type": "Collection",
+            "title": "Operations On-Demand Services",
+            "text": "A real collection for operational services and support products.",
+            "url": "/collections/operations-on-demand-services"
+          }
+        },
+        "compliance_calendar": {
+          "type": "resource",
+          "settings": {
+            "type": "Service",
+            "title": "Compliance Calendar and Obligations Register",
+            "text": "Implementation support for recurring obligations, calendars and registers.",
+            "url": "/products/compliance-calendar-and-obligations-register"
+          }
+        },
+        "business_nbn": {
+          "type": "resource",
+          "settings": {
+            "type": "Page",
+            "title": "Business NBN",
+            "text": "Check business connectivity readiness and next steps.",
+            "url": "/pages/business-nbn"
+          }
+        }
+      },
+      "block_order": [
+        "operations_collection",
+        "compliance_calendar",
+        "business_nbn"
+      ]
+    },
+    "offers": {
+      "type": "rbp-marketplace-offers",
+      "settings": {
+        "eyebrow": "Marketplace",
+        "heading": "Partner offers and operational opportunities",
+        "text": "<p>Use configured offers or route visitors to the marketplace while partner offer metaobjects are finalized.</p>",
+        "limit": 6
+      },
+      "blocks": {
+        "marketplace": {
+          "type": "offer",
+          "settings": {
+            "category": "Marketplace",
+            "title": "Marketplace pathways",
+            "text": "Explore marketplace support, buyer and seller pathways, partner offers and related guidance.",
+            "button_label": "Open marketplace",
+            "url": "/pages/marketplace"
+          }
+        },
+        "seller_toolkit": {
+          "type": "offer",
+          "settings": {
+            "category": "Toolkit",
+            "title": "Marketplace Seller Compliance Toolkit",
+            "text": "A real active toolkit for sellers managing marketplace terms, listings, refunds and customer communications.",
+            "button_label": "View toolkit",
+            "url": "/products/marketplace-seller-compliance-toolkit"
+          }
+        }
+      },
+      "block_order": [
+        "marketplace",
+        "seller_toolkit"
+      ]
+    },
+    "contact": {
+      "type": "rbp-contact-panel",
+      "settings": {
+        "eyebrow": "Need direction?",
+        "heading": "Use support when the right operational path is unclear",
+        "text": "<p>Send the context and the outcome you need so RBP can route you to the right service, resource or next step.</p>",
+        "button_label": "Contact support",
+        "button_url": "/pages/support",
+        "aside_heading": "What to include",
+        "aside_text": "<p>Tell us what is stuck, what has already been tried, who owns the work and whether you need advice, delivery or a self-serve resource.</p>"
+      }
+    },
+    "cta": {
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Next step",
+        "heading": "Find the operational pathway that fits the work",
+        "text": "<p>Start with services, essentials, marketplace offers or support, depending on what the business needs next.</p>",
+        "button_label": "Browse operations services",
+        "button_url": "/collections/operations-on-demand-services"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "router",
+    "features",
+    "resources",
+    "offers",
+    "contact",
+    "cta"
+  ]
+}
