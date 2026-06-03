@@ -3,46 +3,58 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": {
-          "type": "title",
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "description": { "type": "description", "settings": {} },
+        "variant_picker": {
+          "type": "variant_picker",
           "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
-        "price": {
-          "type": "price",
+        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "buy_buttons": {
+          "type": "buy_buttons",
           "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {
-          }
-        },
-        "collapsible-row-1": {
+        "included": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Product features",
-            "icon": "star",
-            "content": "",
-            "page": "product-features"
+            "heading": "What is included",
+            "icon": "clipboard",
+            "content": "The product description outlines the exact inclusions for this service, template, toolkit or support option.",
+            "page": ""
           }
         },
-        "collapsible-row-0": {
+        "delivery": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials and care",
-            "icon": "leaf",
-            "content": "",
-            "page": "materials-and-care"
+            "heading": "Delivery and fulfilment",
+            "icon": "truck",
+            "content": "Digital resources are delivered through the store or order email. Service and supported options may require intake, review, booking or manual delivery before completion.",
+            "page": ""
           }
         },
-        "collapsible-row-2": {
+        "best_for": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Merchandising tips",
+            "heading": "Best for",
             "icon": "check_mark",
-            "content": "",
-            "page": "merchandising-tips"
+            "content": "Use this option when the product description and selected package match the business issue, delivery model and support level you need.",
+            "page": ""
+          }
+        },
+        "important_notes": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Important notes",
+            "icon": "question_mark",
+            "content": "Templates, toolkits and documentation are general business resources and are not legal, financial or compliance advice. Supported options help structure execution but do not guarantee regulatory, commercial or technical outcomes.",
+            "page": ""
           }
         },
         "share": {
@@ -56,9 +68,13 @@
         "title",
         "price",
         "description",
-        "collapsible-row-1",
-        "collapsible-row-0",
-        "collapsible-row-2",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "included",
+        "delivery",
+        "best_for",
+        "important_notes",
         "share"
       ],
       "settings": {
@@ -71,27 +87,33 @@
         "media_position": "right",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 28
       }
     },
-    "quick-order-list": {
-      "type": "quick-order-list",
+    "product-guidance": {
+      "type": "rbp-product-guidance",
       "settings": {
-        "variants_per_page": 50,
-        "show_image": true,
-        "show_sku": true,
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 16
+        "default_badge": "Business Resource",
+        "heading": "Compare the package, delivery and support level",
+        "text": "<p>Use this section to confirm what is included, how the option is delivered, who it is best for and what boundaries apply before checkout or enquiry.</p>",
+        "included_heading": "What is included",
+        "included_text": "The product description outlines the exact inclusions for this service, template, toolkit or support option.",
+        "delivery_heading": "Delivery and fulfilment",
+        "delivery_text": "Digital resources are delivered through the store or order email. Service and supported options may require intake, review, booking or manual delivery before completion.",
+        "best_for_heading": "Best for",
+        "best_for_text": "Businesses that need practical documentation, decision support, implementation help or ongoing operating support without starting a larger engagement first.",
+        "notes_heading": "Important notes",
+        "notes_text": "Check the selected package, availability and any intake requirements before checkout or enquiry.",
+        "boundary_text": "<p>Templates, toolkits and documentation are general business resources and are not legal, financial or compliance advice. Supported and deployed options help structure execution but do not guarantee regulatory, commercial or technical outcomes.</p>"
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "Other industry favorites",
+        "heading": "Related services and resources",
         "heading_size": "h2",
         "products_to_show": 5,
         "columns_desktop": 5,
@@ -107,9 +129,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "quick-order-list",
-    "related-products"
-  ]
+  "order": ["main", "product-guidance", "related-products"]
 }
