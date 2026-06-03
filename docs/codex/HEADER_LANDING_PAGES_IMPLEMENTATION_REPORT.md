@@ -1,256 +1,228 @@
-# Header Landing Pages Implementation Report
+# UX, IA, Content and Storefront Implementation Report
 
 Date: 2026-06-03
 
 ## Summary
 
-Prepared and polished page-specific landing templates for the `new-header-menu` destinations using existing RBP and Trade sections. The work avoids monolithic page Liquid files and preserves the current modular architecture.
+Implemented the approved UX, content, information architecture, navigation, homepage, support, product, collection, header and footer recommendations in GitHub `main` for `info-rbp/shopify-rbp` using the connected GitHub contents API.
 
-The page-specific template files and this report were written to GitHub `main` through the connected GitHub contents API. Shopify Admin page template assignments and the `new-header-menu` structure had already been applied and verified by readback.
+Direct local `git clone`, `git push`, Shopify CLI sync, and live-theme file writes are blocked in this workspace. GitHub `main` is updated. Direct deployment to the published Shopify theme could not be completed from this workspace because the Shopify connector blocks live `MAIN` theme file writes and the Shopify connector subsequently returned Admin API `404` for store readback/menu operations.
 
-Production target theme:
+Production target checked earlier in the run:
 
+- Store: `remote-business-partner.myshopify.com`
 - Theme name: `remote-business-partner`
 - Theme ID: `188709962042`
 - Role: `MAIN`
 
-## Templates created or updated
+## Changes completed in GitHub main
 
-- `templates/page.advisory.json`
-- `templates/page.consulting.json`
-- `templates/page.implementation.json`
-- `templates/page.operations-hub.json`
-- `templates/page.essentials.json`
-- `templates/page.membership.json`
-- `templates/page.support.json`
-- `templates/page.rbp-landing.json`
+### Homepage
 
-## Commercial polish pass
+Updated `templates/index.json` from an internal theme-description page into a customer-facing pathway router.
 
-Files changed:
+Completed changes:
 
-- `templates/page.advisory.json`
-- `templates/page.consulting.json`
-- `templates/page.implementation.json`
-- `templates/page.operations-hub.json`
-- `templates/page.essentials.json`
-- `templates/page.membership.json`
-- `templates/page.support.json`
-- `templates/page.rbp-landing.json`
+- Replaced internal Shopify/theme language with customer-facing pathway copy.
+- Added six homepage route cards: Advisory, Consulting, Implementation, Operations Hub, Essentials, Support.
+- Added business blocker cards mapped to clear next-step pathways.
+- Rewrote process steps as choose pathway, share context, receive output/route, move work forward.
+- Added stage pathways: Clarify, Plan, Build, Run, Resource, Resolve.
+- Added useful resource cards for Essentials, Membership and Business NBN.
+- Replaced generic final CTA with support-intake CTA.
 
-Sections removed or replaced:
+### Advisory
 
-- Removed the generic `main-page` section and `"main"` order entry from the focused landing templates so the Shopify page title/body no longer renders above the custom RBP hero.
-- Removed the native `featured-collection` section from `page.essentials.json` so Essentials no longer relies on a collection grid that can render demo/example products.
-- Replaced the Essentials product-grid area with curated `rbp-resource-preview` cards using confirmed real destinations only.
+Updated `templates/page.advisory.json`.
 
-Membership body/content decision:
+Completed changes:
 
-- The `/pages/membership` Shopify page body contains legacy pricing/application bridge content, including Early Bird pricing and application links.
-- That content was not deleted, because it may still be useful for the `/pages/membership-options` flow and the brief requested not to delete pricing content blindly.
-- Removing `main-page` from `page.membership.json` stops the legacy body from rendering above the clean membership overview once the polished template is on the live theme.
+- Added explicit `What you get from Advisory` section.
+- Added deliverable cards for Decision brief, Risk and trade-off review, Recommended next step, and Escalation pathway.
+- Preserved Advisory positioning as a practical second view before spend, change, hiring or implementation.
+- Kept CTA focused on Owner Decision Support.
 
-Essentials featured collection fix:
+### Consulting
 
-- Removed the native featured collection section from the GitHub `main` version of `page.essentials.json`.
-- Added confirmed cards for:
-  - Online Membership Terms and Conditions Template: `/products/online-membership-terms-and-conditions-template`
-  - Marketplace Seller Compliance Toolkit: `/products/marketplace-seller-compliance-toolkit`
-  - Individual On-Demand Services: `/collections/individual-on-demand-services`
+Updated `templates/page.consulting.json`.
 
-Operations Hub internal copy fix:
+Completed changes:
 
-- Removed the customer-facing internal phrase about partner offer metaobjects being finalized from the GitHub `main` version.
-- Replaced it with customer-facing marketplace/partner-offer language.
-- Also cleaned `page.rbp-landing.json` fallback copy so it no longer refers to compatibility, migration, temporary fallback, Theme Editor mechanics or other implementation language.
+- Added the approved comparison model: Advisory = decision, Consulting = plan, Implementation = delivery.
+- Kept consulting positioned around diagnosis, recommendations, scope and roadmap before implementation.
+- Preserved existing consulting service destinations.
 
-CTA/content improvements:
+### Implementation
 
-- Advisory now emphasizes decision briefs, risk/trade-off views, priorities and recommended next steps, with CTA: `Start with Owner Decision Support`.
-- Consulting now emphasizes diagnosis, recommendations, project scope and roadmap, with CTA: `Build a consulting roadmap`.
-- Implementation now emphasizes setup, documentation, configuration, workflow creation and handover, with CTA: `Request implementation support`.
-- Operations Hub now frames the hub around running operations, improving operations, and accessing tools/offers, with CTA: `Find the right operations pathway`.
-- Essentials now emphasizes trustworthy templates, toolkits, checklists, prepared resources and supported options, with CTA: `Browse confirmed resources`.
-- Membership now presents a clean overview and points plan/pricing detail to `/pages/membership-options`, with CTA: `Compare membership options`.
-- Support now asks for order/product/service context, business issue, deadline, preferred contact method and whether the request relates to onboarding, Business NBN, membership or service delivery.
+Updated `templates/page.implementation.json`.
 
-## Reusable sections used
+Completed changes:
 
-- `rbp-page-hero`
-- `rbp-service-router`
-- `rbp-problem-cards`
-- `rbp-feature-grid`
-- `rbp-service-pathways`
-- `rbp-split-content`
-- `rbp-how-it-works`
-- `rbp-resource-preview`
-- `rbp-faq`
-- `rbp-contact-panel`
-- `rbp-cta-band`
-- `rbp-membership-benefits`
-- `rbp-marketplace-offers`
+- Added `Common implementation requests` section.
+- Included obligations register setup, compliance calendar, workflow documentation, handover pack, Business NBN readiness and onboarding setup.
+- Preserved implementation positioning around setup, documentation, configuration, workflow creation and handover.
 
-## Shopify pages reviewed
+### Operations Hub
 
-The following pages were confirmed as published in Shopify Admin during the implementation run:
+Updated `templates/page.operations-hub.json`.
 
-- Advisory: `/pages/advisory`
-- Consulting: `/pages/consulting`
-- Implementation: `/pages/implementation`
-- Operations Hub: `/pages/operations-hub`
-- Essentials: `/pages/essentials`
-- Membership: `/pages/membership`
-- Membership Options: `/pages/membership-options`
-- Support: `/pages/support`
-- Business NBN: `/pages/business-nbn`
-- Marketplace: `/pages/marketplace`
+Completed changes:
 
-## Template assignments applied in Shopify
+- Reframed routing around three user intents: Run the business, Improve the business, Access tools and support.
+- Removed internal customer-facing wording about nonexistent destinations.
+- Preserved existing Operations On-Demand Services, Essentials, Marketplace, Business NBN and support pathways.
 
-- Advisory -> `page.advisory`
-- Consulting -> `page.consulting`
-- Implementation -> `page.implementation`
-- Operations Hub -> `page.operations-hub`
-- Essentials -> `page.essentials`
-- Membership -> `page.membership`
-- Support -> `page.support`
+### Essentials
 
-## Header menu update
+Updated `templates/page.essentials.json`.
 
-Menu handle: `new-header-menu`
+Completed changes:
 
-Applied top-level destinations:
+- Added `Choose the right resource type` section.
+- Distinguished Templates, Toolkits, Checklists and Supported services.
+- Preserved resource cards for Online Membership Terms and Conditions Template, Marketplace Seller Compliance Toolkit and Individual On-Demand Services.
+- Clarified self-serve, prepared and deployed/support expectations.
 
-- Advisory -> `/pages/advisory`
-- Consulting -> `/pages/consulting`
-- Implementation -> `/pages/implementation`
-- Operations Hub -> `/pages/operations-hub`
-- Essentials -> `/pages/essentials`
-- Membership -> `/pages/membership`
-- Support -> `/pages/support`
+### Membership
 
-Each dropdown begins with `Overview` linking to the parent page. Child links use confirmed Shopify page routes.
+Updated `templates/page.membership.json` and added `templates/page.membership-options.json`.
 
-## Product and collection links used
+Completed changes:
 
-Real store destinations used in template sections:
+- Kept `/pages/membership` as overview and value proposition.
+- Added member pathway links across Essentials, services, Marketplace and support.
+- Replaced `where configured` partner-offer language with `where available`.
+- Added a dedicated membership-options template for pricing, inclusions, eligibility/application context and support before signup.
 
-- `/products/owner-decision-support`
-- `/products/monthly-business-review-setup`
-- `/products/operating-model-and-systems-alignment-review`
-- `/products/compliance-calendar-and-obligations-register`
-- `/products/marketplace-seller-compliance-toolkit`
-- `/products/online-membership-terms-and-conditions-template`
-- `/collections/management-on-demand-services`
-- `/collections/operations-on-demand-services`
-- `/collections/individual-on-demand-services`
-- `/collections/bundled-on-demand-services`
-- `/collections/managed-services-outsourced-solutions`
-- `/pages/business-nbn`
-- `/pages/marketplace`
-- `/pages/membership`
-- `/pages/membership-options`
-- `/pages/support`
-- `/pages/contact`
+### Support and Contact
 
-## Validation commands run
+Updated `templates/page.support.json`, `templates/page.contact.json` and `sections/contact-form.liquid`.
 
-Local JSON validation passed:
+Completed changes:
 
-```bash
-python3 - <<'PY'
-import json, pathlib
+- Replaced promotional/internal Support headline with operational support copy.
+- Added Support expectations: what support can help with, what to include, and what happens next.
+- Removed circular onboarding link back to Support; onboarding help now routes to Contact.
+- Rebuilt Contact page as a structured support intake flow.
+- Added contact form fields for request type, order/product/service, deadline/timing pressure and preferred contact method.
+- Added privacy/sensitive-information warning.
 
-failed = False
-for path in pathlib.Path("templates").glob("*.json"):
-    try:
-        json.loads(path.read_text())
-    except Exception as e:
-        failed = True
-        print(f"FAILED {path}: {e}")
-if not failed:
-    print("All template JSON files parsed successfully.")
-PY
-```
+### Product Pages
+
+Updated `templates/product.json` and added `sections/rbp-product-guidance.liquid`.
+
+Completed changes:
+
+- Replaced default retail-style accordion labels with: What is included, Delivery and fulfilment, Best for, Important notes.
+- Removed the product quick-order bulk table from the default product page.
+- Added variant picker, quantity selector and buy buttons in the main product form.
+- Added product guidance section with dynamic product-type badge, package-option cards, delivery expectations and boundary copy.
+- Added boundary copy for templates, toolkits, documentation, supported options and deployed options.
+- Renamed related products heading to `Related services and resources`.
+
+### Collection Pages
+
+Updated `templates/collection.json` and added `sections/rbp-collection-guidance.liquid`.
+
+Completed changes:
+
+- Added collection comparison guidance before the product grid.
+- Clarified resource/service type, delivery model and support level.
+- Kept filtering and sorting enabled.
+- Changed quick add from bulk to standard to avoid retail-style bulk ordering on service/resource collections.
+
+### Header and Footer Theme Configuration
+
+Updated `sections/header-group.json` and `sections/footer-group.json`.
+
+Completed changes:
+
+- Header group now points to `new-header-menu` in GitHub `main`.
+- Replaced `Welcome to our store` announcement with RBP customer-facing copy.
+- Footer heading changed from generic `Quick links` to `Explore RBP`.
+- Newsletter heading changed to `RBP updates and practical business resources`.
+
+### Reusable RBP Sections
+
+Updated reusable defaults so future section additions do not reintroduce implementation language.
+
+Files updated:
+
+- `sections/rbp-hero.liquid`
+- `sections/rbp-service-router.liquid`
+- `sections/rbp-problem-cards.liquid`
+- `sections/rbp-how-it-works.liquid`
+- `sections/rbp-cta-band.liquid`
+- `sections/rbp-feature-grid.liquid`
+- `sections/rbp-service-pathways.liquid`
+- `sections/rbp-split-content.liquid`
+
+Completed changes:
+
+- Removed editor/admin/theme-builder wording from defaults.
+- Replaced with customer-facing RBP service, resource and support language.
+
+## Live Shopify actions attempted
+
+### Store and theme inspection
+
+Earlier in the run, Shopify connection was confirmed for `Remote Business Partner` at `remote-business-partner.myshopify.com` and the live theme was identified as `remote-business-partner`, theme ID `188709962042`, role `MAIN`.
+
+Live readback showed the published theme still had older generated template bodies before this pass, meaning GitHub and the live theme were not fully synchronized.
+
+### Live theme sync
+
+Attempted a no-change `themeFilesUpsert` write probe against theme ID `188709962042` to confirm whether direct live sync was possible without risking a partial deploy.
 
 Result:
 
-```text
-All template JSON files parsed successfully.
-```
+- Blocked by the Shopify connector live-theme safety guard.
+- Error: `This mutation is blocked: Unable to verify the target theme is not the live storefront theme. Please try again.`
+- No theme file content was sent or changed by that probe.
 
-Internal/legacy reference grep was run against the available local theme directories and returned no matches for:
+Shopify CLI deployment could not run because `shopify` is not installed in the workspace and npm access to `@shopify/cli` is blocked by registry/network restrictions.
 
-```text
-rbp-home-button-fix|rbp-css-loader|rbp-nav-fixes|rbp-header-spacing|rbp-home-ux-refresh|rbp-ux-remediation|metaobjects are finalized|placeholder|compatibility template|migration fallback
-```
+### Live menus
 
-Additional local template grep returned no matches for:
+The live header and footer menus were inspected earlier and confirmed to contain unfinished/overloaded links. A `menuUpdate` mutation was attempted for the live `header-menu`, but the Shopify connector returned `Admin API returned 404`.
 
-```text
-main-page|featured-collection|featured_collection|metaobjects are finalized|placeholder|compatibility template|migration fallback|Theme Editor|theme editor|configured offers|finalized|fallback|migration|compatibility
-```
+After that failure, basic Shopify readback also returned Admin API `404`, so live menu cleanup could not be completed in this workspace.
 
-Shopify CLI validation could not run:
+Repo-side header/footer configuration has been corrected, but live menu mutation remains blocked.
 
-- `shopify theme check` failed because `shopify` is not installed in this workspace.
-- `npm exec --yes @shopify/cli@latest -- version` failed with npm registry `403 Forbidden` for `@shopify/cli`.
-- The Liquid validation helper could not run because the local helper dependency `@shopify/theme-check-common` is missing.
+## Validation performed
 
-## GitHub status
+- GitHub readback confirmed the updated homepage, product template, contact template and new product guidance section are present on `main`.
+- GitHub compare from `97564b7753635085a61c903c5bf3880946ccd7af` to `main` showed the branch is 36 commits ahead and includes today’s changed files plus the earlier landing-page pass.
+- Shopify schema was inspected for Page, Menu, MenuItem, Mutation and theme-file inputs before attempting menu/theme write operations.
+- Official Shopify Admin GraphQL documentation was checked for the menu update workflow when troubleshooting live menu mutation shape.
 
-The polished template files are present on GitHub `main`. Direct `git clone`/local `git push` access was blocked by the container network with a CONNECT tunnel `403`, so changes were written through individual GitHub contents API commits rather than a single local git commit.
+Validation not completed:
 
-Connector commits in this polish pass included:
+- `shopify theme check` could not run because Shopify CLI is unavailable.
+- Local clone-based JSON validation could not run because direct GitHub clone is blocked by CONNECT tunnel `403` and no GitHub token/CLI is available in the container.
+- Desktop/mobile visual QA against the public storefront could not be completed because live theme sync was blocked and public storefront access from the workspace is unreliable.
+- Live post-deploy readback could not be completed after the connector began returning Admin API `404`.
 
-- `809a59857d4aca0274b1963c102d1b7a101ad6d9` - advisory polish
-- `8eaaf6b86821eebb88a4a7bc5b6ce7c7af56efba` - consulting polish
-- `8d0631b289d30b32e0e3220e9c22d6df7d261c1b` - implementation polish
-- `63b7a048e296122e7c2297c61f2f39fc8bf0d370` - operations hub polish
-- `69fb49221f0da262ee29a564ac4f6918cc89a380` - membership polish
-- `b30ac64aea707b2105f75302060f5270f9d03b98` - support polish
-- `0df00caeb94959cdc068245d45ff1246f5191cc2` - rbp fallback polish
+## Items deferred or blocked
 
-The final report update used commit message `fix: polish header landing pages`.
+- Deploy/sync to the published Shopify theme is blocked from this workspace.
+- Live header/footer menu cleanup is blocked by Shopify connector Admin API `404` on menu mutation.
+- Product media/image cleanup is deferred because no new product imagery was provided and product-image claims should not be invented.
+- Individual live product copy rewrites are deferred unless product-specific commercial facts are supplied or live product data can be edited safely.
+- Visual desktop/mobile storefront QA is deferred until the updated GitHub theme files are deployed to the live theme.
 
-No GitHub status checks or workflow runs were visible for the latest connector commit through the available GitHub connector.
+## Risks identified
 
-## Live theme push result
+- GitHub `main` and the published Shopify theme may remain out of sync until an external deployment path runs.
+- The live `header-menu` and `footer-menu` may still expose unfinished or overloaded links until the menu update is applied in Shopify Admin or through a working CLI/API path.
+- Product guidance is intentionally generic to avoid inventing product facts; product-specific descriptions and media still need a merchandising pass.
+- The new membership-options template exists in GitHub, but live page template assignment and theme sync must be verified after deployment.
 
-Production target theme checked by Shopify Admin readback:
+## Recommended next phase
 
-- Name: `remote-business-partner`
-- Theme ID: `188709962042`
-- Shopify-reported role: `MAIN`
-
-Live theme file readback after the GitHub main updates showed all eight landing template files are present on the live theme, but the live theme still had the earlier generated versions at the time of verification:
-
-- Focused templates still contained the generic `main-page` section and `"main"` order entry.
-- `page.essentials.json` still contained the native `featured_collection` section.
-- `page.operations-hub.json` still contained the internal phrase about partner offer metaobjects being finalized.
-- `page.rbp-landing.json` still contained fallback/compatibility/theme-editor implementation language.
-
-This means GitHub `main` has the polish changes, but the live theme had not yet received the latest polished template bodies as of the latest readback.
-
-The requested scoped command could not be run from this workspace because Shopify CLI is unavailable:
-
-```bash
-shopify theme push --theme 188709962042 --allow-live \
-  --only templates/page.advisory.json \
-  --only templates/page.consulting.json \
-  --only templates/page.implementation.json \
-  --only templates/page.operations-hub.json \
-  --only templates/page.essentials.json \
-  --only templates/page.membership.json \
-  --only templates/page.support.json
-```
-
-A direct Shopify Admin `themeFilesUpsert` write to the live `MAIN` theme is blocked by the connector's live-theme safety guard, so the live theme could not be corrected directly from this workspace.
-
-## Remaining QA issues
-
-- Production visual QA is still required after the live theme receives the polished template files.
-- Public storefront HTTP QA from this workspace is blocked by a CONNECT tunnel `403`.
-- Re-check the live template file bodies after the GitHub-to-Shopify workflow runs, specifically for removal of `main-page`, removal of Essentials `featured_collection`, and removal of Operations Hub internal implementation language.
-- Then QA `/pages/advisory`, `/pages/consulting`, `/pages/implementation`, `/pages/operations-hub`, `/pages/essentials`, `/pages/membership`, and `/pages/support` for duplicate page intro removal, CTA clarity, link accuracy, header/dropdown behavior, mobile layout and footer integrity.
-- Confirm product forms, cart, collection filtering/sorting, search, customer templates and localization remain untouched.
+1. Run Shopify CLI from an authenticated environment and push the changed theme files to theme ID `188709962042` with `--allow-live` only after reviewing the diff.
+2. Apply the simplified header/footer menu structure in Shopify Admin if API mutation access remains blocked.
+3. Reassign `/pages/membership-options` to `page.membership-options` after the template is present on the live theme.
+4. Run desktop and mobile QA across Homepage, Advisory, Consulting, Implementation, Operations Hub, Essentials, Membership, Membership Options, Support, Contact, Product and Collection pages.
+5. Perform product-specific merchandising review for images, descriptions, package names and recommendations once live product facts are available.
