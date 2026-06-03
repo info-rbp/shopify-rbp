@@ -1,0 +1,234 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 12
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Remote Business Partner",
+        "heading": "A practical landing page fallback for RBP pathways",
+        "text": "<p>This compatibility template keeps existing RBP landing pages rendering while each page is assigned to its specific Advisory, Consulting, Implementation, Operations Hub, Essentials, Membership or Support template.</p>",
+        "align": "left"
+      }
+    },
+    "router": {
+      "type": "rbp-service-router",
+      "settings": {
+        "eyebrow": "Choose a pathway",
+        "heading": "Start with the kind of support you need",
+        "text": "<p>Use this temporary landing structure to route visitors without relying on one-off page sections.</p>"
+      },
+      "blocks": {
+        "advisory": {
+          "type": "service",
+          "settings": {
+            "icon": "01",
+            "title": "Advisory",
+            "text": "Decision support, business review and next-step planning.",
+            "button_label": "View advisory",
+            "url": "/pages/advisory"
+          }
+        },
+        "consulting": {
+          "type": "service",
+          "settings": {
+            "icon": "02",
+            "title": "Consulting",
+            "text": "Structured project support, recommendations and roadmaps.",
+            "button_label": "View consulting",
+            "url": "/pages/consulting"
+          }
+        },
+        "implementation": {
+          "type": "service",
+          "settings": {
+            "icon": "03",
+            "title": "Implementation",
+            "text": "Setup, delivery, onboarding and practical business infrastructure.",
+            "button_label": "View implementation",
+            "url": "/pages/implementation"
+          }
+        }
+      },
+      "block_order": [
+        "advisory",
+        "consulting",
+        "implementation"
+      ]
+    },
+    "pathways": {
+      "type": "rbp-service-pathways",
+      "settings": {
+        "eyebrow": "Pathways",
+        "heading": "Move from broad landing content to focused pages",
+        "text": "<p>This fallback keeps transition pages usable while the new page-specific templates take over.</p>"
+      },
+      "blocks": {
+        "operations": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Operations",
+            "title": "Operations Hub",
+            "text": "Services, resources, marketplace links and support for operating work.",
+            "button_label": "Open Operations Hub",
+            "url": "/pages/operations-hub"
+          }
+        },
+        "essentials": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Resources",
+            "title": "Essentials",
+            "text": "Templates, toolkits and practical resource pathways.",
+            "button_label": "Open Essentials",
+            "url": "/pages/essentials"
+          }
+        },
+        "support": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Help",
+            "title": "Support",
+            "text": "Contact, onboarding, FAQs and support routing.",
+            "button_label": "Open Support",
+            "url": "/pages/support"
+          }
+        }
+      },
+      "block_order": [
+        "operations",
+        "essentials",
+        "support"
+      ]
+    },
+    "features": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Compatibility",
+        "heading": "Reusable sections, not one-off landing files",
+        "text": "<p>The template uses existing RBP and Trade modules so merchants can keep editing content in the Theme Editor.</p>"
+      },
+      "blocks": {
+        "modular": {
+          "type": "feature",
+          "settings": {
+            "icon": "M",
+            "title": "Modular layout",
+            "text": "Built from existing RBP sections instead of monolithic page Liquid."
+          }
+        },
+        "editable": {
+          "type": "feature",
+          "settings": {
+            "icon": "E",
+            "title": "Theme-editor friendly",
+            "text": "Cards, FAQs, links and CTAs remain editable through section settings and blocks."
+          }
+        },
+        "temporary": {
+          "type": "feature",
+          "settings": {
+            "icon": "T",
+            "title": "Temporary fallback",
+            "text": "Use this for transition pages, then assign the focused page-specific templates."
+          }
+        }
+      },
+      "block_order": [
+        "modular",
+        "editable",
+        "temporary"
+      ]
+    },
+    "steps": {
+      "type": "rbp-how-it-works",
+      "settings": {
+        "eyebrow": "Transition sequence",
+        "heading": "Keep pages working while assignments change",
+        "text": "<p>The compatibility template prevents old rbp-landing assignments from breaking during the migration.</p>"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Create focused templates",
+            "text": "Add page-specific JSON templates for the header menu landing pages."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Assign pages",
+            "text": "Move each Shopify page from rbp-landing to the correct specific template."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Retain fallback",
+            "text": "Keep rbp-landing available until no transitional pages depend on it."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "faq": {
+      "type": "rbp-faq",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Compatibility template notes",
+        "text": "<p>This template is intentionally general and should not replace the focused page-specific templates long term.</p>",
+        "open_first": true
+      },
+      "blocks": {
+        "why": {
+          "type": "question",
+          "settings": {
+            "question": "Why keep a compatibility template?",
+            "answer": "<p>Several Shopify pages may already use the rbp-landing suffix. Keeping this template prevents blank or broken rendering while assignments are updated.</p>"
+          }
+        },
+        "long_term": {
+          "type": "question",
+          "settings": {
+            "question": "Should every page use this long term?",
+            "answer": "<p>No. Advisory, Consulting, Implementation, Operations Hub, Essentials, Membership and Support should use their specific templates.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "why",
+        "long_term"
+      ]
+    },
+    "cta": {
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Next step",
+        "heading": "Assign each page to its focused template",
+        "text": "<p>Use this compatibility page only as a safe transition fallback.</p>",
+        "button_label": "Open Support",
+        "button_url": "/pages/support"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "router",
+    "pathways",
+    "features",
+    "steps",
+    "faq",
+    "cta"
+  ]
+}
