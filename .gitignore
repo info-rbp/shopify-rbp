@@ -1,3 +1,33 @@
 _migration/
+
+# Local theme exports and archives
 *.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+
+# OS and editor files
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Generated caches and dependencies
+node_modules/
+.shopify/
+.theme-check/
+.cache/
+coverage/
+dist/
+
+# Temporary workspace files
+tmp/
+.temp/
+*.tmp
+*.log
