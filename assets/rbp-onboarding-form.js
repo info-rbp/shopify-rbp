@@ -2,6 +2,14 @@
   const forms = document.querySelectorAll('[data-rbp-onboarding-form]');
   if (!forms.length) return;
 
+  const escapeSelectorValue = (value) => {
+    if (window.CSS && typeof window.CSS.escape === 'function') {
+      return window.CSS.escape(value);
+    }
+
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+  };
+
   forms.forEach(form => {
     const submitBtn = form.querySelector('button[type="submit"]');
     const messageContainer = form.querySelector('[data-rbp-onboarding-message]');
@@ -50,10 +58,11 @@
           showMessage(data.message || 'Please check the form for errors.', true);
           if (data.errors) {
             Object.keys(data.errors).forEach(key => {
-              // Try to match key or metadata[key]
-              const field = form.querySelector(`[name="${key}"], [name="metadata[${key}]"]`);
+              const escapedKey = escapeSelectorValue(key);
+              const field = form.querySelector(`[name="${escapedKey}"], [name="metadata[${escapedKey}]"]`);
               if (field) {
-                const errorEl = field.closest('.rbp-onboarding-field').querySelector('.rbp-onboarding-field-error');
+                const wrapper = field.closest('.rbp-onboarding-field');
+                const errorEl = wrapper ? wrapper.querySelector('.rbp-onboarding-field-error') : null;
                 if (errorEl) {
                   errorEl.textContent = data.errors[key];
                   errorEl.classList.remove('rbp-onboarding-hidden');
@@ -64,15 +73,14 @@
         } else if (response.redirected && response.url) {
           window.location.href = response.url;
         } else {
-          // Fallback for non-JSON or missing data.ok
           showMessage('Thank you! Your submission has been received.');
           form.reset();
         }
       } else {
         let errorMsg = 'We could not process the request right now. Please try again.';
         try {
-           const errData = await response.json();
-           if (errData && errData.message) errorMsg = errData.message;
+          const errData = await response.json();
+          if (errData && errData.message) errorMsg = errData.message;
         } catch(e) {}
         showMessage(errorMsg, true);
       }
@@ -80,8 +88,6 @@
 
     form.addEventListener('submit', async (e) => {
       const action = form.getAttribute('action');
-      // If destination is not a local path (starts with /), let normal form submit handle it unless we want to allow absolute URLs too
-      // App proxy should be a local path
       if (!action || !action.startsWith('/')) return;
 
       e.preventDefault();
@@ -93,8 +99,6 @@
       }
 
       const formData = new FormData(form);
-
-      // Ensure urlContext is current
       const urlContext = form.querySelector('[name="urlContext"]');
       if (urlContext) urlContext.value = window.location.href;
 
