@@ -26,7 +26,7 @@
           "settings": {
             "heading": "What is included",
             "icon": "clipboard",
-            "content": "The product description outlines the exact inclusions for this service, template, toolkit or support option.",
+            "content": "<p>The product description outlines the exact inclusions for this service, template, toolkit or support option.</p>",
             "page": ""
           }
         },
@@ -35,7 +35,7 @@
           "settings": {
             "heading": "Delivery and fulfilment",
             "icon": "truck",
-            "content": "Digital resources are delivered through the store or order email. Service and supported options may require intake, review, booking or manual delivery before completion.",
+            "content": "<p>Digital resources are delivered through the store or order email. Service and supported options may require intake, review, booking or manual delivery before completion.</p>",
             "page": ""
           }
         },
@@ -44,7 +44,7 @@
           "settings": {
             "heading": "Best for",
             "icon": "check_mark",
-            "content": "Use this option when the product description and selected package match the business issue, delivery model and support level you need.",
+            "content": "<p>Use this option when the product description and selected package match the business issue, delivery model and support level you need.</p>",
             "page": ""
           }
         },
@@ -53,7 +53,7 @@
           "settings": {
             "heading": "Important notes",
             "icon": "question_mark",
-            "content": "Templates, toolkits and documentation are general business resources and are not legal, financial or compliance advice. Supported options help structure execution but do not guarantee regulatory, commercial or technical outcomes.",
+            "content": "<p>Templates, toolkits and documentation are general business resources and are not legal, financial or compliance advice. Supported options help structure execution but do not guarantee regulatory, commercial or technical outcomes.</p>",
             "page": ""
           }
         },
