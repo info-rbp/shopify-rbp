@@ -6,7 +6,9 @@ Date: 2026-06-03
 
 Prepared a page-specific landing template system for the `new-header-menu` destinations using existing RBP and Trade sections. The work avoids monolithic page Liquid files and keeps `page.rbp-landing.json` as a transition fallback.
 
-The template files were committed to GitHub `main`. The store's automation is expected to push theme-file changes from `main` to Shopify. Shopify Admin page template assignments and the `new-header-menu` structure were also updated directly and verified by readback.
+The template files were committed to GitHub `main`. Shopify Admin page template assignments and the `new-header-menu` structure were also updated directly and verified by readback.
+
+Important deployment finding: after the user's clarification that the live production theme is `remote-business-partner` / `188709962042`, the live theme file list was checked directly. The new templates were not present on that live theme at the time of verification. The new templates were present on the separate unpublished `shopify-rbp/main` theme (`188709110074`), indicating the GitHub sync landed there rather than on the live theme. No manual changes were made to target the unpublished theme.
 
 ## Templates created or updated
 
@@ -114,19 +116,32 @@ Each dropdown now begins with `Overview` linking to the parent page. Child links
 
 ## Theme push status
 
-Requested target theme:
+Production target theme:
 
 - Name: `remote-business-partner`
 - Theme ID: `188709962042`
 - Shopify-reported role: `MAIN`
 
-Candidate unpublished theme seen in Shopify:
+Live theme file verification:
+
+- Missing on live theme at verification time:
+  - `templates/page.advisory.json`
+  - `templates/page.consulting.json`
+  - `templates/page.implementation.json`
+  - `templates/page.operations-hub.json`
+  - `templates/page.essentials.json`
+  - `templates/page.support.json`
+  - `templates/page.rbp-landing.json`
+- Live theme still had the older `templates/page.membership.json` at 534 bytes, not the new 5417-byte template.
+
+Diagnostic-only unpublished theme finding:
 
 - Name: `shopify-rbp/main`
 - Theme ID: `188709110074`
 - Shopify-reported role: `UNPUBLISHED`
+- This theme contained the new page templates with the expected file sizes and update times.
 
-No theme was manually published. Template files were committed to GitHub `main`; the store's main-branch automation is expected to handle the Shopify theme-file sync.
+No theme was manually published. A direct `themeFilesUpsert` attempt to the live theme was blocked by the Shopify connector's live-theme safety guard, so the live theme files could not be corrected directly from this workspace.
 
 ## GitHub status
 
@@ -165,7 +180,9 @@ grep -R "rbp-home-button-fix\|rbp-css-loader\|rbp-nav-fixes\|rbp-header-spacing\
 ## Known issues and follow-up QA
 
 - Shopify CLI was not available in this workspace, and direct git clone was blocked by the container network. Full `shopify theme check` must be run in a Shopify CLI-capable environment or CI.
-- GitHub status checks/workflow runs were not visible through the connector for the latest report commit, so automated Shopify theme sync should be confirmed in the deployment system or by storefront visual QA.
-- Theme Editor visual QA is still required after the main-branch theme sync completes.
+- GitHub status checks/workflow runs were not visible through the connector for the latest report commit.
+- Storefront HTTP QA from this workspace was blocked by a CONNECT tunnel `403`, so visual page QA could not be completed from the container.
+- Live theme file QA failed for the new templates: the live `remote-business-partner` theme did not contain the new page-specific JSON templates at verification time.
+- Theme Editor visual QA is still required after the live theme receives the new templates.
 - Page template assignments and the `new-header-menu` dropdown update were applied and verified through Shopify Admin readback.
 - Confirm product forms, cart, collection filtering/sorting, search, customer templates and live theme remain unchanged.
