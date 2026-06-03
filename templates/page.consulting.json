@@ -1,18 +1,11 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 20,
-        "padding_bottom": 12
-      }
-    },
     "hero": {
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Consulting",
         "heading": "Consulting support for business problems that need structured project thinking",
-        "text": "<p>Use consulting when the issue is bigger than a single advisory question and needs diagnosis, recommendations, roadmap creation or coordinated improvement across systems, people and operations.</p>",
+        "text": "<p>Consulting turns broad business problems into diagnosis, recommendations, project scope and an implementation roadmap before delivery work begins.</p>",
         "align": "left"
       }
     },
@@ -20,8 +13,8 @@
       "type": "rbp-feature-grid",
       "settings": {
         "eyebrow": "What consulting is for",
-        "heading": "Deeper support before execution",
-        "text": "<p>Consulting helps shape the problem, define the work and create a practical path before implementation begins.</p>"
+        "heading": "Diagnosis, recommendations and roadmap",
+        "text": "<p>Use consulting when the business needs structured problem-solving before anyone starts building, configuring or outsourcing the work.</p>"
       },
       "blocks": {
         "systems": {
@@ -65,8 +58,8 @@
       "type": "rbp-service-pathways",
       "settings": {
         "eyebrow": "Choose consulting when",
-        "heading": "The problem needs more than advice",
-        "text": "<p>Consulting sits between advisory and implementation: enough depth to define the work, without pretending every answer is self-serve.</p>"
+        "heading": "Turn the issue into a scoped pathway",
+        "text": "<p>Each pathway is designed to clarify the current state, define practical options and show what implementation should look like.</p>"
       },
       "blocks": {
         "project_support": {
@@ -203,15 +196,14 @@
       "type": "rbp-cta-band",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Turn the business problem into a workable plan",
-        "text": "<p>Start with a consulting pathway when the issue needs structure before execution.</p>",
-        "button_label": "Browse consulting services",
+        "heading": "Build a consulting roadmap",
+        "text": "<p>Use consulting to define the work, sequence the priorities and choose the right implementation route.</p>",
+        "button_label": "Build a consulting roadmap",
         "button_url": "/collections/management-on-demand-services"
       }
     }
   },
   "order": [
-    "main",
     "hero",
     "features",
     "pathways",
