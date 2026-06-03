@@ -17,6 +17,7 @@
 - `snippets/rbp-offer-card.liquid`: added a safe no-offer fallback and safer defaults for offer title, partner, category, detail URL, image alt text, and offer code output.
 - `assets/rbp-onboarding-form.css`: removed a stale onboarding-specific button override and tied onboarding colors back to central RBP variables.
 - `assets/rbp-onboarding-form.js`: hardened error-field lookup with escaped selector values and guarded wrapper lookup.
+- `docs/codex/QA_CHECKLIST.md`: updated QA wording to match the cleaned homepage/header state.
 - `docs/codex/CLEANUP_REPORT.md`: added this cleanup report.
 
 ## Files removed
