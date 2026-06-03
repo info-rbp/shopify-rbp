@@ -1,0 +1,6 @@
+{%- liquid
+  assign cta_label = label | default: 'Learn more'
+  assign cta_url = url | default: '#'
+-%}
+
+<a class="rbp-link" href="{{ cta_url }}">{{ cta_label | escape }} <span aria-hidden="true">-&gt;</span></a>

@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Service",
+        "heading": "Service detail",
+        "text": "<p>Use this template for a focused service page assembled from reusable sections.</p>"
+      }
+    },
+    "split": {
+      "type": "rbp-split-content"
+    },
+    "features": {
+      "type": "rbp-feature-grid"
+    },
+    "steps": {
+      "type": "rbp-how-it-works"
+    },
+    "faq": {
+      "type": "rbp-faq"
+    },
+    "cta": {
+      "type": "rbp-cta-band"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "split",
+    "features",
+    "steps",
+    "faq",
+    "cta"
+  ]
+}

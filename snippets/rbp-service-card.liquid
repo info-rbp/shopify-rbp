@@ -1,0 +1,18 @@
+{%- liquid
+  assign service_title = title | default: 'Service pathway'
+  assign service_text = text | default: ''
+  assign service_url = url | default: '#'
+  assign service_label = button_label | default: 'View pathway'
+  assign service_icon = icon | default: ''
+-%}
+
+<article class="rbp-card rbp-router__item">
+  {%- if service_icon != blank -%}
+    <div class="rbp-card__icon" aria-hidden="true">{{ service_icon }}</div>
+  {%- endif -%}
+  <h3 class="rbp-card__title">{{ service_title | escape }}</h3>
+  {%- if service_text != blank -%}
+    <p class="rbp-card__text">{{ service_text }}</p>
+  {%- endif -%}
+  {% render 'rbp-button', label: service_label, url: service_url, variant: 'secondary', size: 'small', arrow: true %}
+</article>

@@ -32,6 +32,9 @@
         "padding_bottom": 40
       }
     },
+    "rbp-support": {
+      "type": "rbp-cart-support"
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -64,6 +67,7 @@
   "order": [
     "cart-items",
     "cart-footer",
+    "rbp-support",
     "featured-collection"
   ]
 }

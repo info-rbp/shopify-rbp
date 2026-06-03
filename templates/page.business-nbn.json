@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Business NBN",
+        "heading": "Business NBN availability and next steps",
+        "text": "<p>Check address readiness and prepare plan selection without exposing private validation logic in theme files.</p>"
+      }
+    },
+    "checker": {
+      "type": "rbp-business-nbn"
+    },
+    "features": {
+      "type": "rbp-feature-grid"
+    },
+    "faq": {
+      "type": "rbp-faq"
+    },
+    "contact": {
+      "type": "rbp-contact-panel"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "checker",
+    "features",
+    "faq",
+    "contact"
+  ]
+}

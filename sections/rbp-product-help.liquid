@@ -1,0 +1,30 @@
+<section class="rbp-product-section rbp-product-section--muted">
+  <div class="rbp-product-container">
+    <div class="rbp-cta-band">
+      <div>
+        <span class="rbp-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        <h2 class="rbp-heading rbp-heading--md">{{ section.settings.heading | escape }}</h2>
+        <div class="rbp-copy">{{ section.settings.text }}</div>
+      </div>
+      {% render 'rbp-button', label: section.settings.button_label, url: section.settings.button_url, variant: 'light', arrow: true %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product help",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Need help?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ask before choosing this product" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>If the requirements are unclear, request guidance before checkout.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact RBP" },
+    { "type": "url", "id": "button_url", "label": "Button URL" }
+  ],
+  "presets": [
+    { "name": "RBP product help" }
+  ]
+}
+{% endschema %}

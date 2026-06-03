@@ -1,0 +1,7 @@
+{%- if template.name != 'index' -%}
+  <nav class="rbp-container rbp-breadcrumbs" aria-label="Breadcrumb">
+    <a class="rbp-link" href="{{ routes.root_url }}">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>{{ page_title | escape }}</span>
+  </nav>
+{%- endif -%}

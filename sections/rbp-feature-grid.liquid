@@ -1,0 +1,54 @@
+<section class="rbp-section">
+  <div class="rbp-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="rbp-card-grid">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          {% render 'rbp-card',
+            title: block.settings.title,
+            text: block.settings.text,
+            icon: block.settings.icon,
+            url: block.settings.url,
+            button_label: block.settings.button_label
+          %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP feature grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What is included" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Reusable feature grid" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Describe benefits, inclusions, modules or support areas.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon text", "default": "✓" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Reusable content" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Edit this card from the Shopify theme editor." },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP feature grid",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature", "settings": { "title": "Clear fulfilment", "text": "Set expectations before checkout or enquiry." } },
+        { "type": "feature", "settings": { "title": "Admin-ready", "text": "Use blocks instead of hardcoded repeatable content." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

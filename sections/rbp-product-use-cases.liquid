@@ -1,0 +1,41 @@
+<section class="rbp-product-section">
+  <div class="rbp-product-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <ul class="rbp-product-list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}><span class="rbp-product-check">✓</span><span>{{ block.settings.text | escape }}</span></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product use cases",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Use cases" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Useful when" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Describe when this product or service is a good fit.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "use_case",
+      "name": "Use case",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Text", "default": "You need a structured next step before delivery or implementation." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP product use cases",
+      "blocks": [
+        { "type": "use_case" },
+        { "type": "use_case", "settings": { "text": "You need intake, booking, review or fulfilment guidance." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

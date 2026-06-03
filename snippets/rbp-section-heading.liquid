@@ -1,0 +1,18 @@
+{%- liquid
+  assign heading_align = align | default: 'center'
+  assign heading_size = size | default: 'lg'
+-%}
+
+{%- if eyebrow != blank or heading != blank or text != blank -%}
+  <div class="rbp-section-head{% if heading_align == 'left' %} rbp-section-head--left{% endif %}">
+    {%- if eyebrow != blank -%}
+      <p class="rbp-eyebrow">{{ eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="rbp-heading rbp-heading--{{ heading_size }}">{{ heading | escape }}</h2>
+    {%- endif -%}
+    {%- if text != blank -%}
+      <p class="rbp-copy">{{ text }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}

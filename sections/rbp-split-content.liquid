@@ -1,0 +1,48 @@
+<section class="rbp-section{% if section.settings.muted %} rbp-surface{% endif %}">
+  <div class="rbp-container rbp-split">
+    <div>
+      {% render 'rbp-section-heading',
+        eyebrow: section.settings.eyebrow,
+        heading: section.settings.heading,
+        text: section.settings.text,
+        align: 'left'
+      %}
+      <div class="rbp-actions">
+        {%- if section.settings.button_label != blank -%}
+          {% render 'rbp-button', label: section.settings.button_label, url: section.settings.button_url, variant: section.settings.button_variant, arrow: true %}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="rbp-split__media" aria-hidden="true"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP split content",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "muted", "label": "Use muted background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Positioning" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for practical business operators" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use this split section for positioning, membership, partner, or SME context.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Learn more" },
+    { "type": "url", "id": "button_url", "label": "Button URL" },
+    {
+      "type": "select",
+      "id": "button_variant",
+      "label": "Button variant",
+      "default": "primary",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "ghost", "label": "Ghost" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "RBP split content" }
+  ]
+}
+{% endschema %}

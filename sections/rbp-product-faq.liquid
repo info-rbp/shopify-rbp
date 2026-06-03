@@ -1,0 +1,44 @@
+<section class="rbp-product-section">
+  <div class="rbp-product-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="rbp-faq-list">
+      {%- for block in section.blocks -%}
+        <details {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question | escape }}</summary>
+          <div>{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Product FAQ" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions before purchase" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Clarify fulfilment and next-step expectations.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Is this delivered instantly?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Some products require intake, booking, manual preparation or review before fulfilment is complete.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP product FAQ",
+      "blocks": [
+        { "type": "question" }
+      ]
+    }
+  ]
+}
+{% endschema %}

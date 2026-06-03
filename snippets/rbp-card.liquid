@@ -1,0 +1,23 @@
+{%- liquid
+  assign card_title = title | default: 'RBP card'
+  assign card_text = text | default: ''
+  assign card_icon = icon | default: ''
+  assign card_url = url | default: ''
+  assign card_button = button_label | default: ''
+  assign card_variant = variant | default: 'default'
+-%}
+
+<article class="rbp-card{% if card_variant != 'default' %} rbp-card--{{ card_variant }}{% endif %}">
+  {%- if card_icon != blank -%}
+    <div class="rbp-card__icon" aria-hidden="true">{{ card_icon }}</div>
+  {%- endif -%}
+  <h3 class="rbp-card__title">{{ card_title | escape }}</h3>
+  {%- if card_text != blank -%}
+    <div class="rbp-card__text">{{ card_text }}</div>
+  {%- endif -%}
+  {%- if card_button != blank and card_url != blank -%}
+    <div class="rbp-card__action">
+      {% render 'rbp-button', label: card_button, url: card_url, variant: 'secondary', size: 'small', arrow: true %}
+    </div>
+  {%- endif -%}
+</article>

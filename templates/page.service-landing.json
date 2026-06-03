@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Services",
+        "heading": "Business service pathways",
+        "text": "<p>Use this landing template for advisory, consulting, implementation and operations pages.</p>"
+      }
+    },
+    "router": {
+      "type": "rbp-service-router"
+    },
+    "pathways": {
+      "type": "rbp-service-pathways"
+    },
+    "features": {
+      "type": "rbp-feature-grid"
+    },
+    "steps": {
+      "type": "rbp-how-it-works"
+    },
+    "faq": {
+      "type": "rbp-faq"
+    },
+    "cta": {
+      "type": "rbp-cta-band"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "router",
+    "pathways",
+    "features",
+    "steps",
+    "faq",
+    "cta"
+  ]
+}

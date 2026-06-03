@@ -1,0 +1,21 @@
+{%- liquid
+  assign button_label = label | default: 'Learn more'
+  assign button_url = url | default: '#'
+  assign button_variant = variant | default: 'primary'
+  assign button_size = size | default: 'default'
+  assign show_arrow = arrow | default: false
+  assign accessible_label = aria_label | default: button_label
+  assign target_blank = new_tab | default: false
+-%}
+
+<a
+  class="rbp-button rbp-button--{{ button_variant }}{% unless button_size == 'default' %} rbp-button--{{ button_size }}{% endunless %}"
+  href="{{ button_url }}"
+  aria-label="{{ accessible_label | escape }}"
+  {% if target_blank %}target="_blank" rel="noopener noreferrer"{% endif %}
+>
+  <span>{{ button_label | escape }}</span>
+  {%- if show_arrow -%}
+    <span class="rbp-button__arrow" aria-hidden="true">-&gt;</span>
+  {%- endif -%}
+</a>

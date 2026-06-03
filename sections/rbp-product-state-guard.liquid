@@ -1,0 +1,25 @@
+<section class="rbp-product-section rbp-product-section--muted">
+  <div class="rbp-product-container">
+    <div class="rbp-card">
+      <span class="rbp-badge">{{ section.settings.badge | escape }}</span>
+      <h2 class="rbp-card__title">{{ section.settings.heading | escape }}</h2>
+      <p class="rbp-card__text">{{ section.settings.text | escape }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product state guard",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Badge", "default": "Review required" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Confirm suitability before relying on fulfilment timing" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "This product may depend on availability, requirements capture or manual review." }
+  ],
+  "presets": [
+    { "name": "RBP product state guard" }
+  ]
+}
+{% endschema %}

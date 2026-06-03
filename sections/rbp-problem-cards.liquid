@@ -1,0 +1,57 @@
+<section class="rbp-section rbp-surface">
+  <div class="rbp-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="rbp-card-grid">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          {% render 'rbp-card', title: block.settings.title, text: block.settings.text, icon: block.settings.icon, variant: block.settings.variant %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP problem cards",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Common blockers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where business work usually gets stuck" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use cards to explain pain points, risk areas or decision moments.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon text", "default": "!" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Unclear next step" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "The work is important, but ownership and sequence are not yet clear." },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "default": "default",
+          "options": [
+            { "value": "default", "label": "Default" },
+            { "value": "blue", "label": "Blue" },
+            { "value": "flat", "label": "Flat" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP problem cards",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card", "settings": { "title": "Manual follow-up", "text": "Important context sits in inboxes, forms or side conversations." } },
+        { "type": "card", "settings": { "title": "Commercial uncertainty", "text": "You need a practical path before buying, booking or delegating." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

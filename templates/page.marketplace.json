@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Marketplace",
+        "heading": "RBP marketplace",
+        "text": "<p>Partner offers, business opportunities and support pathways with clear next-step guidance.</p>"
+      }
+    },
+    "router": {
+      "type": "rbp-service-router"
+    },
+    "offers": {
+      "type": "rbp-marketplace-offers"
+    },
+    "features": {
+      "type": "rbp-feature-grid"
+    },
+    "faq": {
+      "type": "rbp-faq"
+    },
+    "cta": {
+      "type": "rbp-cta-band"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "router",
+    "offers",
+    "features",
+    "faq",
+    "cta"
+  ]
+}

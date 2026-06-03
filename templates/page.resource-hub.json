@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Resources",
+        "heading": "Resource hub",
+        "text": "<p>Guides, templates, checklists and support content for practical business decisions.</p>"
+      }
+    },
+    "resources": {
+      "type": "rbp-resource-preview"
+    },
+    "features": {
+      "type": "rbp-feature-grid"
+    },
+    "cta": {
+      "type": "rbp-cta-band"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "resources",
+    "features",
+    "cta"
+  ]
+}

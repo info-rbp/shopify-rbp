@@ -1,0 +1,36 @@
+<section class="rbp-section">
+  <div class="rbp-container">
+    <div class="rbp-cta-band">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="rbp-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2 class="rbp-heading rbp-heading--md">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.text != blank -%}
+          <div class="rbp-copy">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        {% render 'rbp-button', label: section.settings.button_label, url: section.settings.button_url, variant: 'light', size: 'large', arrow: true %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP CTA band",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Next step" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready to move the work forward?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use this section for final page calls to action without patching button styles.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact RBP" },
+    { "type": "url", "id": "button_url", "label": "Button URL" }
+  ],
+  "presets": [
+    { "name": "RBP CTA band" }
+  ]
+}
+{% endschema %}

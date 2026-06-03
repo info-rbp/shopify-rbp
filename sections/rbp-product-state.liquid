@@ -1,0 +1,30 @@
+{%- liquid
+  assign status = product.metafields.rbp.fulfilment_status | default: section.settings.status
+  assign summary = product.metafields.rbp.fulfilment_summary | default: section.settings.summary
+-%}
+
+<section class="rbp-product-section rbp-product-section--muted">
+  <div class="rbp-product-container">
+    <div class="rbp-card">
+      <span class="rbp-badge">{{ section.settings.eyebrow | escape }}</span>
+      <h2 class="rbp-card__title">{{ status | escape }}</h2>
+      <p class="rbp-card__text">{{ summary | escape }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product state",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Fulfilment note" },
+    { "type": "text", "id": "status", "label": "Fallback status", "default": "Next-step guidance provided after purchase" },
+    { "type": "textarea", "id": "summary", "label": "Fallback summary", "default": "This product may require intake, manual review, booking or prepared delivery before fulfilment is complete." }
+  ],
+  "presets": [
+    { "name": "RBP product state" }
+  ]
+}
+{% endschema %}

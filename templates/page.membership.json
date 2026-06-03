@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Membership",
+        "heading": "RBP membership",
+        "text": "<p>Use this page for member benefits, partner support and practical resource access.</p>"
+      }
+    },
+    "benefits": {
+      "type": "rbp-membership-benefits"
+    },
+    "steps": {
+      "type": "rbp-how-it-works"
+    },
+    "faq": {
+      "type": "rbp-faq"
+    },
+    "cta": {
+      "type": "rbp-cta-band"
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "benefits",
+    "steps",
+    "faq",
+    "cta"
+  ]
+}

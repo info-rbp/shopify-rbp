@@ -1,0 +1,16 @@
+{%- liquid
+  assign resource_title = title | default: 'Resource'
+  assign resource_text = text | default: ''
+  assign resource_type = type | default: 'Guide'
+  assign resource_url = url | default: '#'
+-%}
+
+<article class="rbp-card rbp-card--flat rbp-resource-card">
+  <span class="rbp-badge">{{ resource_type | escape }}</span>
+  <h3 class="rbp-card__title">
+    <a class="rbp-link" href="{{ resource_url }}">{{ resource_title | escape }}</a>
+  </h3>
+  {%- if resource_text != blank -%}
+    <p class="rbp-card__text">{{ resource_text }}</p>
+  {%- endif -%}
+</article>

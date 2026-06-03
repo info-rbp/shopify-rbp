@@ -1,0 +1,25 @@
+<section class="rbp-cart-support">
+  <div class="rbp-container">
+    <div class="rbp-card">
+      <span class="rbp-badge">{{ section.settings.badge | escape }}</span>
+      <h2 class="rbp-card__title">{{ section.settings.heading | escape }}</h2>
+      <p class="rbp-card__text">{{ section.settings.text | escape }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP cart support",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Badge", "default": "Before checkout" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Some items may require intake or review" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Prepared delivery, bookings and manual checks are confirmed after checkout where required." }
+  ],
+  "presets": [
+    { "name": "RBP cart support" }
+  ]
+}
+{% endschema %}

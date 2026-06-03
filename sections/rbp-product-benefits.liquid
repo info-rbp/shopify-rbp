@@ -1,0 +1,46 @@
+<section class="rbp-product-section rbp-product-section--muted">
+  <div class="rbp-product-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="rbp-product-grid rbp-product-grid--3">
+      {%- for block in section.blocks -%}
+        <article class="rbp-product-card" {{ block.shopify_attributes }}>
+          <h3 class="rbp-card__title">{{ block.settings.title | escape }}</h3>
+          <p class="rbp-card__text">{{ block.settings.text | escape }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP product benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Benefits" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why this product helps" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Explain outcomes without changing product form behaviour.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Clearer next step" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Customers understand what happens after purchase." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP product benefits",
+      "blocks": [
+        { "type": "benefit" },
+        { "type": "benefit", "settings": { "title": "Less rework", "text": "Requirements are captured before delivery starts." } },
+        { "type": "benefit", "settings": { "title": "Better handover", "text": "The fulfilment pathway is visible before checkout." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+<section class="rbp-section rbp-surface">
+  <div class="rbp-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text, align: 'left' %}
+    <div class="rbp-steps">
+      {%- for block in section.blocks -%}
+        <article class="rbp-card rbp-step" {{ block.shopify_attributes }}>
+          <h3 class="rbp-card__title">{{ block.settings.title | escape }}</h3>
+          <p class="rbp-card__text">{{ block.settings.text | escape }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP how it works",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A clear path from interest to next step" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Explain the operating sequence without changing Shopify checkout behaviour.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Choose the pathway" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "The customer selects a product, service, offer or resource path." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP how it works",
+      "blocks": [
+        { "type": "step" },
+        { "type": "step", "settings": { "title": "Capture requirements", "text": "Use onboarding, enquiry or booking context where needed." } },
+        { "type": "step", "settings": { "title": "Confirm fulfilment", "text": "Provide the right next-step guidance after purchase or enquiry." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

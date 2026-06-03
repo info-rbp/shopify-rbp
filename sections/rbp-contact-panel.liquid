@@ -1,0 +1,39 @@
+<section class="rbp-section rbp-surface">
+  <div class="rbp-container rbp-contact-panel">
+    <div>
+      {% render 'rbp-section-heading',
+        eyebrow: section.settings.eyebrow,
+        heading: section.settings.heading,
+        text: section.settings.text,
+        align: 'left'
+      %}
+      {%- if section.settings.button_label != blank -%}
+        {% render 'rbp-button', label: section.settings.button_label, url: section.settings.button_url, variant: 'primary', arrow: true %}
+      {%- endif -%}
+    </div>
+    <aside class="rbp-card rbp-contact-panel__aside">
+      <h3 class="rbp-card__title">{{ section.settings.aside_heading | escape }}</h3>
+      <div class="rbp-card__text">{{ section.settings.aside_text }}</div>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP contact panel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contact" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Need help choosing the right path?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use this panel to route visitors to enquiry, manual review or support options.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact us" },
+    { "type": "url", "id": "button_url", "label": "Button URL" },
+    { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "What to include" },
+    { "type": "richtext", "id": "aside_text", "label": "Aside text", "default": "<p>Tell us the business context, timeline, budget sensitivity and any requirements already known.</p>" }
+  ],
+  "presets": [
+    { "name": "RBP contact panel" }
+  ]
+}
+{% endschema %}

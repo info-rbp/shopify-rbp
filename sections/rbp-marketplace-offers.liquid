@@ -1,0 +1,61 @@
+<section class="rbp-section rbp-surface">
+  <div class="rbp-container">
+    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+    <div class="rbp-resource-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <article class="rbp-card" {{ block.shopify_attributes }}>
+            <span class="rbp-badge">{{ block.settings.category | escape }}</span>
+            <h3 class="rbp-card__title">{{ block.settings.title | escape }}</h3>
+            <p class="rbp-card__text">{{ block.settings.text | escape }}</p>
+            {%- if block.settings.url != blank -%}
+              <div class="rbp-card__action">
+                {% render 'rbp-button', label: block.settings.button_label, url: block.settings.url, variant: 'secondary', size: 'small', arrow: true %}
+              </div>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      {%- elsif shop.metaobjects.partner_offer.values != blank -%}
+        {%- for offer in shop.metaobjects.partner_offer.values limit: section.settings.limit -%}
+          {% render 'rbp-offer-card', offer: offer %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP marketplace offers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Marketplace" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Partner offers and business opportunities" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use manual offer blocks, or connect partner_offer metaobjects when configured in Shopify Admin.</p>" },
+    { "type": "range", "id": "limit", "label": "Metaobject offer limit", "min": 1, "max": 24, "step": 1, "default": 6 }
+  ],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "Manual offer",
+      "settings": [
+        { "type": "text", "id": "category", "label": "Category", "default": "Partner offer" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Featured offer" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe the partner offer or opportunity." },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "View offer" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP marketplace offers",
+      "blocks": [
+        { "type": "offer" },
+        { "type": "offer", "settings": { "category": "Member offer", "title": "Exclusive support pathway", "text": "A configurable marketplace offer block for Shopify Admin." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
