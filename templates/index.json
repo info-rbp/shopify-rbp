@@ -5,40 +5,350 @@
       "settings": {
         "eyebrow": "Remote Business Partner",
         "heading": "Practical support for business owners who need the next step clear",
-        "text": "<p>RBP connects services, resources, partner offers and onboarding pathways inside a Shopify-native Trade theme.</p>",
-        "primary_label": "Explore services",
-        "secondary_label": "View resources",
-        "panel_badge": "Modular Trade theme",
-        "panel_heading": "No monolithic homepage",
-        "panel_text": "Reusable sections, snippets and blocks keep the storefront editable."
+        "text": "<p>Choose the right pathway for a decision, plan, implementation, operations issue, resource or support request.</p>",
+        "primary_label": "Find the right support pathway",
+        "primary_url": "/pages/support",
+        "secondary_label": "Browse resources",
+        "secondary_url": "/pages/essentials",
+        "panel_badge": "Start here",
+        "panel_heading": "Choose the right pathway",
+        "panel_text": "Start with advisory, consulting, implementation, operations, resources or support depending on what your business needs next."
       }
     },
     "service_router": {
-      "type": "rbp-service-router"
+      "type": "rbp-service-router",
+      "settings": {
+        "eyebrow": "Choose a pathway",
+        "heading": "Start with the kind of support you need",
+        "text": "<p>Use the homepage as a practical router. Each pathway explains what it is for, what you get and where to go next.</p>"
+      },
+      "blocks": {
+        "advisory": {
+          "type": "service",
+          "settings": {
+            "icon": "01",
+            "title": "Advisory",
+            "text": "Get a practical second view before spending money, changing systems, hiring support or starting implementation.",
+            "button_label": "View Advisory",
+            "url": "/pages/advisory"
+          }
+        },
+        "consulting": {
+          "type": "service",
+          "settings": {
+            "icon": "02",
+            "title": "Consulting",
+            "text": "Turn a broad business problem into diagnosis, recommendations, scope and an implementation roadmap.",
+            "button_label": "View Consulting",
+            "url": "/pages/consulting"
+          }
+        },
+        "implementation": {
+          "type": "service",
+          "settings": {
+            "icon": "03",
+            "title": "Implementation",
+            "text": "Set up documents, workflows, registers, systems and handover assets once the direction is clear.",
+            "button_label": "View Implementation",
+            "url": "/pages/implementation"
+          }
+        },
+        "operations": {
+          "type": "service",
+          "settings": {
+            "icon": "04",
+            "title": "Operations Hub",
+            "text": "Find services, resources and support for recurring operational work, controls and business follow-through.",
+            "button_label": "Open Operations Hub",
+            "url": "/pages/operations-hub"
+          }
+        },
+        "essentials": {
+          "type": "service",
+          "settings": {
+            "icon": "05",
+            "title": "Essentials",
+            "text": "Browse templates, toolkits, checklists and supported resource options when a self-serve path is enough.",
+            "button_label": "Browse Essentials",
+            "url": "/pages/essentials"
+          }
+        },
+        "support": {
+          "type": "service",
+          "settings": {
+            "icon": "06",
+            "title": "Support",
+            "text": "Use support when you need help with orders, onboarding, Business NBN, membership or choosing the right route.",
+            "button_label": "Contact Support",
+            "url": "/pages/support"
+          }
+        }
+      },
+      "block_order": [
+        "advisory",
+        "consulting",
+        "implementation",
+        "operations",
+        "essentials",
+        "support"
+      ]
     },
     "problem_cards": {
-      "type": "rbp-problem-cards"
+      "type": "rbp-problem-cards",
+      "settings": {
+        "eyebrow": "Business blockers",
+        "heading": "Start from the problem in front of you",
+        "text": "<p>If the right service is not obvious, match the current blocker to the pathway that can move it forward.</p>"
+      },
+      "blocks": {
+        "decision": {
+          "type": "card",
+          "settings": {
+            "icon": "A",
+            "title": "A decision needs a second view",
+            "text": "Use Advisory before committing money, suppliers, systems, people or implementation time.",
+            "variant": "default"
+          }
+        },
+        "plan": {
+          "type": "card",
+          "settings": {
+            "icon": "C",
+            "title": "The problem needs a plan",
+            "text": "Use Consulting when the issue needs diagnosis, recommendations and a roadmap before work starts.",
+            "variant": "blue"
+          }
+        },
+        "delivery": {
+          "type": "card",
+          "settings": {
+            "icon": "I",
+            "title": "The plan needs delivery",
+            "text": "Use Implementation when the business needs setup, documentation, workflow creation or handover.",
+            "variant": "flat"
+          }
+        },
+        "operations": {
+          "type": "card",
+          "settings": {
+            "icon": "O",
+            "title": "Recurring work needs a cleaner route",
+            "text": "Use Operations Hub for services, controls, admin systems, operating rhythm and repeatable follow-through.",
+            "variant": "default"
+          }
+        },
+        "resource": {
+          "type": "card",
+          "settings": {
+            "icon": "E",
+            "title": "A template or toolkit may be enough",
+            "text": "Use Essentials when you need a practical document, checklist or supported resource instead of a full engagement.",
+            "variant": "blue"
+          }
+        },
+        "unclear": {
+          "type": "card",
+          "settings": {
+            "icon": "?",
+            "title": "The right route is unclear",
+            "text": "Use Support when the request involves an order, onboarding, membership, Business NBN or general routing help.",
+            "variant": "flat"
+          }
+        }
+      },
+      "block_order": [
+        "decision",
+        "plan",
+        "delivery",
+        "operations",
+        "resource",
+        "unclear"
+      ]
     },
     "how_it_works": {
-      "type": "rbp-how-it-works"
+      "type": "rbp-how-it-works",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "A practical path from need to next step",
+        "text": "<p>RBP keeps the pathway clear so the business can choose, share context, receive the output or guidance, and move forward.</p>"
+      },
+      "blocks": {
+        "choose": {
+          "type": "step",
+          "settings": {
+            "title": "Choose the pathway",
+            "text": "Start with advisory, consulting, implementation, operations, essentials, membership or support."
+          }
+        },
+        "context": {
+          "type": "step",
+          "settings": {
+            "title": "Share the context",
+            "text": "Provide the order, product, business issue, timeline and outcome needed when intake or support is required."
+          }
+        },
+        "output": {
+          "type": "step",
+          "settings": {
+            "title": "Receive the output or route",
+            "text": "The next step may be a digital resource, decision brief, plan, implementation output, support response or follow-up pathway."
+          }
+        },
+        "move": {
+          "type": "step",
+          "settings": {
+            "title": "Move the work forward",
+            "text": "Use the result to proceed, pause, compare options, request deeper support or access a practical resource."
+          }
+        }
+      },
+      "block_order": [
+        "choose",
+        "context",
+        "output",
+        "move"
+      ]
     },
     "service_pathways": {
-      "type": "rbp-service-pathways"
+      "type": "rbp-service-pathways",
+      "settings": {
+        "eyebrow": "Support by stage",
+        "heading": "Clarify, plan, build, run, resource or resolve",
+        "text": "<p>Use the stage of the work to decide where to start.</p>"
+      },
+      "blocks": {
+        "clarify": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Clarify",
+            "title": "Decision support",
+            "text": "Use Advisory when you need risks, trade-offs and a recommended next step.",
+            "button_label": "View Advisory",
+            "url": "/pages/advisory"
+          }
+        },
+        "plan": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Plan",
+            "title": "Roadmap support",
+            "text": "Use Consulting when the issue needs structure before delivery begins.",
+            "button_label": "View Consulting",
+            "url": "/pages/consulting"
+          }
+        },
+        "build": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Build",
+            "title": "Implementation support",
+            "text": "Use Implementation when the work needs setup, documents, workflows or handover.",
+            "button_label": "View Implementation",
+            "url": "/pages/implementation"
+          }
+        },
+        "run": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Run",
+            "title": "Operations support",
+            "text": "Use Operations Hub for recurring business work and practical follow-through.",
+            "button_label": "Open Operations Hub",
+            "url": "/pages/operations-hub"
+          }
+        },
+        "resource": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Resource",
+            "title": "Templates and toolkits",
+            "text": "Use Essentials when a practical resource can help you move without a larger engagement.",
+            "button_label": "Browse Essentials",
+            "url": "/pages/essentials"
+          }
+        },
+        "resolve": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Resolve",
+            "title": "Support routing",
+            "text": "Use Support for existing customer help, onboarding, membership, Business NBN or unclear next steps.",
+            "button_label": "Open Support",
+            "url": "/pages/support"
+          }
+        }
+      },
+      "block_order": [
+        "clarify",
+        "plan",
+        "build",
+        "run",
+        "resource",
+        "resolve"
+      ]
     },
     "sme_positioning": {
       "type": "rbp-split-content",
       "settings": {
         "eyebrow": "For operators",
         "heading": "Support that fits real business constraints",
-        "text": "<p>Use RBP pathways when the work needs commercial context, manual review, booking, onboarding or prepared delivery.</p>",
-        "button_label": "Learn about membership"
+        "text": "<p>Use RBP when the work needs commercial context, practical sequencing, manual review, onboarding or prepared delivery. Membership can support ongoing access when the need is broader than one purchase.</p>",
+        "button_label": "Compare support pathways",
+        "button_url": "/pages/support",
+        "button_variant": "primary"
       }
     },
     "resources": {
-      "type": "rbp-resource-preview"
+      "type": "rbp-resource-preview",
+      "settings": {
+        "eyebrow": "Useful resources",
+        "heading": "Useful starting points before the next step",
+        "text": "<p>Start with confirmed RBP destinations for resources, membership and business connectivity support.</p>"
+      },
+      "blocks": {
+        "essentials": {
+          "type": "resource",
+          "settings": {
+            "type": "Resources",
+            "title": "Essentials",
+            "text": "Templates, toolkits, checklists and supported resource options.",
+            "url": "/pages/essentials"
+          }
+        },
+        "membership": {
+          "type": "resource",
+          "settings": {
+            "type": "Membership",
+            "title": "Membership",
+            "text": "Ongoing access to practical business pathways, resources, offers and support.",
+            "url": "/pages/membership"
+          }
+        },
+        "business_nbn": {
+          "type": "resource",
+          "settings": {
+            "type": "Connectivity",
+            "title": "Business NBN",
+            "text": "Business connectivity availability and next-step support.",
+            "url": "/pages/business-nbn"
+          }
+        }
+      },
+      "block_order": [
+        "essentials",
+        "membership",
+        "business_nbn"
+      ]
     },
     "final_cta": {
-      "type": "rbp-cta-band"
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Next step",
+        "heading": "Not sure where to start?",
+        "text": "<p>Send the business context, order or product details, timing pressure and outcome needed so RBP can route the request correctly.</p>",
+        "button_label": "Contact support with your request",
+        "button_url": "/pages/contact"
+      }
     }
   },
   "order": [
