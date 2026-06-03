@@ -1,0 +1,55 @@
+<section class="rbp-section rbp-surface rbp-collection-guidance">
+  <div class="rbp-container">
+    <div class="rbp-collection-guidance__header">
+      <p class="rbp-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="rbp-heading rbp-heading--md">{{ section.settings.heading | escape }}</h2>
+      <div class="rbp-copy">{{ section.settings.text }}</div>
+    </div>
+    <div class="rbp-card-grid">
+      <article class="rbp-card">
+        <span class="rbp-badge">Type</span>
+        <h3 class="rbp-card__title">{{ section.settings.type_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.type_text | escape }}</p>
+      </article>
+      <article class="rbp-card">
+        <span class="rbp-badge">Delivery</span>
+        <h3 class="rbp-card__title">{{ section.settings.delivery_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.delivery_text | escape }}</p>
+      </article>
+      <article class="rbp-card">
+        <span class="rbp-badge">Support</span>
+        <h3 class="rbp-card__title">{{ section.settings.support_heading | escape }}</h3>
+        <p class="rbp-card__text">{{ section.settings.support_text | escape }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .rbp-collection-guidance__header {
+    max-width: 78rem;
+    margin-bottom: 2.8rem;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "RBP collection guidance",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Compare options" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Use filters and product badges to choose the right fit" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Collections may include templates, toolkits, services, support options and managed pathways. Compare the resource type, delivery model and support level before checkout or enquiry.</p>" },
+    { "type": "text", "id": "type_heading", "label": "Type heading", "default": "Resource or service type" },
+    { "type": "textarea", "id": "type_text", "label": "Type text", "default": "Check whether the product is a template, toolkit, documentation suite, on-demand service, managed service or support option." },
+    { "type": "text", "id": "delivery_heading", "label": "Delivery heading", "default": "Delivery model" },
+    { "type": "textarea", "id": "delivery_text", "label": "Delivery text", "default": "Digital resources may be self-serve. Service, deployed or supported options may require intake, review, booking or manual fulfilment." },
+    { "type": "text", "id": "support_heading", "label": "Support heading", "default": "Support level" },
+    { "type": "textarea", "id": "support_text", "label": "Support text", "default": "Use Support or Advisory before purchase if the right product, package, variant or delivery pathway is unclear." }
+  ],
+  "presets": [
+    { "name": "RBP collection guidance" }
+  ]
+}
+{% endschema %}
