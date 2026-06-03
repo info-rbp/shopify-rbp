@@ -1,43 +1,53 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "hero": {
+      "type": "rbp-page-hero",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "Contact RBP",
+        "heading": "Send a clear support request with the context needed to act",
+        "text": "<p>Use this page for order or product support, onboarding questions, service delivery issues, Business NBN support, membership help or guidance choosing the right pathway.</p>",
+        "align": "left"
       }
     },
-    "image_banner": {
-      "type": "image-banner",
+    "guidance": {
+      "type": "rbp-feature-grid",
       "settings": {
-        "image": "shopify://shop_images/Image_banner_2x_8.png",
-        "image_overlay_opacity": 20,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
+        "eyebrow": "Before you send",
+        "heading": "Include the details that help support route the request",
+        "text": "<p>The clearer the request, the easier it is to route it to support, onboarding, advisory, implementation or the right product pathway.</p>"
+      },
+      "blocks": {
+        "context": { "type": "feature", "settings": { "icon": "01", "title": "Order, product or service", "text": "Include the order number, product name, service pathway or membership context when relevant." } },
+        "issue": { "type": "feature", "settings": { "icon": "02", "title": "Issue and outcome", "text": "Explain what is stuck, what has already happened and what outcome you need." } },
+        "timing": { "type": "feature", "settings": { "icon": "03", "title": "Deadline or timing pressure", "text": "Share any deadline, onboarding date, meeting, renewal, connectivity issue or delivery timing constraint." } },
+        "privacy": { "type": "feature", "settings": { "icon": "04", "title": "Sensitive information", "text": "Do not send passwords, account credentials or unnecessary personal information through the public form." } }
+      },
+      "block_order": ["context", "issue", "timing", "privacy"]
     },
     "form": {
       "type": "contact-form",
       "settings": {
-        "heading": "Questions or comments? Get in touch and we'll be happy to help.",
+        "heading": "Send a support request",
         "heading_size": "h2",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
+        "padding_top": 24,
         "padding_bottom": 36
       }
+    },
+    "resources": {
+      "type": "rbp-resource-preview",
+      "settings": {
+        "eyebrow": "Useful support links",
+        "heading": "Other places that may help",
+        "text": "<p>Use these routes when the question is better handled by a support, resource or connectivity pathway.</p>"
+      },
+      "blocks": {
+        "support": { "type": "resource", "settings": { "type": "Support", "title": "Support", "text": "Choose a support route before sending a request.", "url": "/pages/support" } },
+        "help": { "type": "resource", "settings": { "type": "Help Centre", "title": "Help Centre", "text": "Find common support and fulfilment guidance.", "url": "/pages/help-centre" } },
+        "business_nbn": { "type": "resource", "settings": { "type": "Business NBN", "title": "Business NBN support", "text": "Review connectivity support before submitting a Business NBN request.", "url": "/pages/nbn-support-education" } }
+      },
+      "block_order": ["support", "help", "business_nbn"]
     }
   },
-  "order": [
-    "main",
-    "image_banner",
-    "form"
-  ]
+  "order": ["hero", "guidance", "form", "resources"]
 }
