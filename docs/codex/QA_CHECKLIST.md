@@ -4,7 +4,7 @@
 
 - JSON templates parse successfully.
 - Template `order` entries match declared sections.
-- Template section types resolve to files in `sections/` or the preserved `_blocks` Trade block.
+- Template section types resolve to files in `sections/` or native Trade theme sections.
 - Section and block schema JSON parses successfully.
 - Shopify Theme Check completes with warnings only.
 
@@ -18,7 +18,7 @@ The remaining warnings are inherited from the Trade baseline or intentionally re
 
 ## Manual Storefront QA
 
-- Homepage renders modular RBP sections and preserves the exported Trade block header.
+- Homepage renders modular RBP sections and uses the native Trade header/footer groups.
 - Standard page and contact page still render Trade-native sections.
 - Service landing, service detail, resource hub, membership, marketplace, Business NBN, and onboarding templates are assignable.
 - Default product page remains Trade-native.
@@ -34,4 +34,4 @@ The remaining warnings are inherited from the Trade baseline or intentionally re
 - Configure collections for services, resources and marketplace where used.
 - Configure app proxy endpoints for onboarding and Business NBN before disabling temporary validation.
 - Confirm metaobject definitions for `partner_offer` before relying on automatic marketplace offer rendering.
-- Review the exported Trade `_blocks` header strategy before changing header/navigation files.
+- Review the native Trade header/navigation setup in Shopify Admin before changing header/navigation files.
