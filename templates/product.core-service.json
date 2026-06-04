@@ -3,23 +3,55 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "description": { "type": "description", "settings": {} },
-        "share": { "type": "share", "settings": { "share_label": "Share" } }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
       },
-      "block_order": ["title", "price", "description", "share"],
+      "block_order": [
+        "title",
+        "price",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "share"
+      ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
-        "media_size": "small",
-        "constrain_to_viewport": false,
-        "media_fit": "cover",
+        "color_scheme": "background-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
-        "media_position": "right",
+        "media_position": "left",
         "image_zoom": "lightbox",
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 36
@@ -28,15 +60,145 @@
     "state": {
       "type": "rbp-product-state",
       "settings": {
-        "status": "Intake required",
-        "summary": "Core services require requirements capture before delivery work is confirmed."
+        "eyebrow": "Service workflow",
+        "status": "Intake required after checkout",
+        "summary": "Core services are advisory workflows, not instant digital downloads. After checkout, complete the matching intake form so RBP can review the business context, confirm scope, and begin the agreed service."
       }
     },
-    "guard": { "type": "rbp-product-state-guard" },
-    "benefits": { "type": "rbp-product-benefits" },
-    "info": { "type": "rbp-product-information" },
-    "faq": { "type": "rbp-product-faq" },
-    "help": { "type": "rbp-product-help" }
+    "guard": {
+      "type": "rbp-product-state-guard",
+      "settings": {
+        "badge": "Before checkout",
+        "heading": "Confirm the service fit before relying on timing",
+        "text": "Please use the service pages and intake form to confirm this is the right fit. RBP does not provide legal, tax, accounting, financial product, insurance, or regulated professional advice unless expressly arranged through a qualified provider."
+      }
+    },
+    "benefits": {
+      "type": "rbp-product-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Clear business context",
+            "text": "The intake captures the decision, issue, urgency, and business background before review begins."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Practical output",
+            "text": "The work is framed around usable owner decisions, next steps, and service boundaries."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Follow-on only when useful",
+            "text": "RBP may recommend another service, but only when the issue genuinely needs it."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ],
+      "settings": {
+        "eyebrow": "Before checkout",
+        "text": "<p>Use this section to understand the practical workflow before purchasing a core service.</p>",
+        "heading": "How core services work"
+      }
+    },
+    "information": {
+      "type": "rbp-product-information",
+      "blocks": {
+        "info_1": {
+          "type": "fact",
+          "settings": {
+            "label": "After checkout",
+            "value": "Open the matching intake page, share the requested context, and include any useful documents or links."
+          }
+        },
+        "info_2": {
+          "type": "fact",
+          "settings": {
+            "label": "Delivery style",
+            "value": "Outputs are practical advisory notes, recommendations, scoped next steps, or triage responses depending on the service."
+          }
+        },
+        "info_3": {
+          "type": "fact",
+          "settings": {
+            "label": "The Fixer",
+            "value": "The Fixer is a no-cost intake pathway. Paid fix work begins only if scope and pricing are separately agreed."
+          }
+        }
+      },
+      "block_order": [
+        "info_1",
+        "info_2",
+        "info_3"
+      ],
+      "settings": {
+        "eyebrow": "Service context",
+        "text": "<p>Core services use intake and manual review so RBP can respond to the actual business context.</p>",
+        "heading": "Service information"
+      }
+    },
+    "faq": {
+      "type": "rbp-product-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to complete the intake form?",
+            "answer": "<p>Yes. The intake form gives RBP the context needed to begin the service and route the request correctly.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "question",
+          "settings": {
+            "question": "Is this specialist legal, tax, accounting, or financial advice?",
+            "answer": "<p>No. These services provide practical business support and decision framing. Specialist regulated advice must come from an appropriately qualified provider.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "question",
+          "settings": {
+            "question": "Can RBP recommend another service?",
+            "answer": "<p>Yes. If another service is a better fit, the output can recommend the next pathway. You are not locked into follow-on work.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "eyebrow": "Core service FAQ",
+        "text": "<p>These notes apply to Business Health Check, Business Advisor, Decision Desk, and The Fixer.</p>",
+        "heading": "Questions before checkout"
+      }
+    },
+    "help": {
+      "type": "rbp-product-help",
+      "settings": {
+        "eyebrow": "Need help choosing?",
+        "heading": "Not sure which service fits?",
+        "text": "<p>Compare the Core Services first, or start with the Business Health Check if the issue is broad or unclear.</p>",
+        "button_label": "Compare Core Services",
+        "button_url": "/pages/core-services"
+      }
+    }
   },
-  "order": ["main", "state", "guard", "benefits", "info", "faq", "help"]
+  "order": [
+    "main",
+    "state",
+    "guard",
+    "benefits",
+    "information",
+    "faq",
+    "help"
+  ]
 }
