@@ -4,8 +4,8 @@
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Advisory",
-        "heading": "Advisory support for business decisions that need more than guesswork",
-        "text": "<p>Use Advisory when you need a practical second view before spending money, changing systems, hiring support, or starting implementation.</p>",
+        "heading": "Practical business support when the next move needs clearer thinking",
+        "text": "<p>Remote Business Partner advisory services help small business owners clarify priorities, compare options, prepare for difficult decisions, and move forward without turning every issue into a large consulting project.</p>",
         "align": "left"
       }
     },
@@ -13,153 +13,344 @@
       "type": "rbp-service-router",
       "settings": {
         "eyebrow": "Start with your business need",
-        "heading": "Start with the decision in front of you",
-        "text": "<p>Choose the route that gives you a decision brief, risk view, priority list or recommended next step.</p>"
+        "heading": "Choose the advisory path that matches the uncertainty",
+        "text": "<p>Use the Business Health Check when the issue is broad, Business Advisor for a focused decision, Decision Desk for a deeper comparison, or The Fixer when the issue needs triage first.</p>"
       },
       "blocks": {
-        "decision_support": {
+        "core_services": {
           "type": "service",
           "settings": {
             "icon": "01",
-            "title": "I need decision support",
-            "text": "Use a structured second opinion when the options, risks or next step are not yet clear.",
-            "button_label": "View decision support",
-            "url": "/products/owner-decision-support"
+            "title": "Compare Core Services",
+            "text": "See the full service menu, prices, intake steps, and how to choose the right starting point.",
+            "button_label": "View Core Services",
+            "url": "/pages/core-services"
           }
         },
-        "business_review": {
+        "business_health_check": {
           "type": "service",
           "settings": {
             "icon": "02",
-            "title": "I need a business review",
-            "text": "Review workload, management rhythm, dependencies or risk before changing how the business operates.",
-            "button_label": "Browse review support",
-            "url": "/collections/management-on-demand-services"
+            "title": "I need to know what matters first",
+            "text": "Use the Business Health Check when the business feels noisy, stretched, or hard to prioritise.",
+            "button_label": "Start Health Check",
+            "url": "/products/business-health-check"
           }
         },
-        "choose_service": {
+        "business_advisor": {
           "type": "service",
           "settings": {
             "icon": "03",
-            "title": "I need help choosing the right service",
-            "text": "Compare advisory, consulting, implementation and resource pathways before you buy or enquire.",
-            "button_label": "Compare pathways",
-            "url": "/pages/consulting"
+            "title": "I need advice on a current decision",
+            "text": "Use Business Advisor for a focused advisory session, trade-off review, or practical next-step plan.",
+            "button_label": "Book Business Advisor",
+            "url": "/products/business-advisor"
+          }
+        },
+        "decision_desk": {
+          "type": "service",
+          "settings": {
+            "icon": "04",
+            "title": "I need to compare options properly",
+            "text": "Use Decision Desk when the decision needs a structured comparison, risk view, and recommendation.",
+            "button_label": "Start Decision Desk",
+            "url": "/products/decision-desk"
+          }
+        },
+        "the_fixer": {
+          "type": "service",
+          "settings": {
+            "icon": "05",
+            "title": "Something is stuck or messy",
+            "text": "Use The Fixer when the issue needs triage before scope and pricing can be confirmed.",
+            "button_label": "Request The Fixer",
+            "url": "/products/the-fixer"
           }
         }
       },
-      "block_order": ["decision_support", "business_review", "choose_service"]
+      "block_order": [
+        "core_services",
+        "business_health_check",
+        "business_advisor",
+        "decision_desk",
+        "the_fixer"
+      ]
     },
     "deliverables": {
       "type": "rbp-feature-grid",
       "settings": {
-        "eyebrow": "What you get from Advisory",
-        "heading": "A practical second view before the business commits",
-        "text": "<p>Advisory is designed to make a decision clearer, not to turn every issue into a large project.</p>"
+        "eyebrow": "What advisory gives you",
+        "heading": "Clarity before the business commits more money, time, or energy",
+        "text": "<p>Advisory support is designed to make business decisions more usable. The output should help you decide what to do, what to pause, what to compare, and what needs a specialist.</p>"
       },
       "blocks": {
         "decision_brief": {
           "type": "feature",
           "settings": {
             "icon": "01",
-            "title": "Decision brief",
-            "text": "A concise view of the issue, options, constraints and recommended next move."
+            "title": "Decision framing",
+            "text": "A clear view of the issue, options, constraints, and commercial trade-offs."
+          }
+        },
+        "priority_view": {
+          "type": "feature",
+          "settings": {
+            "icon": "02",
+            "title": "Priority view",
+            "text": "A practical read on what matters now, what can wait, and what needs escalation."
           }
         },
         "risk_review": {
           "type": "feature",
           "settings": {
-            "icon": "02",
-            "title": "Risk and trade-off review",
-            "text": "A practical look at what could go wrong, what matters most and what should be checked before action."
+            "icon": "03",
+            "title": "Risk and boundary check",
+            "text": "A plain-language look at operational, customer, supplier, owner-capacity, and scope risks."
           }
         },
         "next_step": {
           "type": "feature",
           "settings": {
-            "icon": "03",
-            "title": "Recommended next step",
-            "text": "A proceed, pause, compare, delegate or escalate recommendation that matches the business context."
-          }
-        },
-        "escalation": {
-          "type": "feature",
-          "settings": {
             "icon": "04",
-            "title": "Escalation pathway",
-            "text": "A clear route into consulting, implementation, operations support or a self-serve resource if advice is not enough."
+            "title": "Recommended next step",
+            "text": "A proceed, pause, compare, triage, or specialist-referral pathway based on the information provided."
           }
         }
       },
-      "block_order": ["decision_brief", "risk_review", "next_step", "escalation"]
+      "block_order": [
+        "decision_brief",
+        "priority_view",
+        "risk_review",
+        "next_step"
+      ]
     },
     "problems": {
       "type": "rbp-problem-cards",
       "settings": {
         "eyebrow": "Common advisory moments",
-        "heading": "Where a clear outside view helps",
-        "text": "<p>Advisory is best when the business needs clarity before execution, not a large project team.</p>"
+        "heading": "Where a practical outside view helps",
+        "text": "<p>Advisory is best when the owner needs structure before action, not a generic answer or an oversized project.</p>"
       },
       "blocks": {
-        "unclear_priority": { "type": "card", "settings": { "icon": "!", "title": "Too many possible next steps", "text": "You know action is needed, but sequence, priority and ownership are not settled.", "variant": "default" } },
-        "commercial_risk": { "type": "card", "settings": { "icon": "$", "title": "Budget or supplier risk", "text": "A decision will cost money or time, so you need a practical check before committing.", "variant": "blue" } },
-        "founder_bottleneck": { "type": "card", "settings": { "icon": "R", "title": "Owner workload is blocking progress", "text": "The business needs a cleaner role, rhythm or decision process so work can keep moving.", "variant": "flat" } }
+        "too_many_options": {
+          "type": "card",
+          "settings": {
+            "icon": "!",
+            "title": "Too many possible next steps",
+            "text": "The business needs a priority order before the owner commits time, budget, or attention.",
+            "variant": "default"
+          }
+        },
+        "commercial_pressure": {
+          "type": "card",
+          "settings": {
+            "icon": "$",
+            "title": "Commercial pressure is rising",
+            "text": "A supplier, customer, cashflow, or operating decision needs a clearer plan before it becomes urgent.",
+            "variant": "blue"
+          }
+        },
+        "stuck_work": {
+          "type": "card",
+          "settings": {
+            "icon": "R",
+            "title": "Work is stuck between people or systems",
+            "text": "The issue needs triage, ownership, and a practical path rather than more back-and-forth.",
+            "variant": "flat"
+          }
+        }
       },
-      "block_order": ["unclear_priority", "commercial_risk", "founder_bottleneck"]
+      "block_order": [
+        "too_many_options",
+        "commercial_pressure",
+        "stuck_work"
+      ]
     },
     "pathways": {
       "type": "rbp-service-pathways",
       "settings": {
         "eyebrow": "Advisory outcomes",
-        "heading": "Clear deliverables before you commit",
-        "text": "<p>Advisory turns an open question into practical trade-offs, a priority view and a recommended proceed, pause, compare or escalate decision.</p>"
+        "heading": "Clear outputs before follow-on work",
+        "text": "<p>The right output depends on the issue: a health-check summary, an advisory recommendation, a decision brief, a triage response, or preparation for a difficult conversation.</p>"
       },
       "blocks": {
-        "planning": { "type": "pathway", "settings": { "badge": "Planning", "title": "Decision brief or next-step plan", "text": "Turn a loose issue into options, priorities and a recommended next move.", "button_label": "View owner decision support", "url": "/products/owner-decision-support" } },
-        "review": { "type": "pathway", "settings": { "badge": "Review", "title": "Business or operating review", "text": "Check workload, management rhythm, dependencies or risk before building a larger plan.", "button_label": "Browse management support", "url": "/collections/management-on-demand-services" } },
-        "handover": { "type": "pathway", "settings": { "badge": "Escalate", "title": "Move into consulting or implementation", "text": "When the issue is bigger than advice, use advisory to define the scope before deeper support.", "button_label": "Compare consulting", "url": "/pages/consulting" } }
+        "health_check": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Review",
+            "title": "Business Health Check",
+            "text": "Use when the issue is broad, unclear, or connected to several parts of the business.",
+            "button_label": "View Health Check",
+            "url": "/pages/business-health-check"
+          }
+        },
+        "advisor": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Advice",
+            "title": "Business Advisor",
+            "text": "Use when there is a current decision or operating question that needs a focused advisory view.",
+            "button_label": "View Business Advisor",
+            "url": "/pages/business-advisor"
+          }
+        },
+        "decision": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Decision",
+            "title": "Decision Desk",
+            "text": "Use when options need to be compared, documented, and turned into a recommendation.",
+            "button_label": "View Decision Desk",
+            "url": "/pages/decision-desk"
+          }
+        },
+        "fixer": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Triage",
+            "title": "The Fixer",
+            "text": "Use when the issue is stuck, messy, or hard to price without first understanding the context.",
+            "button_label": "View The Fixer",
+            "url": "/pages/the-fixer"
+          }
+        }
       },
-      "block_order": ["planning", "review", "handover"]
+      "block_order": [
+        "health_check",
+        "advisor",
+        "decision",
+        "fixer"
+      ]
     },
     "steps": {
       "type": "rbp-how-it-works",
       "settings": {
         "eyebrow": "How it works",
-        "heading": "From business issue to decision brief",
-        "text": "<p>Advisory keeps the process contained so you can act without turning every question into a large project.</p>"
+        "heading": "From business issue to practical next step",
+        "text": "<p>The advisory workflow keeps the process contained so the owner can act without creating a larger project than the issue needs.</p>"
       },
       "blocks": {
-        "step_1": { "type": "step", "settings": { "title": "Choose the pathway", "text": "Start with the decision, review or support type that best matches the business issue." } },
-        "step_2": { "type": "step", "settings": { "title": "Share the relevant context", "text": "Provide the business background, current constraints, timeline and any known options." } },
-        "step_3": { "type": "step", "settings": { "title": "Receive practical guidance", "text": "Get a clearer view of risks, trade-offs, priorities and sensible next steps." } },
-        "step_4": { "type": "step", "settings": { "title": "Move with confidence", "text": "Use the advice to proceed, pause, compare options or request deeper support." } }
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose the pathway",
+            "text": "Start with the Core Services menu or the service page that best matches the issue."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Complete checkout or request intake",
+            "text": "Paid services begin with checkout. The Fixer begins with a no-cost triage request."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Share the business context",
+            "text": "Use the matching intake form to send the decision, pressure points, constraints, and documents."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Receive practical guidance",
+            "text": "Use the output to proceed, pause, compare options, request scoped work, or seek specialist advice."
+          }
+        }
       },
-      "block_order": ["step_1", "step_2", "step_3", "step_4"]
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
     },
     "resources": {
       "type": "rbp-resource-preview",
       "settings": {
         "eyebrow": "Useful starting points",
-        "heading": "Decision support resources and next steps",
-        "text": "<p>Use confirmed RBP services when you need practical advice, a structured review or a next-step decision before implementation.</p>"
+        "heading": "Start with the smallest service that will clarify the issue",
+        "text": "<p>If you are unsure, compare the Core Services first. If the business feels generally unclear, the Business Health Check is the safest starting point.</p>"
       },
       "blocks": {
-        "owner_decision": { "type": "resource", "settings": { "type": "Service", "title": "Owner Decision Support", "text": "A structured advisory service for options, risks and next-step planning.", "url": "/products/owner-decision-support" } },
-        "monthly_review": { "type": "resource", "settings": { "type": "Service", "title": "Monthly Business Review Setup", "text": "Set up a management review rhythm for decisions, actions and owner visibility.", "url": "/products/monthly-business-review-setup" } },
-        "management_services": { "type": "resource", "settings": { "type": "Collection", "title": "Management On-Demand Services", "text": "Browse practical management services that connect advisory to follow-through.", "url": "/collections/management-on-demand-services" } }
+        "core_services": {
+          "type": "resource",
+          "settings": {
+            "type": "Service menu",
+            "title": "Core Services",
+            "text": "Compare Business Health Check, Business Advisor, Decision Desk, The Fixer, and dispute support.",
+            "url": "/pages/core-services"
+          }
+        },
+        "business_health_check": {
+          "type": "resource",
+          "settings": {
+            "type": "Service",
+            "title": "Business Health Check",
+            "text": "Use this when the problem is broad or the next step is not obvious.",
+            "url": "/products/business-health-check"
+          }
+        },
+        "dispute_support": {
+          "type": "resource",
+          "settings": {
+            "type": "Advisory",
+            "title": "Dispute Resolution Support",
+            "text": "Prepare for difficult commercial conversations and clarify when specialist advice is needed.",
+            "url": "/pages/dispute-resolution-support"
+          }
+        }
       },
-      "block_order": ["owner_decision", "monthly_review", "management_services"]
+      "block_order": [
+        "core_services",
+        "business_health_check",
+        "dispute_support"
+      ]
     },
-    "cta": {
-      "type": "rbp-cta-band",
+    "cta_router": {
+      "type": "rbp-service-router",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Get a practical second view before you commit",
-        "text": "<p>Start with decision support when the next move has commercial risk, budget impact or operational consequences.</p>",
-        "button_label": "Start with Owner Decision Support",
-        "button_url": "/products/owner-decision-support"
-      }
+        "heading": "Start where the decision feels least clear",
+        "text": "<p>For most owners, that means comparing Core Services or starting with the Business Health Check.</p>"
+      },
+      "blocks": {
+        "start_health_check": {
+          "type": "service",
+          "settings": {
+            "icon": "01",
+            "title": "Start with Business Health Check",
+            "text": "Get a structured review before choosing deeper advisory or implementation support.",
+            "button_label": "Start Health Check",
+            "url": "/products/business-health-check"
+          }
+        },
+        "compare_services": {
+          "type": "service",
+          "settings": {
+            "icon": "02",
+            "title": "Compare Core Services",
+            "text": "Review the service menu, prices, intake steps, and best-fit guidance.",
+            "button_label": "Compare services",
+            "url": "/pages/core-services"
+          }
+        }
+      },
+      "block_order": [
+        "start_health_check",
+        "compare_services"
+      ]
     }
   },
-  "order": ["hero", "router", "deliverables", "problems", "pathways", "steps", "resources", "cta"]
+  "order": [
+    "hero",
+    "router",
+    "deliverables",
+    "problems",
+    "pathways",
+    "steps",
+    "resources",
+    "cta_router"
+  ]
 }
