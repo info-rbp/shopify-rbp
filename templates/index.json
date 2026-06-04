@@ -8,8 +8,8 @@
         "text": "<p>Choose the right pathway for a decision, plan, implementation, operations issue, resource or support request.</p>",
         "primary_label": "Find the right support pathway",
         "primary_url": "/pages/support",
-        "secondary_label": "Browse resources",
-        "secondary_url": "/pages/essentials",
+        "secondary_label": "Ask about resources",
+        "secondary_url": "/pages/support",
         "panel_badge": "Start here",
         "panel_heading": "Choose the right pathway",
         "panel_text": "Start with advisory, consulting, implementation, operations, resources or support depending on what your business needs next."
@@ -68,9 +68,9 @@
           "settings": {
             "icon": "05",
             "title": "Essentials",
-            "text": "Browse templates, toolkits, checklists and supported resource options when a self-serve path is enough.",
-            "button_label": "Browse Essentials",
-            "url": "/pages/essentials"
+            "text": "Ask support to help route templates, toolkits, checklists and supported resource options while the Essentials page is being assigned.",
+            "button_label": "Ask about resources",
+            "url": "/pages/support"
           }
         },
         "support": {
@@ -262,9 +262,9 @@
           "settings": {
             "badge": "Resource",
             "title": "Templates and toolkits",
-            "text": "Use Essentials when a practical resource can help you move without a larger engagement.",
-            "button_label": "Browse Essentials",
-            "url": "/pages/essentials"
+            "text": "Ask support to help find the right template, toolkit or practical resource while the Essentials page is being assigned.",
+            "button_label": "Ask about resources",
+            "url": "/pages/support"
           }
         },
         "resolve": {
@@ -311,8 +311,8 @@
           "settings": {
             "type": "Resources",
             "title": "Essentials",
-            "text": "Templates, toolkits, checklists and supported resource options.",
-            "url": "/pages/essentials"
+            "text": "Ask support to help find templates, toolkits, checklists and supported resource options.",
+            "url": "/pages/support"
           }
         },
         "membership": {
@@ -320,7 +320,7 @@
           "settings": {
             "type": "Membership",
             "title": "Membership",
-            "text": "Ongoing access to practical business pathways, resources, offers and support.",
+            "text": "Overview of practical business pathways, resources and support access.",
             "url": "/pages/membership"
           }
         },

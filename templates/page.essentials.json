@@ -4,79 +4,166 @@
       "type": "rbp-page-hero",
       "settings": {
         "eyebrow": "Essentials",
-        "heading": "Self-serve resources, toolkits and practical business documents",
-        "text": "<p>Use Essentials for trustworthy templates, toolkits, checklists, prepared resources and supported options that help you move without starting a full engagement.</p>",
+        "heading": "Business resources and practical support pathways",
+        "text": "<p>Use Essentials to find practical templates, toolkits, documentation support and small business pathways such as Business NBN, finance, insurance and marketplace support. Some options are self-serve; others require provider checks, eligibility review, serviceability, approval or external terms.</p>",
         "align": "left"
       }
     },
-    "resource_types": {
+    "pathways": {
       "type": "rbp-service-pathways",
       "settings": {
-        "eyebrow": "Choose the right resource type",
-        "heading": "Self-serve, prepared or supported",
-        "text": "<p>Essentials separates resource types so you can choose the right level of guidance before checkout or enquiry.</p>"
+        "eyebrow": "Resource pathways",
+        "heading": "Start with the resource or support type you need",
+        "text": "<p>Essentials is a routing hub for practical business resources. If a pathway needs eligibility, serviceability, approval or specialist provider input, use support before relying on it for a decision.</p>"
       },
       "blocks": {
-        "templates": { "type": "pathway", "settings": { "badge": "Templates", "title": "Reusable starting documents", "text": "Use a template when you need a practical document structure and can adapt it to your business.", "button_label": "View template", "url": "/products/online-membership-terms-and-conditions-template" } },
-        "toolkits": { "type": "pathway", "settings": { "badge": "Toolkits", "title": "Guided resource packs", "text": "Use a toolkit when the work needs multiple prompts, examples or operating checks around one business issue.", "button_label": "View toolkit", "url": "/products/marketplace-seller-compliance-toolkit" } },
-        "checklists": { "type": "pathway", "settings": { "badge": "Checklists", "title": "Practical readiness steps", "text": "Use checklists when the goal is to prepare, review, gather information or confirm a process before action." } },
-        "supported": { "type": "pathway", "settings": { "badge": "Supported services", "title": "Review, setup or delivery help", "text": "Use supported options when the resource needs business context, onboarding, deployment or handover.", "button_label": "Browse services", "url": "/collections/individual-on-demand-services" } }
+        "business_nbn": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Connectivity",
+            "title": "Business NBN",
+            "text": "Check business connectivity support, availability boundaries and next steps before choosing a plan or service pathway.",
+            "button_label": "View Business NBN",
+            "url": "/pages/business-nbn"
+          }
+        },
+        "business_finance": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Finance",
+            "title": "Business Finance",
+            "text": "Use support before funding enquiries if you need help understanding what information may be required or where provider eligibility applies.",
+            "button_label": "Ask about finance pathways",
+            "url": "/pages/support"
+          }
+        },
+        "business_insurance": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Insurance",
+            "title": "Business Insurance",
+            "text": "Insurance pathways may involve external quote processes, policy terms, eligibility and provider assessment.",
+            "button_label": "Ask about insurance pathways",
+            "url": "/pages/support"
+          }
+        },
+        "marketplace": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Marketplace",
+            "title": "Marketplace",
+            "text": "Explore marketplace context and partner pathways where available, with external terms or offer conditions checked before action.",
+            "button_label": "View Marketplace",
+            "url": "/pages/marketplace"
+          }
+        }
       },
-      "block_order": ["templates", "toolkits", "checklists", "supported"]
+      "block_order": [
+        "business_nbn",
+        "business_finance",
+        "business_insurance",
+        "marketplace"
+      ]
     },
     "resources": {
       "type": "rbp-resource-preview",
       "settings": {
-        "eyebrow": "Confirmed resources",
-        "heading": "Confirmed resources and supported options",
-        "text": "<p>Start with real RBP templates, toolkits and service pathways. Some items are self-serve, while others may require intake, preparation or delivery support.</p>"
+        "eyebrow": "Templates and toolkits",
+        "heading": "Practical documents and resource support",
+        "text": "<p>Use templates, toolkits and documentation suites when a practical starting point is enough. If the business context is unclear, use support before purchase or implementation.</p>"
       },
       "blocks": {
-        "membership_terms": { "type": "resource", "settings": { "type": "Template", "title": "Online Membership Terms and Conditions Template", "text": "A practical template for membership terms, access rules and customer-facing conditions.", "url": "/products/online-membership-terms-and-conditions-template" } },
-        "seller_toolkit": { "type": "resource", "settings": { "type": "Toolkit", "title": "Marketplace Seller Compliance Toolkit", "text": "A toolkit for sellers managing marketplace terms, listings, refunds and customer communications.", "url": "/products/marketplace-seller-compliance-toolkit" } },
-        "on_demand_services": { "type": "resource", "settings": { "type": "Services", "title": "Individual On-Demand Services", "text": "Browse support options when the resource needs review, setup or business-specific delivery.", "url": "/collections/individual-on-demand-services" } }
+        "templates": {
+          "type": "resource",
+          "settings": {
+            "type": "Templates",
+            "title": "Templates",
+            "text": "Reusable starting documents for practical business tasks where you can adapt the output yourself.",
+            "url": "/pages/support"
+          }
+        },
+        "toolkits": {
+          "type": "resource",
+          "settings": {
+            "type": "Toolkits",
+            "title": "Toolkits",
+            "text": "Guided packs, prompts and checks for common business setup, compliance or operating tasks.",
+            "url": "/pages/support"
+          }
+        },
+        "documentation": {
+          "type": "resource",
+          "settings": {
+            "type": "Documentation",
+            "title": "Documentation suites",
+            "text": "Prepared or supported document pathways for work that needs more structure than a single template.",
+            "url": "/pages/support"
+          }
+        }
       },
-      "block_order": ["membership_terms", "seller_toolkit", "on_demand_services"]
+      "block_order": [
+        "templates",
+        "toolkits",
+        "documentation"
+      ]
     },
-    "features": {
+    "boundaries": {
       "type": "rbp-feature-grid",
       "settings": {
-        "eyebrow": "Before you choose",
-        "heading": "Know what kind of support you are choosing",
-        "text": "<p>Essentials separates instant/self-serve resources from prepared or supported options so expectations are clear before purchase or enquiry.</p>"
+        "eyebrow": "Important boundaries",
+        "heading": "Check provider and support conditions before relying on a pathway",
+        "text": "<p>Essentials helps route practical business support, but it does not guarantee external provider outcomes. Finance, insurance, NBN and partner offers may be subject to provider eligibility, serviceability, approval, quote terms, availability and external conditions.</p>"
       },
       "blocks": {
-        "self_serve": { "type": "feature", "settings": { "icon": "S", "title": "Self-serve support", "text": "Use templates and toolkits when you need a practical starting point and can adapt the output yourself." } },
-        "prepared": { "type": "feature", "settings": { "icon": "P", "title": "Prepared delivery", "text": "Some resources are made to order or require onboarding before the final document or pack is delivered." } },
-        "deployed": { "type": "feature", "settings": { "icon": "D", "title": "Deployed options", "text": "Toolkit variants may include deployment support, setup help or a higher-touch implementation pathway." } }
+        "not_advice": {
+          "type": "feature",
+          "settings": {
+            "icon": "01",
+            "title": "Not regulated advice",
+            "text": "RBP resources do not replace legal, tax, accounting, financial product, insurance or other regulated professional advice."
+          }
+        },
+        "provider_terms": {
+          "type": "feature",
+          "settings": {
+            "icon": "02",
+            "title": "Provider terms apply",
+            "text": "External finance, insurance, NBN and partner pathways can depend on provider eligibility, serviceability, approval, quote terms and availability."
+          }
+        },
+        "support_first": {
+          "type": "feature",
+          "settings": {
+            "icon": "03",
+            "title": "Ask if unsure",
+            "text": "Use Support or Contact before choosing a product, provider pathway or resource if the right route is unclear.",
+            "button_label": "Open Support",
+            "url": "/pages/support"
+          }
+        }
       },
-      "block_order": ["self_serve", "prepared", "deployed"]
-    },
-    "faq": {
-      "type": "rbp-faq",
-      "settings": {
-        "eyebrow": "FAQ",
-        "heading": "Essentials questions",
-        "text": "<p>Use these answers to set expectations before checkout or enquiry.</p>",
-        "open_first": true
-      },
-      "blocks": {
-        "instant": { "type": "question", "settings": { "question": "Are all resources instant downloads?", "answer": "<p>No. Some products are instant or digital, while others are made to order, prepared after onboarding, or available in deployed service variants. Check the product page before purchase.</p>" } },
-        "tailored": { "type": "question", "settings": { "question": "Can resources be tailored?", "answer": "<p>Some products include deployed, plus or premium options where additional support may be available. If the product does not clearly fit, contact support before purchase.</p>" } },
-        "which_option": { "type": "question", "settings": { "question": "What if I am not sure which resource is right?", "answer": "<p>Start with Support or Advisory if the business issue needs a decision before you buy a resource.</p>" } }
-      },
-      "block_order": ["instant", "tailored", "which_option"]
+      "block_order": [
+        "not_advice",
+        "provider_terms",
+        "support_first"
+      ]
     },
     "cta": {
       "type": "rbp-cta-band",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Browse confirmed resources",
-        "text": "<p>Start with confirmed resources and service pathways that are already available in the store.</p>",
-        "button_label": "Browse confirmed resources",
-        "button_url": "/collections/individual-on-demand-services"
+        "heading": "Not sure which resource or pathway fits?",
+        "text": "<p>Contact support with the business context, product or service you are considering, timing pressure and the outcome you need.</p>",
+        "button_label": "Contact support",
+        "button_url": "/pages/contact"
       }
     }
   },
-  "order": ["hero", "resource_types", "resources", "features", "faq", "cta"]
+  "order": [
+    "hero",
+    "pathways",
+    "resources",
+    "boundaries",
+    "cta"
+  ]
 }
