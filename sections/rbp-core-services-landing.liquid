@@ -1,0 +1,82 @@
+{% liquid
+  assign services = 'Business Health Check|CORE-BHC|$250|A structured review of the current business state, pressure points, and best next move.|/pages/business-health-check|/products/business-health-check||Business Advisor|CORE-ADV|$250|Practical owner advisory for decisions, trade-offs, operating questions, and immediate next steps.|/pages/business-advisor|/products/business-advisor||Decision Desk|CORE-DD|$450|A deeper decision review when you are comparing options, weighing risk, or need a documented recommendation.|/pages/decision-desk|/products/decision-desk||The Fixer|CORE-FIX|$0 intake|For stuck, messy, or unusual business issues that need triage before scope and pricing are confirmed.|/pages/the-fixer|/products/the-fixer||Dispute Resolution Support|ADVISORY-DISPUTE|Advisory pathway|Calm preparation support for commercial disputes, negotiation context, and resolution planning.|/pages/dispute-resolution-support|/products/business-advisor' | split: '||'
+  assign guidance = 'Not sure where to start?|Use the Business Health Check when the problem is broad, unclear, or you want a priority map before spending more.||Already know the decision?|Use Business Advisor for a focused advisory session or Decision Desk for a more formal comparison and recommendation.||Issue is messy or operational?|Use The Fixer when the work needs triage first because the problem is unusual, blocked, or hard to price upfront.||Dispute or negotiation pressure?|Use Dispute Resolution Support when you need preparation, options, and calm commercial framing before the next conversation.' | split: '||'
+  assign steps = 'Buy or request the service|Paid services complete checkout first. The Fixer begins with a no-cost intake request.||Complete the intake|Share business context, the decision or issue, urgency, and any documents that would help.||RBP reviews the context|The work is framed around commercially practical next steps, not generic templates.||Receive the output|You receive the relevant review, advisory notes, recommendation, or scoped next step.||Move only if useful|Follow-on work is recommended only when the issue genuinely needs it.' | split: '||'
+%}
+
+<section class='rbp-core-services' aria-labelledby='RbpCoreServicesTitle'>
+  <div class='page-width'>
+    <header class='rbp-core-services__header'>
+      <p class='rbp-core-services__eyebrow'>Core service menu</p>
+      <h2 id='RbpCoreServicesTitle' class='rbp-core-services__title'>Pick the support that matches the decision in front of you.</h2>
+      <p class='rbp-core-services__intro'>Remote Business Partner services are built for owners who need clear thinking, structured action, and a practical next step without turning every issue into a long consulting project.</p>
+    </header>
+
+    <div class='rbp-core-services__grid' role='list' aria-label='Core service options'>
+      {% for item in services %}
+        {% assign parts = item | split: '|' %}
+        <article class='rbp-core-services__card' role='listitem'>
+          <div class='rbp-core-services__code'>{{ parts[1] }}</div>
+          <h3 class='rbp-core-services__card-title'>{{ parts[0] }}</h3>
+          <p class='rbp-core-services__price'>{{ parts[2] }}</p>
+          <p class='rbp-core-services__copy'>{{ parts[3] }}</p>
+          <div class='rbp-core-services__actions'>
+            <a class='rbp-core-services__link' href='{{ parts[4] }}'>Read details</a>
+            <a class='rbp-core-services__link rbp-core-services__link--strong' href='{{ parts[5] }}'>Start</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class='rbp-core-services__band'>
+      <div>
+        <p class='rbp-core-services__eyebrow'>Selection guidance</p>
+        <h2 class='rbp-core-services__subhead'>Choose by the kind of uncertainty you are carrying.</h2>
+      </div>
+      <div class='rbp-core-services__guidance' role='list'>
+        {% for item in guidance %}
+          {% assign parts = item | split: '|' %}
+          <article class='rbp-core-services__guidance-item' role='listitem'>
+            <h3>{{ parts[0] }}</h3>
+            <p>{{ parts[1] }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class='rbp-core-services__process'>
+      <p class='rbp-core-services__eyebrow'>How it works</p>
+      <ol class='rbp-core-services__steps'>
+        {% for item in steps %}
+          {% assign parts = item | split: '|' %}
+          <li><span>{{ forloop.index }}</span><div><h3>{{ parts[0] }}</h3><p>{{ parts[1] }}</p></div></li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <aside class='rbp-core-services__note' aria-label='Service boundaries'>
+      <div>
+        <p class='rbp-core-services__eyebrow'>Scope boundary</p>
+        <h2 class='rbp-core-services__subhead'>Practical business support, not regulated professional advice.</h2>
+      </div>
+      <p>Remote Business Partner does not provide legal, tax, accounting, financial product, insurance, or regulated professional advice unless that is expressly arranged through an appropriately qualified provider. Services help clarify decisions, prepare options, organise issues, and decide the next commercial move.</p>
+    </aside>
+
+    <div class='rbp-core-services__final'>
+      <h2>Start with the smallest useful step.</h2>
+      <p>If the best service is not obvious, the Business Health Check is the safest entry point. If you already know the exact decision, go directly to the relevant service.</p>
+      <div class='rbp-core-services__final-actions'>
+        <a class='button' href='/products/business-health-check'>Start with Business Health Check</a>
+        <a class='button button--secondary' href='/pages/advisory'>View advisory overview</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .rbp-core-services{background:rgb(var(--color-background));padding:clamp(3rem,7vw,6rem) 0}.rbp-core-services__header{max-width:58rem;margin-bottom:2.5rem}.rbp-core-services__eyebrow{margin:0 0 .75rem;color:rgba(var(--color-foreground),.62);font-size:.82rem;font-weight:700;letter-spacing:0;text-transform:uppercase}.rbp-core-services__title,.rbp-core-services__subhead,.rbp-core-services__final h2{margin:0;color:rgb(var(--color-foreground));line-height:1.05}.rbp-core-services__title{max-width:52rem;font-size:clamp(2.2rem,5vw,4rem)}.rbp-core-services__subhead{font-size:clamp(1.7rem,3vw,2.6rem)}.rbp-core-services__intro,.rbp-core-services__copy,.rbp-core-services__guidance-item p,.rbp-core-services__steps p,.rbp-core-services__note p,.rbp-core-services__final p{color:rgba(var(--color-foreground),.72);line-height:1.65}.rbp-core-services__intro{max-width:46rem;margin:1rem 0 0;font-size:1.12rem}.rbp-core-services__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem}.rbp-core-services__card,.rbp-core-services__guidance-item,.rbp-core-services__note,.rbp-core-services__final{border:1px solid rgba(var(--color-foreground),.12);border-radius:8px;background:rgba(var(--color-foreground),.025)}.rbp-core-services__card{display:flex;min-height:22rem;flex-direction:column;padding:1.35rem}.rbp-core-services__code,.rbp-core-services__price{color:rgba(var(--color-foreground),.62);font-size:.78rem;font-weight:700;letter-spacing:0;text-transform:uppercase}.rbp-core-services__card-title{margin:1rem 0 .65rem;font-size:1.35rem;line-height:1.15}.rbp-core-services__price{margin:0 0 1rem}.rbp-core-services__copy{margin:0}.rbp-core-services__actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:auto;padding-top:1.2rem}.rbp-core-services__link{color:rgb(var(--color-foreground));font-weight:700;text-decoration:underline;text-underline-offset:.25rem}.rbp-core-services__link--strong{color:rgb(var(--color-button))}.rbp-core-services__band,.rbp-core-services__process,.rbp-core-services__note,.rbp-core-services__final{margin-top:clamp(2rem,5vw,4rem)}.rbp-core-services__band,.rbp-core-services__note{display:grid;grid-template-columns:minmax(16rem,.8fr) minmax(0,1.2fr);gap:2rem;align-items:start}.rbp-core-services__guidance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.rbp-core-services__guidance-item{padding:1.2rem}.rbp-core-services__guidance-item h3,.rbp-core-services__steps h3{margin:0 0 .5rem;font-size:1.05rem}.rbp-core-services__guidance-item p,.rbp-core-services__steps p,.rbp-core-services__note p{margin:0}.rbp-core-services__steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;margin:1.3rem 0 0;padding:0;list-style:none}.rbp-core-services__steps li{display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:.8rem;align-items:start}.rbp-core-services__steps span{display:grid;width:2.2rem;height:2.2rem;place-items:center;border-radius:999px;background:rgb(var(--color-foreground));color:rgb(var(--color-background));font-size:.88rem;font-weight:700}.rbp-core-services__note{padding:1.5rem}.rbp-core-services__final{padding:clamp(1.5rem,4vw,3rem)}.rbp-core-services__final h2{font-size:clamp(1.8rem,3vw,2.8rem)}.rbp-core-services__final-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.4rem}@media screen and (max-width:1199px){.rbp-core-services__grid,.rbp-core-services__steps{grid-template-columns:repeat(2,minmax(0,1fr))}}@media screen and (max-width:749px){.rbp-core-services__grid,.rbp-core-services__band,.rbp-core-services__guidance,.rbp-core-services__steps,.rbp-core-services__note{grid-template-columns:1fr}.rbp-core-services__card{min-height:0}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"RBP Core Services","settings":[],"presets":[{"name":"RBP Core Services"}]}
+{% endschema %}
