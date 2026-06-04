@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Help Centre",
+        "heading": "Help Centre",
+        "text": "<p>Find practical support guidance for orders, purchases, Business Health Check, Core Services, Business NBN, membership, marketplace pathways and contacting RBP.</p>",
+        "align": "left"
+      }
+    },
+    "topics": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Help Topics",
+        "heading": "Common support areas",
+        "text": "<p>Use these topics to decide what information to include when contacting support.</p>"
+      },
+      "blocks": {
+        "account": { "type": "feature", "settings": { "icon": "A", "title": "Account access", "text": "Include the email address used with RBP, the access issue and any order or membership context.", "button_label": "Contact support", "url": "/pages/contact" } },
+        "orders": { "type": "feature", "settings": { "icon": "O", "title": "Orders and purchases", "text": "Include the order number, product or service name, delivery issue and preferred contact method.", "button_label": "Contact support", "url": "/pages/contact" } },
+        "health_check": { "type": "feature", "settings": { "icon": "H", "title": "Business Health Check", "text": "Include the business context, the issue you want reviewed and any deadlines or constraints." } },
+        "core_services": { "type": "feature", "settings": { "icon": "C", "title": "Core Services", "text": "Include the service being considered, current business problem and whether you need advice, intake or delivery support.", "button_label": "View Core Services", "url": "/pages/core-services" } },
+        "business_nbn": { "type": "feature", "settings": { "icon": "N", "title": "Business NBN support", "text": "Include the business address, current service status, provider if known, activation timing, preferred contact method and urgent operational constraints.", "button_label": "Contact Business NBN Support", "url": "/pages/contact" } },
+        "membership": { "type": "feature", "settings": { "icon": "M", "title": "Membership", "text": "Ask RBP to confirm current membership availability, inclusions, application steps and support pathways.", "button_label": "Ask about membership", "url": "/pages/contact" } },
+        "marketplace": { "type": "feature", "settings": { "icon": "P", "title": "Marketplace and partner offers", "text": "Partner offers are subject to partner terms, eligibility and availability. RBP does not guarantee offer access or approval.", "button_label": "View Marketplace", "url": "/pages/marketplace" } },
+        "contact": { "type": "feature", "settings": { "icon": "S", "title": "Contact and support", "text": "Use contact support when the correct product, service, marketplace pathway or next step is unclear.", "button_label": "Contact support", "url": "/pages/contact" } }
+      },
+      "block_order": ["account", "orders", "health_check", "core_services", "business_nbn", "membership", "marketplace", "contact"]
+    },
+    "faq": {
+      "type": "rbp-faq",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Support questions",
+        "text": "<p>These answers provide a clean fallback while Help Centre metaobject articles are populated in Shopify Admin.</p>",
+        "open_first": true
+      },
+      "blocks": {
+        "what_to_include": { "type": "question", "settings": { "question": "What should I include in a support request?", "answer": "<p>Include the business context, order or product details, timeline, preferred contact method and the outcome you need.</p>" } },
+        "nbn": { "type": "question", "settings": { "question": "What should I include for Business NBN support?", "answer": "<p>Include the business address, current service status, provider if known, activation timing, preferred contact method and any urgent operational constraints. Final serviceability, technology type, speed and activation timing must be confirmed before relying on a plan.</p>" } },
+        "marketplace": { "type": "question", "settings": { "question": "Are marketplace offers guaranteed?", "answer": "<p>No. Partner offers, funding pathways, insurance quotes and NBN pathways may depend on eligibility, availability, provider terms and final review.</p>" } }
+      },
+      "block_order": ["what_to_include", "nbn", "marketplace"]
+    }
+  },
+  "order": ["hero", "topics", "faq"]
+}

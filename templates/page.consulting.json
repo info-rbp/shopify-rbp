@@ -33,8 +33,8 @@
             "badge": "Consulting",
             "title": "Plan",
             "text": "Use Consulting when the business needs diagnosis, recommendations, scope and a roadmap before delivery starts.",
-            "button_label": "Browse consulting services",
-            "url": "/collections/management-on-demand-services"
+            "button_label": "Request consulting review",
+            "url": "/pages/contact"
           }
         },
         "implementation": {
@@ -58,9 +58,9 @@
         "text": "<p>Use consulting when the business needs structured problem-solving before anyone starts building, configuring or outsourcing the work.</p>"
       },
       "blocks": {
-        "systems": { "type": "feature", "settings": { "icon": "S", "title": "Business systems review", "text": "Map where tools, workflows, reporting or handovers are creating friction.", "button_label": "View systems alignment", "url": "/products/operating-model-and-systems-alignment-review" } },
-        "process": { "type": "feature", "settings": { "icon": "P", "title": "Process and operating model improvement", "text": "Clarify ownership, decision rhythm and recurring work before changing how the team operates.", "button_label": "Browse management services", "url": "/collections/management-on-demand-services" } },
-        "roadmap": { "type": "feature", "settings": { "icon": "R", "title": "Roadmap and scope definition", "text": "Turn a broad business problem into staged recommendations, priorities and implementation choices.", "button_label": "View bundled support", "url": "/collections/bundled-on-demand-services" } }
+        "systems": { "type": "feature", "settings": { "icon": "S", "title": "Business Systems Review", "text": "Map where tools, workflows, reporting or handovers are creating friction.", "button_label": "View Business Systems Review", "url": "/pages/business-systems-review" } },
+        "process": { "type": "feature", "settings": { "icon": "P", "title": "Operating Model Review", "text": "Clarify ownership, decision rhythm and recurring work before changing how the team operates.", "button_label": "View Operating Model Review", "url": "/pages/operating-model-review" } },
+        "roadmap": { "type": "feature", "settings": { "icon": "R", "title": "Roadmap & Scope Definition", "text": "Turn a broad business problem into staged recommendations, priorities and implementation choices.", "button_label": "View Roadmap & Scope Definition", "url": "/pages/roadmap-scope-definition" } }
       },
       "block_order": ["systems", "process", "roadmap"]
     },
@@ -72,9 +72,9 @@
         "text": "<p>Each pathway is designed to clarify the current state, define practical options and show what implementation should look like.</p>"
       },
       "blocks": {
-        "project_support": { "type": "pathway", "settings": { "badge": "Project support", "title": "You need a practical improvement plan", "text": "Use consulting to turn a complex issue into a realistic scope, sequence and operating roadmap.", "button_label": "Browse bundled services", "url": "/collections/bundled-on-demand-services" } },
-        "operations": { "type": "pathway", "settings": { "badge": "Operations", "title": "Your operating model needs attention", "text": "Review systems, roles, workflows, reporting and management rhythm before implementation.", "button_label": "View management services", "url": "/collections/management-on-demand-services" } },
-        "outsourced": { "type": "pathway", "settings": { "badge": "Ongoing", "title": "You may need managed or outsourced support", "text": "When internal capacity is limited, consulting can define what should be handled externally.", "button_label": "View managed services", "url": "/collections/managed-services-outsourced-solutions" } }
+        "project_support": { "type": "pathway", "settings": { "badge": "Project support", "title": "You need a practical improvement plan", "text": "Use consulting to turn a complex issue into a realistic scope, sequence and operating roadmap.", "button_label": "View Roadmap & Scope Definition", "url": "/pages/roadmap-scope-definition" } },
+        "operations": { "type": "pathway", "settings": { "badge": "Operations", "title": "Your operating model needs attention", "text": "Review systems, roles, workflows, reporting and management rhythm before implementation.", "button_label": "View Operating Model Review", "url": "/pages/operating-model-review" } },
+        "outsourced": { "type": "pathway", "settings": { "badge": "Ongoing", "title": "You may need managed or outsourced support", "text": "When internal capacity is limited, consulting can define what should be handled externally.", "button_label": "View Managed Services", "url": "/pages/managed-services" } }
       },
       "block_order": ["project_support", "operations", "outsourced"]
     },
@@ -114,8 +114,8 @@
         "eyebrow": "Next step",
         "heading": "Build a consulting roadmap",
         "text": "<p>Use consulting to define the work, sequence the priorities and choose the right implementation route.</p>",
-        "button_label": "Build a consulting roadmap",
-        "button_url": "/collections/management-on-demand-services"
+        "button_label": "Request consulting review",
+        "button_url": "/pages/contact"
       }
     }
   },

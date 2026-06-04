@@ -4,7 +4,6 @@
   assign bizcover_url = section.settings.bizcover_url | default: 'https://www.bizcover.com.au/'
   assign insurance_titles = 'Public Liability Insurance||Professional Indemnity Insurance||Cyber Liability Insurance||Business Insurance Pack||Management Liability Insurance||Commercial Property Insurance||Business Interruption Insurance' | split: '||'
   assign insurance_descriptions = 'Information for businesses considering cover connected to injury or property damage claims from third parties.||Information for businesses that provide professional advice, services or recommendations.||Information for businesses considering cover connected to cyber events, data incidents or online risks.||Information for businesses comparing packaged cover across common operational risks.||Information for businesses reviewing cover connected to management decisions and governance risk.||Information for businesses with premises, contents, fixtures or other commercial property considerations.||Information for businesses considering cover connected to interruption after an insured event.' | split: '||'
-  assign insurance_urls = '/pages/public-liability-insurance||/pages/professional-indemnity-insurance||/pages/cyber-liability-insurance||/pages/business-insurance-pack||/pages/management-liability-insurance||/pages/commercial-property-insurance||/pages/business-interruption-insurance' | split: '||'
   assign industry_titles = 'Trades||Consultants||Retail||Hospitality||Professional Services||Contractors||Online Businesses' | split: '||'
   assign industry_descriptions = 'Review public liability, tools, vehicle and site access considerations.||Review professional indemnity, public liability and contract requirements.||Review customer-facing risk, stock, property and interruption considerations.||Review premises, staff, public liability and interruption considerations.||Review advice, privacy, professional services and management considerations.||Review project, site, client and subcontractor insurance expectations.||Review cyber, professional services, product and customer data considerations.' | split: '||'
 %}
@@ -36,10 +35,7 @@
               <h3>{{ insurance_title }}</h3>
               <p>{{ insurance_descriptions[insurance_index] }}</p>
             </div>
-            <div class="rbp-card__actions">
-              <a class="rbp-text-link" href="{{ insurance_urls[insurance_index] }}">Learn More</a>
-              <a class="rbp-text-link rbp-text-link--strong" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
-            </div>
+            <a class="rbp-text-link rbp-text-link--strong" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
           </article>
         {% endfor %}
       </div>
@@ -86,7 +82,7 @@
     </div>
 
     <div class="rbp-disclosure" role="note">
-      <strong>Disclosure:</strong> RBP provides general information and referral pathways only. Insurance quotes, policy options, eligibility, pricing and product terms are handled by BizCover. Review all policy terms, exclusions and conditions before deciding whether a product is suitable. Remote Business Partner does not guarantee insurance acceptance, provider approval or commercial results.
+      <strong>Disclosure:</strong> RBP provides general information and referral pathways only and does not provide personal insurance advice. Insurance quotes, policy options, eligibility, pricing and product terms are handled by BizCover. Review all policy terms, exclusions and conditions before deciding whether a product is suitable. Remote Business Partner does not guarantee quotes, coverage, price, suitability, eligibility, insurance acceptance, policy approval or commercial results.
     </div>
   </div>
 </section>

@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Business NBN Support",
+        "heading": "Business NBN support and next-step guidance",
+        "text": "<p>Use this page when business connectivity, address checks, plan comparison or activation next steps need practical support. Final serviceability, technology type, speed and activation timing must be confirmed before relying on a plan.</p>",
+        "align": "left"
+      }
+    },
+    "guidance": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Support Guidance",
+        "heading": "What to include in a Business NBN support request",
+        "text": "<p>The right context helps RBP route the request and avoid overclaiming availability before final checks are complete.</p>"
+      },
+      "blocks": {
+        "address": { "type": "feature", "settings": { "icon": "01", "title": "Business address", "text": "Include the full business address and any suite, unit, level or premises details needed for review." } },
+        "current_service": { "type": "feature", "settings": { "icon": "02", "title": "Current service status", "text": "Include the current provider if known, current service status, outage or migration pressure and whether activation timing is urgent." } },
+        "constraints": { "type": "feature", "settings": { "icon": "03", "title": "Operational constraints", "text": "Include preferred contact method, trading hours, downtime sensitivity, static IP needs, voice or cloud dependencies and any urgent operational constraints." } },
+        "boundaries": { "type": "feature", "settings": { "icon": "04", "title": "Availability boundary", "text": "Address acceptance and plan comparison are not final serviceability approval. Final serviceability, technology type, speed and activation details must be confirmed before activation." } }
+      },
+      "block_order": ["address", "current_service", "constraints", "boundaries"]
+    },
+    "contact": {
+      "type": "rbp-contact-panel",
+      "settings": {
+        "eyebrow": "Business NBN support",
+        "heading": "Contact Business NBN Support",
+        "text": "<p>For Business NBN support, include the business address, current service status, provider if known, activation timing, preferred contact method and any urgent operational constraints.</p>",
+        "button_label": "Contact Business NBN Support",
+        "button_url": "/pages/contact",
+        "aside_heading": "Before relying on a plan",
+        "aside_text": "<p>Final serviceability, technology type, speed and activation timing must be confirmed before relying on a plan.</p>"
+      }
+    }
+  },
+  "order": ["hero", "guidance", "contact"]
+}

@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Managed Services",
+        "heading": "Managed services support for recurring business work",
+        "text": "<p>Use managed services when recurring operational tasks, admin workflows or follow-through need a clearer support rhythm and agreed scope.</p>",
+        "align": "left"
+      }
+    },
+    "included": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Scope",
+        "heading": "What managed support can include",
+        "text": "<p>Managed services are scoped around practical recurring work, communication rhythm and clear ownership.</p>"
+      },
+      "blocks": {
+        "recurring": { "type": "feature", "settings": { "icon": "01", "title": "Recurring support rhythm", "text": "Agree the recurring tasks, review cadence, communication channel and expected handover points." } },
+        "operations": { "type": "feature", "settings": { "icon": "02", "title": "Operational follow-through", "text": "Support can cover admin workflows, registers, documentation upkeep, coordination and practical operating tasks where agreed." } },
+        "reporting": { "type": "feature", "settings": { "icon": "03", "title": "Status and escalation", "text": "Define what needs status reporting, what should be escalated and what information the business owner needs to provide." } },
+        "excluded": { "type": "feature", "settings": { "icon": "04", "title": "What is not included", "text": "Managed services do not include legal, tax, accounting, financial, insurance, HR, valuation or regulated professional advice unless separately arranged through a qualified provider." } },
+        "boundaries": { "type": "feature", "settings": { "icon": "05", "title": "Boundaries and exclusions", "text": "Emergency response, unlimited implementation, platform administration without access, specialist professional work and unscoped project delivery are excluded unless separately agreed." } },
+        "request": { "type": "feature", "settings": { "icon": "06", "title": "Request support", "text": "Share the recurring work, current pain point, expected volume, tools involved, access requirements and timing.", "button_label": "Request managed services support", "url": "/pages/contact" } }
+      },
+      "block_order": ["recurring", "operations", "reporting", "excluded", "boundaries", "request"]
+    },
+    "contact": {
+      "type": "rbp-contact-panel",
+      "settings": {
+        "eyebrow": "Managed services enquiry",
+        "heading": "Request managed services support",
+        "text": "<p>Send the recurring work, business context, current systems, support frequency and any constraints so RBP can assess the right next step.</p>",
+        "button_label": "Request managed services support",
+        "button_url": "/pages/contact",
+        "aside_heading": "What to include",
+        "aside_text": "<p>Include task types, frequency, tools, owners, current blockers, access requirements, deadlines and whether the work needs setup before recurring support starts.</p>"
+      }
+    }
+  },
+  "order": ["hero", "included", "contact"]
+}

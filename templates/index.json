@@ -8,8 +8,8 @@
         "text": "<p>Choose the right pathway for a decision, plan, implementation, operations issue, resource or support request.</p>",
         "primary_label": "Find the right support pathway",
         "primary_url": "/pages/support",
-        "secondary_label": "Ask about resources",
-        "secondary_url": "/pages/support",
+        "secondary_label": "Browse Essentials",
+        "secondary_url": "/pages/essentials",
         "panel_badge": "Start here",
         "panel_heading": "Choose the right pathway",
         "panel_text": "Start with advisory, consulting, implementation, operations, resources or support depending on what your business needs next."
@@ -68,9 +68,9 @@
           "settings": {
             "icon": "05",
             "title": "Essentials",
-            "text": "Ask support to help route templates, toolkits, checklists and supported resource options while the Essentials page is being assigned.",
-            "button_label": "Ask about resources",
-            "url": "/pages/support"
+            "text": "Browse templates, toolkits, checklists, Business NBN, marketplace pathways and supported resource options.",
+            "button_label": "Browse Essentials",
+            "url": "/pages/essentials"
           }
         },
         "support": {
@@ -261,10 +261,10 @@
           "type": "pathway",
           "settings": {
             "badge": "Resource",
-            "title": "Templates and toolkits",
-            "text": "Ask support to help find the right template, toolkit or practical resource while the Essentials page is being assigned.",
-            "button_label": "Ask about resources",
-            "url": "/pages/support"
+            "title": "Templates, toolkits and support pathways",
+            "text": "Use Essentials when a practical resource, connectivity path, provider pathway or supported business resource can help.",
+            "button_label": "Browse Essentials",
+            "url": "/pages/essentials"
           }
         },
         "resolve": {
@@ -311,8 +311,8 @@
           "settings": {
             "type": "Resources",
             "title": "Essentials",
-            "text": "Ask support to help find templates, toolkits, checklists and supported resource options.",
-            "url": "/pages/support"
+            "text": "Templates, toolkits, documentation suites, Business NBN and supported business pathways.",
+            "url": "/pages/essentials"
           }
         },
         "membership": {

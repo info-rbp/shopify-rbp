@@ -1,10 +1,10 @@
 {{ 'rbp-marketplace.css' | asset_url | stylesheet_tag }}
 
 {% liquid
-  assign pathway_titles = 'Business NBN||Business Finance||Business Insurance||Partner Offers||Offer Categories||Marketplace Support' | split: '||'
-  assign pathway_descriptions = 'Check a business address, then review Business NBN plan options with final serviceability reviewed before activation.||Compare common finance product types and submit a provider-neutral funding enquiry for RBP review.||Review general insurance information and continue directly to BizCover for quote options.||Browse active public partner offers when approved offer data is available.||Explore offer categories that have active public offers with valid partner CTAs.||Ask support to confirm whether a marketplace pathway or partner offer is available for your situation.' | split: '||'
-  assign pathway_ctas = 'Check Business NBN||Enquire About Funding||Get A Quote||Browse Partner Offers||View Offer Categories||Contact Support' | split: '||'
-  assign pathway_urls = '/pages/business-nbn||/pages/enquire-about-funding||/pages/business-insurance||/pages/offers||/pages/offer-categories||/pages/contact' | split: '||'
+  assign pathway_titles = 'Business NBN||Business Finance||Business Insurance||Partner Offers||Offer Categories||Marketplace Terms||Marketplace Support' | split: '||'
+  assign pathway_descriptions = 'Check a business address, then review Business NBN plan options with final serviceability reviewed before activation.||Compare common finance product types and submit a provider-neutral funding enquiry for RBP review.||Review general insurance information and continue directly to BizCover for quote options.||Browse active public partner offers when approved offer data is available.||Explore offer categories that have active public offers with valid partner CTAs.||Review marketplace participation, partner offer, availability and advice-boundary terms.||Ask support to confirm whether a marketplace pathway or partner offer is available for your situation.' | split: '||'
+  assign pathway_ctas = 'Check Business NBN||View Business Finance||Get A Quote||Browse Partner Offers||View Offer Categories||Read Marketplace Terms||Contact Support' | split: '||'
+  assign pathway_urls = '/pages/business-nbn||/pages/business-finance||/pages/business-insurance||/pages/offers||/pages/offer-categories||/pages/marketplace-terms||/pages/contact' | split: '||'
 %}
 
 <section class="rbp-marketplace rbp-section" aria-labelledby="rbp-marketplace-title">
