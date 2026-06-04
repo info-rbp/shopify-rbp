@@ -1,0 +1,598 @@
+{%- liquid
+  assign has_heading = false
+  if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.body != blank
+    assign has_heading = true
+  endif
+-%}
+
+<section
+  class="rbp-pathway-card-strip rbp-pathway-card-strip--{{ section.settings.layout }}{% if section.settings.enable_mobile_scroll %} rbp-pathway-card-strip--mobile-scroll{% endif %}"
+  style="
+    --rbp-pathway-card-strip-bg: {{ section.settings.background_color }};
+    --rbp-pathway-card-strip-padding-top: {{ section.settings.section_padding_top }}px;
+    --rbp-pathway-card-strip-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    --rbp-pathway-card-strip-columns: {{ section.settings.cards_per_row_desktop }};
+  "
+>
+  <div class="rbp-pathway-card-strip__inner rbp-container--wide">
+    {%- if has_heading -%}
+      <div class="rbp-pathway-card-strip__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="rbp-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="rbp-heading rbp-heading--lg">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <div class="rbp-pathway-card-strip__body rte">{{ section.settings.body }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="rbp-pathway-card-strip__list" role="list" aria-label="{{ section.settings.heading | default: 'Business support pathways' | escape }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign card_link = block.settings.link | default: '#'
+            assign card_title = block.settings.title | default: 'Pathway'
+            assign card_description_id = 'RbpPathwayCardDescription-' | append: section.id | append: '-' | append: block.id
+            assign image_loading = 'lazy'
+            assign image_priority = 'low'
+            if forloop.index <= 2
+              assign image_loading = 'eager'
+              assign image_priority = 'auto'
+            endif
+          -%}
+
+          <a
+            class="rbp-pathway-card-strip__card"
+            href="{{ card_link }}"
+            role="listitem"
+            {% if block.settings.description != blank %}
+              aria-describedby="{{ card_description_id }}"
+            {% endif %}
+            style="
+              --rbp-pathway-card-bg: {{ block.settings.card_background }};
+              --rbp-pathway-card-color: {{ block.settings.text_color }};
+              --rbp-pathway-card-overlay-opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            <span class="rbp-pathway-card-strip__media" aria-hidden="{% if block.settings.image_alt_text == blank %}true{% else %}false{% endif %}">
+              {%- if block.settings.image != blank or block.settings.mobile_image != blank -%}
+                {% render 'rbp-responsive-image',
+                  image: block.settings.image,
+                  mobile_image: block.settings.mobile_image,
+                  alt: block.settings.image_alt_text,
+                  class: 'rbp-pathway-card-strip__image',
+                  loading: image_loading,
+                  fetchpriority: image_priority,
+                  sizes: '(min-width: 1200px) 25vw, (min-width: 700px) 40vw, 78vw',
+                  desktop_width: 1200,
+                  mobile_width: 900
+                %}
+              {%- else -%}
+                <span class="rbp-pathway-card-strip__placeholder">
+                  <span class="rbp-pathway-card-strip__placeholder-mark">{{ block.settings.icon | default: forloop.index | escape }}</span>
+                  <span class="rbp-pathway-card-strip__placeholder-line">{{ card_title | escape }}</span>
+                </span>
+              {%- endif -%}
+            </span>
+
+            <span class="rbp-pathway-card-strip__overlay" aria-hidden="true"></span>
+
+            <span class="rbp-pathway-card-strip__content">
+              {%- if block.settings.badge != blank -%}
+                <span class="rbp-pathway-card-strip__badge">{{ block.settings.badge | escape }}</span>
+              {%- endif -%}
+
+              <span class="rbp-pathway-card-strip__title">{{ card_title | escape }}</span>
+
+              {%- if block.settings.description != blank -%}
+                <span class="rbp-pathway-card-strip__description" id="{{ card_description_id }}">
+                  {{ block.settings.description | escape }}
+                </span>
+              {%- endif -%}
+
+              <span class="rbp-pathway-card-strip__action">
+                {{ block.settings.link_label | default: 'View pathway' | escape }}
+                <span aria-hidden="true">-&gt;</span>
+              </span>
+            </span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- elsif request.design_mode -%}
+      <div class="rbp-pathway-card-strip__empty">
+        Add pathway cards in the theme editor.
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .rbp-pathway-card-strip {
+    padding-block: var(--rbp-pathway-card-strip-padding-top, 72px) var(--rbp-pathway-card-strip-padding-bottom, 72px);
+    background: var(--rbp-pathway-card-strip-bg, var(--rbp-soft, #f8fafc));
+    color: var(--rbp-ink, #0f172a);
+    overflow: hidden;
+  }
+
+  .rbp-pathway-card-strip__header {
+    max-width: 78rem;
+    margin-bottom: clamp(2.8rem, 4vw, 5.6rem);
+  }
+
+  .rbp-pathway-card-strip__header > * + * {
+    margin-top: 1.4rem;
+  }
+
+  .rbp-pathway-card-strip__body {
+    color: var(--rbp-slate, #475569);
+    font-size: clamp(1.6rem, 1.7vw, 1.9rem);
+    line-height: var(--rbp-line-body, 1.65);
+  }
+
+  .rbp-pathway-card-strip__body p {
+    margin-block: 0;
+  }
+
+  .rbp-pathway-card-strip__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(26rem, 78vw);
+    gap: clamp(1.4rem, 2vw, 2.2rem);
+    margin-inline: calc(var(--rbp-container-x, 1.6rem) * -0.5);
+    padding: 0.2rem calc(var(--rbp-container-x, 1.6rem) * 0.5) 1.2rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: var(--rbp-container-x, 1.6rem);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .rbp-pathway-card-strip:not(.rbp-pathway-card-strip--mobile-scroll) .rbp-pathway-card-strip__list {
+    grid-auto-flow: row;
+    grid-auto-columns: initial;
+  }
+
+  .rbp-pathway-card-strip__card {
+    position: relative;
+    display: grid;
+    min-height: clamp(34rem, 42vw, 46rem);
+    overflow: hidden;
+    border: 1px solid var(--rbp-line, rgba(15, 23, 42, 0.1));
+    border-radius: var(--rbp-radius-xl, 2.8rem);
+    background: var(--rbp-pathway-card-bg, #ffffff);
+    color: var(--rbp-pathway-card-color, #ffffff);
+    text-decoration: none;
+    scroll-snap-align: start;
+    box-shadow: var(--rbp-shadow-card, 0 1.2rem 3.4rem rgba(15, 23, 42, 0.08));
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .rbp-pathway-card-strip__card:hover {
+    border-color: rgba(29, 78, 216, 0.24);
+    box-shadow: 0 2rem 4.6rem rgba(15, 23, 42, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .rbp-pathway-card-strip__card:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.36);
+    outline-offset: 4px;
+  }
+
+  .rbp-pathway-card-strip__media,
+  .rbp-pathway-card-strip__media picture,
+  .rbp-pathway-card-strip__image,
+  .rbp-pathway-card-strip__placeholder,
+  .rbp-pathway-card-strip__overlay,
+  .rbp-pathway-card-strip__content {
+    grid-area: 1 / 1;
+  }
+
+  .rbp-pathway-card-strip__media,
+  .rbp-pathway-card-strip__media picture,
+  .rbp-pathway-card-strip__image,
+  .rbp-pathway-card-strip__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .rbp-pathway-card-strip__image {
+    object-fit: cover;
+  }
+
+  .rbp-pathway-card-strip__placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: inherit;
+    padding: clamp(2.2rem, 3vw, 3.2rem);
+    background:
+      radial-gradient(circle at 78% 18%, rgba(96, 165, 250, 0.26), transparent 32%),
+      linear-gradient(135deg, #020617 0%, #1e3a8a 58%, #2563eb 100%);
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .rbp-pathway-card-strip__placeholder-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 900;
+  }
+
+  .rbp-pathway-card-strip__placeholder-line {
+    max-width: 14ch;
+    color: #ffffff;
+    font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: 900;
+    line-height: 0.98;
+  }
+
+  .rbp-pathway-card-strip__overlay {
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, var(--rbp-pathway-card-overlay-opacity, 0.22)) 64%, rgba(2, 6, 23, 0.06));
+    pointer-events: none;
+  }
+
+  .rbp-pathway-card-strip__content {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: inherit;
+    padding: clamp(2rem, 3vw, 3rem);
+    color: inherit;
+  }
+
+  .rbp-pathway-card-strip__badge {
+    width: fit-content;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    padding: 0.5rem 0.85rem;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .rbp-pathway-card-strip__title {
+    max-width: 16ch;
+    color: #ffffff;
+    font-family: var(--rbp-font-heading, var(--font-heading-family, inherit));
+    font-size: clamp(2.5rem, 3.2vw, 4.2rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1.02;
+  }
+
+  .rbp-pathway-card-strip__description {
+    max-width: 42rem;
+    margin-top: 1.2rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.5rem;
+    line-height: 1.52;
+  }
+
+  .rbp-pathway-card-strip__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: fit-content;
+    margin-top: 2rem;
+    border-bottom: 1px solid currentColor;
+    color: #ffffff;
+    font-weight: 850;
+    line-height: 1.2;
+  }
+
+  .rbp-pathway-card-strip__empty {
+    border: 1px dashed var(--rbp-line-strong, rgba(15, 23, 42, 0.16));
+    border-radius: var(--rbp-radius-lg, 1.8rem);
+    padding: 2rem;
+    color: var(--rbp-slate, #475569);
+  }
+
+  @media screen and (min-width: 700px) {
+    .rbp-pathway-card-strip__list {
+      grid-auto-columns: minmax(30rem, 40vw);
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .rbp-pathway-card-strip__list,
+    .rbp-pathway-card-strip--mobile-scroll .rbp-pathway-card-strip__list {
+      grid-auto-flow: row;
+      grid-auto-columns: initial;
+      grid-template-columns: repeat(var(--rbp-pathway-card-strip-columns, 4), minmax(0, 1fr));
+      margin-inline: 0;
+      padding: 0;
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+
+    .rbp-pathway-card-strip__card {
+      min-height: clamp(34rem, 30vw, 44rem);
+    }
+  }
+
+  @media screen and (max-width: 699px) {
+    .rbp-pathway-card-strip__header {
+      margin-bottom: 2.4rem;
+    }
+
+    .rbp-pathway-card-strip__card {
+      border-radius: var(--rbp-radius-lg, 1.8rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rbp-pathway-card-strip__card {
+      transition: none;
+    }
+
+    .rbp-pathway-card-strip__card:hover {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "RBP pathway card strip",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Choose a pathway"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Start with the kind of support you need"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Use the homepage as a practical router. Each pathway explains what it is for, what you get and where to go next.</p>"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "carousel", "label": "Mobile carousel" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "range",
+      "id": "cards_per_row_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Cards per row on desktop",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_scroll",
+      "label": "Enable horizontal mobile scroll",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F8FAFC"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pathway",
+      "name": "Pathway card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Pathway"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Placeholder mark",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Advisory"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Decision support, business review and practical guidance."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "View pathway"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt_text",
+          "label": "Image alt text"
+        },
+        {
+          "type": "color",
+          "id": "card_background",
+          "label": "Card background",
+          "default": "#020617"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 85,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay opacity",
+          "default": 35
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "RBP pathway card strip",
+      "blocks": [
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Decision",
+            "icon": "01",
+            "title": "Advisory",
+            "description": "Decision support, business review and practical guidance.",
+            "link": "/pages/advisory",
+            "link_label": "View Advisory"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Plan",
+            "icon": "02",
+            "title": "Consulting",
+            "description": "Structured support for improvement, change and operations.",
+            "link": "/pages/consulting",
+            "link_label": "View Consulting"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Build",
+            "icon": "03",
+            "title": "Implementation",
+            "description": "Help turning decisions into systems, workflows and delivery.",
+            "link": "/pages/implementation",
+            "link_label": "View Implementation"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Run",
+            "icon": "04",
+            "title": "Operations Hub",
+            "description": "Operational support, business services and managed pathways.",
+            "link": "/pages/operations-hub",
+            "link_label": "Open Operations Hub"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Resources",
+            "icon": "05",
+            "title": "Essentials",
+            "description": "Templates, toolkits, documentation suites and partner resources.",
+            "link": "/pages/essentials",
+            "link_label": "Explore Essentials"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Ongoing",
+            "icon": "06",
+            "title": "Membership",
+            "description": "Ongoing support options for business owners.",
+            "link": "/pages/membership",
+            "link_label": "View Membership"
+          }
+        },
+        {
+          "type": "pathway",
+          "settings": {
+            "badge": "Help",
+            "icon": "07",
+            "title": "Support",
+            "description": "Help choosing the right pathway or resolving next steps.",
+            "link": "/pages/support",
+            "link_label": "Open Support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
