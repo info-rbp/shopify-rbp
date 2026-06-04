@@ -12,23 +12,70 @@
       "settings": {
         "eyebrow": "Marketplace",
         "heading": "RBP marketplace",
-        "text": "<p>Partner offers, business opportunities and support pathways with clear next-step guidance.</p>"
+        "text": "<p>Available partner offers, seller resources and marketplace terms with clear eligibility and advice boundaries.</p>"
       }
     },
     "router": {
-      "type": "rbp-service-router"
+      "type": "rbp-service-router",
+      "settings": {
+        "eyebrow": "Marketplace routing",
+        "heading": "Choose an available marketplace pathway",
+        "text": "<p>Use the confirmed pathways below. Unfinished offers, finance, insurance and asset-sale routes should stay hidden until fully built and approved.</p>"
+      },
+      "blocks": {
+        "marketplace_terms": { "type": "service", "settings": { "icon": "01", "title": "Marketplace Terms", "text": "Review the customer-facing terms that apply to marketplace pathways.", "button_label": "View terms", "url": "/pages/marketplace-terms" } },
+        "seller_toolkit": { "type": "service", "settings": { "icon": "02", "title": "Seller Compliance Toolkit", "text": "View the active seller toolkit product for marketplace terms, listings, refunds and customer communications.", "button_label": "View toolkit", "url": "/products/marketplace-seller-compliance-toolkit" } },
+        "contact": { "type": "service", "settings": { "icon": "03", "title": "Marketplace support", "text": "Ask support to confirm whether a partner offer or marketplace pathway is available for your situation.", "button_label": "Contact support", "url": "/pages/contact" } }
+      },
+      "block_order": ["marketplace_terms", "seller_toolkit", "contact"]
     },
     "offers": {
-      "type": "rbp-marketplace-offers"
+      "type": "rbp-marketplace-offers",
+      "settings": {
+        "eyebrow": "Available offers",
+        "heading": "Partner offers",
+        "text": "<p>Partner offers are subject to eligibility, commercial availability, partner terms and approval requirements. RBP does not provide financial, insurance or legal advice through marketplace listings.</p>",
+        "limit": 6
+      }
     },
     "features": {
-      "type": "rbp-feature-grid"
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Important boundaries",
+        "heading": "What to confirm before acting",
+        "text": "<p>Marketplace listings can change. Confirm the specific partner, eligibility, pricing, availability and terms before relying on an offer.</p>"
+      },
+      "blocks": {
+        "eligibility": { "type": "feature", "settings": { "icon": "01", "title": "Partner eligibility", "text": "Some offers may require partner approval, business eligibility checks, location availability or customer tags." } },
+        "availability": { "type": "feature", "settings": { "icon": "02", "title": "Commercial availability", "text": "Pricing, inclusion, timing, availability and partner terms can change without every pathway being available to every customer." } },
+        "advice": { "type": "feature", "settings": { "icon": "03", "title": "Advice boundaries", "text": "Marketplace content is not financial, insurance, legal, tax or regulated professional advice." } }
+      },
+      "block_order": ["eligibility", "availability", "advice"]
     },
     "faq": {
-      "type": "rbp-faq"
+      "type": "rbp-faq",
+      "settings": {
+        "eyebrow": "Marketplace FAQ",
+        "heading": "Common marketplace questions",
+        "text": "<p>Use these notes before acting on an offer or seller resource.</p>",
+        "open_first": true
+      },
+      "blocks": {
+        "all_offers": { "type": "question", "settings": { "question": "Are all offers available to every customer?", "answer": "<p>No. Offers may depend on partner eligibility, location, timing, customer status, business details or partner approval.</p>" } },
+        "advice": { "type": "question", "settings": { "question": "Does RBP provide financial, insurance or legal advice here?", "answer": "<p>No. Marketplace pathways and partner listings do not replace advice from an appropriately qualified provider.</p>" } },
+        "unfinished": { "type": "question", "settings": { "question": "Where are finance, insurance or asset-sale offers?", "answer": "<p>Those pathways should remain hidden until they are complete, compliant and approved for publication.</p>" } }
+      },
+      "block_order": ["all_offers", "advice", "unfinished"]
     },
     "cta": {
-      "type": "rbp-cta-band"
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Need help?",
+        "heading": "Confirm the right marketplace pathway before acting",
+        "text": "<p>Send the offer, product or seller context and support can route the request to the right next step.</p>",
+        "button_label": "Contact support",
+        "button_url": "/pages/contact"
+      }
     }
   },
   "order": [
