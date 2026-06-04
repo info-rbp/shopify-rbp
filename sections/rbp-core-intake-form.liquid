@@ -1,0 +1,101 @@
+{{ 'rbp-onboarding-form.css' | asset_url | stylesheet_tag }}
+<script src='{{ 'rbp-onboarding-form.js' | asset_url }}' defer='defer'></script>
+
+{% liquid
+  assign service_label = 'Core Service'
+  assign service_code = 'CORE'
+  assign service_type = 'core_service'
+  assign sheet_tab = 'Core Service Intake'
+  assign intake_destination = 'Core service intake workflow'
+  assign endpoint_path = '/apps/rbp-bridge/api/core-service-intake'
+  assign intro = 'Use this form after checkout to send RBP the context needed to begin your service.'
+
+  case page.handle
+    when 'business-health-check-intake'
+      assign service_label = 'Business Health Check'
+      assign service_code = 'CORE-BHC'
+      assign service_type = 'business_health_check'
+      assign sheet_tab = 'Business Health Check'
+      assign intro = 'Share the current state of the business, the pressure points you can see, and what you most want the review to clarify.'
+    when 'business-advisor-intake'
+      assign service_label = 'Business Advisor'
+      assign service_code = 'CORE-ADV'
+      assign service_type = 'business_advisor'
+      assign sheet_tab = 'Business Advisor'
+      assign intro = 'Share the decision, question, or trade-off you want advisory support with.'
+    when 'decision-desk-intake'
+      assign service_label = 'Decision Desk'
+      assign service_code = 'CORE-DD'
+      assign service_type = 'decision_desk'
+      assign sheet_tab = 'Decision Desk'
+      assign intro = 'Share the options, assumptions, risks, and timing behind the decision you need reviewed.'
+    when 'the-fixer-intake'
+      assign service_label = 'The Fixer'
+      assign service_code = 'CORE-FIX'
+      assign service_type = 'the_fixer'
+      assign sheet_tab = 'The Fixer'
+      assign intro = 'Explain what is stuck, what has already been tried, and what outcome would count as fixed.'
+  endcase
+%}
+
+<section class='rbp-onboarding-form-section rbp-core-intake' aria-labelledby='RbpCoreIntakeTitle'>
+  <div class='rbp-onboarding-container'>
+    <header class='rbp-core-intake__header'>
+      <p class='rbp-core-intake__eyebrow'>{{ service_code }} intake</p>
+      <h1 id='RbpCoreIntakeTitle'>{{ service_label }} intake</h1>
+      <p>{{ intro }}</p>
+    </header>
+
+    <form class='rbp-onboarding-form rbp-core-intake__form' action='{{ endpoint_path }}' method='post' data-rbp-onboarding-form novalidate>
+      <input type='hidden' name='serviceSelected' value='{{ service_label | escape }}'>
+      <input type='hidden' name='serviceCode' value='{{ service_code | escape }}'>
+      <input type='hidden' name='serviceType' value='{{ service_type | escape }}'>
+      <input type='hidden' name='intakeDestination' value='{{ intake_destination | escape }}'>
+      <input type='hidden' name='intakeEndpointPath' value='{{ endpoint_path | escape }}'>
+      <input type='hidden' name='googleSheetTab' value='{{ sheet_tab | escape }}'>
+      <input type='hidden' name='urlContext' value=''>
+
+      <fieldset class='rbp-core-intake__fieldset'><legend>Contact and business details</legend><div class='rbp-core-intake__grid'>
+        <div class='rbp-form-field'><label for='RbpFullName'>Full name</label><input id='RbpFullName' class='rbp-form-input' type='text' name='fullName' autocomplete='name' required></div>
+        <div class='rbp-form-field'><label for='RbpEmail'>Email</label><input id='RbpEmail' class='rbp-form-input' type='email' name='email' autocomplete='email' required></div>
+        <div class='rbp-form-field'><label for='RbpPhone'>Phone</label><input id='RbpPhone' class='rbp-form-input' type='tel' name='phone' autocomplete='tel'></div>
+        <div class='rbp-form-field'><label for='RbpBusinessName'>Business name</label><input id='RbpBusinessName' class='rbp-form-input' type='text' name='businessName' autocomplete='organization' required></div>
+        <div class='rbp-form-field'><label for='RbpWebsite'>Website or relevant link</label><input id='RbpWebsite' class='rbp-form-input' type='url' name='website' placeholder='https://'></div>
+        <div class='rbp-form-field'><label for='RbpOrderReference'>Order or reference number</label><input id='RbpOrderReference' class='rbp-form-input' type='text' name='orderReference' placeholder='Optional'></div>
+      </div></fieldset>
+
+      <fieldset class='rbp-core-intake__fieldset'><legend>Service context</legend><div class='rbp-core-intake__grid'>
+        <div class='rbp-form-field'><label for='RbpBusinessStage'>Business stage</label><select id='RbpBusinessStage' class='rbp-form-input' name='businessStage' required><option value=''>Select one</option><option>Planning or pre-launch</option><option>Early trading</option><option>Established and operating</option><option>Growing or restructuring</option><option>Under pressure or recovery mode</option></select></div>
+        <div class='rbp-form-field'><label for='RbpUrgency'>Timing or urgency</label><select id='RbpUrgency' class='rbp-form-input' name='urgency' required><option value=''>Select one</option><option>No fixed deadline</option><option>Within two weeks</option><option>This week</option><option>Urgent commercial pressure</option></select></div>
+        <div class='rbp-form-field rbp-core-intake__wide'><label for='RbpDesiredOutcome'>What would a useful outcome look like?</label><textarea id='RbpDesiredOutcome' class='rbp-form-input' name='desiredOutcome' rows='4' required></textarea></div>
+      </div></fieldset>
+
+      <fieldset class='rbp-core-intake__fieldset'><legend>{{ service_label }} questions</legend>
+        {% case page.handle %}
+          {% when 'business-health-check-intake' %}
+            <div class='rbp-core-intake__grid'><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpPromptedReview'>What prompted the review now?</label><textarea id='RbpPromptedReview' class='rbp-form-input' name='promptedReview' rows='5' required></textarea></div><div class='rbp-form-field'><label for='RbpPriorityArea'>Which area feels most unclear?</label><select id='RbpPriorityArea' class='rbp-form-input' name='priorityArea' required><option value=''>Select one</option><option>Revenue or cashflow</option><option>Operations or process</option><option>Customers or sales</option><option>People or workload</option><option>Decision direction</option><option>Not sure yet</option></select></div><div class='rbp-form-field'><label for='RbpDocuments'>Documents or links available?</label><select id='RbpDocuments' class='rbp-form-input' name='documentsAvailable'><option>None yet</option><option>Basic notes only</option><option>Financial or operating documents</option><option>Contracts, emails, or project documents</option></select></div></div>
+          {% when 'business-advisor-intake' %}
+            <div class='rbp-core-intake__grid'><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpAdvisoryQuestion'>What decision or question do you want advice on?</label><textarea id='RbpAdvisoryQuestion' class='rbp-form-input' name='advisoryQuestion' rows='5' required></textarea></div><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpKnownOptions'>What options are you already considering?</label><textarea id='RbpKnownOptions' class='rbp-form-input' name='knownOptions' rows='4'></textarea></div></div>
+          {% when 'decision-desk-intake' %}
+            <div class='rbp-core-intake__grid'><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpDecision'>Describe the decision that needs to be made.</label><textarea id='RbpDecision' class='rbp-form-input' name='decisionDescription' rows='5' required></textarea></div><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpDecisionOptions'>List the options being compared.</label><textarea id='RbpDecisionOptions' class='rbp-form-input' name='decisionOptions' rows='5' required></textarea></div><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpDecisionConstraints'>What constraints, risks, or deadlines matter?</label><textarea id='RbpDecisionConstraints' class='rbp-form-input' name='decisionConstraints' rows='4'></textarea></div></div>
+          {% when 'the-fixer-intake' %}
+            <div class='rbp-core-intake__grid'><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpFixerIssue'>What is stuck or not working?</label><textarea id='RbpFixerIssue' class='rbp-form-input' name='fixerIssue' rows='5' required></textarea></div><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpAlreadyTried'>What has already been tried?</label><textarea id='RbpAlreadyTried' class='rbp-form-input' name='alreadyTried' rows='4'></textarea></div><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpUsefulFix'>What outcome would count as fixed?</label><textarea id='RbpUsefulFix' class='rbp-form-input' name='usefulFix' rows='4' required></textarea></div></div>
+          {% else %}
+            <div class='rbp-core-intake__grid'><div class='rbp-form-field rbp-core-intake__wide'><label for='RbpGeneralContext'>Describe the business issue or decision.</label><textarea id='RbpGeneralContext' class='rbp-form-input' name='generalContext' rows='5' required></textarea></div></div>
+        {% endcase %}
+      </fieldset>
+
+      <fieldset class='rbp-core-intake__fieldset'><legend>Confirmations</legend><label class='rbp-core-intake__check'><input type='checkbox' name='scopeAcknowledged' value='yes' required><span>I understand this service provides practical business support and does not replace legal, tax, accounting, financial product, insurance, or regulated professional advice.</span></label><label class='rbp-core-intake__check'><input type='checkbox' name='contactConsent' value='yes' required><span>RBP may contact me about this service request using the details provided.</span></label></fieldset>
+      <div class='rbp-onboarding-form__actions'><button class='button' type='submit'>Submit intake</button></div>
+      <div class='rbp-onboarding-message' data-rbp-onboarding-message role='status' aria-live='polite' hidden></div>
+    </form>
+  </div>
+</section>
+
+{% stylesheet %}
+  .rbp-core-intake{padding:clamp(3rem,7vw,6rem) 0}.rbp-core-intake__header{max-width:48rem;margin-bottom:2rem}.rbp-core-intake__eyebrow{margin:0 0 .75rem;color:rgba(var(--color-foreground),.62);font-size:.82rem;font-weight:700;letter-spacing:0;text-transform:uppercase}.rbp-core-intake__header h1{margin:0;color:rgb(var(--color-foreground));font-size:clamp(2.2rem,5vw,4rem);line-height:1.02}.rbp-core-intake__header p{margin:1rem 0 0;color:rgba(var(--color-foreground),.72);font-size:1.1rem;line-height:1.65}.rbp-core-intake__form{display:grid;gap:1.8rem}.rbp-core-intake__fieldset{margin:0;padding:1.2rem;border:1px solid rgba(var(--color-foreground),.12);border-radius:8px}.rbp-core-intake__fieldset legend{padding:0 .35rem;font-weight:700}.rbp-core-intake__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.rbp-core-intake__wide{grid-column:1/-1}.rbp-core-intake__check{display:grid;grid-template-columns:1.2rem minmax(0,1fr);gap:.75rem;align-items:start;margin-top:.8rem;color:rgba(var(--color-foreground),.78);line-height:1.55}.rbp-core-intake__check:first-of-type{margin-top:0}.rbp-core-intake__check input{margin-top:.25rem}@media screen and (max-width:749px){.rbp-core-intake__grid{grid-template-columns:1fr}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"RBP Core Intake Form","settings":[],"presets":[{"name":"RBP Core Intake Form"}]}
+{% endschema %}
