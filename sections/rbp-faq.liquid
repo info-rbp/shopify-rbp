@@ -1,44 +1,476 @@
-<section class="rbp-section">
-  <div class="rbp-container">
-    {% render 'rbp-section-heading', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
-    <div class="rbp-faq-list">
+{%- liquid
+  assign has_intro = false
+  if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.body != blank
+    assign has_intro = true
+  endif
+
+  assign has_support = false
+  if section.settings.support_title != blank or section.settings.support_body != blank or section.settings.support_link_label != blank
+    assign has_support = true
+  endif
+-%}
+
+<section
+  class="rbp-faq rbp-faq--{{ section.settings.layout }}"
+  style="
+    --rbp-faq-bg: {{ section.settings.background_color }};
+    --rbp-faq-card-bg: {{ section.settings.card_background_color }};
+    --rbp-faq-padding-top: {{ section.settings.section_padding_top }}px;
+    --rbp-faq-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  "
+>
+  <div class="rbp-faq__inner rbp-container">
+    {%- if has_intro or has_support -%}
+      <div class="rbp-faq__aside">
+        {%- if has_intro -%}
+          <div class="rbp-faq__intro">
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="rbp-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {%- endif -%}
+
+            {%- if section.settings.heading != blank -%}
+              <h2 class="rbp-heading rbp-heading--lg">{{ section.settings.heading | escape }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.body != blank -%}
+              <div class="rbp-faq__body rte">{{ section.settings.body }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if has_support -%}
+          <div class="rbp-faq__support" aria-label="{{ section.settings.support_title | default: 'Support' | escape }}">
+            {%- if section.settings.support_title != blank -%}
+              <h3 class="rbp-faq__support-title">{{ section.settings.support_title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if section.settings.support_body != blank -%}
+              <div class="rbp-faq__support-body rte">{{ section.settings.support_body }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.support_link_label != blank and section.settings.support_link != blank -%}
+              <div class="rbp-faq__support-action">
+                {% render 'rbp-button',
+                  label: section.settings.support_link_label,
+                  url: section.settings.support_link,
+                  variant: 'secondary',
+                  size: 'small',
+                  arrow: true
+                %}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="rbp-faq__list" aria-label="{{ section.settings.heading | default: 'Frequently asked questions' | escape }}">
       {%- for block in section.blocks -%}
-        <details {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
-          <summary>{{ block.settings.question | escape }}</summary>
-          <div>{{ block.settings.answer }}</div>
-        </details>
+        {%- if block.settings.question != blank -%}
+          <details
+            class="rbp-faq__item"
+            {% if block.settings.open_by_default %}open{% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <summary class="rbp-faq__question">
+              <span class="rbp-faq__question-text">
+                {%- if block.settings.category != blank -%}
+                  <span class="rbp-faq__category">{{ block.settings.category | escape }}</span>
+                {%- endif -%}
+                <span>{{ block.settings.question | escape }}</span>
+              </span>
+              <span class="rbp-faq__icon" aria-hidden="true"></span>
+            </summary>
+
+            {%- if block.settings.answer != blank -%}
+              <div class="rbp-faq__answer rte">
+                {{ block.settings.answer }}
+              </div>
+            {%- endif -%}
+          </details>
+        {%- endif -%}
+      {%- else -%}
+        {%- if request.design_mode -%}
+          <div class="rbp-faq__empty">
+            Add FAQ questions in the theme editor.
+          </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
   </div>
 </section>
+
+{% stylesheet %}
+  .rbp-faq {
+    padding-block: var(--rbp-faq-padding-top, 72px) var(--rbp-faq-padding-bottom, 72px);
+    background: var(--rbp-faq-bg, #ffffff);
+    color: var(--rbp-ink, #0f172a);
+  }
+
+  .rbp-faq__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2.4rem, 5vw, 7.2rem);
+    align-items: start;
+  }
+
+  .rbp-faq--full_width .rbp-faq__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .rbp-faq__aside {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .rbp-faq__intro > * + * {
+    margin-top: 1.4rem;
+  }
+
+  .rbp-faq__body,
+  .rbp-faq__support-body {
+    color: var(--rbp-slate, #475569);
+    line-height: var(--rbp-line-body, 1.65);
+  }
+
+  .rbp-faq__body {
+    font-size: clamp(1.6rem, 1.7vw, 1.9rem);
+  }
+
+  .rbp-faq__body p,
+  .rbp-faq__support-body p,
+  .rbp-faq__answer p {
+    margin-block: 0;
+  }
+
+  .rbp-faq__body p + p,
+  .rbp-faq__support-body p + p,
+  .rbp-faq__answer p + p {
+    margin-top: 1rem;
+  }
+
+  .rbp-faq__support {
+    border: 1px solid rgba(29, 78, 216, 0.14);
+    border-radius: var(--rbp-radius-lg, 1.8rem);
+    background: rgba(219, 234, 254, 0.46);
+    padding: clamp(1.8rem, 3vw, 2.8rem);
+  }
+
+  .rbp-faq__support-title {
+    margin: 0;
+    color: var(--rbp-ink, #0f172a);
+    font-size: 1.9rem;
+    font-weight: var(--rbp-weight-strong, 800);
+    line-height: 1.25;
+  }
+
+  .rbp-faq__support-body {
+    margin-top: 1rem;
+  }
+
+  .rbp-faq__support-action {
+    margin-top: 1.6rem;
+  }
+
+  .rbp-faq__list {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .rbp-faq__item {
+    border: 1px solid var(--rbp-line, rgba(15, 23, 42, 0.1));
+    border-radius: var(--rbp-radius-lg, 1.8rem);
+    background: var(--rbp-faq-card-bg, #ffffff);
+    box-shadow: 0 1.2rem 3.2rem rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+  }
+
+  .rbp-faq__question {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 5.6rem;
+    padding: 1.8rem clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--rbp-ink, #0f172a);
+    cursor: pointer;
+    font-weight: var(--rbp-weight-strong, 800);
+    list-style: none;
+  }
+
+  .rbp-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .rbp-faq__question:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: -3px;
+  }
+
+  .rbp-faq__question-text {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .rbp-faq__category {
+    width: fit-content;
+    color: var(--rbp-blue-dark, #1e3a8a);
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .rbp-faq__icon {
+    position: relative;
+    flex: 0 0 auto;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 999px;
+    background: var(--rbp-blue-soft, #dbeafe);
+  }
+
+  .rbp-faq__icon::before,
+  .rbp-faq__icon::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    width: 1.4rem;
+    height: 0.2rem;
+    border-radius: 999px;
+    background: var(--rbp-blue-dark, #1e3a8a);
+    transform: translate(-50%, -50%);
+  }
+
+  .rbp-faq__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+
+  .rbp-faq__item[open] .rbp-faq__icon::after {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .rbp-faq__answer {
+    padding: 0 clamp(1.8rem, 3vw, 2.4rem) clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--rbp-slate, #475569);
+    line-height: var(--rbp-line-body, 1.65);
+  }
+
+  .rbp-faq__empty {
+    border: 1px dashed var(--rbp-line-strong, rgba(15, 23, 42, 0.16));
+    border-radius: var(--rbp-radius-lg, 1.8rem);
+    padding: 2rem;
+    color: var(--rbp-slate, #475569);
+  }
+
+  @media screen and (max-width: 989px) {
+    .rbp-faq__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 699px) {
+    .rbp-faq__question {
+      align-items: flex-start;
+      min-height: 0;
+      padding: 1.6rem;
+    }
+
+    .rbp-faq__answer {
+      padding-inline: 1.6rem;
+      padding-bottom: 1.6rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rbp-faq__icon::after {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "RBP FAQ",
   "tag": "section",
   "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FAQ" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Common questions" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use blocks for editable question and answer content.</p>" },
-    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FAQs"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Common questions before you choose"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Use these questions to understand service boundaries, resource support and how to choose the right RBP pathway.</p>"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "boxed", "label": "Two columns" },
+        { "value": "full_width", "label": "Full width" }
+      ],
+      "default": "boxed"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Question card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Support card"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Support title",
+      "default": "Need help choosing?"
+    },
+    {
+      "type": "richtext",
+      "id": "support_body",
+      "label": "Support body",
+      "default": "<p>Start with support if the right pathway is unclear or the request involves an order, onboarding or existing resource.</p>"
+    },
+    {
+      "type": "text",
+      "id": "support_link_label",
+      "label": "Support link label",
+      "default": "Open Support"
+    },
+    {
+      "type": "url",
+      "id": "support_link",
+      "label": "Support link"
+    }
   ],
   "blocks": [
     {
       "type": "question",
       "name": "Question",
       "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "What happens after purchase?" },
-        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>You receive the relevant next-step guidance, and any intake, booking or manual review requirements are confirmed.</p>" }
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Pathways"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Which RBP pathway should I start with?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Start with the outcome you need. Advisory helps with decisions, Consulting helps structure a problem, Implementation helps turn a plan into working assets, Operations Hub supports recurring work, Essentials covers practical resources, and Support helps route unclear requests.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
       ]
     }
   ],
+  "max_blocks": 12,
   "presets": [
     {
       "name": "RBP FAQ",
+      "settings": {
+        "support_link": "/pages/support"
+      },
       "blocks": [
-        { "type": "question" },
-        { "type": "question", "settings": { "question": "Does this replace Shopify checkout?", "answer": "<p>No. RBP sections add context around Shopify's native product, cart and checkout-adjacent flows.</p>" } }
+        {
+          "type": "question",
+          "settings": {
+            "category": "Pathways",
+            "question": "Which RBP pathway should I start with?",
+            "answer": "<p>Start with the outcome you need. Advisory helps with decisions, Consulting helps structure a problem, Implementation helps turn a plan into working assets, Operations Hub supports recurring work, Essentials covers practical resources, and Support helps route unclear requests.</p>",
+            "open_by_default": true
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "category": "Essentials",
+            "question": "Are templates and toolkits self-serve or supported?",
+            "answer": "<p>Some resources are designed for self-serve use, and selected resources may have supported pathways where stated. Check the product or pathway page before checkout so inclusions and boundaries are clear.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "category": "Membership",
+            "question": "Is membership required to use RBP?",
+            "answer": "<p>No. Membership is for business owners who need ongoing structure and momentum. You can still use individual pathways, resources or support without starting with membership.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "category": "Support",
+            "question": "What should I send with a support request?",
+            "answer": "<p>Include the business context, any relevant order or product details, timing pressure and the outcome you are trying to reach. That makes routing and next steps clearer.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "category": "Boundaries",
+            "question": "How are partner or regulated-service pathways handled?",
+            "answer": "<p>Pages for partner offers or regulated-service topics should explain the role, referral pathway and support boundary before you proceed.</p>"
+          }
+        }
       ]
     }
   ]
