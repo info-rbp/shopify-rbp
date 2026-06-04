@@ -43,7 +43,7 @@
       },
       "blocks": {
         "support": { "type": "resource", "settings": { "type": "Support", "title": "Support", "text": "Choose a support route before sending a request.", "url": "/pages/support" } },
-        "help": { "type": "resource", "settings": { "type": "Help Centre", "title": "Help Centre", "text": "Find common support and fulfilment guidance.", "url": "/pages/help-centre" } },
+        "help": { "type": "resource", "settings": { "type": "Help Centre", "title": "Help Centre", "text": "Find common support and fulfilment guidance.", "url": "/pages/help-center" } },
         "business_nbn": { "type": "resource", "settings": { "type": "Business NBN", "title": "Business NBN support", "text": "Review connectivity support before submitting a Business NBN request.", "url": "/pages/business-nbn-support" } }
       },
       "block_order": ["support", "help", "business_nbn"]

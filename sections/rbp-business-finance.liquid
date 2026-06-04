@@ -4,7 +4,6 @@
   assign finance_titles = 'Business Loans||Working Capital Finance||Asset Finance||Equipment Finance||Invoice Finance||Trade Finance||Business Line of Credit||Business Overdrafts||Business Vehicle Finance||Commercial Property Finance' | split: '||'
   assign finance_descriptions = 'General purpose finance for established business needs.||Short-term funding support for everyday operating costs.||Funding to purchase or refinance business assets.||Finance for machinery, tools, systems or specialist equipment.||Funding linked to unpaid customer invoices.||Support for importing, exporting or large purchase orders.||Flexible access to funds up to an agreed limit.||A business bank facility that can support short-term cash flow.||Finance for work vehicles, commercial vehicles or fleets.||Funding options connected to commercial property purchase or refinance.' | split: '||'
   assign finance_use_cases = 'Growth projects, working capital gaps or one-off business costs.||Payroll timing, supplier payments or seasonal stock.||Plant, vehicles, fit-outs or other productive assets.||Equipment upgrades, replacements or expansion.||Waiting for customer payments while costs continue.||Funding stock, materials or cross-border trade cycles.||Recurring cash flow needs where flexibility matters.||Short-term operating buffers linked to a bank account.||Utes, vans, trucks, cars or business fleet requirements.||Buying, refinancing or improving commercial premises.' | split: '||'
-  assign finance_urls = '/pages/business-loans||/pages/working-capital-finance||/pages/asset-finance||/pages/equipment-finance||/pages/invoice-finance||/pages/trade-finance||/pages/business-line-of-credit||/pages/business-overdrafts||/pages/business-vehicle-finance||/pages/commercial-property-finance' | split: '||'
   assign scenarios = 'Managing cash flow timing||Buying equipment||Funding growth||Managing seasonal demand||Supporting large orders||Consolidating business debts||Purchasing vehicles||Funding commercial property' | split: '||'
   assign prepare_items = 'Business name||Contact details||Funding purpose||Rough funding amount||Timeframe||Trading history context||Whether finance is urgent' | split: '||'
 %}
@@ -37,7 +36,7 @@
               <p>{{ finance_descriptions[finance_index] }}</p>
               <p class="rbp-card__meta"><strong>Common use:</strong> {{ finance_use_cases[finance_index] }}</p>
             </div>
-            <a class="rbp-text-link" href="{{ finance_urls[finance_index] }}">Learn More</a>
+            <a class="rbp-text-link" href="/pages/enquire-about-funding?funding_type={{ finance_title | url_encode }}">Enquire About Funding</a>
           </article>
         {% endfor %}
       </div>

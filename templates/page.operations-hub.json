@@ -32,7 +32,7 @@
       },
       "blocks": {
         "business_operations": { "type": "feature", "settings": { "icon": "B", "title": "Run the business", "text": "Support for recurring work, accountability, controls and operating rhythm.", "button_label": "Browse operations services", "url": "/pages/operations-services" } },
-        "admin_systems": { "type": "feature", "settings": { "icon": "A", "title": "Improve the business", "text": "Support for registers, calendars, documentation, workflows and knowledge bases.", "button_label": "View individual services", "url": "/collections/individual-on-demand-services" } },
+        "admin_systems": { "type": "feature", "settings": { "icon": "A", "title": "Improve the business", "text": "Support for registers, calendars, documentation, workflows and knowledge bases.", "button_label": "View on-demand services", "url": "/collections/on-demand-services" } },
         "support_paths": { "type": "feature", "settings": { "icon": "S", "title": "Access support", "text": "Use support when the next operational step needs routing, context or follow-through.", "button_label": "Open support", "url": "/pages/support" } }
       },
       "block_order": ["business_operations", "admin_systems", "support_paths"]

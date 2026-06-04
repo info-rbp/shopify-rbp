@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Membership",
         "heading": "Remote Business Partner membership for practical business access and support",
-        "text": "<p>Membership is for business owners and operators who want ongoing access to practical resources, service pathways, member offers and support instead of a single isolated purchase.</p>",
+        "text": "<p>Membership is for business owners and operators who want a clearer route into practical resources, service pathways, marketplace context and support. Current availability, inclusions and joining options must be confirmed before relying on membership access.</p>",
         "align": "left"
       }
     },
@@ -14,12 +14,12 @@
       "settings": {
         "eyebrow": "Member value",
         "heading": "What members can use RBP for",
-        "text": "<p>Use this overview to understand the value of membership, then compare pricing, eligibility and application details on the membership options page.</p>"
+        "text": "<p>Use this overview to understand possible membership value, then contact RBP to confirm current availability, inclusions and next steps.</p>"
       },
       "blocks": {
         "access": { "type": "benefit", "settings": { "badge": "Access", "title": "Business support access", "text": "A clearer place to connect services, resources, offers and support pathways." } },
         "resources": { "type": "benefit", "settings": { "badge": "Resources", "title": "Practical resource pathways", "text": "Use Essentials, templates and toolkits to support repeatable business work." } },
-        "partners": { "type": "benefit", "settings": { "badge": "Partner", "title": "Partner and marketplace pathways", "text": "Access relevant partner offers and business opportunities where available." } },
+        "partners": { "type": "benefit", "settings": { "badge": "Partner", "title": "Partner and marketplace pathways", "text": "Review partner offers and business opportunities only where active, public and available." } },
         "support": { "type": "benefit", "settings": { "badge": "Support", "title": "Help choosing the next step", "text": "Use support and advisory paths when the right product, service or plan is unclear." } }
       },
       "block_order": ["access", "resources", "partners", "support"]
@@ -29,12 +29,12 @@
       "settings": {
         "eyebrow": "Member pathways",
         "heading": "Where membership connects across RBP",
-        "text": "<p>Membership supports ongoing access across resources, service pathways, marketplace context and support routing.</p>"
+        "text": "<p>Membership can support access across resources, service pathways, marketplace context and support routing when the relevant options are active and available.</p>"
       },
       "blocks": {
         "essentials": { "type": "resource", "settings": { "type": "Resources", "title": "Essentials", "text": "Templates, toolkits and supported resource options for repeatable business work.", "url": "/pages/essentials" } },
         "services": { "type": "resource", "settings": { "type": "Services", "title": "Advisory, consulting and implementation", "text": "Use the service pathways when a member need moves beyond a self-serve resource.", "url": "/pages/support" } },
-        "marketplace": { "type": "resource", "settings": { "type": "Marketplace", "title": "Marketplace and partner pathways", "text": "Access relevant partner offers and opportunities when available.", "url": "/pages/marketplace" } }
+        "marketplace": { "type": "resource", "settings": { "type": "Marketplace", "title": "Marketplace and partner pathways", "text": "Review active marketplace pathways and partner offers where available.", "url": "/pages/marketplace" } }
       },
       "block_order": ["essentials", "services", "marketplace"]
     },
@@ -42,14 +42,14 @@
       "type": "rbp-how-it-works",
       "settings": {
         "eyebrow": "How it works",
-        "heading": "From interest to the right membership option",
-        "text": "<p>Membership should make it clear whether a user can join now, compare options or contact support before choosing.</p>"
+        "heading": "From interest to the right membership pathway",
+        "text": "<p>Membership should make it clear whether a user can enquire now, confirm available options or contact support before choosing.</p>"
       },
       "blocks": {
         "step_1": { "type": "step", "settings": { "title": "Review the membership value", "text": "Start with what membership includes and who it is designed for." } },
-        "step_2": { "type": "step", "settings": { "title": "Compare plan options", "text": "Use the membership options page to review the available plan or offer pathway." } },
-        "step_3": { "type": "step", "settings": { "title": "Complete signup or enquiry", "text": "Follow the next step shown on the plan page or contact support if the fit is unclear." } },
-        "step_4": { "type": "step", "settings": { "title": "Use member pathways", "text": "Access resources, services, offers and support as the business need changes." } }
+        "step_2": { "type": "step", "settings": { "title": "Confirm current availability", "text": "Ask RBP which membership options, inclusions and conditions are currently available." } },
+        "step_3": { "type": "step", "settings": { "title": "Complete enquiry", "text": "Use contact support if the fit, availability or next step is unclear." } },
+        "step_4": { "type": "step", "settings": { "title": "Use confirmed pathways", "text": "Access resources, services, offers and support only where the relevant option is active and configured." } }
       },
       "block_order": ["step_1", "step_2", "step_3", "step_4"]
     },
@@ -58,8 +58,8 @@
       "settings": { "eyebrow": "FAQ", "heading": "Membership questions", "text": "<p>Use these answers to understand who membership is for, how it connects to RBP support, and where to compare plan details.</p>", "open_first": true },
       "blocks": {
         "who": { "type": "question", "settings": { "question": "Who is membership for?", "answer": "<p>Membership is for business owners and operators who want ongoing access to practical business pathways, resources, offers and support rather than a single isolated purchase.</p>" } },
-        "join": { "type": "question", "settings": { "question": "Do I join immediately or compare options first?", "answer": "<p>Use the Membership page as the overview, then compare available plans or offers on the membership options page before joining or enquiring.</p>" } },
-        "support": { "type": "question", "settings": { "question": "How does membership connect to support?", "answer": "<p>Membership can help route you to resources, services, partner pathways and support when your business need changes.</p>" } }
+        "join": { "type": "question", "settings": { "question": "Do I join immediately or ask first?", "answer": "<p>Use the Membership page as the overview, then ask RBP to confirm available options, inclusions and application steps before joining or relying on member access.</p>" } },
+        "support": { "type": "question", "settings": { "question": "How does membership connect to support?", "answer": "<p>Membership can help route you to resources, services, partner pathways and support when those pathways are active and available.</p>" } }
       },
       "block_order": ["who", "join", "support"]
     },
@@ -67,10 +67,10 @@
       "type": "rbp-cta-band",
       "settings": {
         "eyebrow": "Next step",
-        "heading": "Compare membership options",
-        "text": "<p>Review pricing, eligibility, application details and conditions on the membership options page.</p>",
-        "button_label": "Compare membership options",
-        "button_url": "/pages/membership-options"
+        "heading": "Ask about membership",
+        "text": "<p>Contact RBP to confirm current membership availability, inclusions, application steps and whether membership is the right pathway.</p>",
+        "button_label": "Ask about membership",
+        "button_url": "/pages/contact"
       }
     }
   },

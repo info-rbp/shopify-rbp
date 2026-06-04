@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Property Field Services",
+        "heading": "Property field support with clear scope boundaries",
+        "text": "<p>Use property field support when a property-related business task needs practical coordination, field information or support routing before the next operational step.</p>",
+        "align": "left"
+      }
+    },
+    "scope": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Scope",
+        "heading": "What to confirm before requesting support",
+        "text": "<p>Availability and scope depend on location, access, site requirements, timing and the exact field task requested.</p>"
+      },
+      "blocks": {
+        "availability": { "type": "feature", "settings": { "icon": "01", "title": "Availability and location", "text": "Confirm the property address, access windows, site contact, travel requirements and whether the task can be supported in the requested location." } },
+        "information": { "type": "feature", "settings": { "icon": "02", "title": "Information to provide", "text": "Include the property address, task purpose, site access details, required photos or notes, timing constraints and any safety or access restrictions." } },
+        "scope": { "type": "feature", "settings": { "icon": "03", "title": "Practical field scope", "text": "Support may include practical field coordination, information gathering, status updates or routing where the scope is agreed first." } },
+        "boundaries": { "type": "feature", "settings": { "icon": "04", "title": "Advice boundary", "text": "RBP does not provide property, legal, valuation, building, planning, compliance, insurance or regulated professional advice through property field services." } },
+        "not_included": { "type": "feature", "settings": { "icon": "05", "title": "What is not included", "text": "Unscoped inspections, certification, emergency attendance, valuation, compliance assessment, trade work and specialist reports are not included unless separately arranged." } },
+        "request": { "type": "feature", "settings": { "icon": "06", "title": "Request support", "text": "Contact RBP with the address, requested task, timing, access instructions and required output.", "button_label": "Request property field support", "url": "/pages/contact" } }
+      },
+      "block_order": ["availability", "information", "scope", "boundaries", "not_included", "request"]
+    },
+    "contact": {
+      "type": "rbp-contact-panel",
+      "settings": {
+        "eyebrow": "Property field enquiry",
+        "heading": "Request property field support",
+        "text": "<p>Send the property address, requested support, location constraints, site contact and required output so RBP can assess whether the request is in scope.</p>",
+        "button_label": "Request property field support",
+        "button_url": "/pages/contact",
+        "aside_heading": "What to include",
+        "aside_text": "<p>Include address, site access, timing, contact person, photos or notes needed, safety restrictions and whether any specialist professional advice is required outside RBP's scope.</p>"
+      }
+    }
+  },
+  "order": ["hero", "scope", "contact"]
+}

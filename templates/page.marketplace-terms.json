@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rbp-page-hero",
+      "settings": {
+        "eyebrow": "Marketplace Terms",
+        "heading": "Marketplace participation and partner offer terms",
+        "text": "<p>Review the general terms that apply to Remote Business Partner marketplace pathways, partner offers and external provider routes.</p>",
+        "align": "left"
+      }
+    },
+    "terms": {
+      "type": "rbp-feature-grid",
+      "settings": {
+        "eyebrow": "Terms",
+        "heading": "What marketplace users should understand",
+        "text": "<p>Marketplace pathways can involve external providers, partner criteria, availability conditions and separate terms.</p>"
+      },
+      "blocks": {
+        "eligibility": { "type": "feature", "settings": { "icon": "01", "title": "Partner eligibility", "text": "Partner offers may require business eligibility, location, customer status, commercial assessment or other conditions before access is available." } },
+        "external_terms": { "type": "feature", "settings": { "icon": "02", "title": "External provider terms", "text": "External providers may apply their own terms, pricing, acceptance criteria, privacy settings, contracts, policy wording or service conditions." } },
+        "availability": { "type": "feature", "settings": { "icon": "03", "title": "Availability conditions", "text": "Marketplace pathways can change or become unavailable based on partner participation, stock, capacity, provider requirements, location or timing." } },
+        "no_guarantee": { "type": "feature", "settings": { "icon": "04", "title": "No approval guarantee", "text": "RBP does not guarantee partner approval, offer eligibility, quote availability, funding approval, insurance coverage, NBN serviceability or marketplace offer availability." } },
+        "advice_boundary": { "type": "feature", "settings": { "icon": "05", "title": "Advice boundary", "text": "Marketplace content is general information and does not replace legal, financial, insurance, accounting, tax or other regulated professional advice." } },
+        "contact": { "type": "feature", "settings": { "icon": "06", "title": "Need clarification", "text": "Contact RBP before using a marketplace pathway if the provider, offer conditions or next step is unclear.", "button_label": "Contact support", "url": "/pages/contact" } }
+      },
+      "block_order": ["eligibility", "external_terms", "availability", "no_guarantee", "advice_boundary", "contact"]
+    },
+    "cta": {
+      "type": "rbp-cta-band",
+      "settings": {
+        "eyebrow": "Marketplace",
+        "heading": "Return to marketplace pathways",
+        "text": "<p>Use marketplace pages only where the pathway is active, public and suitable for your business context.</p>",
+        "button_label": "View Marketplace",
+        "button_url": "/pages/marketplace"
+      }
+    }
+  },
+  "order": ["hero", "terms", "cta"]
+}

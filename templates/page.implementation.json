@@ -31,8 +31,8 @@
         "text": "<p>Move from recommendation to practical operating assets, workflows and support pathways.</p>"
       },
       "blocks": {
-        "setup": { "type": "feature", "settings": { "icon": "01", "title": "Systems setup", "text": "Configure tools, workflows, registers or operating structures so the business can use them.", "button_label": "View implementation services", "url": "/collections/individual-on-demand-services" } },
-        "documentation": { "type": "feature", "settings": { "icon": "02", "title": "Documentation implementation", "text": "Prepare documents, templates, procedures or handover packs with practical next steps.", "button_label": "Browse toolkits", "url": "/collections/individual-on-demand-services" } },
+        "setup": { "type": "feature", "settings": { "icon": "01", "title": "Systems setup", "text": "Configure tools, workflows, registers or operating structures so the business can use them.", "button_label": "View implementation services", "url": "/collections/on-demand-services" } },
+        "documentation": { "type": "feature", "settings": { "icon": "02", "title": "Documentation implementation", "text": "Prepare documents, templates, procedures or handover packs with practical next steps.", "button_label": "Browse toolkits", "url": "/collections/toolkits" } },
         "business_nbn": { "type": "feature", "settings": { "icon": "03", "title": "Business NBN readiness", "text": "Check availability and prepare the next steps for business connectivity where relevant.", "button_label": "View Business NBN", "url": "/pages/business-nbn" } }
       },
       "block_order": ["setup", "documentation", "business_nbn"]
@@ -47,10 +47,10 @@
       "blocks": {
         "obligations": { "type": "feature", "settings": { "icon": "01", "title": "Obligations register setup", "text": "Create a practical register for recurring obligations, owners, dates and review rhythm.", "button_label": "View service", "url": "/products/compliance-calendar-and-obligations-register" } },
         "calendar": { "type": "feature", "settings": { "icon": "02", "title": "Compliance calendar", "text": "Turn recurring obligations into a calendar, reminder structure and operating cadence.", "button_label": "View service", "url": "/products/compliance-calendar-and-obligations-register" } },
-        "workflow_docs": { "type": "feature", "settings": { "icon": "03", "title": "Workflow documentation", "text": "Document a recurring process so the work can be delegated, repeated or improved." } },
-        "handover": { "type": "feature", "settings": { "icon": "04", "title": "Handover pack", "text": "Package operating context, responsibilities, documents and next steps for a clean transition." } },
+        "workflow_docs": { "type": "feature", "settings": { "icon": "03", "title": "Workflow documentation", "text": "Document a recurring process so the work can be delegated, repeated or improved.", "button_label": "View on-demand services", "url": "/collections/on-demand-services" } },
+        "handover": { "type": "feature", "settings": { "icon": "04", "title": "Handover pack", "text": "Package operating context, responsibilities, documents and next steps for a clean transition.", "button_label": "Request support", "url": "/pages/contact" } },
         "business_nbn": { "type": "feature", "settings": { "icon": "05", "title": "Business NBN readiness", "text": "Prepare availability checks, business context and support steps for connectivity decisions.", "button_label": "View Business NBN", "url": "/pages/business-nbn" } },
-        "onboarding": { "type": "feature", "settings": { "icon": "06", "title": "Onboarding setup", "text": "Create the intake, checklist or process structure needed before a service or resource can be used." } }
+        "onboarding": { "type": "feature", "settings": { "icon": "06", "title": "Onboarding setup", "text": "Create the intake, checklist or process structure needed before a service or resource can be used.", "button_label": "Request support", "url": "/pages/contact" } }
       },
       "block_order": ["obligations", "calendar", "workflow_docs", "handover", "business_nbn", "onboarding"]
     },
@@ -76,7 +76,7 @@
         "heading": "Request implementation support with enough context to scope the work",
         "text": "<p>Share what needs to be set up, who will use it, what already exists, what deadline matters and whether intake or review is required first.</p>",
         "button_label": "Contact support",
-        "button_url": "/pages/support",
+        "button_url": "/pages/contact",
         "aside_heading": "Helpful context",
         "aside_text": "<p>Include the process, system, document or handover problem; who will use the output; and any deadlines or dependencies.</p>"
       }
@@ -88,7 +88,7 @@
         "heading": "Request implementation support",
         "text": "<p>Use support when the work needs setup, configuration, documentation or handover before it can be used.</p>",
         "button_label": "Request implementation support",
-        "button_url": "/pages/support"
+        "button_url": "/pages/contact"
       }
     }
   },
