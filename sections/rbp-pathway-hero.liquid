@@ -1,0 +1,1099 @@
+{%- liquid
+  assign has_controls = false
+  if section.blocks.size > 1 and section.settings.show_numbered_dots
+    assign has_controls = true
+  endif
+-%}
+
+<section
+  class="rbp-pathway-hero"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.aria_label | escape }}"
+  data-rbp-pathway-hero
+  data-autoplay="{{ section.settings.enable_autoplay }}"
+  data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+  data-pause-on-hover="{{ section.settings.pause_on_hover }}"
+  style="
+    --rbp-pathway-hero-bg-start: {{ section.settings.background_gradient_start }};
+    --rbp-pathway-hero-bg-end: {{ section.settings.background_gradient_end }};
+    --rbp-pathway-hero-bg-fallback: {{ section.settings.fallback_background_color }};
+    --rbp-pathway-hero-max-width: {{ section.settings.max_width }}px;
+    --rbp-pathway-hero-desktop-height: {{ section.settings.desktop_height }}px;
+    --rbp-pathway-hero-mobile-height: {{ section.settings.mobile_height }}px;
+    --rbp-pathway-hero-radius: {{ section.settings.panel_border_radius }}px;
+    --rbp-pathway-hero-padding-top: {{ section.settings.section_padding_top }}px;
+    --rbp-pathway-hero-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  "
+>
+  <div class="rbp-pathway-hero__inner">
+    <div class="rbp-pathway-hero__panel{% if has_controls %} rbp-pathway-hero__panel--has-controls{% endif %}">
+      <div class="rbp-pathway-hero__track" aria-live="polite" aria-atomic="true">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign hero_image = block.settings.desktop_image
+            if hero_image == blank
+              assign hero_image = block.settings.mobile_image
+            endif
+
+            assign image_alt = block.settings.image_alt_text
+            if image_alt == blank and hero_image != blank
+              assign image_alt = hero_image.alt
+            endif
+
+            assign loading = 'lazy'
+            assign fetch_priority = 'low'
+            if forloop.first
+              assign loading = 'eager'
+              assign fetch_priority = 'high'
+            endif
+
+            assign image_widths = '480, 640, 800, 960, 1200, 1440, 1800, 2200, 2400, 2800'
+            assign image_sizes = '(min-width: 1600px) 1600px, calc(100vw - 32px)'
+          -%}
+          <div
+            class="
+              rbp-pathway-hero__slide
+              rbp-pathway-hero__slide--text-{{ block.settings.text_position }}
+              rbp-pathway-hero__slide--overlay-{{ block.settings.overlay_direction }}
+              {% if forloop.first %}is-active{% endif %}
+            "
+            id="RbpPathwayHeroSlide-{{ section.id }}-{{ forloop.index }}"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="Slide {{ forloop.index }} of {{ forloop.length }}"
+            aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+            data-rbp-pathway-slide
+            data-slide-index="{{ forloop.index0 }}"
+            {{ block.shopify_attributes }}
+            style="
+              --rbp-pathway-hero-content-width: {{ block.settings.content_max_width }}px;
+              --rbp-pathway-hero-text-color: {{ block.settings.text_color }};
+              --rbp-pathway-hero-overlay-color: {{ block.settings.overlay_color }};
+              --rbp-pathway-hero-overlay-opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+              --rbp-pathway-hero-image-position: {{ block.settings.object_position | escape }};
+              --rbp-pathway-hero-primary-bg: {{ block.settings.primary_button_background }};
+              --rbp-pathway-hero-primary-color: {{ block.settings.primary_button_text_color }};
+            "
+          >
+            <div class="rbp-pathway-hero__media">
+              {%- if hero_image != blank -%}
+                <picture>
+                  {%- if block.settings.mobile_image != blank -%}
+                    <source
+                      media="(max-width: 699px)"
+                      srcset="
+                        {{ block.settings.mobile_image | image_url: width: 480 }} 480w,
+                        {{ block.settings.mobile_image | image_url: width: 640 }} 640w,
+                        {{ block.settings.mobile_image | image_url: width: 800 }} 800w,
+                        {{ block.settings.mobile_image | image_url: width: 960 }} 960w,
+                        {{ block.settings.mobile_image | image_url: width: 1200 }} 1200w,
+                        {{ block.settings.mobile_image | image_url: width: 1600 }} 1600w
+                      "
+                      sizes="100vw"
+                    >
+                  {%- endif -%}
+                  {%- liquid
+                    assign image_height = hero_image.width | divided_by: hero_image.aspect_ratio | round
+                  -%}
+                  {{
+                    hero_image
+                    | image_url: width: 2800
+                    | image_tag:
+                      alt: image_alt,
+                      class: 'rbp-pathway-hero__image',
+                      loading: loading,
+                      fetchpriority: fetch_priority,
+                      width: hero_image.width,
+                      height: image_height,
+                      widths: image_widths,
+                      sizes: image_sizes
+                  }}
+                </picture>
+              {%- else -%}
+                <div class="rbp-pathway-hero__placeholder">
+                  <span>RBP</span>
+                  <span>Advisory / Consulting / Implementation / Operations</span>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="rbp-pathway-hero__overlay" aria-hidden="true"></div>
+
+            <div class="rbp-pathway-hero__content rbp-pathway-hero__content--align-{{ block.settings.text_alignment }}">
+              <div class="rbp-pathway-hero__copy">
+                {%- if block.settings.eyebrow != blank -%}
+                  <p class="rbp-pathway-hero__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.heading != blank -%}
+                  {%- if forloop.first and section.settings.use_h1_on_first_slide -%}
+                    <h1 class="rbp-pathway-hero__heading">{{ block.settings.heading }}</h1>
+                  {%- else -%}
+                    <h2 class="rbp-pathway-hero__heading">{{ block.settings.heading }}</h2>
+                  {%- endif -%}
+                {%- endif -%}
+
+                {%- if block.settings.body_text != blank -%}
+                  <div class="rbp-pathway-hero__body rte">{{ block.settings.body_text }}</div>
+                {%- endif -%}
+
+                {%- if block.settings.primary_button_label != blank or block.settings.secondary_button_label != blank -%}
+                  <div class="rbp-pathway-hero__actions">
+                    {%- if block.settings.primary_button_label != blank -%}
+                      <a
+                        class="rbp-pathway-hero__button rbp-pathway-hero__button--primary"
+                        {% if block.settings.primary_button_link != blank %}
+                          href="{{ block.settings.primary_button_link }}"
+                        {% else %}
+                          role="link"
+                          aria-disabled="true"
+                        {% endif %}
+                      >
+                        {{ block.settings.primary_button_label | escape }}
+                      </a>
+                    {%- endif -%}
+
+                    {%- if block.settings.secondary_button_label != blank -%}
+                      <a
+                        class="rbp-pathway-hero__button rbp-pathway-hero__button--secondary rbp-pathway-hero__button--secondary-{{ block.settings.secondary_button_style }}"
+                        {% if block.settings.secondary_button_link != blank %}
+                          href="{{ block.settings.secondary_button_link }}"
+                        {% else %}
+                          role="link"
+                          aria-disabled="true"
+                        {% endif %}
+                      >
+                        {{ block.settings.secondary_button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {%- if section.blocks.size == 0 and request.design_mode -%}
+          <div class="rbp-pathway-hero__slide is-active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 1">
+            <div class="rbp-pathway-hero__media">
+              <div class="rbp-pathway-hero__placeholder">
+                <span>RBP</span>
+                <span>Add pathway hero slides in the theme editor.</span>
+              </div>
+            </div>
+            <div class="rbp-pathway-hero__overlay" aria-hidden="true"></div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if has_controls -%}
+        <div class="rbp-pathway-hero__controls" data-rbp-pathway-controls>
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="rbp-pathway-hero__dot{% if forloop.first %} is-active{% endif %}"
+              aria-label="Go to slide {{ forloop.index }}"
+              aria-controls="RbpPathwayHeroSlide-{{ section.id }}-{{ forloop.index }}"
+              {% if forloop.first %}aria-current="true"{% endif %}
+              data-rbp-pathway-dot
+              data-slide-index="{{ forloop.index0 }}"
+            >
+              <span aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .rbp-pathway-hero {
+    overflow: hidden;
+    padding-block: var(--rbp-pathway-hero-padding-top, 32px) var(--rbp-pathway-hero-padding-bottom, 32px);
+    background: var(--rbp-pathway-hero-bg-fallback, #eff6ff);
+    background-image: linear-gradient(135deg, var(--rbp-pathway-hero-bg-start, #eff6ff), var(--rbp-pathway-hero-bg-end, #f8fafc));
+  }
+
+  .rbp-pathway-hero__inner {
+    width: min(calc(100% - 3.2rem), var(--rbp-pathway-hero-max-width, 1600px));
+    margin-inline: auto;
+  }
+
+  .rbp-pathway-hero__panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--rbp-pathway-hero-radius, 24px);
+    background: var(--rbp-navy, #020617);
+    box-shadow: 0 2.2rem 6rem rgba(15, 23, 42, 0.16);
+    isolation: isolate;
+  }
+
+  .rbp-pathway-hero__track {
+    display: grid;
+    min-height: var(--rbp-pathway-hero-desktop-height, 700px);
+  }
+
+  .rbp-pathway-hero__slide {
+    position: relative;
+    display: grid;
+    grid-area: 1 / 1;
+    min-height: var(--rbp-pathway-hero-desktop-height, 700px);
+    overflow: hidden;
+    color: var(--rbp-pathway-hero-text-color, #ffffff);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 420ms ease, visibility 420ms ease;
+  }
+
+  .rbp-pathway-hero__slide.is-active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .rbp-pathway-hero__media,
+  .rbp-pathway-hero__media picture,
+  .rbp-pathway-hero__image,
+  .rbp-pathway-hero__placeholder,
+  .rbp-pathway-hero__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .rbp-pathway-hero__media {
+    z-index: -2;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  }
+
+  .rbp-pathway-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--rbp-pathway-hero-image-position, center center);
+  }
+
+  .rbp-pathway-hero__placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    padding: clamp(2.4rem, 4vw, 6rem);
+    background:
+      radial-gradient(circle at 78% 18%, rgba(96, 165, 250, 0.38), transparent 34%),
+      linear-gradient(135deg, #020617 0%, #1e3a8a 58%, #2563eb 100%);
+    color: rgba(255, 255, 255, 0.74);
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .rbp-pathway-hero__placeholder span:first-child {
+    color: #ffffff;
+    font-size: clamp(7rem, 13vw, 18rem);
+    line-height: 0.85;
+  }
+
+  .rbp-pathway-hero__placeholder span:last-child {
+    max-width: 38rem;
+    font-size: clamp(1.4rem, 1.4vw, 1.9rem);
+    line-height: 1.35;
+  }
+
+  .rbp-pathway-hero__overlay {
+    z-index: -1;
+    background: linear-gradient(90deg, var(--rbp-pathway-hero-overlay-color, #020617) 0%, rgba(2, 6, 23, 0.82) 34%, rgba(2, 6, 23, 0) 72%);
+    opacity: var(--rbp-pathway-hero-overlay-opacity, 0.38);
+  }
+
+  .rbp-pathway-hero__slide--overlay-right .rbp-pathway-hero__overlay {
+    background: linear-gradient(270deg, var(--rbp-pathway-hero-overlay-color, #020617) 0%, rgba(2, 6, 23, 0.82) 34%, rgba(2, 6, 23, 0) 72%);
+  }
+
+  .rbp-pathway-hero__slide--overlay-full .rbp-pathway-hero__overlay {
+    background: var(--rbp-pathway-hero-overlay-color, #020617);
+  }
+
+  .rbp-pathway-hero__content {
+    display: flex;
+    align-items: center;
+    min-height: inherit;
+    padding: clamp(3.2rem, 5vw, 7.2rem);
+  }
+
+  .rbp-pathway-hero__copy {
+    width: min(100%, var(--rbp-pathway-hero-content-width, 640px));
+    color: inherit;
+  }
+
+  .rbp-pathway-hero__slide--text-left .rbp-pathway-hero__copy {
+    margin-right: auto;
+  }
+
+  .rbp-pathway-hero__slide--text-center .rbp-pathway-hero__copy {
+    margin-inline: auto;
+  }
+
+  .rbp-pathway-hero__slide--text-right .rbp-pathway-hero__copy {
+    margin-left: auto;
+  }
+
+  .rbp-pathway-hero__content--align-left {
+    text-align: left;
+  }
+
+  .rbp-pathway-hero__content--align-center {
+    text-align: center;
+  }
+
+  .rbp-pathway-hero__content--align-right {
+    text-align: right;
+  }
+
+  .rbp-pathway-hero__eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    margin: 0 0 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: currentColor;
+    padding: 0.65rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+  }
+
+  .rbp-pathway-hero__heading {
+    max-width: 12ch;
+    margin: 0;
+    color: currentColor;
+    font-family: var(--rbp-font-heading, var(--font-heading-family, inherit));
+    font-size: clamp(4rem, 6vw, 7.4rem);
+    font-weight: var(--rbp-weight-strong, 800);
+    letter-spacing: 0;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .rbp-pathway-hero__body {
+    max-width: 58rem;
+    margin-top: 2rem;
+    color: currentColor;
+    font-size: clamp(1.6rem, 1.6vw, 2rem);
+    line-height: 1.6;
+  }
+
+  .rbp-pathway-hero__body p {
+    margin-block: 0;
+  }
+
+  .rbp-pathway-hero__body p + p {
+    margin-top: 1rem;
+  }
+
+  .rbp-pathway-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
+    margin-top: 2.8rem;
+  }
+
+  .rbp-pathway-hero__content--align-center .rbp-pathway-hero__actions {
+    justify-content: center;
+  }
+
+  .rbp-pathway-hero__content--align-right .rbp-pathway-hero__actions {
+    justify-content: flex-end;
+  }
+
+  .rbp-pathway-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5.2rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 1.2rem 2rem;
+    font: inherit;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease;
+  }
+
+  .rbp-pathway-hero__button:focus-visible,
+  .rbp-pathway-hero__dot:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.72);
+    outline-offset: 3px;
+  }
+
+  .rbp-pathway-hero__button:hover {
+    transform: translateY(-1px);
+  }
+
+  .rbp-pathway-hero__button--primary {
+    background: var(--rbp-pathway-hero-primary-bg, var(--rbp-blue, #1d4ed8));
+    color: var(--rbp-pathway-hero-primary-color, #ffffff);
+    box-shadow: 0 1rem 2.6rem rgba(2, 6, 23, 0.18);
+  }
+
+  .rbp-pathway-hero__button--secondary-text {
+    border-color: transparent;
+    background: transparent;
+    color: currentColor;
+    padding-inline: 0.4rem;
+    text-decoration: underline;
+    text-underline-offset: 0.45rem;
+  }
+
+  .rbp-pathway-hero__button--secondary-outline {
+    border-color: rgba(255, 255, 255, 0.54);
+    background: rgba(255, 255, 255, 0.08);
+    color: currentColor;
+    backdrop-filter: blur(12px);
+  }
+
+  .rbp-pathway-hero__button--secondary-solid {
+    border-color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--rbp-ink, #0f172a);
+  }
+
+  .rbp-pathway-hero__controls {
+    position: absolute;
+    right: clamp(1.6rem, 3vw, 3.2rem);
+    bottom: clamp(1.6rem, 3vw, 3.2rem);
+    z-index: 3;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(2, 6, 23, 0.4);
+    padding: 0.55rem;
+    backdrop-filter: blur(16px);
+  }
+
+  .rbp-pathway-hero__dot {
+    display: inline-grid;
+    place-items: center;
+    min-width: 4.4rem;
+    min-height: 4.4rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .rbp-pathway-hero__dot.is-active {
+    background: #ffffff;
+    color: var(--rbp-ink, #0f172a);
+  }
+
+  @media screen and (max-width: 989px) {
+    .rbp-pathway-hero__heading {
+      max-width: 13ch;
+      font-size: clamp(3.6rem, 7.5vw, 5.8rem);
+    }
+  }
+
+  @media screen and (max-width: 699px) {
+    .rbp-pathway-hero__inner {
+      width: min(calc(100% - 2rem), var(--rbp-pathway-hero-max-width, 1600px));
+    }
+
+    .rbp-pathway-hero__track,
+    .rbp-pathway-hero__slide {
+      min-height: var(--rbp-pathway-hero-mobile-height, 680px);
+    }
+
+    .rbp-pathway-hero__content {
+      align-items: flex-end;
+      padding: 2.4rem;
+    }
+
+    .rbp-pathway-hero__panel--has-controls .rbp-pathway-hero__content {
+      padding-bottom: 8.8rem;
+    }
+
+    .rbp-pathway-hero__slide--text-center .rbp-pathway-hero__copy,
+    .rbp-pathway-hero__slide--text-right .rbp-pathway-hero__copy {
+      margin-inline: 0;
+    }
+
+    .rbp-pathway-hero__content--align-center,
+    .rbp-pathway-hero__content--align-right {
+      text-align: left;
+    }
+
+    .rbp-pathway-hero__heading {
+      max-width: 12ch;
+      font-size: clamp(3rem, 10vw, 4.6rem);
+      line-height: 1.04;
+    }
+
+    .rbp-pathway-hero__body {
+      margin-top: 1.5rem;
+      font-size: 1.55rem;
+      line-height: 1.52;
+    }
+
+    .rbp-pathway-hero__actions {
+      width: 100%;
+      margin-top: 2.2rem;
+    }
+
+    .rbp-pathway-hero__button {
+      width: 100%;
+      min-height: 4.8rem;
+      padding-inline: 1.5rem;
+    }
+
+    .rbp-pathway-hero__controls {
+      right: 1.6rem;
+      bottom: 1.6rem;
+      left: 1.6rem;
+      justify-content: flex-end;
+      width: auto;
+    }
+
+    .rbp-pathway-hero__dot {
+      min-width: 4.4rem;
+      min-height: 4.4rem;
+    }
+
+    .rbp-pathway-hero__slide--overlay-left .rbp-pathway-hero__overlay,
+    .rbp-pathway-hero__slide--overlay-right .rbp-pathway-hero__overlay {
+      background: linear-gradient(0deg, var(--rbp-pathway-hero-overlay-color, #020617) 0%, rgba(2, 6, 23, 0.78) 48%, rgba(2, 6, 23, 0.05) 100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rbp-pathway-hero__slide,
+    .rbp-pathway-hero__button,
+    .rbp-pathway-hero__dot {
+      transition: none;
+    }
+
+    .rbp-pathway-hero__button:hover {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const focusableSelector = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const setFocusableState = (slide, isActive) => {
+      slide.querySelectorAll(focusableSelector).forEach((element) => {
+        if (isActive) {
+          if (element.dataset.rbpOriginalTabindex === 'none') {
+            element.removeAttribute('tabindex');
+          } else if (element.dataset.rbpOriginalTabindex) {
+            element.setAttribute('tabindex', element.dataset.rbpOriginalTabindex);
+          }
+
+          delete element.dataset.rbpOriginalTabindex;
+          return;
+        }
+
+        if (!element.dataset.rbpOriginalTabindex) {
+          element.dataset.rbpOriginalTabindex = element.hasAttribute('tabindex') ? element.getAttribute('tabindex') : 'none';
+        }
+
+        element.setAttribute('tabindex', '-1');
+      });
+    };
+
+    const initHero = (hero) => {
+      if (!hero || hero.dataset.rbpPathwayHeroInitialized === 'true') return;
+
+      hero.dataset.rbpPathwayHeroInitialized = 'true';
+
+      const slides = Array.from(hero.querySelectorAll('[data-rbp-pathway-slide]'));
+      const dots = Array.from(hero.querySelectorAll('[data-rbp-pathway-dot]'));
+
+      slides.forEach((slide, index) => setFocusableState(slide, index === 0));
+
+      if (slides.length <= 1 || dots.length === 0) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const interval = Number.parseInt(hero.dataset.interval, 10) || 6000;
+      const pauseOnHover = hero.dataset.pauseOnHover === 'true';
+      const shouldAutoplay = hero.dataset.autoplay === 'true' && !reduceMotion.matches;
+      let currentIndex = 0;
+      let autoplayTimer = null;
+      let userPaused = false;
+
+      const setActiveSlide = (nextIndex) => {
+        currentIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+          const isActive = index === currentIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          setFocusableState(slide, isActive);
+        });
+
+        dots.forEach((dot, index) => {
+          const isActive = index === currentIndex;
+          dot.classList.toggle('is-active', isActive);
+
+          if (isActive) {
+            dot.setAttribute('aria-current', 'true');
+          } else {
+            dot.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const stopAutoplay = () => {
+        if (autoplayTimer) {
+          window.clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      };
+
+      const startAutoplay = () => {
+        if (!shouldAutoplay || userPaused || autoplayTimer) return;
+        autoplayTimer = window.setInterval(() => setActiveSlide(currentIndex + 1), interval);
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          userPaused = true;
+          stopAutoplay();
+          setActiveSlide(Number.parseInt(dot.dataset.slideIndex, 10) || 0);
+        });
+      });
+
+      hero.addEventListener('focusin', () => {
+        userPaused = true;
+        stopAutoplay();
+      });
+
+      if (pauseOnHover) {
+        hero.addEventListener('mouseenter', stopAutoplay);
+        hero.addEventListener('mouseleave', startAutoplay);
+      }
+
+      const handleMotionPreferenceChange = (event) => {
+        if (event.matches) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      };
+
+      if (typeof reduceMotion.addEventListener === 'function') {
+        reduceMotion.addEventListener('change', handleMotionPreferenceChange);
+      } else if (typeof reduceMotion.addListener === 'function') {
+        reduceMotion.addListener(handleMotionPreferenceChange);
+      }
+
+      startAutoplay();
+    };
+
+    const initAll = (root = document) => {
+      root.querySelectorAll('[data-rbp-pathway-hero]').forEach(initHero);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => initAll());
+    } else {
+      initAll();
+    }
+
+    document.addEventListener('shopify:section:load', (event) => initAll(event.target));
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "RBP pathway hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section background style"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_start",
+      "label": "Background gradient start",
+      "default": "#EFF6FF"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_end",
+      "label": "Background gradient end",
+      "default": "#F8FAFC"
+    },
+    {
+      "type": "color",
+      "id": "fallback_background_color",
+      "label": "Fallback background color",
+      "default": "#EFF6FF"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1600
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 480,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 520,
+      "max": 820,
+      "step": 20,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 680
+    },
+    {
+      "type": "range",
+      "id": "panel_border_radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Panel border radius",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay interval",
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_numbered_dots",
+      "label": "Show numbered slide controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause autoplay on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Accessibility and heading control"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_h1_on_first_slide",
+      "label": "Use H1 on first slide",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Carousel aria label",
+      "default": "Remote Business Partner pathway hero"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt_text",
+          "label": "Image alt text"
+        },
+        {
+          "type": "select",
+          "id": "object_position",
+          "label": "Image focal point",
+          "options": [
+            { "value": "center center", "label": "Center" },
+            { "value": "center top", "label": "Top" },
+            { "value": "center bottom", "label": "Bottom" },
+            { "value": "left center", "label": "Left" },
+            { "value": "right center", "label": "Right" }
+          ],
+          "default": "center center"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Remote Business Partner"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Practical business support for decisions, systems and execution"
+        },
+        {
+          "type": "richtext",
+          "id": "body_text",
+          "label": "Body text",
+          "default": "<p>Choose the right pathway across advisory, consulting, implementation, operations, resources and membership support.</p>"
+        },
+        {
+          "type": "text",
+          "id": "primary_button_label",
+          "label": "Primary button label",
+          "default": "Find the right pathway"
+        },
+        {
+          "type": "url",
+          "id": "primary_button_link",
+          "label": "Primary button link"
+        },
+        {
+          "type": "text",
+          "id": "secondary_button_label",
+          "label": "Secondary button label",
+          "default": "Explore services"
+        },
+        {
+          "type": "url",
+          "id": "secondary_button_link",
+          "label": "Secondary button link"
+        },
+        {
+          "type": "header",
+          "content": "Styling"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Text position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "range",
+          "id": "content_max_width",
+          "min": 360,
+          "max": 820,
+          "step": 20,
+          "unit": "px",
+          "label": "Content maximum width",
+          "default": 640
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay color",
+          "default": "#020617"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 70,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay opacity",
+          "default": 40
+        },
+        {
+          "type": "select",
+          "id": "overlay_direction",
+          "label": "Overlay direction",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" },
+            { "value": "full", "label": "Full" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Buttons"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_background",
+          "label": "Primary button background",
+          "default": "#1D4ED8"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_text_color",
+          "label": "Primary button text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "select",
+          "id": "secondary_button_style",
+          "label": "Secondary button style",
+          "options": [
+            { "value": "text", "label": "Text" },
+            { "value": "outline", "label": "Outline" },
+            { "value": "solid", "label": "Solid" }
+          ],
+          "default": "outline"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "RBP pathway hero",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Remote Business Partner",
+            "heading": "Practical business support for decisions, systems and execution",
+            "body_text": "<p>Choose the right pathway across advisory, consulting, implementation, operations, resources and membership support.</p>",
+            "primary_button_label": "Find the right pathway",
+            "primary_button_link": "/pages/support",
+            "secondary_button_label": "Explore services",
+            "secondary_button_link": "/pages/advisory",
+            "text_position": "left"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Business Essentials",
+            "heading": "Templates, toolkits and documentation suites for practical business use",
+            "body_text": "<p>Access structured resources, supported options and practical documentation pathways for common business needs.</p>",
+            "primary_button_label": "Explore Essentials",
+            "primary_button_link": "/pages/essentials",
+            "secondary_button_label": "View resources",
+            "secondary_button_link": "/pages/resources",
+            "text_position": "left"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Membership",
+            "heading": "Ongoing support for business owners who need structure and momentum",
+            "body_text": "<p>Compare membership options and choose the level of support that fits your operating rhythm.</p>",
+            "primary_button_label": "View Membership",
+            "primary_button_link": "/pages/membership",
+            "secondary_button_label": "Compare options",
+            "secondary_button_link": "/pages/membership-options",
+            "text_position": "left"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
