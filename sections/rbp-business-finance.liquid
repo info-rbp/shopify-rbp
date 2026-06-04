@@ -1,0 +1,96 @@
+{{ 'rbp-business-finance.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign finance_titles = 'Business Loans||Working Capital Finance||Asset Finance||Equipment Finance||Invoice Finance||Trade Finance||Business Line of Credit||Business Overdrafts||Business Vehicle Finance||Commercial Property Finance' | split: '||'
+  assign finance_descriptions = 'General purpose finance for established business needs.||Short-term funding support for everyday operating costs.||Funding to purchase or refinance business assets.||Finance for machinery, tools, systems or specialist equipment.||Funding linked to unpaid customer invoices.||Support for importing, exporting or large purchase orders.||Flexible access to funds up to an agreed limit.||A business bank facility that can support short-term cash flow.||Finance for work vehicles, commercial vehicles or fleets.||Funding options connected to commercial property purchase or refinance.' | split: '||'
+  assign finance_use_cases = 'Growth projects, working capital gaps or one-off business costs.||Payroll timing, supplier payments or seasonal stock.||Plant, vehicles, fit-outs or other productive assets.||Equipment upgrades, replacements or expansion.||Waiting for customer payments while costs continue.||Funding stock, materials or cross-border trade cycles.||Recurring cash flow needs where flexibility matters.||Short-term operating buffers linked to a bank account.||Utes, vans, trucks, cars or business fleet requirements.||Buying, refinancing or improving commercial premises.' | split: '||'
+  assign finance_urls = '/pages/business-loans||/pages/working-capital-finance||/pages/asset-finance||/pages/equipment-finance||/pages/invoice-finance||/pages/trade-finance||/pages/business-line-of-credit||/pages/business-overdrafts||/pages/business-vehicle-finance||/pages/commercial-property-finance' | split: '||'
+  assign scenarios = 'Managing cash flow timing||Buying equipment||Funding growth||Managing seasonal demand||Supporting large orders||Consolidating business debts||Purchasing vehicles||Funding commercial property' | split: '||'
+  assign prepare_items = 'Business name||Contact details||Funding purpose||Rough funding amount||Timeframe||Trading history context||Whether finance is urgent' | split: '||'
+%}
+
+<section class="rbp-finance rbp-section" aria-labelledby="rbp-finance-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--finance">
+      <p class="rbp-eyebrow">Business Finance</p>
+      <h1 id="rbp-finance-title">Understand business funding options before you enquire</h1>
+      <p class="rbp-hero__body">
+        Use this guide to compare common business finance types, understand what may suit your situation, and submit a funding enquiry to Remote Business Partner for review.
+      </p>
+      <div class="rbp-actions">
+        <a class="rbp-button rbp-button--primary" href="/pages/enquire-about-funding">Enquire About Funding</a>
+        <a class="rbp-button rbp-button--secondary" href="#finance-types">Compare finance types</a>
+      </div>
+    </div>
+
+    <div id="finance-types" class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Finance Types</p>
+        <h2>Compare common product pathways</h2>
+      </div>
+      <div class="rbp-card-grid rbp-card-grid--finance">
+        {% for finance_title in finance_titles %}
+          {% assign finance_index = forloop.index0 %}
+          <article class="rbp-card">
+            <div>
+              <h3>{{ finance_title }}</h3>
+              <p>{{ finance_descriptions[finance_index] }}</p>
+              <p class="rbp-card__meta"><strong>Common use:</strong> {{ finance_use_cases[finance_index] }}</p>
+            </div>
+            <a class="rbp-text-link" href="{{ finance_urls[finance_index] }}">Learn More</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">When It May Help</p>
+        <h2>Funding can support practical business moments</h2>
+      </div>
+      <div class="rbp-chip-grid">
+        {% for scenario in scenarios %}
+          <div class="rbp-chip-card">{{ scenario }}</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-split">
+      <div>
+        <p class="rbp-eyebrow">Before You Enquire</p>
+        <h2>What to prepare</h2>
+        <p>Having the basics ready helps RBP understand the request and decide the most useful next step.</p>
+      </div>
+      <ul class="rbp-check-list">
+        {% for item in prepare_items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">Funding Enquiry</p>
+        <h2>Send the details for review</h2>
+        <p>RBP will review your enquiry and may refer it to an appropriate contact or provider where suitable.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="/pages/enquire-about-funding">Enquire About Funding</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Remote Business Partner does not provide financial advice or guarantee funding. Submitting an enquiry allows RBP to review the request and, where appropriate, refer or forward the enquiry for follow-up. Finance approval, eligibility, rates, terms and provider acceptance are not guaranteed.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP business finance",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP business finance"
+    }
+  ]
+}
+{% endschema %}

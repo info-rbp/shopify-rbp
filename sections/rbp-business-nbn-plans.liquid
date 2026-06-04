@@ -1,0 +1,145 @@
+{{ 'rbp-business-nbn.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'rbp-business-nbn.js' | asset_url }}" defer></script>
+
+{% liquid
+  assign enquiry_url = section.settings.enquiry_url | default: '/pages/contact'
+  assign plan_names = 'Business NBN 50/20||Business NBN 100/40||Business NBN 250/100||Business NBN 500/200||Business NBN 1000/400' | split: '||'
+  assign plan_speeds = '50/20 Mbps||100/40 Mbps||250/100 Mbps||500/200 Mbps||1000/400 Mbps' | split: '||'
+  assign best_for = 'Everyday business email, cloud apps and light video calls.||Growing teams, frequent cloud tools and video meetings.||Larger teams, heavier uploads and busy workdays.||High-demand offices, large transfers and critical cloud workflows.||Maximum listed comparison tier for very high-demand business use.' | split: '||'
+  assign static_ip = 'May be available||May be available||May be available||May be available||May be available' | split: '||'
+  assign priority_support = 'Confirm before activation||Confirm before activation||Confirm before activation||Confirm before activation||Confirm before activation' | split: '||'
+  assign important_notes = 'Final availability and speed suitability are confirmed before activation.||Final availability and speed suitability are confirmed before activation.||Higher speed tiers depend on premises and network capability.||Higher speed tiers depend on premises and network capability.||Highest speed tiers depend on premises and network capability.' | split: '||'
+%}
+
+<section class="rbp-nbn rbp-section" aria-labelledby="rbp-nbn-plans-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">Business NBN Plans</p>
+      <h1 id="rbp-nbn-plans-title">Compare Business NBN plan options</h1>
+      <p class="rbp-hero__body">
+        Review indicative plan tiers and choose the plan you would like to discuss. Final serviceability, technology type, pricing, terms and activation details are confirmed before service activation.
+      </p>
+    </div>
+
+    <div class="rbp-address-panel" data-rbp-nbn-address-panel>
+      <p class="rbp-eyebrow">Address Review</p>
+      <h2>Address accepted for plan review</h2>
+      <p data-rbp-nbn-address-empty>Enter your business address on the Business NBN page to save it for plan comparison.</p>
+      <p data-rbp-nbn-address-display hidden>
+        Reviewing plan options for: <strong data-rbp-nbn-address-value></strong>
+      </p>
+      <a class="rbp-text-link" href="/pages/business-nbn#business-nbn-address-check">Update address</a>
+    </div>
+
+    <div class="rbp-section-block" id="business-nbn-plan-options">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Plan Options</p>
+        <h2>Select a plan pathway</h2>
+      </div>
+      <div class="rbp-card-grid">
+        {% for plan_name in plan_names %}
+          {% assign plan_index = forloop.index0 %}
+          <article class="rbp-plan-card">
+            <h3>{{ plan_name }}</h3>
+            <dl>
+              <div>
+                <dt>Download/upload speed</dt>
+                <dd>{{ plan_speeds[plan_index] }}</dd>
+              </div>
+              <div>
+                <dt>Monthly price</dt>
+                <dd>Confirmed before activation</dd>
+              </div>
+              <div>
+                <dt>Setup fee</dt>
+                <dd>Confirmed before activation</dd>
+              </div>
+              <div>
+                <dt>Contract term</dt>
+                <dd>Confirmed before activation</dd>
+              </div>
+              <div>
+                <dt>Static IP availability</dt>
+                <dd>{{ static_ip[plan_index] }}</dd>
+              </div>
+              <div>
+                <dt>Priority support</dt>
+                <dd>{{ priority_support[plan_index] }}</dd>
+              </div>
+            </dl>
+            <p><strong>Best for:</strong> {{ best_for[plan_index] }}</p>
+            <p class="rbp-card__meta">{{ important_notes[plan_index] }}</p>
+            <a class="rbp-button rbp-button--primary" href="{{ enquiry_url }}?plan={{ plan_name | url_encode }}">Enquire About This Plan</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-section-block rbp-table-wrap">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Comparison</p>
+        <h2>Plan comparison table</h2>
+      </div>
+      <table class="rbp-comparison-table">
+        <caption class="visually-hidden">Business NBN plan comparison</caption>
+        <thead>
+          <tr>
+            <th scope="col">Plan name</th>
+            <th scope="col">Download/upload</th>
+            <th scope="col">Static IP</th>
+            <th scope="col">Support</th>
+            <th scope="col">Important notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for plan_name in plan_names %}
+            {% assign plan_index = forloop.index0 %}
+            <tr>
+              <th scope="row">{{ plan_name }}</th>
+              <td>{{ plan_speeds[plan_index] }}</td>
+              <td>{{ static_ip[plan_index] }}</td>
+              <td>{{ priority_support[plan_index] }}</td>
+              <td>{{ important_notes[plan_index] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div id="nbn-next-steps" class="rbp-split">
+      <div>
+        <p class="rbp-eyebrow">Choosing A Plan</p>
+        <h2>How to choose</h2>
+        <p>Start with the number of users, upload needs, cloud tools, voice or video requirements, static IP requirements and the impact of downtime on the business.</p>
+      </div>
+      <div class="rbp-note-list">
+        <p><strong>Static IP:</strong> Confirm availability before activation.</p>
+        <p><strong>Support:</strong> Confirm support inclusions, response expectations and escalation pathways before committing.</p>
+        <p><strong>Activation:</strong> Activation proceeds only after final serviceability, technology and requirements are confirmed.</p>
+      </div>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Plan details are for comparison and enquiry routing. Remote Business Partner does not guarantee NBN serviceability, speed outcomes, static IP availability, plan activation, provider approval or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP business NBN plans",
+  "settings": [
+    {
+      "type": "text",
+      "id": "enquiry_url",
+      "label": "Plan enquiry URL",
+      "default": "/pages/contact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP business NBN plans"
+    }
+  ]
+}
+{% endschema %}

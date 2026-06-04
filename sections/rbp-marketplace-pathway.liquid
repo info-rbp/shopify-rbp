@@ -1,0 +1,134 @@
+{{ 'rbp-marketplace.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign pathway_title = page.title | default: 'Marketplace Pathway'
+  assign eyebrow = 'Marketplace'
+  assign intro = 'Review the marketplace pathway, what it covers and what remains subject to confirmation.'
+  assign overview = 'This pathway provides general business information and practical routing support.'
+  assign steps = 'Review the information||Prepare relevant details||Send an enquiry if you want to continue||RBP reviews the request and confirms the next practical step'
+  assign includes = 'General pathway guidance||Practical preparation notes||Clear next steps||Boundary wording'
+  assign excludes = 'Guaranteed outcomes||Legal, tax or financial advice||Complete due diligence assurance||Automatic buyer or seller approval'
+
+  case page.handle
+    when 'buyer-guide'
+      assign pathway_title = 'Buyer Guide'
+      assign intro = 'Use this guide to understand how buyers can start, qualify interest, review information and progress to due diligence.'
+      assign overview = 'The buyer pathway starts with basic interest, then moves through qualification, public information, private information controls and due diligence review where appropriate.'
+      assign steps = 'Clarify your buying goals||Review public information||Confirm buyer qualification requirements||Access private information only when appropriate||Progress due diligence before any commercial decision'
+      assign includes = 'Buyer starting points||Qualification expectations||Public and private information stages||Due diligence next steps'
+    when 'seller-guide'
+      assign pathway_title = 'Seller Guide'
+      assign intro = 'Use this guide to understand listing preparation, seller qualification, confidentiality and review steps.'
+      assign overview = 'The seller pathway helps business owners prepare clear information, decide what can be public, and understand the confidentiality process before sensitive details are shared.'
+      assign steps = 'Prepare basic listing details||Review seller qualification requirements||Separate public and confidential information||Confirm confidentiality controls||Progress review before buyer disclosure'
+      assign includes = 'Listing preparation notes||Seller qualification expectations||Confidentiality guidance||Review process summary'
+    when 'asset-sales-process'
+      assign pathway_title = 'Asset Sales Process'
+      assign intro = 'Review how asset sale opportunities may be prepared, listed, reviewed and progressed.'
+      assign overview = 'The asset sales pathway focuses on clear asset information, commercial context, disclosure controls and next-step routing.'
+      assign steps = 'Identify the asset or asset group||Prepare ownership and condition details||Review disclosure requirements||Confirm buyer interest and qualification||Progress the transaction process only after review'
+      assign includes = 'Asset listing preparation||Information review||Disclosure guidance||Next-step routing'
+      assign excludes = 'Guaranteed sale results||Valuation certainty||Buyer approval||Legal transfer advice'
+    when 'due-diligence-packs'
+      assign pathway_title = 'Due Diligence Packs'
+      assign intro = 'Understand what due diligence packs can organise and where independent review may still be needed.'
+      assign overview = 'Due diligence packs can help organise available documents and commercial context, but they do not replace professional advice or guarantee completeness.'
+      assign steps = 'Confirm the review purpose||Identify available documents||Organise information by category||Flag gaps or assumptions||Use professional advice where required'
+      assign includes = 'Document organisation||Information categories||Gap awareness||Review support'
+      assign excludes = 'Completeness guarantees||Legal, accounting or tax advice||Valuation guarantees||Transaction success'
+    when 'confidentiality-process'
+      assign pathway_title = 'Confidentiality Process'
+      assign intro = 'Review staged disclosure, NDA expectations and how sensitive information may be handled.'
+      assign overview = 'The confidentiality pathway explains how marketplace information can move from public overview to private detail through qualification and agreed controls.'
+      assign steps = 'Share only suitable public information first||Confirm the request and recipient context||Use confidentiality controls where appropriate||Release sensitive information in stages||Keep records of disclosure decisions'
+      assign includes = 'Staged disclosure guidance||NDA expectations||Sensitive information handling||Practical review steps'
+      assign excludes = 'Legal advice||Confidentiality guarantees||Automatic approval for private information||Complete risk removal'
+    when 'marketplace-terms'
+      assign pathway_title = 'Marketplace Terms'
+      assign intro = 'Review participation boundaries before using buyer, seller, due diligence or confidentiality pathways.'
+      assign overview = 'Marketplace terms explain that information is general, outcomes are not guaranteed, and users should review suitability, professional advice and transaction documents before acting.'
+      assign steps = 'Read marketplace boundaries||Review your role and responsibilities||Confirm what information can be shared||Seek professional advice where needed||Proceed only when the pathway is suitable'
+      assign includes = 'Participation boundaries||Information-use expectations||General responsibility notes||Referral and support routing'
+      assign excludes = 'Guaranteed transaction outcomes||Professional advice||Complete due diligence assurance||Provider or counterparty approval'
+  endcase
+
+  assign step_items = steps | split: '||'
+  assign include_items = includes | split: '||'
+  assign exclude_items = excludes | split: '||'
+%}
+
+<section class="rbp-marketplace rbp-section" aria-labelledby="rbp-marketplace-pathway-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">{{ eyebrow }}</p>
+      <h1 id="rbp-marketplace-pathway-title">{{ pathway_title }}</h1>
+      <p class="rbp-hero__body">{{ intro }}</p>
+      <div class="rbp-actions">
+        <a class="rbp-button rbp-button--primary" href="/pages/marketplace#marketplace-enquiry">Make a Marketplace Enquiry</a>
+        <a class="rbp-button rbp-button--secondary" href="/pages/marketplace">Back to Marketplace</a>
+      </div>
+    </div>
+
+    <div class="rbp-content-grid">
+      <article class="rbp-info-panel rbp-info-panel--wide">
+        <h2>Overview</h2>
+        <p>{{ overview }}</p>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>What this pathway includes</h2>
+        <ul class="rbp-check-list">
+          {% for item in include_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>What it does not include</h2>
+        <ul class="rbp-check-list rbp-check-list--muted">
+          {% for item in exclude_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+    </div>
+
+    <div class="rbp-process">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Process</p>
+        <h2>Typical next steps</h2>
+      </div>
+      <ol class="rbp-step-list">
+        {% for item in step_items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">Continue</p>
+        <h2>Send a marketplace enquiry</h2>
+        <p>Share the pathway and context so RBP can review the request and route the next practical step.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="/pages/marketplace#marketplace-enquiry">Make a Marketplace Enquiry</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Marketplace information is general in nature. RBP does not guarantee buyer qualification, seller outcomes, funding, insurance, valuation, due diligence completeness or transaction success.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP marketplace pathway",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP marketplace pathway"
+    }
+  ]
+}
+{% endschema %}

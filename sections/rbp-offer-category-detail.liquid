@@ -1,0 +1,113 @@
+{{ 'rbp-partner-offers.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign current_category = metaobject
+  assign current_category_handle = current_category.system.handle
+  if current_category_handle == blank
+    assign target_handle = section.settings.category_handle | handleize
+    for category_record in metaobjects.offer_category.values
+      assign record_title = category_record.name.value | default: category_record.title.value | default: ''
+      assign record_handle = category_record.system.handle | default: category_record.handle.value | default: record_title | handleize
+      if record_handle == target_handle
+        assign current_category = category_record
+        assign current_category_handle = record_handle
+        break
+      endif
+    endfor
+  endif
+
+  assign category_title = current_category.name.value | default: current_category.title.value | default: page.title | default: 'Offer category'
+  assign category_description = current_category.description.value | default: 'Browse active public offers in this category.'
+%}
+
+<section class="rbp-offers rbp-section" aria-labelledby="rbp-offer-category-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">Partner Offers</p>
+      <h1 id="rbp-offer-category-title">{{ category_title }}</h1>
+      <p class="rbp-hero__body">{{ category_description }}</p>
+      <a class="rbp-button rbp-button--secondary" href="/pages/offers">Back to all offer categories</a>
+    </div>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Available Offers</p>
+        <h2>Active public offers in this category</h2>
+      </div>
+
+      <div class="rbp-offer-grid">
+        {% assign visible_offer_count = 0 %}
+        {% for offer in metaobjects.partner_offer.values %}
+          {% liquid
+            assign offer_status = offer.status.value | default: offer.status
+            assign offer_visibility = offer.visibility.value | default: offer.visibility
+            assign offer_cta_url = offer.cta_url.value | default: offer.cta_url
+            assign offer_category = offer.category.value
+            assign offer_category_handle = offer_category.system.handle
+            if offer_category_handle == blank
+              assign offer_category_handle = offer.category_handle.value
+            endif
+            if offer_category_handle == blank
+              assign offer_category_handle = offer.category_name.value
+            endif
+            assign offer_category_handle = offer_category_handle | handleize
+            assign partner = offer.partner.value
+            assign partner_status = partner.status.value | default: partner.status
+            assign partner_visibility = partner.visibility.value | default: partner.visibility
+            assign partner_public = partner.active_public.value | default: partner.is_public.value | default: partner.public.value
+            assign partner_is_public = false
+            if partner != blank
+              if partner_status == 'active'
+                if partner_visibility == 'public' or partner_public == true or partner_public == 'true'
+                  assign partner_is_public = true
+                endif
+              endif
+            endif
+          %}
+          {% if offer_status == 'active' %}
+            {% if offer_visibility == 'public' %}
+              {% if offer_cta_url != blank %}
+                {% if partner_is_public %}
+                  {% if offer_category_handle == current_category_handle %}
+                    {% assign visible_offer_count = visible_offer_count | plus: 1 %}
+                    {% render 'rbp-offer-card', offer: offer, show_category: false %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% if visible_offer_count == 0 %}
+        <div class="rbp-empty-state">
+          <h2>No public offers are available in this category</h2>
+          <p>Offers appear only when they are active, public and have a valid partner CTA.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Disclosure:</strong> Partner offers may be subject to partner terms, availability and eligibility. RBP may receive referral or affiliate benefits where disclosed. Remote Business Partner does not guarantee provider approval, offer eligibility or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP offer category",
+  "settings": [
+    {
+      "type": "text",
+      "id": "category_handle",
+      "label": "Fallback category handle",
+      "default": "business-finance"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP offer category"
+    }
+  ]
+}
+{% endschema %}

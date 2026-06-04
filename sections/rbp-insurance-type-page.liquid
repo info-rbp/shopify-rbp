@@ -1,0 +1,113 @@
+{{ 'rbp-business-insurance.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign bizcover_url = section.settings.bizcover_url | default: 'https://www.bizcover.com.au/'
+  assign insurance_title = page.title | default: 'Business Insurance'
+  assign intro = 'This page explains a common business insurance type in general terms and links to BizCover for quote options.'
+  assign what_it_is = 'A business insurance pathway that may be relevant depending on the nature of the business and its risks.'
+  assign common_considerations = 'Business activities||Contracts or licence requirements||Customers, premises or online exposure||Policy limits, exclusions and conditions'
+  assign when_to_review = 'Starting or changing business activities||Signing a new client or lease agreement||Hiring staff or contractors||Reviewing risk after growth or operational change'
+
+  case page.handle
+    when 'public-liability-insurance'
+      assign what_it_is = 'Public liability insurance is commonly considered by businesses that interact with customers, suppliers, visitors or members of the public.'
+      assign common_considerations = 'Customer or visitor access||Worksites and premises||Third-party property damage risk||Contract requirements'
+    when 'professional-indemnity-insurance'
+      assign what_it_is = 'Professional indemnity insurance is commonly considered by businesses that provide advice, design, consulting or professional services.'
+      assign common_considerations = 'Advice or recommendations||Client reliance on your work||Professional service contracts||Industry or licence requirements'
+    when 'cyber-liability-insurance'
+      assign what_it_is = 'Cyber liability insurance is commonly considered by businesses that hold data, trade online or rely on digital systems.'
+      assign common_considerations = 'Customer or employee data||Online payments or systems||Incident response expectations||Privacy and cyber risk controls'
+    when 'business-insurance-pack'
+      assign what_it_is = 'A business insurance pack can combine several cover types for common business risks under a packaged policy structure.'
+      assign common_considerations = 'Premises or contents||Public liability||Business interruption||The exact sections included in the pack'
+    when 'management-liability-insurance'
+      assign what_it_is = 'Management liability insurance is commonly considered where director, officer, employment or governance-related risks need review.'
+      assign common_considerations = 'Business structure||Directors and officers||Employment practices||Regulatory or governance exposure'
+    when 'commercial-property-insurance'
+      assign what_it_is = 'Commercial property insurance is commonly considered by businesses with owned or leased premises, fixtures, contents or stock.'
+      assign common_considerations = 'Building ownership or lease duties||Contents and fit-out||Stock and equipment||Insured events and exclusions'
+    when 'business-interruption-insurance'
+      assign what_it_is = 'Business interruption insurance is commonly considered where a business wants to review income interruption after an insured event.'
+      assign common_considerations = 'Revenue dependency on premises or equipment||Recovery time after insured events||Payroll or fixed costs||Policy waiting periods and limits'
+  endcase
+
+  assign consideration_items = common_considerations | split: '||'
+  assign review_items = when_to_review | split: '||'
+%}
+
+<section class="rbp-insurance rbp-section" aria-labelledby="rbp-insurance-type-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">Business Insurance</p>
+      <h1 id="rbp-insurance-type-title">{{ insurance_title }}</h1>
+      <p class="rbp-hero__body">{{ intro }}</p>
+      <div class="rbp-actions">
+        <a class="rbp-button rbp-button--primary" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+        <a class="rbp-button rbp-button--secondary" href="/pages/business-insurance">Back to insurance options</a>
+      </div>
+    </div>
+
+    <div class="rbp-content-grid">
+      <article class="rbp-info-panel rbp-info-panel--wide">
+        <h2>What this insurance type is</h2>
+        <p>{{ what_it_is }}</p>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>Common considerations</h2>
+        <ul class="rbp-check-list">
+          {% for item in consideration_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>When to review it</h2>
+        <ul class="rbp-check-list">
+          {% for item in review_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel rbp-info-panel--wide">
+        <h2>Before deciding</h2>
+        <p>Compare the cover, limits, exclusions, conditions, excess, pricing and suitability information directly with BizCover before deciding whether a product is suitable.</p>
+      </article>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">BizCover Quote Pathway</p>
+        <h2>Continue to BizCover</h2>
+        <p>Use the quote pathway to provide details and review options directly with BizCover.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Disclosure:</strong> RBP provides general information and referral pathways only. Insurance quotes, policy options, eligibility, pricing and product terms are handled by BizCover. Review all policy terms, exclusions and conditions before deciding whether a product is suitable. Remote Business Partner does not guarantee insurance acceptance, provider approval or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP insurance type",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bizcover_url",
+      "label": "BizCover quote URL",
+      "default": "https://www.bizcover.com.au/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP insurance type"
+    }
+  ]
+}
+{% endschema %}

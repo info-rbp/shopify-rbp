@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "rbp-business-nbn",
+      "type": "rbp-marketplace-pathway",
       "settings": {}
     }
   },

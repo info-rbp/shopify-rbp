@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "rbp-insurance-type-page",
+      "settings": {
+        "bizcover_url": "https://www.bizcover.com.au/"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
