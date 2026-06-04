@@ -18,8 +18,8 @@
       },
       "blocks": {
         "contact": { "type": "service", "settings": { "icon": "01", "title": "I need to contact support", "text": "Use this for general support, existing customer help or help choosing the right pathway.", "button_label": "Contact support", "url": "/pages/contact" } },
-        "onboarding": { "type": "service", "settings": { "icon": "02", "title": "I need onboarding or next-step help", "text": "Use support when a purchased product, service or membership pathway needs intake or setup guidance.", "button_label": "Request onboarding help", "url": "/pages/contact" } },
-        "business_nbn": { "type": "service", "settings": { "icon": "03", "title": "I need Business NBN support", "text": "Check availability and support content for business connectivity pathways.", "button_label": "View Business NBN support", "url": "/pages/nbn-support-education" } }
+        "onboarding": { "type": "service", "settings": { "icon": "02", "title": "I need onboarding or next-step help", "text": "Use support when a purchased product, service or membership pathway needs intake or setup guidance.", "button_label": "Request onboarding help", "url": "/pages/onboarding-help" } },
+        "business_nbn": { "type": "service", "settings": { "icon": "03", "title": "I need Business NBN support", "text": "Check availability and support content for business connectivity pathways.", "button_label": "View Business NBN support", "url": "/pages/business-nbn-support" } }
       },
       "block_order": ["contact", "onboarding", "business_nbn"]
     },
@@ -67,7 +67,7 @@
         "text": "<p>These are confirmed destinations for support, connectivity, resources and membership context.</p>"
       },
       "blocks": {
-        "business_nbn": { "type": "resource", "settings": { "type": "Page", "title": "Business NBN support", "text": "Connectivity education and next steps.", "url": "/pages/nbn-support-education" } },
+        "business_nbn": { "type": "resource", "settings": { "type": "Page", "title": "Business NBN support", "text": "Connectivity support and next steps.", "url": "/pages/business-nbn-support" } },
         "membership": { "type": "resource", "settings": { "type": "Page", "title": "Membership", "text": "Member value, benefits and plan options.", "url": "/pages/membership" } },
         "essentials": { "type": "resource", "settings": { "type": "Page", "title": "Essentials", "text": "Templates, toolkits and practical resources.", "url": "/pages/essentials" } }
       },
