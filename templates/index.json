@@ -1,86 +1,208 @@
 {
   "sections": {
     "hero": {
-      "type": "rbp-hero",
+      "type": "rbp-pathway-hero",
       "settings": {
-        "eyebrow": "Remote Business Partner",
-        "heading": "Practical support for business owners who need the next step clear",
-        "text": "<p>Choose the right pathway for a decision, plan, implementation, operations issue, resource or support request.</p>",
-        "primary_label": "Find the right support pathway",
-        "primary_url": "/pages/support",
-        "secondary_label": "Browse Essentials",
-        "secondary_url": "/pages/essentials",
-        "panel_badge": "Start here",
-        "panel_heading": "Choose the right pathway",
-        "panel_text": "Start with advisory, consulting, implementation, operations, resources or support depending on what your business needs next."
-      }
+        "background_gradient_start": "#EFF6FF",
+        "background_gradient_end": "#F8FAFC",
+        "fallback_background_color": "#EFF6FF",
+        "max_width": 1600,
+        "desktop_height": 700,
+        "mobile_height": 680,
+        "panel_border_radius": 24,
+        "section_padding_top": 32,
+        "section_padding_bottom": 32,
+        "enable_autoplay": false,
+        "autoplay_interval": 6,
+        "show_numbered_dots": true,
+        "pause_on_hover": true,
+        "use_h1_on_first_slide": true,
+        "aria_label": "Remote Business Partner pathway hero"
+      },
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Remote Business Partner",
+            "heading": "Practical business support for decisions, systems and execution",
+            "body_text": "<p>Choose the right pathway across advisory, consulting, implementation, operations, resources and membership support.</p>",
+            "primary_button_label": "Find the right pathway",
+            "primary_button_link": "/pages/support",
+            "secondary_button_label": "Explore services",
+            "secondary_button_link": "/pages/advisory",
+            "text_position": "left",
+            "text_alignment": "left",
+            "content_max_width": 640,
+            "text_color": "#FFFFFF",
+            "overlay_color": "#020617",
+            "overlay_opacity": 40,
+            "overlay_direction": "left",
+            "primary_button_background": "#1D4ED8",
+            "primary_button_text_color": "#FFFFFF",
+            "secondary_button_style": "outline"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Business Essentials",
+            "heading": "Templates, toolkits and documentation suites for practical business use",
+            "body_text": "<p>Access structured resources, supported options and practical documentation pathways for common business needs.</p>",
+            "primary_button_label": "Explore Essentials",
+            "primary_button_link": "/pages/essentials",
+            "secondary_button_label": "View resources",
+            "secondary_button_link": "/pages/resources",
+            "text_position": "left",
+            "text_alignment": "left",
+            "content_max_width": 640,
+            "text_color": "#FFFFFF",
+            "overlay_color": "#020617",
+            "overlay_opacity": 40,
+            "overlay_direction": "left",
+            "primary_button_background": "#1D4ED8",
+            "primary_button_text_color": "#FFFFFF",
+            "secondary_button_style": "outline"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Membership",
+            "heading": "Ongoing support for business owners who need structure and momentum",
+            "body_text": "<p>Compare membership options and choose the level of support that fits your operating rhythm.</p>",
+            "primary_button_label": "View Membership",
+            "primary_button_link": "/pages/membership",
+            "secondary_button_label": "Compare options",
+            "secondary_button_link": "/pages/membership-options",
+            "text_position": "left",
+            "text_alignment": "left",
+            "content_max_width": 640,
+            "text_color": "#FFFFFF",
+            "overlay_color": "#020617",
+            "overlay_opacity": 40,
+            "overlay_direction": "left",
+            "primary_button_background": "#1D4ED8",
+            "primary_button_text_color": "#FFFFFF",
+            "secondary_button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ]
     },
     "service_router": {
-      "type": "rbp-service-router",
+      "type": "rbp-pathway-card-strip",
       "settings": {
         "eyebrow": "Choose a pathway",
         "heading": "Start with the kind of support you need",
-        "text": "<p>Use the homepage as a practical router. Each pathway explains what it is for, what you get and where to go next.</p>"
+        "body": "<p>Use the homepage as a practical router. Each pathway explains what it is for, what you get and where to go next.</p>",
+        "layout": "carousel",
+        "cards_per_row_desktop": 4,
+        "enable_mobile_scroll": true,
+        "background_color": "#F8FAFC",
+        "section_padding_top": 72,
+        "section_padding_bottom": 72
       },
       "blocks": {
         "advisory": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
+            "badge": "Decision",
             "icon": "01",
             "title": "Advisory",
-            "text": "Get a practical second view before spending money, changing systems, hiring support or starting implementation.",
-            "button_label": "View Advisory",
-            "url": "/pages/advisory"
+            "description": "Decision support, business review and practical guidance.",
+            "link": "/pages/advisory",
+            "link_label": "View Advisory",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         },
         "consulting": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
+            "badge": "Plan",
             "icon": "02",
             "title": "Consulting",
-            "text": "Turn a broad business problem into diagnosis, recommendations, scope and an implementation roadmap.",
-            "button_label": "View Consulting",
-            "url": "/pages/consulting"
+            "description": "Structured support for improvement, change and operations.",
+            "link": "/pages/consulting",
+            "link_label": "View Consulting",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         },
         "implementation": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
+            "badge": "Build",
             "icon": "03",
             "title": "Implementation",
-            "text": "Set up documents, workflows, registers, systems and handover assets once the direction is clear.",
-            "button_label": "View Implementation",
-            "url": "/pages/implementation"
+            "description": "Help turning decisions into systems, workflows and delivery.",
+            "link": "/pages/implementation",
+            "link_label": "View Implementation",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         },
         "operations": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
+            "badge": "Run",
             "icon": "04",
             "title": "Operations Hub",
-            "text": "Find services, resources and support for recurring operational work, controls and business follow-through.",
-            "button_label": "Open Operations Hub",
-            "url": "/pages/operations-hub"
+            "description": "Operational support, business services and managed pathways.",
+            "link": "/pages/operations-hub",
+            "link_label": "Open Operations Hub",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         },
         "essentials": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
+            "badge": "Resources",
             "icon": "05",
             "title": "Essentials",
-            "text": "Browse templates, toolkits, checklists, Business NBN, marketplace pathways and supported resource options.",
-            "button_label": "Browse Essentials",
-            "url": "/pages/essentials"
+            "description": "Templates, toolkits, documentation suites and partner resources.",
+            "link": "/pages/essentials",
+            "link_label": "Explore Essentials",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
+          }
+        },
+        "membership": {
+          "type": "pathway",
+          "settings": {
+            "badge": "Ongoing",
+            "icon": "06",
+            "title": "Membership",
+            "description": "Ongoing support options for business owners.",
+            "link": "/pages/membership",
+            "link_label": "View Membership",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         },
         "support": {
-          "type": "service",
+          "type": "pathway",
           "settings": {
-            "icon": "06",
+            "badge": "Help",
+            "icon": "07",
             "title": "Support",
-            "text": "Use support when you need help with orders, onboarding, Business NBN, membership or choosing the right route.",
-            "button_label": "Contact Support",
-            "url": "/pages/support"
+            "description": "Help choosing the right pathway or resolving next steps.",
+            "link": "/pages/support",
+            "link_label": "Open Support",
+            "card_background": "#020617",
+            "text_color": "#FFFFFF",
+            "overlay_opacity": 35
           }
         }
       },
@@ -90,7 +212,72 @@
         "implementation",
         "operations",
         "essentials",
+        "membership",
         "support"
+      ]
+    },
+    "trust_strip": {
+      "type": "rbp-trust-strip",
+      "settings": {
+        "eyebrow": "Trust and support",
+        "heading": "Clear pathways before you proceed",
+        "body": "<p>Delivery, support and scope expectations stay clear before you choose a pathway or checkout.</p>",
+        "layout": "stacked",
+        "background_color": "#FFFFFF",
+        "text_color": "#0F172A",
+        "show_top_border": true,
+        "show_bottom_border": true,
+        "section_padding_top": 32,
+        "section_padding_bottom": 32
+      },
+      "blocks": {
+        "scope": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "scope",
+            "heading": "Clear scope",
+            "body": "Clear inclusions and boundaries before checkout."
+          }
+        },
+        "delivery": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "delivery",
+            "heading": "Digital delivery",
+            "body": "Digital delivery where applicable."
+          }
+        },
+        "support": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "support",
+            "heading": "Support available",
+            "body": "Supported pathways available for selected resources."
+          }
+        },
+        "secure": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "secure",
+            "heading": "Secure checkout",
+            "body": "Secure Shopify checkout."
+          }
+        },
+        "resources": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "resource",
+            "heading": "Practical resources",
+            "body": "Built for practical business use."
+          }
+        }
+      },
+      "block_order": [
+        "scope",
+        "delivery",
+        "support",
+        "secure",
+        "resources"
       ]
     },
     "problem_cards": {
@@ -340,6 +527,77 @@
         "business_nbn"
       ]
     },
+    "faq": {
+      "type": "rbp-faq",
+      "settings": {
+        "eyebrow": "FAQs",
+        "heading": "Common questions before you choose",
+        "body": "<p>Use these questions to understand service boundaries, resource support and how to choose the right RBP pathway.</p>",
+        "layout": "boxed",
+        "background_color": "#F8FAFC",
+        "card_background_color": "#FFFFFF",
+        "section_padding_top": 72,
+        "section_padding_bottom": 72,
+        "support_title": "Need help choosing?",
+        "support_body": "<p>Start with support if the right pathway is unclear or the request involves an order, onboarding or existing resource.</p>",
+        "support_link_label": "Open Support",
+        "support_link": "/pages/support"
+      },
+      "blocks": {
+        "pathway": {
+          "type": "question",
+          "settings": {
+            "category": "Pathways",
+            "question": "Which RBP pathway should I start with?",
+            "answer": "<p>Start with the outcome you need. Advisory helps with decisions, Consulting helps structure a problem, Implementation helps turn a plan into working assets, Operations Hub supports recurring work, Essentials covers practical resources, and Support helps route unclear requests.</p>",
+            "open_by_default": true
+          }
+        },
+        "essentials": {
+          "type": "question",
+          "settings": {
+            "category": "Essentials",
+            "question": "Are templates and toolkits self-serve or supported?",
+            "answer": "<p>Some resources are designed for self-serve use, and selected resources may have supported pathways where stated. Check the product or pathway page before checkout so inclusions and boundaries are clear.</p>",
+            "open_by_default": false
+          }
+        },
+        "membership": {
+          "type": "question",
+          "settings": {
+            "category": "Membership",
+            "question": "Is membership required to use RBP?",
+            "answer": "<p>No. Membership is for business owners who need ongoing structure and momentum. You can still use individual pathways, resources or support without starting with membership.</p>",
+            "open_by_default": false
+          }
+        },
+        "support": {
+          "type": "question",
+          "settings": {
+            "category": "Support",
+            "question": "What should I send with a support request?",
+            "answer": "<p>Include the business context, any relevant order or product details, timing pressure and the outcome you are trying to reach. That makes routing and next steps clearer.</p>",
+            "open_by_default": false
+          }
+        },
+        "boundaries": {
+          "type": "question",
+          "settings": {
+            "category": "Boundaries",
+            "question": "How are partner or regulated-service pathways handled?",
+            "answer": "<p>Pages for partner offers or regulated-service topics should explain the role, referral pathway and support boundary before you proceed.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "pathway",
+        "essentials",
+        "membership",
+        "support",
+        "boundaries"
+      ]
+    },
     "final_cta": {
       "type": "rbp-cta-band",
       "settings": {
@@ -354,11 +612,13 @@
   "order": [
     "hero",
     "service_router",
+    "trust_strip",
     "problem_cards",
     "how_it_works",
     "service_pathways",
     "sme_positioning",
     "resources",
+    "faq",
     "final_cta"
   ]
 }
