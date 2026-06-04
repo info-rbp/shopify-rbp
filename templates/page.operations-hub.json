@@ -14,12 +14,12 @@
       "settings": {
         "eyebrow": "Operations routing",
         "heading": "Choose the operations pathway",
-        "text": "<p>Start with the operational outcome you need, then move into services, resources, offers or support.</p>"
+        "text": "<p>Start with the operational outcome you need, then move into operations services, Business NBN support or contact support.</p>"
       },
       "blocks": {
-        "run": { "type": "service", "settings": { "icon": "01", "title": "Run the business", "text": "Browse services for recurring work, controls, admin systems and operating support.", "button_label": "View operations services", "url": "/collections/operations-on-demand-services" } },
-        "improve": { "type": "service", "settings": { "icon": "02", "title": "Improve the business", "text": "Use practical tools, templates and service pathways to clean up recurring work.", "button_label": "View essentials", "url": "/pages/essentials" } },
-        "support": { "type": "service", "settings": { "icon": "03", "title": "Access tools and support", "text": "Find marketplace pathways, business resources and support when the right next step is unclear.", "button_label": "Contact support", "url": "/pages/support" } }
+        "run": { "type": "service", "settings": { "icon": "01", "title": "Run the business", "text": "Browse services for recurring work, controls, admin systems and operating support.", "button_label": "View operations services", "url": "/pages/operations-services" } },
+        "improve": { "type": "service", "settings": { "icon": "02", "title": "Improve recurring work", "text": "Use practical services and support pathways to clean up recurring operational work.", "button_label": "View operations collection", "url": "/collections/operations-on-demand-services" } },
+        "support": { "type": "service", "settings": { "icon": "03", "title": "Get operations support", "text": "Contact support when the right next step, owner or pathway needs context.", "button_label": "Contact support", "url": "/pages/contact" } }
       },
       "block_order": ["run", "improve", "support"]
     },
@@ -31,39 +31,25 @@
         "text": "<p>Use the hub to move into a practical service, resource or support route without guessing where to start.</p>"
       },
       "blocks": {
-        "business_operations": { "type": "feature", "settings": { "icon": "B", "title": "Run the business", "text": "Support for recurring work, accountability, controls and operating rhythm.", "button_label": "Browse operations services", "url": "/collections/operations-on-demand-services" } },
+        "business_operations": { "type": "feature", "settings": { "icon": "B", "title": "Run the business", "text": "Support for recurring work, accountability, controls and operating rhythm.", "button_label": "Browse operations services", "url": "/pages/operations-services" } },
         "admin_systems": { "type": "feature", "settings": { "icon": "A", "title": "Improve the business", "text": "Support for registers, calendars, documentation, workflows and knowledge bases.", "button_label": "View individual services", "url": "/collections/individual-on-demand-services" } },
-        "partner_offers": { "type": "feature", "settings": { "icon": "S", "title": "Access tools and support", "text": "Use marketplace pathways, practical resources and support when the next operational step needs context.", "button_label": "Open support", "url": "/pages/support" } }
+        "support_paths": { "type": "feature", "settings": { "icon": "S", "title": "Access support", "text": "Use support when the next operational step needs routing, context or follow-through.", "button_label": "Open support", "url": "/pages/support" } }
       },
-      "block_order": ["business_operations", "admin_systems", "partner_offers"]
+      "block_order": ["business_operations", "admin_systems", "support_paths"]
     },
     "resources": {
       "type": "rbp-resource-preview",
       "settings": {
         "eyebrow": "Operational resources",
         "heading": "Useful starting points for business operators",
-        "text": "<p>Use these confirmed destinations to move from an operational issue into a service, resource or support pathway.</p>"
+        "text": "<p>Use these confirmed destinations to move from an operational issue into a service, product or support pathway.</p>"
       },
       "blocks": {
-        "operations_collection": { "type": "resource", "settings": { "type": "Collection", "title": "Operations On-Demand Services", "text": "Operational services and support products for recurring business work.", "url": "/collections/operations-on-demand-services" } },
+        "operations_services": { "type": "resource", "settings": { "type": "Page", "title": "Operations Services", "text": "Operational services and support products for recurring business work.", "url": "/pages/operations-services" } },
         "compliance_calendar": { "type": "resource", "settings": { "type": "Service", "title": "Compliance Calendar and Obligations Register", "text": "Implementation support for recurring obligations, calendars and registers.", "url": "/products/compliance-calendar-and-obligations-register" } },
-        "business_nbn": { "type": "resource", "settings": { "type": "Page", "title": "Business NBN", "text": "Check business connectivity readiness and next steps.", "url": "/pages/business-nbn" } }
+        "business_nbn": { "type": "resource", "settings": { "type": "Page", "title": "Business NBN Support", "text": "Business connectivity support, availability boundaries and next steps.", "url": "/pages/business-nbn-support" } }
       },
-      "block_order": ["operations_collection", "compliance_calendar", "business_nbn"]
-    },
-    "offers": {
-      "type": "rbp-marketplace-offers",
-      "settings": {
-        "eyebrow": "Marketplace",
-        "heading": "Partner offers and operational opportunities",
-        "text": "<p>Explore available partner offers, marketplace pathways and practical business opportunities as they become available.</p>",
-        "limit": 6
-      },
-      "blocks": {
-        "marketplace": { "type": "offer", "settings": { "category": "Marketplace", "title": "Marketplace pathways", "text": "Explore marketplace support, buyer and seller pathways, partner offers and related guidance.", "button_label": "Open marketplace", "url": "/pages/marketplace" } },
-        "seller_toolkit": { "type": "offer", "settings": { "category": "Toolkit", "title": "Marketplace Seller Compliance Toolkit", "text": "A toolkit for sellers managing marketplace terms, listings, refunds and customer communications.", "button_label": "View toolkit", "url": "/products/marketplace-seller-compliance-toolkit" } }
-      },
-      "block_order": ["marketplace", "seller_toolkit"]
+      "block_order": ["operations_services", "compliance_calendar", "business_nbn"]
     },
     "contact": {
       "type": "rbp-contact-panel",
@@ -72,7 +58,7 @@
         "heading": "Use support when the right operational path is unclear",
         "text": "<p>Send the context and the outcome you need so RBP can route you to the right service, resource or next step.</p>",
         "button_label": "Contact support",
-        "button_url": "/pages/support",
+        "button_url": "/pages/contact",
         "aside_heading": "What to include",
         "aside_text": "<p>Tell us what is stuck, what has already been tried, who owns the work and whether you need advice, delivery or a self-serve resource.</p>"
       }
@@ -82,11 +68,11 @@
       "settings": {
         "eyebrow": "Next step",
         "heading": "Find the right operations pathway",
-        "text": "<p>Start with the operational outcome, then choose the service, resource, offer or support route that fits.</p>",
-        "button_label": "Find the right operations pathway",
-        "button_url": "/collections/operations-on-demand-services"
+        "text": "<p>Start with the operational outcome, then choose the service, resource or support route that fits.</p>",
+        "button_label": "View operations services",
+        "button_url": "/pages/operations-services"
       }
     }
   },
-  "order": ["hero", "router", "features", "resources", "offers", "contact", "cta"]
+  "order": ["hero", "router", "features", "resources", "contact", "cta"]
 }
