@@ -1,0 +1,92 @@
+{{ 'rbp-marketplace.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign pathway_titles = 'Business NBN||Business Finance||Business Insurance||Partner Offers||Offer Categories||Marketplace Support' | split: '||'
+  assign pathway_descriptions = 'Check a business address, then review Business NBN plan options with final serviceability reviewed before activation.||Compare common finance product types and submit a provider-neutral funding enquiry for RBP review.||Review general insurance information and continue directly to BizCover for quote options.||Browse active public partner offers when approved offer data is available.||Explore offer categories that have active public offers with valid partner CTAs.||Ask support to confirm whether a marketplace pathway or partner offer is available for your situation.' | split: '||'
+  assign pathway_ctas = 'Check Business NBN||Enquire About Funding||Get A Quote||Browse Partner Offers||View Offer Categories||Contact Support' | split: '||'
+  assign pathway_urls = '/pages/business-nbn||/pages/enquire-about-funding||/pages/business-insurance||/pages/offers||/pages/offer-categories||/pages/contact' | split: '||'
+%}
+
+<section class="rbp-marketplace rbp-section" aria-labelledby="rbp-marketplace-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--marketplace">
+      <p class="rbp-eyebrow">Marketplace</p>
+      <h1 id="rbp-marketplace-title">Explore marketplace pathways and business opportunities</h1>
+      <p class="rbp-hero__body">
+        Start with active Remote Business Partner pathways for business connectivity, funding enquiries, insurance quote routing and approved partner offer discovery.
+      </p>
+    </div>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Choose Your Pathway</p>
+        <h2>Start with the outcome you need</h2>
+      </div>
+      <div class="rbp-card-grid">
+        {% for pathway_title in pathway_titles %}
+          {% assign pathway_index = forloop.index0 %}
+          <article class="rbp-card">
+            <div>
+              <h3>{{ pathway_title }}</h3>
+              <p>{{ pathway_descriptions[pathway_index] }}</p>
+            </div>
+            <a class="rbp-text-link" href="{{ pathway_urls[pathway_index] }}">{{ pathway_ctas[pathway_index] }}</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-pathway-feature">
+      <article>
+        <p class="rbp-eyebrow">Essentials</p>
+        <h2>Business service pathways</h2>
+        <p>Use the Essentials pages for Business NBN, Business Finance and Business Insurance. Each pathway includes its own eligibility, provider and activation boundaries.</p>
+        <a class="rbp-button rbp-button--secondary" href="/pages/business-nbn">Start With Business NBN</a>
+      </article>
+      <article>
+        <p class="rbp-eyebrow">Partner Offers</p>
+        <h2>Offer discovery stays separate from advice</h2>
+        <p>Partner offers are shown only when they are active, public and have a direct partner CTA. Eligibility, availability and terms are handled by the relevant partner.</p>
+        <a class="rbp-button rbp-button--secondary" href="/pages/offers">Browse Partner Offers</a>
+      </article>
+    </div>
+
+    <div class="rbp-card-grid rbp-card-grid--two">
+      <article class="rbp-card rbp-card--feature">
+        <p class="rbp-eyebrow">Availability</p>
+        <h2>Partner and commercial eligibility can vary</h2>
+        <p>Marketplace pathways may depend on partner approval, business eligibility, location, timing, customer status and commercial availability.</p>
+      </article>
+      <article class="rbp-card rbp-card--feature">
+        <p class="rbp-eyebrow">Advice Boundaries</p>
+        <h2>Marketplace content is general information</h2>
+        <p>RBP does not provide legal, tax, financial or insurance advice through marketplace listings or partner offer pages.</p>
+      </article>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">Partner Offers</p>
+        <h2>Browse offers separately from marketplace pathways</h2>
+        <p>Partner Offers is a distinct directory organised by category. Use it when you need business support offers with partner eligibility and terms clearly separated from RBP services.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="/pages/offers">Browse Partner Offers</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Marketplace information is general in nature. Partner offers are subject to eligibility, commercial availability and partner terms. RBP does not provide legal, financial or insurance advice through marketplace listings and does not guarantee partner approval, offer availability or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP marketplace page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP marketplace page"
+    }
+  ]
+}
+{% endschema %}

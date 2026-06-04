@@ -1,0 +1,239 @@
+.rbp-section {
+  --rbp-ink: #16202a;
+  --rbp-muted: #5d6872;
+  --rbp-line: #d9e0e6;
+  --rbp-panel: #f7f8fb;
+  --rbp-panel-strong: #eef6f5;
+  --rbp-accent: #096b72;
+  --rbp-accent-dark: #064d52;
+  --rbp-warm: #9a5a1f;
+  color: var(--rbp-ink);
+  background: #ffffff;
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+}
+
+.rbp-container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.rbp-hero {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 1px solid var(--rbp-line);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f2fbfa 0%, #ffffff 58%, #fbf3eb 100%);
+}
+
+.rbp-hero--compact {
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+.rbp-eyebrow {
+  margin: 0;
+  color: var(--rbp-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.rbp-hero h1,
+.rbp-section-heading h2,
+.rbp-card h3,
+.rbp-card h2,
+.rbp-info-panel h2,
+.rbp-cta-panel h2 {
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.rbp-hero h1 {
+  max-width: 880px;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.rbp-hero__body {
+  max-width: 720px;
+  margin: 0;
+  color: var(--rbp-muted);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.rbp-actions,
+.rbp-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rbp-button,
+.rbp-text-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rbp-button {
+  padding: 0.78rem 1rem;
+  border: 1px solid transparent;
+}
+
+.rbp-button--primary {
+  color: #ffffff;
+  background: var(--rbp-accent);
+}
+
+.rbp-button--secondary {
+  color: var(--rbp-ink);
+  background: #ffffff;
+  border-color: var(--rbp-line);
+}
+
+.rbp-text-link {
+  color: var(--rbp-accent-dark);
+  justify-content: flex-start;
+}
+
+.rbp-text-link--strong {
+  color: #7c3d0f;
+}
+
+.rbp-button:focus-visible,
+.rbp-text-link:focus-visible {
+  outline: 3px solid rgba(9, 107, 114, 0.28);
+  outline-offset: 3px;
+}
+
+.rbp-section-block,
+.rbp-process,
+.rbp-cta-panel {
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.rbp-section-heading {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 760px;
+  margin-bottom: 1.25rem;
+}
+
+.rbp-section-heading p {
+  margin: 0;
+  color: var(--rbp-muted);
+  line-height: 1.6;
+}
+
+.rbp-section-heading h2,
+.rbp-cta-panel h2 {
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+}
+
+.rbp-card-grid,
+.rbp-content-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.rbp-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+
+.rbp-card-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.rbp-card-grid--two,
+.rbp-content-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.rbp-card,
+.rbp-info-panel,
+.rbp-cta-panel,
+.rbp-disclosure {
+  border: 1px solid var(--rbp-line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.rbp-card,
+.rbp-info-panel {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+}
+
+.rbp-card--feature {
+  background: var(--rbp-panel);
+}
+
+.rbp-card p,
+.rbp-info-panel p,
+.rbp-cta-panel p,
+.rbp-disclosure {
+  color: var(--rbp-muted);
+  line-height: 1.62;
+}
+
+.rbp-card p,
+.rbp-info-panel p,
+.rbp-cta-panel p {
+  margin: 0;
+}
+
+.rbp-info-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.rbp-check-list,
+.rbp-step-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--rbp-muted);
+  line-height: 1.55;
+}
+
+.rbp-step-list {
+  counter-reset: step;
+  list-style: decimal;
+}
+
+.rbp-cta-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  background: var(--rbp-panel-strong);
+}
+
+.rbp-disclosure {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-left: 4px solid var(--rbp-warm);
+}
+
+@media (max-width: 760px) {
+  .rbp-cta-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .rbp-actions,
+  .rbp-button {
+    width: 100%;
+  }
+}

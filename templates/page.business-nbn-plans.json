@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "rbp-business-nbn-plans",
+      "settings": {
+        "enquiry_url": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

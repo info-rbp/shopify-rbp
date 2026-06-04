@@ -1,0 +1,83 @@
+{{ 'rbp-marketplace.css' | asset_url | stylesheet_tag }}
+
+<section id="marketplace-enquiry" class="rbp-marketplace rbp-section rbp-section--tight" aria-labelledby="rbp-marketplace-enquiry-title">
+  <div class="rbp-container rbp-container--narrow">
+    <div class="rbp-section-heading">
+      <p class="rbp-eyebrow">Marketplace Enquiry</p>
+      <h2 id="rbp-marketplace-enquiry-title">Send a marketplace enquiry</h2>
+      <p>Use this form for partner offer, Essentials pathway or general marketplace routing.</p>
+    </div>
+
+    {% form 'contact', id: 'MarketplaceEnquiryForm', class: 'rbp-form' %}
+      <input type="hidden" name="contact[Enquiry type]" value="Marketplace enquiry">
+
+      {% if form.posted_successfully? %}
+        <div class="rbp-form__success" tabindex="-1">
+          Thank you. Your marketplace enquiry has been sent to RBP for review.
+        </div>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="rbp-form__error" role="alert">
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+
+      <div class="rbp-form__grid">
+        <div class="rbp-field">
+          <label for="MarketplaceName">Name <span aria-hidden="true">*</span></label>
+          <input id="MarketplaceName" type="text" name="contact[name]" autocomplete="name" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="MarketplaceEmail">Email <span aria-hidden="true">*</span></label>
+          <input id="MarketplaceEmail" type="email" name="contact[email]" autocomplete="email" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="MarketplacePhone">Phone</label>
+          <input id="MarketplacePhone" type="tel" name="contact[phone]" autocomplete="tel">
+        </div>
+
+        <div class="rbp-field">
+          <label for="MarketplaceBusiness">Business name</label>
+          <input id="MarketplaceBusiness" type="text" name="contact[Business name]" autocomplete="organization">
+        </div>
+
+        <div class="rbp-field rbp-field--full">
+          <label for="MarketplaceInterest">Interest type</label>
+          <select id="MarketplaceInterest" name="contact[Interest type]">
+            <option>Partner offer</option>
+            <option>Business NBN</option>
+            <option>Business Finance</option>
+            <option>Business Insurance</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="rbp-field rbp-field--full">
+          <label for="MarketplaceMessage">Message <span aria-hidden="true">*</span></label>
+          <textarea id="MarketplaceMessage" name="contact[body]" rows="5" required></textarea>
+        </div>
+      </div>
+
+      <button class="rbp-button rbp-button--primary" type="submit">Submit Marketplace Enquiry</button>
+    {% endform %}
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Submitting an enquiry does not guarantee funding, insurance acceptance, NBN activation, partner approval, offer eligibility or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP marketplace form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP marketplace form"
+    }
+  ]
+}
+{% endschema %}

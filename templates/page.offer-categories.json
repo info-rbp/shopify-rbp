@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "rbp-offer-category-detail",
+      "settings": {
+        "category_handle": "business-finance"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,230 @@
+{{ 'rbp-partner-offers.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign offer = metaobject
+  assign offer_status = offer.status.value | default: offer.status
+  assign offer_visibility = offer.visibility.value | default: offer.visibility
+  assign offer_cta_url = offer.cta_url.value | default: offer.cta_url
+  assign partner = offer.partner.value
+  assign partner_status = partner.status.value | default: partner.status
+  assign partner_visibility = partner.visibility.value | default: partner.visibility
+  assign partner_public = partner.active_public.value | default: partner.is_public.value | default: partner.public.value
+  assign partner_is_public = false
+  if partner != blank
+    if partner_status == 'active'
+      if partner_visibility == 'public' or partner_public == true or partner_public == 'true'
+        assign partner_is_public = true
+      endif
+    endif
+  endif
+  assign is_public_offer = false
+  if offer_status == 'active'
+    if offer_visibility == 'public'
+      if offer_cta_url != blank
+        if partner_is_public
+          assign is_public_offer = true
+        endif
+      endif
+    endif
+  endif
+
+  assign offer_title = offer.title.value | default: offer.name.value | default: page.title | default: 'Partner offer'
+  assign short_description = offer.short_description.value | default: offer.description.value
+  assign full_description = offer.full_description.value | default: offer.details.value
+  assign eligibility = offer.eligibility.value
+  assign terms = offer.terms.value
+  assign offer_code = offer.offer_code.value | default: offer.code.value
+  assign partner_disclosure = offer.partner_disclosure.value | default: offer.disclosure.value
+  assign cta_label = offer.cta_label.value | default: 'Get Offer'
+  assign partner_name = partner.name.value | default: partner.title.value | default: offer.partner_name.value
+  assign partner_logo = partner.logo.value | default: offer.partner_logo.value
+  assign category = offer.category.value
+  assign category_title = category.name.value | default: category.title.value | default: offer.category_name.value
+  assign category_handle = category.system.handle | default: offer.category_handle.value | default: category_title | handleize
+%}
+
+<section class="rbp-offers rbp-section" aria-labelledby="rbp-offer-detail-title">
+  <div class="rbp-container">
+    {% if is_public_offer %}
+      <div class="rbp-offer-detail">
+        <div class="rbp-offer-detail__header">
+          <div>
+            <p class="rbp-eyebrow">Partner Offer</p>
+            <h1 id="rbp-offer-detail-title">{{ offer_title }}</h1>
+            {% if short_description != blank %}
+              <p class="rbp-hero__body">{{ short_description }}</p>
+            {% endif %}
+          </div>
+          {% if partner_logo != blank %}
+            {{ partner_logo | image_url: width: 320 | image_tag: class: 'rbp-offer-detail__logo', loading: 'lazy', alt: partner_name }}
+          {% endif %}
+        </div>
+
+        <dl class="rbp-offer-meta">
+          {% if partner_name != blank %}
+            <div>
+              <dt>Partner</dt>
+              <dd>{{ partner_name }}</dd>
+            </div>
+          {% endif %}
+          {% if category_title != blank %}
+            <div>
+              <dt>Category</dt>
+              <dd>{{ category_title }}</dd>
+            </div>
+          {% endif %}
+          {% if offer_code != blank %}
+            <div>
+              <dt>Offer code</dt>
+              <dd><code>{{ offer_code }}</code></dd>
+            </div>
+          {% endif %}
+        </dl>
+
+        <div class="rbp-content-grid">
+          {% if full_description != blank %}
+            <article class="rbp-info-panel rbp-info-panel--wide">
+              <h2>Offer details</h2>
+              <div class="rte">
+                {% if offer.full_description != blank %}
+                  {{ offer.full_description | metafield_tag }}
+                {% elsif offer.details != blank %}
+                  {{ offer.details | metafield_tag }}
+                {% else %}
+                  {{ full_description | escape | newline_to_br }}
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+
+          {% if eligibility != blank %}
+            <article class="rbp-info-panel">
+              <h2>Eligibility</h2>
+              <div class="rte">
+                {% if offer.eligibility != blank %}
+                  {{ offer.eligibility | metafield_tag }}
+                {% else %}
+                  {{ eligibility | escape | newline_to_br }}
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+
+          {% if terms != blank %}
+            <article class="rbp-info-panel">
+              <h2>Terms</h2>
+              <div class="rte">
+                {% if offer.terms != blank %}
+                  {{ offer.terms | metafield_tag }}
+                {% else %}
+                  {{ terms | escape | newline_to_br }}
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        </div>
+
+        {% if partner_disclosure != blank %}
+          <div class="rbp-disclosure" role="note">
+            <strong>Partner disclosure:</strong>
+            {% if offer.partner_disclosure != blank %}
+              {{ offer.partner_disclosure | metafield_tag }}
+            {% elsif offer.disclosure != blank %}
+              {{ offer.disclosure | metafield_tag }}
+            {% else %}
+              {{ partner_disclosure | escape | newline_to_br }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="rbp-cta-panel">
+          <div>
+            <p class="rbp-eyebrow">Redeem With Partner</p>
+            <h2>Continue to the partner offer</h2>
+            <p>The CTA opens the partner or affiliate destination directly. Offer terms, availability and eligibility are handled by the partner.</p>
+          </div>
+          <a class="rbp-button rbp-button--primary" href="{{ offer_cta_url }}" target="_blank" rel="noopener sponsored">{{ cta_label }}</a>
+        </div>
+
+        <div class="rbp-section-block">
+          <div class="rbp-section-heading">
+            <p class="rbp-eyebrow">Related Offers</p>
+            <h2>More offers in this category</h2>
+          </div>
+          <div class="rbp-offer-grid">
+            {% assign related_count = 0 %}
+            {% for related_offer in metaobjects.partner_offer.values %}
+              {% liquid
+                assign related_status = related_offer.status.value | default: related_offer.status
+                assign related_visibility = related_offer.visibility.value | default: related_offer.visibility
+                assign related_cta_url = related_offer.cta_url.value | default: related_offer.cta_url
+                assign related_category = related_offer.category.value
+                assign related_category_handle = related_category.system.handle
+                if related_category_handle == blank
+                  assign related_category_handle = related_offer.category_handle.value
+                endif
+                if related_category_handle == blank
+                  assign related_category_handle = related_offer.category_name.value
+                endif
+                assign related_category_handle = related_category_handle | handleize
+                assign related_partner = related_offer.partner.value
+                assign related_partner_status = related_partner.status.value | default: related_partner.status
+                assign related_partner_visibility = related_partner.visibility.value | default: related_partner.visibility
+                assign related_partner_public = related_partner.active_public.value | default: related_partner.is_public.value | default: related_partner.public.value
+                assign related_partner_is_public = false
+                if related_partner != blank
+                  if related_partner_status == 'active'
+                    if related_partner_visibility == 'public' or related_partner_public == true or related_partner_public == 'true'
+                      assign related_partner_is_public = true
+                    endif
+                  endif
+                endif
+                assign related_handle = related_offer.system.handle
+                assign offer_handle = offer.system.handle
+              %}
+              {% if related_status == 'active' %}
+                {% if related_visibility == 'public' %}
+                  {% if related_cta_url != blank %}
+                    {% if related_partner_is_public %}
+                      {% if related_category_handle == category_handle %}
+                        {% unless related_handle == offer_handle %}
+                          {% if related_count < 3 %}
+                            {% assign related_count = related_count | plus: 1 %}
+                            {% render 'rbp-offer-card', offer: related_offer, show_category: false %}
+                          {% endif %}
+                        {% endunless %}
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="rbp-disclosure" role="note">
+          <strong>Disclosure:</strong> Partner offers may be subject to partner terms, availability and eligibility. RBP may receive referral or affiliate benefits where disclosed. Remote Business Partner does not guarantee provider approval, offer eligibility or commercial results.
+        </div>
+      </div>
+    {% else %}
+      <div class="rbp-empty-state">
+        <p class="rbp-eyebrow">Partner Offer</p>
+        <h1 id="rbp-offer-detail-title">This offer is not currently available</h1>
+        <p>Offers are shown only when they are active, public, connected to an active partner and have a valid partner CTA.</p>
+        <a class="rbp-button rbp-button--secondary" href="/pages/offers">Back to Partner Offers</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP offer detail",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP offer detail"
+    }
+  ]
+}
+{% endschema %}

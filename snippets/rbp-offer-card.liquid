@@ -1,74 +1,63 @@
-{%- if offer == blank -%}
-  <article class="rbp-offer-card" data-rbp-offer>
-    <div class="rbp-offer-body">
-      <div class="rbp-offer-meta">
-        <span class="rbp-offer-pill">Partner offer</span>
-      </div>
-      <h3 class="rbp-offer-title">Partner offer unavailable</h3>
-      <p class="rbp-offer-text">Configure partner offer metaobjects or add manual marketplace offer blocks in Shopify Admin.</p>
-    </div>
-  </article>
-{%- else -%}
-  {% liquid
-    assign partner = offer.partner.value
-    assign category = offer.category.value
-    assign category_slug = category.slug.value | default: category.system.handle | default: ''
-    assign category_name = category.name.value | default: 'Partner offer'
-    assign partner_name = partner.name.value | default: ''
-    assign offer_title = offer.title.value | default: 'Partner offer'
-    assign offer_description = offer.short_description.value | default: ''
-    assign search_text = offer_title | append: ' ' | append: offer_description | append: ' ' | append: partner_name | append: ' ' | append: category_name | downcase | escape
-    assign hero_image = offer.hero_image.value
-    assign offer_detail_url = offer.system.url
-    if offer_detail_url == blank
-      assign offer_detail_url = '/offers/' | append: offer.system.handle
-    endif
-    if offer_detail_url == '/offers/'
-      assign offer_detail_url = '#'
-    endif
-  %}
+{% doc %}
+@param {metaobject} offer - Partner offer metaobject to render.
+@param {boolean} [show_category] - Whether to show the offer category.
+@example
+{% render 'rbp-offer-card', offer: offer, show_category: true %}
+{% enddoc %}
 
-  <article class="rbp-offer-card" data-rbp-offer data-category="{{ category_slug | escape }}" data-search="{{ search_text }}">
-    <a href="{{ offer_detail_url }}" class="rbp-offer-card-link" aria-label="View {{ offer_title | escape }}">
-      <div class="rbp-offer-media">
-        {%- if hero_image != blank -%}
-          {{ hero_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: offer_title }}
-        {%- else -%}
-          <div class="rbp-offer-mark">{{ offer_title | slice: 0, 2 | upcase }}</div>
-        {%- endif -%}
-        <div class="rbp-offer-badges">
-          {%- if offer.is_top_offer.value == true or offer.is_top_offer.value == 'true' -%}
-            <span class="rbp-offer-badge">Top</span>
-          {%- endif -%}
-          {%- if offer.is_exclusive_offer.value == true or offer.is_exclusive_offer.value == 'true' -%}
-            <span class="rbp-offer-badge">Exclusive</span>
-          {%- endif -%}
-          {%- if offer.is_limited_time_offer.value == true or offer.is_limited_time_offer.value == 'true' -%}
-            <span class="rbp-offer-badge">Limited time</span>
-          {%- endif -%}
-          {%- if offer.is_new_offer.value == true or offer.is_new_offer.value == 'true' -%}
-            <span class="rbp-offer-badge">New</span>
-          {%- endif -%}
-        </div>
-      </div>
-    </a>
-    <div class="rbp-offer-body">
-      <div class="rbp-offer-meta">
-        {%- if partner_name != blank -%}
-          <span class="rbp-offer-pill rbp-offer-pill-blue">{{ partner_name | escape }}</span>
-        {%- endif -%}
-        <span class="rbp-offer-pill">{{ category_name | escape }}</span>
-      </div>
-      <h3 class="rbp-offer-title"><a href="{{ offer_detail_url }}">{{ offer_title | escape }}</a></h3>
-      {%- if offer_description != blank -%}
-        <p class="rbp-offer-text">{{ offer_description }}</p>
-      {%- endif -%}
-      <div class="rbp-offer-footer">
-        {%- if offer.offer_code.value != blank -%}
-          <span class="rbp-offer-code">{{ offer.offer_code.value | escape }}</span>
-        {%- endif -%}
-        <a class="rbp-offers-btn rbp-offers-btn-p" href="{{ offer_detail_url }}">View Offer</a>
-      </div>
-    </div>
-  </article>
-{%- endif -%}
+{% liquid
+  assign offer_status = offer.status.value | default: offer.status
+  assign offer_visibility = offer.visibility.value | default: offer.visibility
+  assign offer_cta_url = offer.cta_url.value | default: offer.cta_url
+  assign partner = offer.partner.value
+  assign partner_status = partner.status.value | default: partner.status
+  assign partner_visibility = partner.visibility.value | default: partner.visibility
+  assign partner_public = partner.active_public.value | default: partner.is_public.value | default: partner.public.value
+  assign partner_is_public = false
+  if partner != blank
+    if partner_status == 'active'
+      if partner_visibility == 'public' or partner_public == true or partner_public == 'true'
+        assign partner_is_public = true
+      endif
+    endif
+  endif
+%}
+
+{% if offer_status == 'active' %}
+  {% if offer_visibility == 'public' %}
+    {% if offer_cta_url != blank %}
+      {% if partner_is_public %}
+        {% liquid
+          assign offer_title = offer.title.value | default: offer.name.value | default: 'Partner offer'
+          assign offer_description = offer.short_description.value | default: offer.description.value
+          assign partner_name = partner.name.value | default: partner.title.value | default: offer.partner_name.value
+          assign category = offer.category.value
+          assign category_name = category.name.value | default: category.title.value | default: offer.category_name.value
+          assign offer_handle = offer.system.handle | default: offer.handle.value | default: offer_title | handleize
+          assign offer_url = offer.system.url
+          if offer_url == blank
+            assign offer_url = '/offers/' | append: offer_handle
+          endif
+        %}
+        <article class="rbp-offer-card">
+          <div class="rbp-offer-card__body">
+            {% if partner_name != blank %}
+              <p class="rbp-offer-card__partner">{{ partner_name }}</p>
+            {% endif %}
+            <h3>{{ offer_title }}</h3>
+            {% if show_category and category_name != blank %}
+              <p class="rbp-offer-card__category">{{ category_name }}</p>
+            {% endif %}
+            {% if offer_description != blank %}
+              <p>{{ offer_description }}</p>
+            {% endif %}
+          </div>
+          <div class="rbp-offer-card__actions">
+            <a class="rbp-text-link" href="{{ offer_url }}">View Details</a>
+            <a class="rbp-text-link rbp-text-link--strong" href="{{ offer_cta_url }}" target="_blank" rel="noopener sponsored">Get Offer</a>
+          </div>
+        </article>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}

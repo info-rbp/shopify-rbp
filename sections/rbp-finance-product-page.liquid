@@ -1,0 +1,151 @@
+{{ 'rbp-business-finance.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign finance_title = page.title | default: 'Business Finance'
+  assign intro = 'This page explains a common business finance option in plain language so you can decide whether to enquire.'
+  assign what_it_is = 'A business finance pathway that may help with a specific commercial need.'
+  assign uses = 'Supporting business costs||Managing timing gaps||Funding planned activity'
+  assign asks = 'Business details||Trading history||Purpose of funds||Requested amount||Director or applicant details'
+  assign considerations = 'Costs can vary by provider and applicant profile.||Security, guarantees or documentation may be requested.||Approval, rates and terms are not guaranteed.'
+  assign unsuitable = 'The business cannot afford repayments.||The purpose is unclear.||The requested timing or amount is not commercially realistic.'
+
+  case page.handle
+    when 'business-loans'
+      assign what_it_is = 'Business loans are general purpose funding facilities that can support working capital, expansion, consolidation or one-off business costs.'
+      assign uses = 'Funding growth projects||Covering planned business expenses||Refinancing or consolidating existing business debts'
+      assign asks = 'Business revenue and trading history||Reason for the loan||Loan amount and preferred term||Existing debts or commitments||Business and director identification'
+      assign unsuitable = 'The business has no repayment capacity.||The loan would only delay an underlying cash flow problem.||The amount requested is higher than the business can support.'
+    when 'working-capital-finance'
+      assign what_it_is = 'Working capital finance is funding designed to support everyday operating cash flow rather than a long-term asset purchase.'
+      assign uses = 'Supplier payments||Payroll timing||Seasonal stock or inventory||Short-term operating gaps'
+      assign asks = 'Recent business turnover||Cash flow context||Amount needed and timeframe||Existing finance facilities||Urgency of the request'
+      assign unsuitable = 'The business needs permanent equity rather than repayable funding.||The cash flow gap is recurring and unresolved.||Costs are likely to outweigh the short-term benefit.'
+    when 'asset-finance'
+      assign what_it_is = 'Asset finance helps a business purchase or refinance productive assets used in its operations.'
+      assign uses = 'Plant and equipment||Commercial vehicles||Fit-out assets||Technology or systems'
+      assign asks = 'Asset type and supplier quote||Business usage details||Deposit or trade-in information||Requested term||Business financial context'
+      assign unsuitable = 'The asset is not required for business activity.||The business cannot maintain repayments.||The asset value or documentation is unclear.'
+    when 'equipment-finance'
+      assign what_it_is = 'Equipment finance focuses on machinery, tools, systems and specialist equipment used to run or expand a business.'
+      assign uses = 'Replacing outdated equipment||Buying machinery||Upgrading tools||Adding capacity for new work'
+      assign asks = 'Equipment quote or invoice||Supplier details||Expected business use||Warranty or asset details||Trading history'
+      assign unsuitable = 'The equipment is not essential to the business plan.||The equipment may become obsolete too quickly.||Repayments would strain operating cash flow.'
+    when 'invoice-finance'
+      assign what_it_is = 'Invoice finance may provide funding linked to unpaid invoices so a business can manage cash flow while waiting for customers to pay.'
+      assign uses = 'Bridging payment delays||Funding supplier costs||Supporting payroll while invoices are outstanding'
+      assign asks = 'Customer invoice details||Debtor quality and payment terms||Invoice values||Aged receivables information||Business trading context'
+      assign unsuitable = 'Invoices are disputed or unlikely to be paid.||The business mainly sells to consumers.||Invoice fees would outweigh the cash flow benefit.'
+    when 'trade-finance'
+      assign what_it_is = 'Trade finance can support businesses buying or selling goods where payment timing, suppliers or international trade cycles create funding needs.'
+      assign uses = 'Importing stock||Funding large purchase orders||Managing supplier payment terms||Supporting export trade cycles'
+      assign asks = 'Supplier or purchase order details||Customer order context||Shipment or delivery timing||Payment terms||Trade history'
+      assign unsuitable = 'The order is speculative or unconfirmed.||Supplier or customer details are incomplete.||Margins are too thin to absorb finance costs.'
+    when 'business-line-of-credit'
+      assign what_it_is = 'A business line of credit can provide flexible access to funds up to an approved limit, usually for recurring cash flow needs.'
+      assign uses = 'Ongoing working capital||Short-term operating buffers||Stock purchasing||Managing timing gaps'
+      assign asks = 'Requested limit||Business turnover||Use of funds||Existing facilities||Repayment plan'
+      assign unsuitable = 'The business needs fixed long-term funding.||The facility may encourage unmanaged debt.||The business cannot clear or reduce the balance over time.'
+    when 'business-overdrafts'
+      assign what_it_is = 'A business overdraft is usually linked to a business bank account and may help manage short-term cash flow fluctuations.'
+      assign uses = 'Covering short timing gaps||Managing seasonal cash flow||Supporting everyday operating payments'
+      assign asks = 'Banking history||Requested limit||Cash flow pattern||Existing bank facilities||Business financial position'
+      assign unsuitable = 'The business needs a structured loan.||The overdraft would be permanently drawn.||Cash flow is too unstable to manage the limit.'
+    when 'business-vehicle-finance'
+      assign what_it_is = 'Business vehicle finance can help purchase or refinance vehicles used for commercial activity.'
+      assign uses = 'Utes and vans||Commercial cars||Trucks and trailers||Small fleets'
+      assign asks = 'Vehicle quote||Business use details||Deposit or trade-in details||Applicant and business information||Preferred term'
+      assign unsuitable = 'The vehicle is mainly personal use.||The business cannot support repayments and running costs.||Vehicle documentation or ownership details are incomplete.'
+    when 'commercial-property-finance'
+      assign what_it_is = 'Commercial property finance may support buying, refinancing or improving property used for business or investment purposes.'
+      assign uses = 'Purchasing business premises||Refinancing commercial property||Funding improvements||Supporting property-backed business plans'
+      assign asks = 'Property details||Purchase or refinance amount||Deposit or equity position||Rental or business use context||Business and borrower financial information'
+      assign unsuitable = 'The property value or use is uncertain.||The business cannot meet repayments.||The transaction needs specialist legal or tax advice before finance is considered.'
+  endcase
+
+  assign use_items = uses | split: '||'
+  assign ask_items = asks | split: '||'
+  assign consideration_items = considerations | split: '||'
+  assign unsuitable_items = unsuitable | split: '||'
+%}
+
+<section class="rbp-finance rbp-section" aria-labelledby="rbp-finance-product-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">Business Finance</p>
+      <h1 id="rbp-finance-product-title">{{ finance_title }}</h1>
+      <p class="rbp-hero__body">{{ intro }}</p>
+      <div class="rbp-actions">
+        <a class="rbp-button rbp-button--primary" href="/pages/enquire-about-funding">Enquire About Funding</a>
+        <a class="rbp-button rbp-button--secondary" href="/pages/business-finance">Back to finance options</a>
+      </div>
+    </div>
+
+    <div class="rbp-content-grid">
+      <article class="rbp-info-panel">
+        <h2>What this finance type is</h2>
+        <p>{{ what_it_is }}</p>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>Common uses</h2>
+        <ul class="rbp-check-list">
+          {% for item in use_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>What lenders or funders may ask for</h2>
+        <ul class="rbp-check-list">
+          {% for item in ask_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel">
+        <h2>Things to consider</h2>
+        <ul class="rbp-check-list">
+          {% for item in consideration_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="rbp-info-panel rbp-info-panel--wide">
+        <h2>When this may not be suitable</h2>
+        <ul class="rbp-check-list">
+          {% for item in unsuitable_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">Next Step</p>
+        <h2>Send a funding enquiry to RBP</h2>
+        <p>Share the basic details so RBP can review the request and decide the most useful referral or support pathway.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="/pages/enquire-about-funding">Enquire About Funding</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> This information is general only. Submitting an enquiry does not guarantee finance approval, eligibility, rates, terms or provider acceptance.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP finance product",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP finance product"
+    }
+  ]
+}
+{% endschema %}

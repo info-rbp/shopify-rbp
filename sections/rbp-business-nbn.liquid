@@ -1,64 +1,97 @@
-<script>
-  window.RBP_NBN_CONFIG = {
-    temporaryAcceptAll: {{ section.settings.temporary_accept_all | json }},
-    checkEndpoint: {{ section.settings.check_endpoint | json }},
-    enableGooglePlaces: {{ section.settings.enable_google_places | json }},
-    googleBrowserApiKey: {{ section.settings.google_browser_api_key | json }}
-  };
-</script>
-<script src="{{ 'rbp-business-nbn-checker.js' | asset_url }}" defer="defer"></script>
+{{ 'rbp-business-nbn.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'rbp-business-nbn.js' | asset_url }}" defer></script>
 
-<section class="rbp-section">
-  <div class="rbp-container rbp-nbn-shell">
-    <div>
-      {% render 'rbp-section-heading',
-        eyebrow: section.settings.eyebrow,
-        heading: section.settings.heading,
-        text: section.settings.text,
-        align: 'left'
-      %}
-      <form id="rbp-nbn-checker" class="rbp-nbn-form">
-        <label for="rbp-nbn-address">{{ section.settings.address_label | escape }}</label>
-        <input id="rbp-nbn-address" name="address" type="text" autocomplete="street-address" placeholder="{{ section.settings.address_placeholder | escape }}">
-        <input id="rbp-nbn-place-id" name="placeId" type="hidden">
-        <button id="rbp-nbn-check-btn" class="rbp-button rbp-button--primary" type="submit">Check Availability</button>
+<section class="rbp-nbn rbp-section" aria-labelledby="rbp-nbn-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--nbn">
+      <p class="rbp-eyebrow">Business NBN</p>
+      <h1 id="rbp-nbn-title">Check your business address and compare plans</h1>
+      <p class="rbp-hero__body">
+        Enter your business address to continue to plan comparison. Final serviceability, technology type and activation details are confirmed before service activation.
+      </p>
+    </div>
+
+    <div id="business-nbn-address-check" class="rbp-validator" data-rbp-nbn-validator>
+      <form class="rbp-validator__form" data-rbp-nbn-form novalidate>
+        <div class="rbp-field">
+          <label for="BusinessNbnAddress">Business address</label>
+          <input id="BusinessNbnAddress" type="text" name="business_address" autocomplete="street-address" data-rbp-nbn-address required>
+        </div>
+        <button class="rbp-button rbp-button--primary" type="submit">Check Availability</button>
       </form>
-      <div id="rbp-nbn-result" hidden></div>
-      <div id="rbp-nbn-manual-review" class="rbp-card" hidden>
-        <h3 class="rbp-card__title">{{ section.settings.manual_heading | escape }}</h3>
-        <p class="rbp-card__text">{{ section.settings.manual_text | escape }}</p>
+
+      <p class="rbp-validator__message rbp-validator__message--error" data-rbp-nbn-error role="alert" hidden>
+        Please enter a business address before continuing.
+      </p>
+
+      <div class="rbp-validator__success" data-rbp-nbn-success aria-live="polite" hidden>
+        <h2>Address accepted</h2>
+        <p>You can now review Business NBN plan options. Final serviceability, technology type and activation details will be confirmed before service activation.</p>
+        <a class="rbp-button rbp-button--primary" href="/pages/business-nbn-plans">View Business NBN Plans</a>
       </div>
     </div>
-    <aside class="rbp-card">
-      <h3 class="rbp-card__title">{{ section.settings.aside_heading | escape }}</h3>
-      <p class="rbp-card__text">{{ section.settings.aside_text | escape }}</p>
-      {% render 'rbp-nbn-faq-support' %}
-    </aside>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">What Happens Next</p>
+        <h2>Address first, plan review second</h2>
+      </div>
+      <ol class="rbp-step-list">
+        <li>Enter the business address.</li>
+        <li>Review available plan options.</li>
+        <li>Select or enquire about a plan.</li>
+        <li>RBP reviews final serviceability and activation requirements before activation.</li>
+        <li>Activation proceeds after confirmation.</li>
+      </ol>
+    </div>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">FAQ</p>
+        <h2>Business NBN questions</h2>
+      </div>
+      <div class="rbp-faq">
+        <details>
+          <summary>Is this a final serviceability check?</summary>
+          <p>No. Address acceptance lets you continue to plan review. Final serviceability, technology type and activation requirements are confirmed later.</p>
+        </details>
+        <details>
+          <summary>What happens after I choose a plan?</summary>
+          <p>RBP reviews the address, plan interest and activation requirements before confirming the next step.</p>
+        </details>
+        <details>
+          <summary>Can I use a business address?</summary>
+          <p>Yes. The flow is designed for business address entry and plan review.</p>
+        </details>
+        <details>
+          <summary>Are speeds guaranteed?</summary>
+          <p>No. Speeds can be affected by network technology, premises conditions, equipment, plan configuration and other factors.</p>
+        </details>
+        <details>
+          <summary>Is static IP available?</summary>
+          <p>Static IP availability depends on the selected plan and final service configuration.</p>
+        </details>
+        <details>
+          <summary>What happens if activation cannot proceed?</summary>
+          <p>RBP will explain the reason where available and discuss the most practical next step.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Remote Business Partner provides general business information, referral pathways and support routing. We do not guarantee NBN serviceability, plan activation, technology type, speed outcomes, provider approval or commercial results.
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "RBP Business NBN",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Business NBN" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Check your business address" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Enter the business address to check the next available support pathway. Address qualification, speeds, activation dates, installation requirements and provider approval must be confirmed before any order or activation can proceed.</p>" },
-    { "type": "checkbox", "id": "temporary_accept_all", "label": "Use fallback availability mode", "default": true },
-    { "type": "text", "id": "check_endpoint", "label": "Availability check endpoint", "default": "/apps/rbp-bridge/api/check-address" },
-    { "type": "checkbox", "id": "enable_google_places", "label": "Use address autocomplete", "default": false },
-    { "type": "text", "id": "google_browser_api_key", "label": "Address autocomplete browser API key" },
-    { "type": "text", "id": "address_label", "label": "Address label", "default": "Business address" },
-    { "type": "text", "id": "address_placeholder", "label": "Address placeholder", "default": "Enter street address, suburb and postcode" },
-    { "type": "text", "id": "manual_heading", "label": "Manual review heading", "default": "Manual review may be required" },
-    { "type": "textarea", "id": "manual_text", "label": "Manual review text", "default": "If the checker cannot confirm serviceability, RBP can review the address, business context and available next steps manually." },
-    { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "Before you choose a plan" },
-    { "type": "textarea", "id": "aside_text", "label": "Aside text", "default": "Availability, speed tiers, activation timing, installation requirements and provider approval can vary by address and provider. Confirm these details before relying on a plan." }
-  ],
+  "name": "RBP business NBN",
+  "settings": [],
   "presets": [
-    { "name": "RBP Business NBN" }
+    {
+      "name": "RBP business NBN"
+    }
   ]
 }
 {% endschema %}

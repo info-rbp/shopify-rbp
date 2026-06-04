@@ -1,0 +1,102 @@
+{{ 'rbp-business-finance.css' | asset_url | stylesheet_tag }}
+
+<section class="rbp-finance rbp-section" aria-labelledby="rbp-funding-form-title">
+  <div class="rbp-container rbp-container--narrow">
+    <div class="rbp-hero rbp-hero--compact">
+      <p class="rbp-eyebrow">Funding Enquiry</p>
+      <h1 id="rbp-funding-form-title">Enquire About Funding</h1>
+      <p class="rbp-hero__body">
+        Send the basic details to Remote Business Partner. RBP will review the enquiry and may refer it to an appropriate contact or provider where suitable.
+      </p>
+    </div>
+
+    {% form 'contact', id: 'FundingEnquiryForm', class: 'rbp-form' %}
+      <input type="hidden" name="contact[Enquiry type]" value="Funding enquiry">
+
+      {% if form.posted_successfully? %}
+        <div class="rbp-form__success" tabindex="-1">
+          Thank you. Your funding enquiry has been sent to RBP for review.
+        </div>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="rbp-form__error" role="alert">
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+
+      <div class="rbp-form__grid">
+        <div class="rbp-field">
+          <label for="FundingName">Person's name <span aria-hidden="true">*</span></label>
+          <input id="FundingName" type="text" name="contact[Person name]" autocomplete="name" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingCompany">Company name <span aria-hidden="true">*</span></label>
+          <input id="FundingCompany" type="text" name="contact[Company name]" autocomplete="organization" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingEmail">Email address <span aria-hidden="true">*</span></label>
+          <input id="FundingEmail" type="email" name="contact[email]" autocomplete="email" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingPhone">Phone number <span aria-hidden="true">*</span></label>
+          <input id="FundingPhone" type="tel" name="contact[phone]" autocomplete="tel" required>
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingType">Funding type of interest</label>
+          <select id="FundingType" name="contact[Funding type of interest]">
+            <option value="">Select an option</option>
+            <option>Business Loans</option>
+            <option>Working Capital Finance</option>
+            <option>Asset Finance</option>
+            <option>Equipment Finance</option>
+            <option>Invoice Finance</option>
+            <option>Trade Finance</option>
+            <option>Business Line of Credit</option>
+            <option>Business Overdrafts</option>
+            <option>Business Vehicle Finance</option>
+            <option>Commercial Property Finance</option>
+            <option>Unsure</option>
+          </select>
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingAmount">Approximate funding amount</label>
+          <input id="FundingAmount" type="text" name="contact[Approximate funding amount]" inputmode="decimal">
+        </div>
+
+        <div class="rbp-field">
+          <label for="FundingContactTime">Preferred contact time</label>
+          <input id="FundingContactTime" type="text" name="contact[Preferred contact time]">
+        </div>
+
+        <div class="rbp-field rbp-field--full">
+          <label for="FundingPurpose">Funding purpose</label>
+          <textarea id="FundingPurpose" name="contact[Funding purpose]" rows="5"></textarea>
+        </div>
+      </div>
+
+      <button class="rbp-button rbp-button--primary" type="submit">Submit Funding Enquiry</button>
+    {% endform %}
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Important:</strong> Remote Business Partner does not provide financial advice or guarantee funding. Submitting an enquiry allows RBP to review the request and, where appropriate, refer or forward the enquiry for follow-up. Finance approval, eligibility, rates, terms, provider acceptance and provider response are not guaranteed.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP funding enquiry",
+  "settings": [],
+  "presets": [
+    {
+      "name": "RBP funding enquiry"
+    }
+  ]
+}
+{% endschema %}

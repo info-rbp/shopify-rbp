@@ -1,0 +1,111 @@
+{{ 'rbp-business-insurance.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign bizcover_url = section.settings.bizcover_url | default: 'https://www.bizcover.com.au/'
+  assign insurance_titles = 'Public Liability Insurance||Professional Indemnity Insurance||Cyber Liability Insurance||Business Insurance Pack||Management Liability Insurance||Commercial Property Insurance||Business Interruption Insurance' | split: '||'
+  assign insurance_descriptions = 'Information for businesses considering cover connected to injury or property damage claims from third parties.||Information for businesses that provide professional advice, services or recommendations.||Information for businesses considering cover connected to cyber events, data incidents or online risks.||Information for businesses comparing packaged cover across common operational risks.||Information for businesses reviewing cover connected to management decisions and governance risk.||Information for businesses with premises, contents, fixtures or other commercial property considerations.||Information for businesses considering cover connected to interruption after an insured event.' | split: '||'
+  assign insurance_urls = '/pages/public-liability-insurance||/pages/professional-indemnity-insurance||/pages/cyber-liability-insurance||/pages/business-insurance-pack||/pages/management-liability-insurance||/pages/commercial-property-insurance||/pages/business-interruption-insurance' | split: '||'
+  assign industry_titles = 'Trades||Consultants||Retail||Hospitality||Professional Services||Contractors||Online Businesses' | split: '||'
+  assign industry_descriptions = 'Review public liability, tools, vehicle and site access considerations.||Review professional indemnity, public liability and contract requirements.||Review customer-facing risk, stock, property and interruption considerations.||Review premises, staff, public liability and interruption considerations.||Review advice, privacy, professional services and management considerations.||Review project, site, client and subcontractor insurance expectations.||Review cyber, professional services, product and customer data considerations.' | split: '||'
+%}
+
+<section class="rbp-insurance rbp-section" aria-labelledby="rbp-insurance-title">
+  <div class="rbp-container">
+    <div class="rbp-hero rbp-hero--insurance">
+      <p class="rbp-eyebrow">Business Insurance</p>
+      <h1 id="rbp-insurance-title">Compare business insurance options through BizCover</h1>
+      <p class="rbp-hero__body">
+        Learn about common insurance types and use the quote pathway to continue directly with BizCover.
+      </p>
+      <div class="rbp-actions">
+        <a class="rbp-button rbp-button--primary" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+        <a class="rbp-button rbp-button--secondary" href="#insurance-types">Learn about cover types</a>
+      </div>
+    </div>
+
+    <div id="insurance-types" class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Insurance Types</p>
+        <h2>Review common business insurance pathways</h2>
+      </div>
+      <div class="rbp-card-grid">
+        {% for insurance_title in insurance_titles %}
+          {% assign insurance_index = forloop.index0 %}
+          <article class="rbp-card">
+            <div>
+              <h3>{{ insurance_title }}</h3>
+              <p>{{ insurance_descriptions[insurance_index] }}</p>
+            </div>
+            <div class="rbp-card__actions">
+              <a class="rbp-text-link" href="{{ insurance_urls[insurance_index] }}">Learn More</a>
+              <a class="rbp-text-link rbp-text-link--strong" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-section-block">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Industry Pathways</p>
+        <h2>Start from the way your business operates</h2>
+      </div>
+      <div class="rbp-card-grid rbp-card-grid--compact">
+        {% for industry_title in industry_titles %}
+          {% assign industry_index = forloop.index0 %}
+          <article class="rbp-card rbp-card--compact">
+            <h3>{{ industry_title }}</h3>
+            <p>{{ industry_descriptions[industry_index] }}</p>
+            <a class="rbp-text-link rbp-text-link--strong" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rbp-process">
+      <div class="rbp-section-heading">
+        <p class="rbp-eyebrow">Quote Path</p>
+        <h2>How the BizCover pathway works</h2>
+      </div>
+      <ol class="rbp-step-list">
+        <li>Review general insurance information.</li>
+        <li>Select a relevant insurance type or industry pathway.</li>
+        <li>Click Get A Quote.</li>
+        <li>Complete details on BizCover.</li>
+        <li>Review quote options directly with BizCover.</li>
+      </ol>
+    </div>
+
+    <div class="rbp-cta-panel">
+      <div>
+        <p class="rbp-eyebrow">Continue With BizCover</p>
+        <h2>Ready to compare quote options?</h2>
+        <p>Insurance quotes, policy options, eligibility, pricing and product terms are handled by BizCover.</p>
+      </div>
+      <a class="rbp-button rbp-button--primary" href="{{ bizcover_url }}" target="_blank" rel="noopener sponsored">Get A Quote</a>
+    </div>
+
+    <div class="rbp-disclosure" role="note">
+      <strong>Disclosure:</strong> RBP provides general information and referral pathways only. Insurance quotes, policy options, eligibility, pricing and product terms are handled by BizCover. Review all policy terms, exclusions and conditions before deciding whether a product is suitable. Remote Business Partner does not guarantee insurance acceptance, provider approval or commercial results.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RBP business insurance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bizcover_url",
+      "label": "BizCover quote URL",
+      "default": "https://www.bizcover.com.au/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RBP business insurance"
+    }
+  ]
+}
+{% endschema %}
