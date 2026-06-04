@@ -121,13 +121,24 @@
       </div>
       <div class="contact__field-grid">
         <div class="field">
-          <select
-            id="ContactForm-request-type"
+          <input
+            type="text"
+            id="ContactForm-business-name"
             class="field__input"
-            name="contact[Request type]"
-            aria-label="Request type"
+            name="contact[Business name]"
+            autocomplete="organization"
+            placeholder="Business name"
           >
-            <option value="">Select request type</option>
+          <label class="field__label" for="ContactForm-business-name">Business name</label>
+        </div>
+        <div class="field">
+          <select
+            id="ContactForm-enquiry-type"
+            class="field__input"
+            name="contact[Enquiry type]"
+            aria-label="Enquiry type"
+          >
+            <option value="">Select enquiry type</option>
             <option value="Order or product support">Order or product support</option>
             <option value="Service delivery or onboarding">Service delivery or onboarding</option>
             <option value="Business NBN support">Business NBN support</option>
@@ -135,7 +146,7 @@
             <option value="Help choosing a pathway">Help choosing a pathway</option>
             <option value="General enquiry">General enquiry</option>
           </select>
-          <label class="field__label" for="ContactForm-request-type">Request type</label>
+          <label class="field__label" for="ContactForm-enquiry-type">Enquiry type</label>
         </div>
         <div class="field">
           <input
