@@ -3,7 +3,7 @@
     "main": {
       "type": "rbp-business-insurance",
       "settings": {
-        "bizcover_url": "https://www.bizcover.com.au/"
+        "bizcover_url": "https://insure.bizcover.com.au/OccupationSelection?utm_source=RBPINSURE&utm_medium=Form&utm_campaign=RBPINSURE"
       }
     }
   },
