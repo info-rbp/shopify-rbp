@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "service_page": {
+      "type": "rbp-advisory-service-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "service_page"
+  ]
+}
