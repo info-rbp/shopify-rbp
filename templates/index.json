@@ -448,10 +448,10 @@
           "type": "pathway",
           "settings": {
             "badge": "Resource",
-            "title": "Templates and toolkits",
-            "text": "Ask support to help find the right template, toolkit or practical resource while the Essentials page is being assigned.",
-            "button_label": "Ask about resources",
-            "url": "/pages/support"
+            "title": "Templates, toolkits and support pathways",
+            "text": "Use Essentials when a practical resource, connectivity path, provider pathway or supported business resource can help.",
+            "button_label": "Browse Essentials",
+            "url": "/pages/essentials"
           }
         },
         "resolve": {
@@ -498,8 +498,8 @@
           "settings": {
             "type": "Resources",
             "title": "Essentials",
-            "text": "Ask support to help find templates, toolkits, checklists and supported resource options.",
-            "url": "/pages/support"
+            "text": "Templates, toolkits, documentation suites, Business NBN and supported business pathways.",
+            "url": "/pages/essentials"
           }
         },
         "membership": {
