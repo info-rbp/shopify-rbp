@@ -45,17 +45,17 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Business NBN" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Check your business address" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Address checks can use the app-proxy endpoint when live validation is connected. Temporary mode should be disabled when production validation is ready.</p>" },
-    { "type": "checkbox", "id": "temporary_accept_all", "label": "Temporary accept-all mode", "default": true },
-    { "type": "text", "id": "check_endpoint", "label": "Check endpoint", "default": "/apps/rbp-bridge/api/check-address" },
-    { "type": "checkbox", "id": "enable_google_places", "label": "Enable Google Places", "default": false },
-    { "type": "text", "id": "google_browser_api_key", "label": "Google browser API key" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Enter the business address to check the next available support pathway. Address qualification, speeds, activation dates, installation requirements and provider approval must be confirmed before any order or activation can proceed.</p>" },
+    { "type": "checkbox", "id": "temporary_accept_all", "label": "Use fallback availability mode", "default": true },
+    { "type": "text", "id": "check_endpoint", "label": "Availability check endpoint", "default": "/apps/rbp-bridge/api/check-address" },
+    { "type": "checkbox", "id": "enable_google_places", "label": "Use address autocomplete", "default": false },
+    { "type": "text", "id": "google_browser_api_key", "label": "Address autocomplete browser API key" },
     { "type": "text", "id": "address_label", "label": "Address label", "default": "Business address" },
     { "type": "text", "id": "address_placeholder", "label": "Address placeholder", "default": "Enter street address, suburb and postcode" },
     { "type": "text", "id": "manual_heading", "label": "Manual review heading", "default": "Manual review may be required" },
-    { "type": "textarea", "id": "manual_text", "label": "Manual review text", "default": "If live serviceability cannot be confirmed, RBP can review available options manually." },
+    { "type": "textarea", "id": "manual_text", "label": "Manual review text", "default": "If the checker cannot confirm serviceability, RBP can review the address, business context and available next steps manually." },
     { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "Before you choose a plan" },
-    { "type": "textarea", "id": "aside_text", "label": "Aside text", "default": "Serviceability, speed, provisioning and support options are confirmed before activation." }
+    { "type": "textarea", "id": "aside_text", "label": "Aside text", "default": "Availability, speed tiers, activation timing, installation requirements and provider approval can vary by address and provider. Confirm these details before relying on a plan." }
   ],
   "presets": [
     { "name": "RBP Business NBN" }
