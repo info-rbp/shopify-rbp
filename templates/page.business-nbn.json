@@ -12,11 +12,16 @@
       "settings": {
         "eyebrow": "Business NBN",
         "heading": "Business NBN availability and next steps",
-        "text": "<p>Check address readiness and prepare plan selection without exposing private validation logic in theme files.</p>"
+        "text": "<p>Check business address availability, understand support boundaries and confirm the right next step before ordering or activation.</p>"
       }
     },
     "checker": {
-      "type": "rbp-business-nbn"
+      "type": "rbp-business-nbn",
+      "settings": {
+        "text": "<p>Enter a business address to check the next available support pathway. Availability, speed tiers, activation timing, installation requirements and provider approval must be confirmed before relying on a plan.</p>",
+        "manual_text": "If the checker cannot confirm serviceability, RBP can review the address, business context and available next steps manually.",
+        "aside_text": "Availability, speed tiers, activation timing, installation requirements and provider approval can vary by address and provider. Confirm these details before choosing or activating a plan."
+      }
     },
     "features": {
       "type": "rbp-feature-grid"
