@@ -1,0 +1,112 @@
+{% liquid
+  assign service_title = page.title
+  assign service_code = 'RBP-ADV'
+  assign price_label = 'Advisory support'
+  assign product_url = '/pages/core-services'
+  assign intake_url = '/pages/contact'
+  assign primary_label = 'Compare Core Services'
+  assign secondary_label = 'Contact RBP'
+  assign summary = 'Practical business advisory support for owners who need clearer options, better framing, and a commercially sensible next step.'
+  assign what_it_is = 'This service helps business owners clarify the issue, make sense of trade-offs, and move forward with a practical recommendation.'
+  assign helps = 'Unclear next move|Turn a broad business concern into a short list of useful actions.||Decision pressure|Separate the decision itself from noise, emotion, and competing advice.||Owner workload|Identify what should be handled now and what can wait.' | split: '||'
+  assign receives = 'Practical summary|Clear notes written for an owner, not a technical report.||Recommended next step|A grounded pathway based on the issue in front of you.||Scope boundary|Clear notes on what sits outside RBP advisory support.' | split: '||'
+  assign steps = 'Choose the service|Start from the most relevant service or use the Business Health Check if unsure.||Complete intake|Share context, constraints, urgency, and useful documents.||Review and response|RBP reviews the matter and returns the agreed advisory output.' | split: '||'
+  assign boundaries = 'Not regulated advice|RBP does not provide legal, tax, accounting, financial product, insurance, or other regulated advice unless expressly arranged through a qualified provider.||Not unlimited implementation|The service is scoped advisory support. Additional delivery work is quoted or agreed separately.' | split: '||'
+  assign related = 'Core Services|Compare the service menu|/pages/core-services||Business Health Check|Start with a structured review|/products/business-health-check||Business Advisor|Book a focused advisory session|/products/business-advisor' | split: '||'
+
+  case page.handle
+    when 'business-health-check'
+      assign service_title = 'Business Health Check'
+      assign service_code = 'CORE-BHC'
+      assign price_label = '$250'
+      assign product_url = '/products/business-health-check'
+      assign intake_url = '/pages/business-health-check-intake'
+      assign primary_label = 'Start Business Health Check'
+      assign secondary_label = 'View intake form'
+      assign summary = 'A structured review for owners who know the business needs attention but need help identifying what matters first.'
+      assign what_it_is = 'Business Health Check gives you a practical snapshot of the current state of the business, the pressure points worth watching, and the most sensible next service or action.'
+      assign helps = 'Decision load|Identify the decisions that need attention before they become urgent.||Operational gaps|Spot missing process, owner workload, supplier, customer, or cashflow pressure points.||Next best move|Separate what to do now from what can wait.' | split: '||'
+      assign receives = 'Written review notes|Plain-language summary of the state of the business.||Priority issues|The few areas that deserve attention first.||Recommended pathway|Advice on whether Business Advisor, Decision Desk, The Fixer, or no follow-on service is the better next step.' | split: '||'
+      assign steps = 'Buy the Health Check|Checkout confirms the review request.||Complete the intake|Share context, pressure points, and documents worth considering.||Receive review notes|RBP returns a practical summary and recommended next move.' | split: '||'
+      assign boundaries = 'Not a full audit|This is not accounting, tax, legal, HR, valuation, insurance, or regulated advice.||Not implementation|It identifies priorities. Follow-up services can help execute only when separately agreed.' | split: '||'
+      assign related = 'Business Advisor|Talk through the recommended next move|/products/business-advisor||Decision Desk|Compare options in more detail|/products/decision-desk||The Fixer|Triage a stuck operational issue|/products/the-fixer' | split: '||'
+    when 'business-advisor'
+      assign service_title = 'Business Advisor'
+      assign service_code = 'CORE-ADV'
+      assign price_label = '$250'
+      assign product_url = '/products/business-advisor'
+      assign intake_url = '/pages/business-advisor-intake'
+      assign primary_label = 'Book Business Advisor'
+      assign secondary_label = 'View intake form'
+      assign summary = 'Focused advisory support for owners who need a clear read on a decision, trade-off, or next move.'
+      assign what_it_is = 'Business Advisor is a practical advisory session for business owners who need structured thinking, decision support, and grounded next steps without a full project.'
+      assign helps = 'Owner decisions|Work through a current decision, opportunity, or operating question.||Trade-offs|See the benefits, risks, and consequences of each path.||Next action|Leave with a tighter action plan and fewer loose ends.' | split: '||'
+      assign receives = 'Advisory notes|A concise summary of the issue, options, and recommendation.||Action plan|Practical next steps matched to the business context.||Follow-on guidance|Clear advice on whether further support is useful or unnecessary.' | split: '||'
+      assign steps = 'Book the session|Checkout records the advisory request.||Complete the intake|Share the decision, options, constraints, and timing.||Receive advice|RBP reviews the context and provides the agreed advisory support.' | split: '||'
+      assign boundaries = 'Not specialist professional advice|Legal, tax, accounting, financial, HR, insurance, and regulated matters require the right qualified adviser.||Not a substitute for owner judgment|The output supports your decision; it does not remove the decision from the business owner.' | split: '||'
+      assign related = 'Business Health Check|Use when the issue is broad or unclear|/products/business-health-check||Decision Desk|Use when options need deeper comparison|/products/decision-desk||Dispute Resolution Support|Prepare for a commercial dispute conversation|/pages/dispute-resolution-support' | split: '||'
+    when 'decision-desk'
+      assign service_title = 'Decision Desk'
+      assign service_code = 'CORE-DD'
+      assign price_label = '$450'
+      assign product_url = '/products/decision-desk'
+      assign intake_url = '/pages/decision-desk-intake'
+      assign primary_label = 'Start Decision Desk'
+      assign secondary_label = 'View intake form'
+      assign summary = 'A deeper decision review when you are comparing options, weighing risk, or need a documented recommendation.'
+      assign what_it_is = 'Decision Desk helps owners structure a business decision, compare realistic options, identify trade-offs, and receive a clear recommendation for the next move.'
+      assign helps = 'Option comparison|Compare two to four plausible paths without getting lost in noise.||Risk clarity|Identify operational, commercial, customer, and owner-capacity risks.||Recommendation quality|Turn scattered context into a recommendation you can act on.' | split: '||'
+      assign receives = 'Decision brief|A structured summary of the decision, assumptions, options, and trade-offs.||Recommended path|A commercially practical recommendation and rationale.||Action checklist|The next steps to test, approve, or implement the decision.' | split: '||'
+      assign steps = 'Buy Decision Desk|Checkout confirms the review request.||Complete decision intake|Explain the options, constraints, desired outcome, and deadline.||Receive the brief|RBP returns the decision review and recommended action path.' | split: '||'
+      assign boundaries = 'Not due diligence|Decision Desk is advisory support, not a legal, accounting, tax, valuation, or technical diligence report.||Not a guarantee|The recommendation is based on the information provided and practical commercial judgment.' | split: '||'
+      assign related = 'Business Advisor|Use for a lighter decision conversation|/products/business-advisor||The Fixer|Use when the issue needs triage or implementation scope|/products/the-fixer||Core Services|Compare the full service menu|/pages/core-services' | split: '||'
+    when 'the-fixer'
+      assign service_title = 'The Fixer'
+      assign service_code = 'CORE-FIX'
+      assign price_label = '$0 intake'
+      assign product_url = '/products/the-fixer'
+      assign intake_url = '/pages/the-fixer-intake'
+      assign primary_label = 'Request The Fixer intake'
+      assign secondary_label = 'View intake form'
+      assign summary = 'A triage pathway for stuck, messy, or unusual business issues that need context before scope and pricing can be confirmed.'
+      assign what_it_is = 'The Fixer is for problems that do not fit a neat product description. The first step is a no-cost intake so RBP can understand the issue and decide whether it can be scoped.'
+      assign helps = 'Stuck workflows|Untangle handovers, admin friction, vendor confusion, customer issues, or unfinished operating problems.||Messy context|Capture enough detail to decide what kind of support is actually needed.||Scope clarity|Work out whether the issue can be fixed, needs a quote, or belongs elsewhere.' | split: '||'
+      assign receives = 'Triage response|A practical read on the issue and whether RBP can help.||Scope direction|Suggested next step, quote pathway, or referral direction.||No-obligation boundary|No paid fix work starts unless scope and price are separately agreed.' | split: '||'
+      assign steps = 'Submit the no-cost intake|The Fixer product records the request without charging for the triage step.||Share context|Explain what is stuck, what has been tried, and what outcome would be useful.||Receive scope direction|RBP responds with the recommended next step or quote pathway.' | split: '||'
+      assign boundaries = 'Not emergency support|The Fixer is not a real-time crisis or emergency response service.||Not everything can be fixed by RBP|Some issues require a qualified lawyer, accountant, developer, insurer, HR adviser, or platform provider.' | split: '||'
+      assign related = 'Business Health Check|Use when the issue may be part of a wider business pattern|/products/business-health-check||Business Advisor|Use for focused owner advisory|/products/business-advisor||Decision Desk|Use when the fix depends on choosing a path|/products/decision-desk' | split: '||'
+    when 'dispute-resolution-support'
+      assign service_title = 'Dispute Resolution Support'
+      assign service_code = 'ADVISORY-DISPUTE'
+      assign price_label = 'Starts with advisory review'
+      assign product_url = '/products/business-advisor'
+      assign intake_url = '/pages/business-advisor-intake'
+      assign primary_label = 'Start with Business Advisor'
+      assign secondary_label = 'Compare services'
+      assign summary = 'Calm preparation support for commercial disputes, negotiation pressure, and difficult business conversations.'
+      assign what_it_is = 'Dispute Resolution Support helps owners organise the facts, understand commercial options, prepare for conversations, and decide whether specialist advice is needed.'
+      assign helps = 'Fact organisation|Separate events, documents, commitments, and assumptions.||Commercial options|Think through practical resolution paths before escalation.||Conversation preparation|Prepare for supplier, customer, partner, or contractor discussions.' | split: '||'
+      assign receives = 'Issue map|A practical summary of the dispute context and pressure points.||Options and next steps|Commercially sensible ways to prepare, respond, or escalate.||Referral boundary|Clear warning where legal, accounting, insurance, or other specialist advice is needed.' | split: '||'
+      assign steps = 'Start with advisory intake|Use Business Advisor or Decision Desk depending on complexity.||Share dispute context|Provide the facts, desired outcome, timeline, and documents.||Prepare the next move|RBP helps organise options and commercial next steps.' | split: '||'
+      assign boundaries = 'Not legal representation|RBP does not act as a lawyer, mediator, debt collector, advocate, or regulated dispute professional.||Not advice on rights or liabilities|Legal rights, obligations, prospects, and formal dispute strategy require qualified legal advice.' | split: '||'
+      assign related = 'Business Advisor|Use for a focused advisory review|/products/business-advisor||Decision Desk|Use when options need structured comparison|/products/decision-desk||Core Services|Compare all service options|/pages/core-services' | split: '||'
+  endcase
+%}
+
+<article class='rbp-service-page'>
+  <section class='rbp-service-page__hero' aria-labelledby='RbpServicePageTitle'><div class='page-width rbp-service-page__hero-inner'><p class='rbp-service-page__eyebrow'>{{ service_code }} / {{ price_label }}</p><h1 id='RbpServicePageTitle' class='rbp-service-page__title'>{{ service_title }}</h1><p class='rbp-service-page__summary'>{{ summary }}</p><div class='rbp-service-page__actions'><a class='button' href='{{ product_url }}'>{{ primary_label }}</a><a class='button button--secondary' href='{{ intake_url }}'>{{ secondary_label }}</a></div></div></section>
+  <section class='rbp-service-page__section'><div class='page-width rbp-service-page__split'><div><p class='rbp-service-page__eyebrow'>What it is</p><h2>{{ service_title }} in plain terms</h2></div><p>{{ what_it_is }}</p></div></section>
+  <section class='rbp-service-page__section'><div class='page-width'><p class='rbp-service-page__eyebrow'>What it helps with</p><div class='rbp-service-page__grid' role='list'>{% for item in helps %}{% assign parts = item | split: '|' %}<article class='rbp-service-page__card' role='listitem'><h3>{{ parts[0] }}</h3><p>{{ parts[1] }}</p></article>{% endfor %}</div></div></section>
+  <section class='rbp-service-page__section rbp-service-page__section--tint'><div class='page-width'><p class='rbp-service-page__eyebrow'>What you receive</p><div class='rbp-service-page__grid' role='list'>{% for item in receives %}{% assign parts = item | split: '|' %}<article class='rbp-service-page__card rbp-service-page__card--solid' role='listitem'><h3>{{ parts[0] }}</h3><p>{{ parts[1] }}</p></article>{% endfor %}</div></div></section>
+  <section class='rbp-service-page__section'><div class='page-width'><p class='rbp-service-page__eyebrow'>How it works</p><ol class='rbp-service-page__steps'>{% for item in steps %}{% assign parts = item | split: '|' %}<li><span>{{ forloop.index }}</span><div><h3>{{ parts[0] }}</h3><p>{{ parts[1] }}</p></div></li>{% endfor %}</ol></div></section>
+  <section class='rbp-service-page__section rbp-service-page__section--compact'><div class='page-width rbp-service-page__boundary'><div><p class='rbp-service-page__eyebrow'>Boundaries</p><h2>What this service is not</h2></div><div class='rbp-service-page__boundary-list' role='list'>{% for item in boundaries %}{% assign parts = item | split: '|' %}<article role='listitem'><h3>{{ parts[0] }}</h3><p>{{ parts[1] }}</p></article>{% endfor %}</div></div></section>
+  <section class='rbp-service-page__section'><div class='page-width'><p class='rbp-service-page__eyebrow'>Related support</p><div class='rbp-service-page__related' role='list'>{% for item in related %}{% assign parts = item | split: '|' %}<a class='rbp-service-page__related-link' href='{{ parts[2] }}' role='listitem'><strong>{{ parts[0] }}</strong><span>{{ parts[1] }}</span></a>{% endfor %}</div></div></section>
+</article>
+
+{% stylesheet %}
+  .rbp-service-page{background:rgb(var(--color-background))}.rbp-service-page__hero{padding:clamp(3rem,8vw,6.5rem) 0 clamp(2.5rem,6vw,5rem);border-bottom:1px solid rgba(var(--color-foreground),.1)}.rbp-service-page__hero-inner{max-width:62rem}.rbp-service-page__eyebrow{margin:0 0 .75rem;color:rgba(var(--color-foreground),.62);font-size:.82rem;font-weight:700;letter-spacing:0;text-transform:uppercase}.rbp-service-page__title{max-width:54rem;margin:0;color:rgb(var(--color-foreground));font-size:clamp(2.6rem,7vw,5.8rem);line-height:.98}.rbp-service-page__summary{max-width:45rem;margin:1.2rem 0 0;color:rgba(var(--color-foreground),.74);font-size:1.18rem;line-height:1.65}.rbp-service-page__actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}.rbp-service-page__section{padding:clamp(2.5rem,6vw,5rem) 0}.rbp-service-page__section--tint{background:rgba(var(--color-foreground),.035)}.rbp-service-page__section--compact{padding-top:clamp(1.75rem,4vw,3rem);padding-bottom:clamp(1.75rem,4vw,3rem)}.rbp-service-page__split,.rbp-service-page__boundary{display:grid;grid-template-columns:minmax(16rem,.8fr) minmax(0,1.2fr);gap:clamp(1.5rem,5vw,4rem);align-items:start}.rbp-service-page__split h2,.rbp-service-page__boundary h2{margin:0;color:rgb(var(--color-foreground));font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.08}.rbp-service-page__split p,.rbp-service-page__card p,.rbp-service-page__steps p,.rbp-service-page__boundary p,.rbp-service-page__related-link span{color:rgba(var(--color-foreground),.72);line-height:1.65}.rbp-service-page__split>p{margin:0;font-size:1.12rem}.rbp-service-page__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.2rem}.rbp-service-page__card{min-height:13rem;padding:1.35rem;border:1px solid rgba(var(--color-foreground),.12);border-radius:8px;background:rgb(var(--color-background))}.rbp-service-page__card--solid{background:rgba(var(--color-background),.78)}.rbp-service-page__card h3,.rbp-service-page__steps h3,.rbp-service-page__boundary h3{margin:0 0 .55rem;color:rgb(var(--color-foreground));font-size:1.1rem;line-height:1.2}.rbp-service-page__card p,.rbp-service-page__steps p,.rbp-service-page__boundary p{margin:0}.rbp-service-page__steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.2rem 0 0;padding:0;list-style:none}.rbp-service-page__steps li{display:grid;grid-template-columns:2.3rem minmax(0,1fr);gap:.8rem}.rbp-service-page__steps span{display:grid;width:2.3rem;height:2.3rem;place-items:center;border-radius:999px;background:rgb(var(--color-foreground));color:rgb(var(--color-background));font-weight:700}.rbp-service-page__boundary{padding:1.5rem;border:1px solid rgba(var(--color-foreground),.12);border-radius:8px;background:rgba(var(--color-foreground),.035)}.rbp-service-page__boundary-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.rbp-service-page__related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.2rem}.rbp-service-page__related-link{display:grid;gap:.35rem;padding:1.2rem;border:1px solid rgba(var(--color-foreground),.12);border-radius:8px;color:rgb(var(--color-foreground));text-decoration:none}.rbp-service-page__related-link:hover,.rbp-service-page__related-link:focus-visible{border-color:rgba(var(--color-foreground),.35)}@media screen and (max-width:989px){.rbp-service-page__grid,.rbp-service-page__steps,.rbp-service-page__related,.rbp-service-page__boundary-list{grid-template-columns:1fr}.rbp-service-page__card{min-height:0}}@media screen and (max-width:749px){.rbp-service-page__split,.rbp-service-page__boundary{grid-template-columns:1fr}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"RBP Advisory Service Page","settings":[],"presets":[{"name":"RBP Advisory Service Page"}]}
+{% endschema %}
