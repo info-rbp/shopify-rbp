@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "core_services": {
+      "type": "rbp-core-services-landing",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "core_services"
+  ]
+}
