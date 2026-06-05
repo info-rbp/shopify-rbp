@@ -124,7 +124,7 @@
       return {
         tone: 'warn',
         title: 'The address checker is ready, but live API validation is not connected yet.',
-        body: config.temporaryAcceptAll ? 'Temporary mode is enabled, so you can continue to the next step.' : 'Please request a manual review while live validation is being connected.',
+        body: config.temporaryAcceptAll ? 'Address acceptance starts the review pathway. Final serviceability, technology type, pricing and activation details still need confirmation before activation.' : 'Please request a manual review while live validation is being connected.',
         details: address ? [['Address', address]] : [],
         ctaHref: config.temporaryAcceptAll ? plansUrl : contactUrl,
         ctaText: config.temporaryAcceptAll ? 'Review plan options' : 'Request Manual Review'
