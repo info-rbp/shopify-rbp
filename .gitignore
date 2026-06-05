@@ -31,3 +31,6 @@ tmp/
 .temp/
 *.tmp
 *.log
+
+# Local nested exports
+shopify-rbp/

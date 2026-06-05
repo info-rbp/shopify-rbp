@@ -1,0 +1,54 @@
+{%- liquid
+  assign product_title = product.title | default: 'RBP product'
+  assign product_tags = product.tags | join: ' '
+  assign title_source = product.title | append: ' ' | append: product.handle | append: ' ' | append: product.type | append: ' ' | append: product_tags | downcase
+  assign label = 'RBP Resource'
+  assign code = 'RBP'
+  assign tone = 'admin'
+
+  if title_source contains 'legal' or title_source contains 'agreement' or title_source contains 'contract' or title_source contains 'terms'
+    assign label = 'Agreement Template'
+    assign code = 'LEGAL'
+    assign tone = 'legal'
+  elsif title_source contains 'farm' or title_source contains 'property' or title_source contains 'real estate' or title_source contains 'rural'
+    assign label = 'Property Template'
+    assign code = 'PROP'
+    assign tone = 'property'
+  elsif title_source contains 'hr' or title_source contains 'employment' or title_source contains 'employee' or title_source contains 'fair work' or title_source contains 'workplace'
+    assign label = 'HR Template'
+    assign code = 'HR'
+    assign tone = 'hr'
+  elsif title_source contains 'compliance' or title_source contains 'policy' or title_source contains 'obligation' or title_source contains 'risk'
+    assign label = 'Compliance Resource'
+    assign code = 'COMP'
+    assign tone = 'compliance'
+  elsif title_source contains 'toolkit' or title_source contains 'kit'
+    assign label = 'Business Toolkit'
+    assign code = 'KIT'
+    assign tone = 'toolkit'
+  elsif title_source contains 'documentation' or title_source contains 'suite' or title_source contains 'manual' or title_source contains 'sop'
+    assign label = 'Documentation Suite'
+    assign code = 'DOCS'
+    assign tone = 'documentation'
+  elsif title_source contains 'advisory' or title_source contains 'advisor' or title_source contains 'health check' or title_source contains 'decision desk' or title_source contains 'fixer' or title_source contains 'core service'
+    assign label = 'Core Service'
+    assign code = 'CORE'
+    assign tone = 'service'
+  elsif title_source contains 'on-demand' or title_source contains 'implementation' or title_source contains 'support' or title_source contains 'service'
+    assign label = 'On-Demand Service'
+    assign code = 'SVC'
+    assign tone = 'ondemand'
+  elsif title_source contains 'admin' or title_source contains 'business' or title_source contains 'register' or title_source contains 'checklist' or title_source contains 'template'
+    assign label = 'Business Admin'
+    assign code = 'ADMIN'
+    assign tone = 'admin'
+  endif
+-%}
+
+<div class="rbp-product-thumb rbp-product-thumb--{{ tone }}" role="img" aria-label="{{ label | escape }} thumbnail for {{ product_title | escape }}">
+  <div class="rbp-product-thumb__inner">
+    <span class="rbp-product-thumb__brand">Remote Business Partner</span>
+    <span class="rbp-product-thumb__code">{{ code }}</span>
+    <span class="rbp-product-thumb__label">{{ label }}</span>
+  </div>
+</div>
