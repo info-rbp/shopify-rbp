@@ -127,7 +127,7 @@
         body: config.temporaryAcceptAll ? 'Temporary mode is enabled, so you can continue to the next step.' : 'Please request a manual review while live validation is being connected.',
         details: address ? [['Address', address]] : [],
         ctaHref: config.temporaryAcceptAll ? plansUrl : contactUrl,
-        ctaText: config.temporaryAcceptAll ? 'View eligible plans' : 'Request Manual Review'
+        ctaText: config.temporaryAcceptAll ? 'Review plan options' : 'Request Manual Review'
       };
     }
 
