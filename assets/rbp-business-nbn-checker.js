@@ -13,6 +13,7 @@
 
   var SESSION_SERVICEABILITY = 'rbp_nbn_serviceability';
   var SESSION_ADDRESS = 'rbp_nbn_address';
+  var SESSION_STATUS = 'rbp_nbn_validation_status';
   var SESSION_VALIDATION_MODE = 'rbp_nbn_validation_mode';
   var plansUrl = '/pages/business-nbn-plans';
   var contactUrl = '/pages/contact';
@@ -49,6 +50,7 @@
   function persistResult(result) {
     safeSessionSet(SESSION_SERVICEABILITY, JSON.stringify(result));
     safeSessionSet(SESSION_ADDRESS, result.matchedAddress || result.address || '');
+    safeSessionSet(SESSION_STATUS, 'accepted');
     safeSessionSet(SESSION_VALIDATION_MODE, result.validationMode || '');
   }
 
@@ -73,15 +75,15 @@
     if (result.status === 'serviceable' || result.status === 'likely_serviceable') {
       return {
         tone: 'success',
-        title: result.title || 'Business NBN appears available at this address.',
-        body: result.message || 'This address has been accepted for the next step. Final serviceability, technology type, speed and provisioning timeframe will be confirmed before activation.',
+        title: result.title || 'Address accepted.',
+        body: result.message || 'Address accepted. You can now review Business NBN plan options. Final serviceability, technology type, pricing and activation details will be confirmed before activation.',
         details: [
           ['Address', address],
           ['NBN technology', technologyType],
           ['Maximum speed', maxSpeedLabel]
         ],
         ctaHref: plansUrl,
-        ctaText: 'View eligible plans'
+        ctaText: 'Review plan options'
       };
     }
 
@@ -174,8 +176,8 @@
       technologyType: 'To be confirmed',
       maxSpeedLabel: 'Plan dependent',
       requiresManualReview: false,
-      title: 'Business NBN appears available at this address.',
-      message: 'This address has been accepted for the next step. Final serviceability, technology type, speed and provisioning timeframe will be confirmed before activation.'
+      title: 'Address accepted.',
+      message: 'Address accepted. You can now review Business NBN plan options. Final serviceability, technology type, pricing and activation details will be confirmed before activation.'
     };
   }
 
@@ -325,7 +327,7 @@
     }
 
     if (result && result.matchedAddress) {
-      banner.innerHTML = '<strong>Address accepted: ' + escapeHtml(result.matchedAddress) + '</strong><p>Final serviceability will be confirmed before activation.</p>';
+      banner.innerHTML = '<strong>Address accepted: ' + escapeHtml(result.matchedAddress) + '</strong><p>Final serviceability, technology type, pricing and activation details will be confirmed before activation.</p>';
       return;
     }
 

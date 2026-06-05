@@ -9,21 +9,16 @@
         "align": "left"
       }
     },
-    "topics": {
-      "type": "rbp-feature-grid",
+    "canonical": {
+      "type": "rbp-cta-band",
       "settings": {
-        "eyebrow": "Help Topics",
-        "heading": "Common support areas",
-        "text": "<p>Use these topics to decide what information to include when contacting support.</p>"
-      },
-      "blocks": {
-        "orders": { "type": "feature", "settings": { "icon": "O", "title": "Orders and purchases", "text": "Include the order number, product or service name, delivery issue and preferred contact method.", "button_label": "Contact support", "url": "/pages/contact" } },
-        "core_services": { "type": "feature", "settings": { "icon": "C", "title": "Core Services", "text": "Include the service being considered, current business problem and whether you need advice, intake or delivery support.", "button_label": "View Core Services", "url": "/pages/core-services" } },
-        "business_nbn": { "type": "feature", "settings": { "icon": "N", "title": "Business NBN support", "text": "Include the business address, current service status, provider if known, activation timing, preferred contact method and urgent operational constraints.", "button_label": "Contact Business NBN Support", "url": "/pages/contact" } },
-        "membership": { "type": "feature", "settings": { "icon": "M", "title": "Membership", "text": "Ask RBP to confirm current membership availability, inclusions, application steps and support pathways.", "button_label": "Ask about membership", "url": "/pages/contact" } }
-      },
-      "block_order": ["orders", "core_services", "business_nbn", "membership"]
+        "eyebrow": "Canonical Help Centre",
+        "heading": "Use the main Help Centre",
+        "text": "<p>The current Help Centre route is /pages/help-center. Use that page for starter support articles and current help topics.</p>",
+        "button_label": "Open Help Centre",
+        "button_url": "/pages/help-center"
+      }
     }
   },
-  "order": ["hero", "topics"]
+  "order": ["hero", "canonical"]
 }

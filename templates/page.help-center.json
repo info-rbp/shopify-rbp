@@ -33,15 +33,20 @@
       "settings": {
         "eyebrow": "FAQ",
         "heading": "Support questions",
-        "text": "<p>These answers provide a clean fallback while Help Centre metaobject articles are populated in Shopify Admin.</p>",
+        "text": "<p>Starter support articles are provided here while Help Centre metaobject articles are populated in Shopify Admin.</p>",
         "open_first": true
       },
       "blocks": {
-        "what_to_include": { "type": "question", "settings": { "question": "What should I include in a support request?", "answer": "<p>Include the business context, order or product details, timeline, preferred contact method and the outcome you need.</p>" } },
-        "nbn": { "type": "question", "settings": { "question": "What should I include for Business NBN support?", "answer": "<p>Include the business address, current service status, provider if known, activation timing, preferred contact method and any urgent operational constraints. Final serviceability, technology type, speed and activation timing must be confirmed before relying on a plan.</p>" } },
-        "marketplace": { "type": "question", "settings": { "question": "Are marketplace offers guaranteed?", "answer": "<p>No. Partner offers, funding pathways, insurance quotes and NBN pathways may depend on eligibility, availability, provider terms and final review.</p>" } }
+        "account_access": { "type": "question", "settings": { "question": "How to access your account", "answer": "<p>Customers can access their account using the account link in the store header. If you cannot access your account, contact RBP with the email address used for your order or enquiry. Do not send passwords or verification codes through the contact form.</p>" } },
+        "orders": { "type": "question", "settings": { "question": "What happens after checkout", "answer": "<p>After checkout, your order confirmation will be sent to the email used at checkout. Some products are self-serve, while others require intake, manual review or support before delivery. Check the product page for fulfilment notes.</p>" } },
+        "health_check": { "type": "question", "settings": { "question": "What to include before requesting a Business Health Check", "answer": "<p>Include your business name, the issue or decision you are reviewing, timing pressure, relevant documents if requested, and the outcome you are trying to clarify. Do not provide sensitive passwords, financial account access, or confidential legal material unless specifically requested through a secure process.</p>" } },
+        "core_services": { "type": "question", "settings": { "question": "Choosing the right Core Service", "answer": "<p>Use Business Health Check for broad review, Business Advisor for owner decision support, Decision Desk for structured decision review, and The Fixer for practical triage of a specific issue. RBP does not provide legal, tax, accounting, financial or insurance advice unless separately arranged with an appropriate provider.</p>" } },
+        "business_nbn": { "type": "question", "settings": { "question": "What to provide for Business NBN support", "answer": "<p>Include the business address, current provider if known, current connection status, activation timing, preferred contact method and any operational urgency. Address acceptance on the website does not confirm final serviceability, speed, network technology or activation.</p>" } },
+        "membership": { "type": "question", "settings": { "question": "How membership enquiries work", "answer": "<p>Membership enquiries currently route through RBP support. Use the contact form to explain your business, what support you are looking for and any specific resources or services you want access to. RBP will respond with the appropriate next step.</p>" } },
+        "marketplace": { "type": "question", "settings": { "question": "How partner pathways work", "answer": "<p>Marketplace and partner pathways may depend on eligibility, provider terms, availability and approval. RBP may help route enquiries but does not guarantee partner acceptance, offer availability, funding, insurance, legal or commercial outcomes.</p>" } },
+        "contact": { "type": "question", "settings": { "question": "What to include in a support request", "answer": "<p>Include your name, email, business name, product or service involved, order number if available, preferred contact method, timing/deadline and a short summary of the issue. Do not send passwords, card numbers, tax file numbers or other highly sensitive information.</p>" } }
       },
-      "block_order": ["what_to_include", "nbn", "marketplace"]
+      "block_order": ["account_access", "orders", "health_check", "core_services", "business_nbn", "membership", "marketplace", "contact"]
     }
   },
   "order": ["hero", "topics", "faq"]

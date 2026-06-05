@@ -18,7 +18,7 @@
       },
       "blocks": {
         "run": { "type": "service", "settings": { "icon": "01", "title": "Run the business", "text": "Browse services for recurring work, controls, admin systems and operating support.", "button_label": "View operations services", "url": "/pages/operations-services" } },
-        "improve": { "type": "service", "settings": { "icon": "02", "title": "Improve recurring work", "text": "Use practical services and support pathways to clean up recurring operational work.", "button_label": "View operations collection", "url": "/collections/operations-on-demand-services" } },
+        "improve": { "type": "service", "settings": { "icon": "02", "title": "Improve recurring work", "text": "Use practical services and support pathways to clean up recurring operational work.", "button_label": "View on-demand services", "url": "/collections/on-demand-services" } },
         "support": { "type": "service", "settings": { "icon": "03", "title": "Get operations support", "text": "Contact support when the right next step, owner or pathway needs context.", "button_label": "Contact support", "url": "/pages/contact" } }
       },
       "block_order": ["run", "improve", "support"]

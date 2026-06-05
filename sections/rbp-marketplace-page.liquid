@@ -1,10 +1,10 @@
 {{ 'rbp-marketplace.css' | asset_url | stylesheet_tag }}
 
 {% liquid
-  assign pathway_titles = 'Business NBN||Business Finance||Business Insurance||Partner Offers||Offer Categories||Marketplace Terms||Marketplace Support' | split: '||'
-  assign pathway_descriptions = 'Check a business address, then review Business NBN plan options with final serviceability reviewed before activation.||Compare common finance product types and submit a provider-neutral funding enquiry for RBP review.||Review general insurance information and continue directly to BizCover for quote options.||Browse active public partner offers when approved offer data is available.||Explore offer categories that have active public offers with valid partner CTAs.||Review marketplace participation, partner offer, availability and advice-boundary terms.||Ask support to confirm whether a marketplace pathway or partner offer is available for your situation.' | split: '||'
-  assign pathway_ctas = 'Check Business NBN||View Business Finance||Get A Quote||Browse Partner Offers||View Offer Categories||Read Marketplace Terms||Contact Support' | split: '||'
-  assign pathway_urls = '/pages/business-nbn||/pages/business-finance||/pages/business-insurance||/pages/offers||/pages/offer-categories||/pages/marketplace-terms||/pages/contact' | split: '||'
+  assign pathway_titles = 'Business NBN||Business Finance||Business Insurance||Marketplace Terms||Marketplace Support' | split: '||'
+  assign pathway_descriptions = 'Check a business address, then review Business NBN plan options with final serviceability reviewed before activation.||Compare common finance product types and submit a provider-neutral funding enquiry for RBP review.||Review general insurance information and continue directly to BizCover for quote options.||Review marketplace participation, partner offer, availability and advice-boundary terms.||Ask support to confirm whether a marketplace pathway, provider or support route is available for your situation.' | split: '||'
+  assign pathway_ctas = 'Check Business NBN||View Business Finance||Get A Quote||Read Marketplace Terms||Ask about marketplace pathways' | split: '||'
+  assign pathway_urls = '/pages/business-nbn||/pages/business-finance||/pages/business-insurance||/pages/marketplace-terms||/pages/contact' | split: '||'
 %}
 
 <section class="rbp-marketplace rbp-section" aria-labelledby="rbp-marketplace-title">
@@ -13,7 +13,7 @@
       <p class="rbp-eyebrow">Marketplace</p>
       <h1 id="rbp-marketplace-title">Explore marketplace pathways and business opportunities</h1>
       <p class="rbp-hero__body">
-        Start with active Remote Business Partner pathways for business connectivity, funding enquiries, insurance quote routing and approved partner offer discovery.
+        Start with active Remote Business Partner pathways for business connectivity, funding enquiries, insurance quote routing and support for reviewed marketplace pathways.
       </p>
     </div>
 
@@ -44,10 +44,10 @@
         <a class="rbp-button rbp-button--secondary" href="/pages/business-nbn">Start With Business NBN</a>
       </article>
       <article>
-        <p class="rbp-eyebrow">Partner Offers</p>
-        <h2>Offer discovery stays separate from advice</h2>
-        <p>Partner offers are shown only when they are active, public and have a direct partner CTA. Eligibility, availability and terms are handled by the relevant partner.</p>
-        <a class="rbp-button rbp-button--secondary" href="/pages/offers">Browse Partner Offers</a>
+        <p class="rbp-eyebrow">Marketplace Review</p>
+        <h2>Partner pathways are reviewed before publication</h2>
+        <p>Partner offer pathways are reviewed before publication. Contact RBP if you need help identifying the right marketplace, provider or support pathway.</p>
+        <a class="rbp-button rbp-button--secondary" href="/pages/contact">Ask about marketplace pathways</a>
       </article>
     </div>
 
@@ -66,11 +66,11 @@
 
     <div class="rbp-cta-panel">
       <div>
-        <p class="rbp-eyebrow">Partner Offers</p>
-        <h2>Browse offers separately from marketplace pathways</h2>
-        <p>Partner Offers is a distinct directory organised by category. Use it when you need business support offers with partner eligibility and terms clearly separated from RBP services.</p>
+        <p class="rbp-eyebrow">Marketplace Support</p>
+        <h2>Ask before relying on a partner pathway</h2>
+        <p>Partner offer pathways are reviewed before publication. RBP can help route an enquiry, but does not guarantee partner acceptance, offer availability, funding, insurance, legal or commercial outcomes.</p>
       </div>
-      <a class="rbp-button rbp-button--primary" href="/pages/offers">Browse Partner Offers</a>
+      <a class="rbp-button rbp-button--primary" href="/pages/contact">Ask about marketplace pathways</a>
     </div>
 
     <div class="rbp-disclosure" role="note">
